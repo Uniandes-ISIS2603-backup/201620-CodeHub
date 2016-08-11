@@ -5,9 +5,9 @@
 <b>INTEGRANTES</b>
 <br>
 
-1. (nombre) - (login) - (Si es lider poner un '*' o escribir "lider". Sino no se pone nada) <br>
-2. (nombre) - (login) - (Si es lider poner un '*' o escribir "lider". Sino no se pone nada) <br>
-3. (nombre) - (login) - (Si es lider poner un '*' o escribir "lider". Sino no se pone nada) <br>
-4. (nombre) - (login) - (Si es lider poner un '*' o escribir "lider". Sino no se pone nada) <br>
-5. (nombre) - (login) - (Si es lider poner un '*' o escribir "lider". Sino no se pone nada) <br>
-6. (nombre) - (login) - (Si es lider poner un '*' o escribir "lider". Sino no se pone nada) <br>
+1. Laura Bello Jiménez - ln.bello10*  <br>
+2. Camilo Zambrano - c.zambrano10  <br>
+3. Leidy Pinzón - lj.pinzon12  <br>
+4. Daniel Cagua - d.cagua10 <br>
+5. Orlando Sabogal - o.sabogal10 <br>
+6. Sebastián Martinez - s.martinez15  <br>
