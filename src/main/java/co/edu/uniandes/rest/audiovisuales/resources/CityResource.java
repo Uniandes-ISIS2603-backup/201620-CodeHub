@@ -3,7 +3,7 @@
  * Clase que representa el recurso "/cities"
  * Implementa varios métodos para manipular las ciudades
  */
-package co.edu.uniandes.rest.cities.resources;
+package co.edu.uniandes.rest.audiovisuales.resources;
 
 import co.edu.uniandes.rest.cities.dtos.CityDTO;
 import co.edu.uniandes.rest.cities.exceptions.CityLogicException;
