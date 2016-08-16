@@ -110,8 +110,10 @@ public class EdificioLogicMock {
         
         if(buscado!=null)
         {
-            buscado.setId(edificio.getId());
-            buscado.setName(edificio.getName());
+            if(edificio.getId()!=null)
+                buscado.setId(edificio.getId());
+            if(edificio.getName()!=null)
+                buscado.setName(edificio.getName());
             return buscado;
         }
         else
