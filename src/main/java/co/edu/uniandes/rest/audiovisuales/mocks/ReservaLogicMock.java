@@ -37,7 +37,7 @@ public class ReservaLogicMock {
         logger.setLevel(Level.INFO);
         
         logger.info("Inicializa la lista de Reservas");
-        Logger.info("ciudades"+  reservas );
+        logger.info("ciudades"+  reservas );
     }
     
     public List<ReservaDTO> getReservas() throws ReservaLogicException
@@ -68,7 +68,7 @@ public class ReservaLogicMock {
     
     public ReservaDTO createReserva(ReservaDTO newReserva)throws ReservaLogicException
     {
-        logger.info("recibiendo solicitud de agregar usuario " + newUser);
+        logger.info("recibiendo solicitud de agregar usuario " + newReserva);
     	
     	// el nuevo usuario tiene id ?
     	if ( newReserva.getId() != null ) {
