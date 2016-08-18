@@ -7,7 +7,7 @@ package co.edu.uniandes.rest.audiovisuales.mocks;
 
 import co.edu.uniandes.rest.audiovisuales.dtos.ReservaDTO;
 import co.edu.uniandes.rest.audiovisuales.exceptions.ReservaLogicException;
-import java.time.Instant;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,9 +29,9 @@ public class ReservaLogicMock {
         if(reservas == null)
         {
             reservas = new ArrayList<>();
-            reservas.add(new ReservaDTO(Date.from(Instant.MIN), 0.0, "ML", 1L));
-            reservas.add(new ReservaDTO(Date.from(Instant.MIN), 0.0, "W", 2L));
-            reservas.add(new ReservaDTO(Date.from(Instant.MIN), 0.0, "AU", 3L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 10), 0.0, "ML", 1L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 11), 0.0, "W", 2L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), 0.0, "AU", 3L));
         }
         
         logger.setLevel(Level.INFO);
