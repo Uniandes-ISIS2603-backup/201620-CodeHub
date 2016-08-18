@@ -57,6 +57,16 @@ public class ReservaDTO
     public Long getId() {
         return id;
     }
+    
+    public void update(Boolean pEstado,Date pFecha,Double pCalificacion, Boolean pSancion,String pEdificio, Long pId)
+    {
+        estado = pEstado;
+        fecha = pFecha;
+        calificacion = pCalificacion;
+        generoSancion = pSancion;
+        nombreEdificio = pEdificio;
+        id = pId;
+    }
 
     public void setEstado(Boolean estado) {
         this.estado = estado;

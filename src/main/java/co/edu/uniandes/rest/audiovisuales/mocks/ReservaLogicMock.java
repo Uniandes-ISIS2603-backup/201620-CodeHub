@@ -101,4 +101,27 @@ public class ReservaLogicMock {
         return newReserva;
     }
     
+    public ReservaDTO updateReserva(ReservaDTO pReserva)throws ReservaLogicException
+    {
+        ReservaDTO r = null;
+        for(int i = 0; i<reservas.size();i++){
+            ReservaDTO reserva = reservas.get(i);
+            if(reserva.getId().equals(pReserva.getId())){
+                reserva.update(pReserva.getEstado(),
+                        pReserva.getFecha(),
+                        pReserva.getCalificacion(),
+                        pReserva.getGeneroSancion(),
+                        pReserva.getNombreEdificio(),
+                        pReserva.getId());
+                
+                r = reserva;
+            }
+        }
+        if(r == null){
+            throw new ReservaLogicException("Error interno: la reserva no existe.");
+        }
+        return r;
+    }
+    
+    
 }
