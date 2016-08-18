@@ -77,7 +77,7 @@ public class AdminDTO
     @Override
     public String toString() 
     {
-    	return "{ nombre : " + getName() + ", correo : \"" + getEmail() + ", edificio : \"" + getEdificio().getName() + "\" }" ;  
+    	return "{ nombre : " + getName() + ", correo : \"" + getEmail() + ", edificio : \"" + getEdificio().getBloque() + "\" }" ;  
     }
 
 

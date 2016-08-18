@@ -12,6 +12,7 @@ package co.edu.uniandes.rest.audiovisuales.dtos;
 public class EdificioDTO 
 {
     private Long id;
+    private String bloque;
     private String nombre;
 
     /**
@@ -25,46 +26,63 @@ public class EdificioDTO
      * Constructor con parámetros.
      * @param id identificador del edificio
      * @param nombre nombre del edificio
+     * @param bloque nombre del bloque
      */
-    public EdificioDTO(Long id, String nombre) {
+    public EdificioDTO(Long id, String bloque, String nombre) {
 	super();
 	this.id = id;
 	this.nombre = nombre;
+        this.bloque = bloque;
     }
 
 	/**
-     * @return the id
+     * @return el id
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * @param id the id to set
+     * @param id el id a poner
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * @return the name
+     * @return el nombre
      */
-    public String getName() {
+    public String getNombre() {
         return nombre;
     }
 
     /**
-     * @param nombre the name to set
+     * @param nombre el nombre a poner
      */
-    public void setName(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
     
     /**
+     * @return el nombe del bloque
+     */
+    public String getBloque() {
+        return bloque;
+    }
+
+    /**
+     * @param bloque el nombre del bloque a poner.
+     */
+    public void setBloque(String bloque) {
+        this.bloque = bloque;
+    }
+    
+    /**
      * Convierte el objeto a una cadena
+     * @return el mensaje con el objeto
      */
     @Override
     public String toString() {
-    	return "{ id : " + getId() + ", name : \"" + getName() + "\" }" ;  
+    	return "{ id : " + getId() + ", bloque : \"" + getBloque() + "\", nombre : \""+getNombre()+"\" }" ;  
     }
 }

@@ -23,17 +23,25 @@ public class EdificioLogicMock {
     // listado de ciudades
     private static ArrayList<EdificioDTO> edificios;
     
+    /**
+     * Constructor. Crea tres edificios de ejemplo.
+     */
     public EdificioLogicMock()
     {
         if(edificios==null)
         {
             edificios = new ArrayList<>();
-            edificios.add(new EdificioDTO(1L, "Bloque ML - Mario Laserna"));
-            edificios.add(new EdificioDTO(2L, "Bloque W - Carlos Pacheco Devia"));
-            edificios.add(new EdificioDTO(3L, "Bloque SD - Julio Mario Santo Domingo"));
+            edificios.add(new EdificioDTO(1L, "ML", "Mario Laserna"));
+            edificios.add(new EdificioDTO(2L, "W", "Carlos Pacheco Devia"));
+            edificios.add(new EdificioDTO(3L, "SD", "Julio Mario Santo Domingo"));
         }
     }
     
+    /**
+     * Obtiene todos los edificios del sistema. (GET)
+     * @return Lista de Edificios
+     * @throws EdificioLogicException
+     */
     public List<EdificioDTO> getEdificios() throws EdificioLogicException
     {
         if(edificios==null)
@@ -44,6 +52,12 @@ public class EdificioLogicMock {
         return edificios;
     }
     
+    /**
+     * Obtiene el edificio con el id especificado. (GET)
+     * @param id del edificio buscado
+     * @return El edificio con el id ingreasado
+     * @throws EdificioLogicException
+     */
     public EdificioDTO getEdificio(Long id) throws EdificioLogicException
     {
         if(edificios==null)
@@ -62,6 +76,12 @@ public class EdificioLogicMock {
         throw new EdificioLogicException("No se encuentra el edificio con ese id.");
     }
     
+    /**
+     * Ingresa un nuevo edificio al sistema y le asigna un id. (POST)
+     * @param nuevo Informacion del nuevo edificio a ingreasar.
+     * @return El edificio ingresado al sistema.
+     * @throws EdificioLogicException
+     */
     public EdificioDTO crearEdificio(EdificioDTO nuevo) throws EdificioLogicException
     {
         if(nuevo.getId()!=null)
@@ -91,6 +111,13 @@ public class EdificioLogicMock {
         return nuevo;
     }
     
+    /**
+     * Actualiza el edificio con el id ingresado segun la informacion recibida. (PUT)
+     * @param id del edificio a actualizar
+     * @param edificio datos a actualizar
+     * @return El edificio despues de actualizarce
+     * @throws EdificioLogicException
+     */
     public EdificioDTO actualizarEdificio(Long id, EdificioDTO edificio) throws EdificioLogicException
     {
         if(edificios==null)
@@ -112,8 +139,10 @@ public class EdificioLogicMock {
         {
             if(edificio.getId()!=null)
                 buscado.setId(edificio.getId());
-            if(edificio.getName()!=null)
-                buscado.setName(edificio.getName());
+            if(edificio.getNombre()!=null)
+                buscado.setNombre(edificio.getNombre());
+            if(edificio.getBloque()!=null)
+                buscado.setBloque(edificio.getBloque());
             return buscado;
         }
         else
@@ -122,6 +151,12 @@ public class EdificioLogicMock {
         }
     }
     
+    /**
+     * Elimina del sistema el edificio con el id ingresado. (DELETE)
+     * @param id del edificio a eliminar.
+     * @return EL edificio eliminado.
+     * @throws EdificioLogicException 
+     */
     public EdificioDTO eliminarEdificio(Long id) throws EdificioLogicException
     {
         if(edificios==null)
