@@ -76,4 +76,5 @@ public class UsuarioDTO {
     public String toString() {
     	return "{ id : " + getId() + ", name : \"" + getName() + "\" }" ;  
     }
+    
 }

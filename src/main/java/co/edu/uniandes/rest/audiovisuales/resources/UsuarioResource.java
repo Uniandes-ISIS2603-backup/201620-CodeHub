@@ -24,7 +24,7 @@ import javax.ws.rs.Produces;
  * este recurso tiene la ruta "usuarios". Al ejecutar la aplicación, el recurse
  * será accesibe a través de la ruta "/api/usuarios"
  *
- * @author Asistente
+ * @author ln.bello10
  */
 @Path("usuarios")
 @Produces("application/json")
