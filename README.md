@@ -1,6 +1,6 @@
 #CodeHub
 <br>
-<b>Seccion (numero de seccion o dia) </b> 
+<b>Seccion <strong>2<\strong> </b> 
 <br><br>
 <b>INTEGRANTES</b>
 <br>
