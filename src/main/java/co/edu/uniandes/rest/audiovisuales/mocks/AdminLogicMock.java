@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class AdminLogicMock 
 {
   // objeto para presentar logs de las operaciones
-    private final static Logger logger = Logger.getLogger(co.edu.uniandes.rest.cities.mocks.CityLogicMock.class.getName());
+    private final static Logger logger = Logger.getLogger(AdminLogicMock.class.getName());
 	
     // Lista de los administradores
     private static ArrayList<AdminDTO> administradores;
