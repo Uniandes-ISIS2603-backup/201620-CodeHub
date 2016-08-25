@@ -24,7 +24,7 @@ public class EquipoLogicMock {
     /**
      * objeto para presentar logs de las operaciones
      */
-    private final static Logger logger = Logger.getLogger(CityLogicMock.class.getName());
+    private final static Logger logger = Logger.getLogger(EdificioLogicMock.class.getName());
 	
     /**
      * listado de Equipos
