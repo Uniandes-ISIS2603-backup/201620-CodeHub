@@ -4,4 +4,4 @@
  * and open the template in the editor.
  */
 
-//esto es un comentario.
+var mod = ng.module("equiposModule", ["ui-router"]);
