@@ -46,14 +46,13 @@ public class AdminResource
     {
         return adminLogic.crearAdministrador(nuevo);
     }
-    /** Mal uso de parametros, hace kaputt la aplicacion
+
     @PUT
-    @Path("{nombre: \\d+}")
-    public AdminDTO actualizarAdministrador(@PathParam("nombre") String nombre, String correo, EdificioDTO edificio) throws AdminLogicException
+    public AdminDTO actualizarAdministrador(String nombre, String correo, EdificioDTO edificio) throws AdminLogicException
     {
         return adminLogic.actualizarAdministrador(nombre, correo, edificio);
     }
-    **/
+
     @DELETE
     @Path("{nombre: \\d+}")
     public AdminDTO eliminarAdministrador(@PathParam("nombre") String nombre) throws AdminLogicException
