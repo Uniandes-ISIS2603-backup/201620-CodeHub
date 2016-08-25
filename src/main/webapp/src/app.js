@@ -4,4 +4,5 @@
  * and open the template in the editor.
  */
 
+var app = ng.module("mainApp", ["ui-router","usuariosModule"]);
 
