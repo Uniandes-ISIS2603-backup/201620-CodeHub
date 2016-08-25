@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class SancionLogicMock
 {
     // objeto para presentar logs de las operaciones
-	private final static Logger logger = Logger.getLogger(co.edu.uniandes.rest.cities.mocks.CityLogicMock.class.getName());
+	private final static Logger logger = Logger.getLogger(SancionLogicMock.class.getName());
 	
 	// listado de ciudades
     private static ArrayList<SancionDTO> sanciones;
