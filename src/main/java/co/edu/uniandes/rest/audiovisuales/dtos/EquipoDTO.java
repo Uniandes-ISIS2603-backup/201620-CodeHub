@@ -43,28 +43,28 @@ public class EquipoDTO {
      * Metodo para conocer el codigo del equipo
      * @return el codigo del equipo
      */
-    public int darCodigo(){
+    public int getCodigo(){
         return codigo;
     }
     /**
      * Metodo para modificar el codigo del equipo.
      * @param pCodigo el codigo nuevo del equipo. pCodigo !=null
      */
-    public void cambiarCodigo(int pCodigo){
+    public void setCodigo(int pCodigo){
         codigo= pCodigo;
     }
     /**
      * Metodo para conocer el estado del equipo.
      * @return el estado del equipo.
      */
-    public String darEstado(){
+    public String getEstado(){
         return estado;
     }
     /**
      * Metodo para modificar el estado del equipo.
      * @param pEstado el nuevo estado del equipo. pEstado !=null&& pEstado!=""
      */
-    public void cambiarEstado(String pEstado){
+    public void setEstado(String pEstado){
         estado = pEstado;
     }
     /**

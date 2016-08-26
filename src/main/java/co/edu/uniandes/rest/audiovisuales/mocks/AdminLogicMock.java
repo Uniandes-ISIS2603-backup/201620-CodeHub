@@ -84,7 +84,7 @@ public class AdminLogicMock
         return nuevo;
     }
     
-    public AdminDTO actualizarAdministrador(String nombre, String correo) throws AdminLogicException
+    /*public AdminDTO actualizarAdministrador(String nombre, String correo) throws AdminLogicException
     {
         if(administradores==null)
         {
@@ -114,7 +114,7 @@ public class AdminLogicMock
         {
            throw new AdminLogicException("No se encuentra el Administrador con ese nombre."); 
         }
-    }
+    }*/
     
     public AdminDTO eliminarAdministrador(String nombre) throws AdminLogicException
     {

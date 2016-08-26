@@ -77,11 +77,11 @@ public class EquipoLogicMock {
     	logger.info("recibiendo solicitud de agregar equipo " + nuevoEquipo);
     	
     	// el nuevo equipo tiene id ?
-    	if ( nuevoEquipo.darCodigo()!= 0 ) {
+    	if ( nuevoEquipo.getCodigo()!= 0 ) {
 	    	// busca el equipo con el id suministrado
 	        for (EquipoDTO equipo : equipos) {
 	        	// si existe una ciudad con ese id
-	            if (equipo.darCodigo()== nuevoEquipo.darCodigo()){
+	            if (equipo.getCodigo()== nuevoEquipo.getCodigo()){
 	            	logger.severe("Ya existe un equipo con ese id");
 	                throw new EquipoLogicException("Ya existe un equipo con ese id");
 	            }
@@ -94,11 +94,11 @@ public class EquipoLogicMock {
     		logger.info("Generando id para el nuevo Equipo");
     		int newId = 1;
 	        for (EquipoDTO equipo : equipos) {
-	            if (newId <= equipo.darCodigo()){
-	                newId =  equipo.darCodigo()+ 1;
+	            if (newId <= equipo.getCodigo()){
+	                newId =  equipo.getCodigo()+ 1;
 	            }
 	        }
-	        nuevoEquipo.cambiarCodigo(newId);
+	        nuevoEquipo.setCodigo(newId);
     	}
     	
         // agrega el equipo
@@ -108,12 +108,12 @@ public class EquipoLogicMock {
     }
     
     public EquipoDTO updateEquipo (EquipoDTO pEquipo, int pId) throws EquipoLogicException{
-       if(pEquipo.darCodigo()!=0){
+       if(pEquipo.getCodigo()!=0){
            for (int i=0; i<equipos.size(); i++) {
 	        	// si existe un equipo con ese id la actualiza
                         EquipoDTO Equipo= equipos.get(i);
-	            if (Equipo.darCodigo()== pId){
-                        Equipo.cambiarEstado(pEquipo.darEstado());
+	            if (Equipo.getCodigo()== pId){
+                        Equipo.setEstado(pEquipo.getEstado());
                         return Equipo;
                     }
 	        }
@@ -125,7 +125,7 @@ public class EquipoLogicMock {
    public void deleteEquipo(int pId) throws EquipoLogicException{
        logger.log(Level.INFO, "eliminando el equipo con id: {0} .", pId);
        for(EquipoDTO equipo : equipos){
-           if(pId ==equipo.darCodigo()){
+           if(pId ==equipo.getCodigo()){
                equipos.remove(equipo);//busca y elimina el equipo
                return;
            }

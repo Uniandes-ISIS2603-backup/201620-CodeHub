@@ -47,11 +47,11 @@ public class AdminResource
         return adminLogic.crearAdministrador(nuevo);
     }
 
-    @PUT
+    /*@PUT
     public AdminDTO actualizarAdministrador(String nombre, String correo) throws AdminLogicException
     {
         return adminLogic.actualizarAdministrador(nombre, correo);
-    }
+    }*/
 
     @DELETE
     @Path("{nombre: \\d+}")
