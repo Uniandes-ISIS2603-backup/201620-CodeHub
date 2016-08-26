@@ -4,5 +4,5 @@
  * and open the template in the editor.
  */
 
-var app = ng.module("mainApp", ["ui-router","usuariosModule","edificiosModule","equiposModule","sancionesModule","adminModule","reservasModule"]);
+var app = ng.module("mainApp", ["ui-router","usuariosModule","edificiosModule","equiposModule","sancionesModule","adminModule","reservasModule","ngMessages"]);
 
