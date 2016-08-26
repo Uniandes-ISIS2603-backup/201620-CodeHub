@@ -11,9 +11,9 @@ package co.edu.uniandes.rest.audiovisuales.dtos;
  */
 public class EquipoDTO {
     
-    /*--------------------
-          Atributos.
-    --------------------*/
+    /*-----------------------
+            Atributos.
+    -------------------------*/
     /**
      * Codigo de identificación
      */
@@ -27,9 +27,9 @@ public class EquipoDTO {
      */
     private String estado;
     
-    /*--------------------
-          Metodos.
-    --------------------*/
+    /*-------------------------
+            Constructores.
+    ---------------------------*/
     /**
      * Constructor para el DTO de equipo
      * @param pCodigo el codigo del equipo a crear. pCodigo !=null && pCodigo!=0.
@@ -39,11 +39,16 @@ public class EquipoDTO {
         codigo = pCodigo;
         estado = pEstado;        
     }
-    
-
+    /**
+     * Constructor vacio necesario porque aja(?)
+     */
     public EquipoDTO() 
     {
     }
+    
+    /*--------------------
+            Metodos.
+    --------------------*/    
     /**
      * Metodo para conocer el codigo del equipo
      * @return el codigo del equipo
