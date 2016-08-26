@@ -13,8 +13,7 @@ public class AdminDTO
 {
     private String nombre;
     private String correo;
-    private EdificioDTO edificio;
-
+  
     /**
      * Constructor por defecto
      */

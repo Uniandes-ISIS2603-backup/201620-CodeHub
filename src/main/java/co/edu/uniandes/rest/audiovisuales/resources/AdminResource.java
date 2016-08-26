@@ -6,7 +6,7 @@
 package co.edu.uniandes.rest.audiovisuales.resources;
 
 import co.edu.uniandes.rest.audiovisuales.dtos.AdminDTO;
-import co.edu.uniandes.rest.audiovisuales.dtos.EdificioDTO;
+
 import co.edu.uniandes.rest.audiovisuales.exceptions.AdminLogicException;
 import co.edu.uniandes.rest.audiovisuales.mocks.AdminLogicMock;
 import java.util.List;
