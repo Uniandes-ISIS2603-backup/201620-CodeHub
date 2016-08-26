@@ -5,9 +5,3 @@
  */
 
 var mod = ng.module("usuariosModule", ["ui-router"]);
-
-mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-$stateProvider
-                    .state('usuarios', { url: "/usuarios", templateUrl: basePath+"usuarios.html"})
-            
-}]);
