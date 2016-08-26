@@ -21,7 +21,7 @@ import javax.ws.rs.Produces;
  *
  * @author lj.pinzon12
  */
-@Path("sancion")
+@Path("sanciones")
 @Produces("application/json")
 public class SancionResource
 {

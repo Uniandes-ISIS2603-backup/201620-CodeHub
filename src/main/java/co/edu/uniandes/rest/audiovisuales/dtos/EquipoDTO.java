@@ -39,6 +39,11 @@ public class EquipoDTO {
         codigo = pCodigo;
         estado = pEstado;        
     }
+    
+
+    public EquipoDTO() 
+    {
+    }
     /**
      * Metodo para conocer el codigo del equipo
      * @return el codigo del equipo
