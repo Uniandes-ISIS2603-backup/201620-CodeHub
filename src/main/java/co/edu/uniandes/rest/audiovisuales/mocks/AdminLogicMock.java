@@ -84,7 +84,7 @@ public class AdminLogicMock
         return nuevo;
     }
     
-    public AdminDTO actualizarAdministrador(String nombre, String correo, EdificioDTO edificio) throws AdminLogicException
+    public AdminDTO actualizarAdministrador(String nombre, String correo) throws AdminLogicException
     {
         if(administradores==null)
         {

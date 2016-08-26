@@ -48,9 +48,9 @@ public class AdminResource
     }
 
     @PUT
-    public AdminDTO actualizarAdministrador(String nombre, String correo, EdificioDTO edificio) throws AdminLogicException
+    public AdminDTO actualizarAdministrador(String nombre, String correo) throws AdminLogicException
     {
-        return adminLogic.actualizarAdministrador(nombre, correo, edificio);
+        return adminLogic.actualizarAdministrador(nombre, correo);
     }
 
     @DELETE
