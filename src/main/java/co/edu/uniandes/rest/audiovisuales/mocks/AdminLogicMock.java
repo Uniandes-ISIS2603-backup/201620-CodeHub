@@ -29,8 +29,8 @@ public class AdminLogicMock
         if(administradores==null)
         {
             administradores = new ArrayList<>();
-            EdificioDTO pEdificio = null;
-            administradores.add(new AdminDTO("Admin1", "Admin1@uniandes.edu.co", pEdificio));
+
+            administradores.add(new AdminDTO("Admin1", "Admin1@uniandes.edu.co"));
             
         }
     }
@@ -107,8 +107,6 @@ public class AdminLogicMock
             buscado.setName(nombre);
          if(correo!=null)
             buscado.setEmail(correo);
-         if(edificio!=null)
-            buscado.setEdificio(edificio);
          return buscado;
   
         }

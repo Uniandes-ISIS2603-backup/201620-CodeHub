@@ -27,11 +27,10 @@ public class AdminDTO
      * @param id identificador del edificio
      * @param nombre nombre del edificio
      */
-    public AdminDTO(String nombre, String correo, EdificioDTO edificio) {
+    public AdminDTO(String nombre, String correo) {
 	super();
 	this.nombre = nombre;
         this.correo = correo;
-        this.edificio = edificio;
     }
 
     /**
@@ -62,22 +61,15 @@ public class AdminDTO
         this.correo = correo;
     }
     
-    public EdificioDTO getEdificio() 
-    {
-        return edificio;
-    }
         
-    public void setEdificio(EdificioDTO edificio) 
-    {
-        this.edificio = edificio;
-    }
+
     /**
      * Convierte el objeto a una cadena
      */
     @Override
     public String toString() 
     {
-    	return "{ nombre : " + getName() + ", correo : \"" + getEmail() + ", edificio : \"" + getEdificio().getBloque() + "\" }" ;  
+    	return "{ nombre : " + getName() + ", correo : \"" + getEmail() +  "\" }" ;  
     }
 
 
