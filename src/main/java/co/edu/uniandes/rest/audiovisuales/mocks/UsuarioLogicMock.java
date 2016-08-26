@@ -65,18 +65,22 @@ public class UsuarioLogicMock {
     	return usuarios;
     }
 
- public UsuarioDTO getCity(Long id2)throws UsuarioLogicException {
-        UsuarioDTO rta = null;
-        for(int i = 0; i<usuarios.size();i++){
-            UsuarioDTO hola = usuarios.get(i);
-            if(Objects.equals(hola.getId(), id2)){
-                rta = hola;
+    public UsuarioDTO getCity(Long id) throws UsuarioLogicException
+    {
+        if(usuarios==null)
+        {
+            throw new UsuarioLogicException("No se encuentra inicializada la lista de Usuarios.");
+        }
+        
+        for(UsuarioDTO usuario : usuarios)
+        {
+            if(usuario.getId().equals(id))
+            {
+                return usuario;
             }
         }
-        if(rta == null){
-            throw new UsuarioLogicException("Error interno: el usuario no existe.");
-        }
-        return rta;
+        
+        throw new UsuarioLogicException("No se encuentra el usuario con ese id.");
     }
 
     /**
@@ -119,5 +123,56 @@ public class UsuarioLogicMock {
         return newUser;
     }
 
+    public UsuarioDTO actualizarUsuario(Long id, UsuarioDTO usuario) throws UsuarioLogicException
+    {
+        if(usuarios==null)
+        {
+            throw new UsuarioLogicException("No se encuentra inicializada la lista de Edificios.");
+        }
+        
+        UsuarioDTO buscado = null;
+        
+        for(UsuarioDTO e : usuarios)
+        {
+            if(e.getId().equals(id))
+            {
+                buscado = e;
+            }
+        }
+        
+        if(buscado!=null)
+        {
+            if(usuario.getId()!=null)
+                buscado.setId(usuario.getId());
+            if(usuario.getName()!=null)
+                buscado.setName(usuario.getName());
+            if(usuario.getTieneSancion()!=null)
+                buscado.setTieneSancion(usuario.getTieneSancion());
+            return buscado;
+        }
+        else
+        {
+           throw new UsuarioLogicException("No se encuentra el edificio con ese id."); 
+        }
+    }
    
+    
+        public UsuarioDTO eliminarUsuario(Long id) throws UsuarioLogicException
+    {
+        if(usuarios==null)
+        {
+            throw new UsuarioLogicException("No se encuentra inicializada la lista de Usuarios.");
+        }
+        
+        for(UsuarioDTO usuario : usuarios)
+        {
+            if(usuario.getId().equals(id))
+            {
+                usuarios.remove(usuario);
+                return usuario;
+            }
+        }
+        
+        throw new UsuarioLogicException("No se encuentra el usuario con ese id.");
+    }
 }
