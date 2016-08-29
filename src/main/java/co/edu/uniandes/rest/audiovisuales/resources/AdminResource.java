@@ -35,10 +35,10 @@ public class AdminResource
     }
     
     @GET
-    @Path("{nombre: \\d+}")
-    public AdminDTO getAdmin(@PathParam("nombre") String nombre) throws AdminLogicException
+    @Path("{id:\\d+}")
+    public AdminDTO getAdmin(@PathParam("id") int id) throws AdminLogicException
     {
-        return adminLogic.getAdmin(nombre);
+        return adminLogic.getAdmin(id);
     }
     
     @POST
@@ -47,16 +47,17 @@ public class AdminResource
         return adminLogic.crearAdministrador(nuevo);
     }
 
-    /*@PUT
-    public AdminDTO actualizarAdministrador(String nombre, String correo) throws AdminLogicException
+    @PUT
+    @Path("{id:\\d+}")
+    public AdminDTO actualizarAdministrador(@PathParam("id") int id, AdminDTO admin) throws AdminLogicException
     {
-        return adminLogic.actualizarAdministrador(nombre, correo);
-    }*/
+        return adminLogic.actualizarAdministrador(admin, id);
+    }
 
     @DELETE
-    @Path("{nombre: \\d+}")
-    public AdminDTO eliminarAdministrador(@PathParam("nombre") String nombre) throws AdminLogicException
+    @Path("{id:\\d+}")
+    public void eliminarAdministrador(@PathParam("id") int id) throws AdminLogicException
     {
-        return adminLogic.eliminarAdministrador(nombre);
+        adminLogic.eliminarAdministrador(id);
     }   
 }
