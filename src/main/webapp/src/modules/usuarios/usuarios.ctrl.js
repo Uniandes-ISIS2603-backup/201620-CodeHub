@@ -41,7 +41,18 @@
                 $scope.alerts = [];
             }
 
-
+            $scope.deleteRecord = function(id){
+                currentRecord = $scope.currentRecord;
+                
+                return $http.delete(context + "/" + currentRecord.id, currentRecord)
+                        .then(function () {
+                            // $http.put es una promesa
+                            // cuando termine bien, cambie de estado
+                            $state.go('usuariosList');
+                        }, responseError);
+                
+            }
+            
             this.saveRecord = function (id) {
                 currentRecord = $scope.currentRecord;
                 
