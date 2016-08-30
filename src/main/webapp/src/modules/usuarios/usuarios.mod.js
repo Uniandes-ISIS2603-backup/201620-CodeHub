@@ -12,7 +12,7 @@
             $urlRouterProvider.otherwise("/usuariosList");
      
             $stateProvider.state('usuariosList', {
-                url: '/usuarioa',
+                url: '/usuarios',
                 views: {
                     'mainView': {
                         controller: 'usuariosCtrl',
