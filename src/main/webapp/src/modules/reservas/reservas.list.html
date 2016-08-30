@@ -4,31 +4,36 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
-    <div>
-         <table style="width:75%" align="center" class="table table-hover" >
+<div>
+         <table style="width:75%" align="center" class="table table-hover table-bordered" >
   <tr>
     <th>ID</th>
-    <th>Nombre Completo</th>
-    <th>Correo</th>
-    <th>Acciones</th>
+    <th>Nombre Edificio</th>
+    <th>Fecha</th>
+    <th>Calificacion</th>
+    <th>estado</th>
+    <th>Sancion</th>
+    <th></th>
   </tr>
   <tr>
     <td>1</td>
-    <td>Admin1</td>
-    <td>Admin@uniandes.edu.co</td>
-    <td><button class="btn btn-default" type="button" ui-sref='adminList'>Editar</button>
-        <button class="btn btn-default" type="button" ui-sref='adminList'>Eliminar</button>
+    <td>Mario Laserna</td>
+    <td>29/08/2016</td>
+    <td>4.0</td>
+    <td>Entregado</td>
+    <td>NO</td>
+    <td><button class="btn btn-default" type="button" ui-sref="reservaEdit({reservaId: record.id})">Editar</button>     
     </td>
   </tr>
   <tr>
     <td>2</td>
-    <td>Admin2</td>
-    <td>Admin2@uniandes.edu.co</td>
-    <td><button class="btn btn-default" type="button" ui-sref='adminList'>Editar</button>
-        <button class="btn btn-default" type="button" ui-sref='adminList'>Eliminar</button>
+    <td>Lleras</td>
+    <td>28/08/2016</td>
+    <td>3.0</td>
+    <td>Pendiente</td>
+    <td>SI</td>
+    <td><button class="btn btn-default" type="button" ui-sref='reservaList'>Editar</button>      
     </td>
   </tr>
 </table>
     </div>
-</html>

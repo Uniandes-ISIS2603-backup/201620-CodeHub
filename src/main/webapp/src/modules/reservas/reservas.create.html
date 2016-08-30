@@ -5,5 +5,29 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <div>
+   <form style="width:75%" novalidate name="form" id="city-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+        
+        <div ng-messages="form.$error">
+            <div ng-message="required">Crear Reserva</div>
+        </div>
    
+        <fieldset>
+            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="edificio" class="col-md-2 control-label">Edificio</label>
+                <div class="col-md-10">
+                    <input id="edificio" name="edificio" class="form-control" type="text" ng-model="currentRecord.name" ng-init="currentRecord.name" required />
+                </div>
+            </div>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="fecha" class="col-md-2 control-label">Fecha de Prestamo</label>
+                <div class="col-md-10">
+                    <input id="fecha" name="fecha" class="form-control" type="date" ng-model="currentRecord.name" ng-init="currentRecord.name" required />
+                </div>
+            </div>
+           
+            <button class="btn btn-default" type="button" ui-sref='reservasList'>Cancel</button>
+            <button class="btn btn-default" type="submit" >Save</button>    
+        </fieldset>
+    </form>
 </div>
