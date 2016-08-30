@@ -19,7 +19,7 @@
                         templateUrl: basePath + 'reservas.list.html'
                     }
                 }
-            }).state('reservaCreate', {
+            }).state('reservasCreate', {
                 url: '/reservas/create',
                 views: {
                     'mainView': {
