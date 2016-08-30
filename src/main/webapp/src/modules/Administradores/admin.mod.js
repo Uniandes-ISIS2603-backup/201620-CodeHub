@@ -12,7 +12,7 @@
             $urlRouterProvider.otherwise("/adminList");
      
             $stateProvider.state('adminList', {
-                url: '/cities',
+                url: '/admins',
                 views: {
                     'mainView': {
                         controller: 'adminCtrl',
