@@ -10,7 +10,7 @@ and open the template in the editor.
     <form novalidate name="form" id="usuario-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
         
         <div ng-messages="form.$error">
-            <div ng-message="required">Fill the required fields!</div>
+            <div ng-message="required">Añadir usuario</div>
         </div>
    
         <fieldset>
@@ -19,6 +19,10 @@ and open the template in the editor.
                 <label for="name" class="col-md-2 control-label">Name</label>
                 <div class="col-md-10">
                     <input id="name" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-init="currentRecord.name" required />
+                </div>
+                <label for="id" class="col-md-2 control-label">Id</label>
+                <div class="col-md-10">
+                    <input id="id" name="id" class="form-control" type="text" ng-model="currentRecord.id" ng-init="currentRecord.id" required />
                 </div>
             </div>
             <button type="button" ui-sref='usuariosList'>Cancel</button>
