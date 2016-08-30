@@ -17,11 +17,59 @@
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
         <script src="src/app.js" type="text/javascript"></script>  
-        <script src="src/modules/cities/usuarios.mod.js" type="text/javascript"></script>
-        <script src="src/modules/cities/usuarios.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/usuarios/usuarios.mod.js" type="text/javascript"></script>
+        <script src="src/modules/usuarios/usuarios.ctrl.js" type="text/javascript"></script>
 
     </head>
-    <body>
-        <h1>CodeHub Audiovisuales</h1>
+  <body style="padding-top: 20px;">
+        <div class="container-fluid" class="col-md-12">   
+            <h3>CodeHub Audiovisuales</h3>
+            <ul class="nav nav-tabs">            
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Usuarios
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">   
+                         <li><a ui-sref="usuariosList">List</a></li>       
+                    </ul>
+                </li>      
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Equipos
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">   
+                         <li><a ui-sref="equiposList">List</a></li>       
+                    </ul>
+                </li>   
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Administradores
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">   
+                         <li><a ui-sref="administradoresList">List</a></li>       
+                    </ul>
+                </li>  
+                                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Edificios
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">   
+                         <li><a ui-sref="edificiosList">List</a></li>       
+                    </ul>
+                </li>  
+                                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Reservas
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">   
+                         <li><a ui-sref="reservasList">List</a></li>       
+                    </ul>
+                </li>  
+                                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Sanciones
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">   
+                         <li><a ui-sref="sancionesList">List</a></li>       
+                    </ul>
+                </li>  
+            </ul>
+            <div ui-view="mainView">
+            </div>
+        </div>
     </body>
 </html>
