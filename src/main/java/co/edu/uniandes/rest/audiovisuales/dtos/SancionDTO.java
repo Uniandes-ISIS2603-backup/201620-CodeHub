@@ -31,6 +31,7 @@ public class SancionDTO
 		super();
 		this.id = id;
 		this.fecha = fecha;
+                this.estado = estado;
 	}
 
 	/**

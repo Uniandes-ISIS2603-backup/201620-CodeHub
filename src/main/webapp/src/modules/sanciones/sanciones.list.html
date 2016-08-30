@@ -10,13 +10,18 @@ and open the template in the editor.
     <table class="table table-striped" >
         <thead>
             <tr>
-                <th>Name</th>        
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Estado</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="record in records">
-                <td id="{{$index}}-name">{{record.name}}</td>
+                <td id="{{$index}}-id">{{record.id}}</td>
+                <td id="{{$index}}-fecha">{{record.fecha}}</td>
+                <td id="{{$index}}-estado">{{record.estado}}</td>
+                
 
                 <td>
 
