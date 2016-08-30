@@ -26,12 +26,12 @@
                     'mainView': {
                         controller: 'adminCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'cADMIN.create.html'
+                        templateUrl: basePath + 'admin.create.html'
                     }
                 }
 
             }).state('adminEdit', {
-                url: '/admin/:adminId',
+                url: '/admins/:adminId',
                 param: {
                     cityId: null
                 },
