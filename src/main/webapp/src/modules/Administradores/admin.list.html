@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="admin.ctrl.js"></script>
+    
+</head>
+<body>
+<hr/>
+<h2>Lista de Administradores CodeHub AudioVisuales</h2>
+<hr/>
+<table class = "table table-hover" >
+  <tr>
+    <th>ID</th>
+    <th>Nombre Completo</th>
+    <th>Correo</th>
+    <th>Acciones</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Admin1</td>
+    <td>Admin1@uniandes.edu.co</td>
+    <td><button class="btn btn-default" type="button" ui-sref='adminList'>Editar</button>
+        <button class="btn btn-default" type="button" ui-sref='adminList'>Eliminar</button>
+    </td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Admin2</td>
+    <td>Admin2@uniandes.edu.co</td>
+    <td><button class="btn btn-default" type="button" ui-sref='adminList'>Editar</button>
+        <button class="btn btn-default" type="button" ui-sref='adminList'>Eliminar</button>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
