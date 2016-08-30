@@ -5,9 +5,9 @@
  */
 
 (function (ng) {
-    var mod = ng.module("usuariosModule");
+    var mod = ng.module("sancionesModule");
 
-    mod.controller("usuariosCtrl", ['$scope', '$state', '$stateParams', '$http', 'usuariosContext', function ($scope, $state, $stateParams, $http, context) {
+    mod.controller("sancionesCtrl", ['$scope', '$state', '$stateParams', '$http', 'sancionesContext', function ($scope, $state, $stateParams, $http, context) {
 
             // inicialmente el listado de ciudades está vacio
             $scope.records = {};
@@ -18,10 +18,10 @@
 
             // el controlador recibió un cityId ??
             // revisa los parámetros (ver el :cityId en la definición de la ruta)
-            if ($stateParams.usuarioId !== null && $stateParams.usuarioId !== undefined) {
+            if ($stateParams.sancionId !== null && $stateParams.sancionId !== undefined) {
                 
                 // toma el id del parámetro
-                id = $stateParams.usuarioId;
+                id = $stateParams.sancionId;
                 // obtiene el dato del recurso REST
                 $http.get(context + "/" + id)
                     .then(function (response) {
@@ -65,7 +65,7 @@
                         .then(function () {
                             // $http.put es una promesa
                             // cuando termine bien, cambie de estado
-                            $state.go('usuariosList');
+                            $state.go('sancionesList');
                         }, responseError);
                 };
             };

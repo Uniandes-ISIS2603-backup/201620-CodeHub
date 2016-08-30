@@ -6,41 +6,41 @@
 
 (function (ng) {
 
-    var mod = ng.module("usuariosModule", ["ngMessages"]);
-    mod.constant("usuariosContext", "api/usuarios");
+    var mod = ng.module("sancionesModule", ["ngMessages"]);
+    mod.constant("sancionesContext", "api/sanciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/usuarios/';
-            $urlRouterProvider.otherwise("/usuariosList");
+            var basePath = 'src/modules/sanciones/';
+            $urlRouterProvider.otherwise("/sancionesList");
      
-            $stateProvider.state('usuariosList', {
-                url: '/usuarioa',
+            $stateProvider.state('sancionesList', {
+                url: '/sanciona',
                 views: {
                     'mainView': {
-                        controller: 'usuariosCtrl',
+                        controller: 'sancionesCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'usuarios.list.html'
+                        templateUrl: basePath + 'sanciones.list.html'
                     }
                 }
-            }).state('usuarioCreate', {
-                url: '/usuarios/create',
+            }).state('sancionCreate', {
+                url: '/sanciones/create',
                 views: {
                     'mainView': {
-                        controller: 'usuariosCtrl',
+                        controller: 'sancionesCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'usuarios.create.html'
+                        templateUrl: basePath + 'sanciones.create.html'
                     }
                 }
 
-            }).state('usuarioEdit', {
-                url: '/usuarios/:usuarioId',
+            }).state('sancionEdit', {
+                url: '/sanciones/:usancionId',
                 param: {
                     cityId: null
                 },
                 views: {
                     'mainView': {
-                        controller: 'usuariosCtrl',
+                        controller: 'sancionesCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'usuarios.create.html'
+                        templateUrl: basePath + 'sanciones.create.html'
                     }
                 }
             });
