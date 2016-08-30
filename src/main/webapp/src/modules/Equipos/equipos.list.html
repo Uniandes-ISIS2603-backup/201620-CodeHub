@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+html que se inyecta magicamente con el poder de angular al index para poder visualizar los equipos.
 -->
-<html>
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-        <script src="equipos.ctrl.js"></script>
-        <script src="eqiopos.mod.js"></script>
-    </head>
-    <body>
-        <div class="container-fluid">
-  <table class="table table-striped" class="col-md-4">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="record in records">
-        <td id="{{$index}}-name">{{record.estado}}</td>
-        <td>
-          <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="equipoEdit({equipoId: record.id})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
-          <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
-
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div>
+         <table style="width:75%" align="center" class="table table-hover table-bordered" >
+  <tr>
+    <th>Codigo</th>
+    <th>Estado</th>
+  </tr>
+  <tr>
+    <td align="center">1</td>
+    <td align="center">Reservado</td>
+    <td align="center"><button class="btn btn-default" type="button" ui-sref='equiposList'>Editar</button>
+    <button class="btn btn-default" type="button" ui-sref='equiposList'>Eliminar</button>      
+    </td>
+  </tr>
+  <tr>
+    <td align="center">2</td>
+    <td align="center">Dañado</td>
+    <td align="center"><button class="btn btn-default" type="button" ui-sref='equiposList'>Editar</button>
+    <button class="btn btn-default" type="button" ui-sref='equiposList'>Eliminar</button>       
+    </td>
+  </tr>
+  <tr>
+    <td align="center">3</td>
+    <td align="center">Disponible</td>
+    <td align="center"><button class="btn btn-default" type="button" ui-sref='equiposList'>Editar</button>
+    <button class="btn btn-default" type="button" ui-sref='equiposList'>Eliminar</button> 
+    </td>
+  </tr>
+  <tr>
+    <td align="center">4</td>
+    <td align="center">Disponible</td>
+    <td align="center"><button class="btn btn-default" type="button" ui-sref='equiposList'>Editar</button>
+    <button class="btn btn-default" type="button" ui-sref='equiposList'>Eliminar</button>       
+    </td>
+  </tr>
+</table>
 </div>
-    </body>
-</html>
