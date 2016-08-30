@@ -33,7 +33,7 @@
             }).state('usuarioEdit', {
                 url: '/usuarios/:usuarioId',
                 param: {
-                    cityId: null
+                    usuarioId: null
                 },
                 views: {
                     'mainView': {
