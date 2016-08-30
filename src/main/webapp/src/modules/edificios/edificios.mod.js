@@ -19,7 +19,7 @@
                         templateUrl: basePath + 'edificios.list.html'
                     }
                 }
-            }).state('edificioCreate', {
+            }).state('edificiosCreate', {
                 url: '/edificios/create',
                 views: {
                     'mainView': {
