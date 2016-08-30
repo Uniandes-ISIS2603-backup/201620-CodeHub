@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<div class="container-fluid" >
+   
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th>Name</th>        
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in records">
+                <td id="{{$index}}-name">{{record.name}}</td>
+
+                <td>
+
+                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</html>
+
