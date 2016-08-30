@@ -6,7 +6,7 @@
 
 (function (ng) {
 
-    var mod = ng.module("sancionesModule", ["ngMessages"]);
+    var mod = ng.module("sancionesModule", ["ngMessages","ui.router"]);
     mod.constant("sancionesContext", "api/sanciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/sanciones/';
