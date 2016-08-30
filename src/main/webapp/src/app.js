@@ -16,4 +16,24 @@ var mod = ng.module("mainApp", ["ui.router","usuariosModule","edificiosModule",
             $urlRouterProvider.otherwise('/usuariosList');
         }]);
     
+    mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
+            $urlRouterProvider.otherwise('/equiposList');
+        }]);
+    
+    mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
+            $urlRouterProvider.otherwise('/adminList');
+        }]);
+    
+    mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
+            $urlRouterProvider.otherwise('/edificiosList');
+        }]);
+    
+    mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
+            $urlRouterProvider.otherwise('/reservasList');
+        }]);
+    
+    mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
+            $urlRouterProvider.otherwise('/sancionesList');
+        }]);
+    
     })(window.angular);
