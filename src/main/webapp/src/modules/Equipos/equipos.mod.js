@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 (function (ng) {
-    var mod = ng.module("equiposModule", ["ui-router"]);
+    var mod = ng.module("equiposModule", ["ui.router"]);
     mod.constant("equiposContext", "api/equipos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/equipos/';
