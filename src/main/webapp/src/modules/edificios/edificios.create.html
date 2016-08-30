@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-  <div>
-   <hr/>
-    <h1>Agrega un nuevo Edificio</h1>
-    <hr/>
-    <form>
-        <div class="form-group">
-            <label>Bloque:</label>
-            <input type="text" class="form-control" id="bloque">
+<div class="col-md-6 well">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+    <form novalidate name="form" id="usuario-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+        
+        <div ng-messages="form.$error">
+            <div ng-message="required">Añadir usuario</div>
         </div>
-  
-        <div class="form-group">
-            <label>Nombre:</label>
-            <input type="text" class="form-control" id="nombre">
-         </div>
-
-        <button type="submit" class="btn btn-default">Agregar</button>
+   
+        <fieldset>
+            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="bloque" class="col-md-2 control-label">Bloque</label>
+                <div class="col-md-10">
+                    <input id="bloque" name="bloque" class="form-control" type="text" ng-model="currentRecord.bloque" ng-init="currentRecord.bloque" required />
+                </div>
+                <label for="nombre" class="col-md-2 control-label">Nombre</label>
+                <div class="col-md-10">
+                   <input id="nombre" name="nombre" class="form-control" type="text" ng-model="currentRecord.nombre" ng-init="currentRecord.nombre" required />
+            </div>
+            <button type="submit" >Guardar</button>    
+        </fieldset>
     </form>
-  </div>
-    
+</div>
+
