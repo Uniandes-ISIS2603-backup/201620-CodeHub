@@ -5,7 +5,11 @@
  */
 
 (function (ng) {
+<<<<<<< HEAD:src/main/webapp/src/modules/Administradores/admin.mod.js
     var mod = ng.module("adminModule", ["ngMessages", "ui.router"]);
+=======
+    var mod = ng.module("adminModule", ["ngMessages","ui.router"]);
+>>>>>>> temporal:src/main/webapp/src/modules/administradores/admin.mod.js
     mod.constant("adminContext", "api/admin");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/admin/';
