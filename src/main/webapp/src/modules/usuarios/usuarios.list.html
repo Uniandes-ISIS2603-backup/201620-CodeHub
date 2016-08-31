@@ -21,7 +21,7 @@ and open the template in the editor.
 
                 <td>
                     <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="usuarioEdit({usuarioId: record.id})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
-                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="deleteRecord({usuarioId: record.id})"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record.id)"><span class="glyphicon glyphicon-minus"></span> Eliminar</button>
 
                 </td>
             </tr>
