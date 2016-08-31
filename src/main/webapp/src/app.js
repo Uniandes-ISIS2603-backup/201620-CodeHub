@@ -13,7 +13,7 @@ var mod = ng.module("mainApp", ["ui.router","usuariosModule","edificiosModule",
         }]);
 
     mod.config(['$urlRouterProvider', function ($urlRouterProvider) {
-            $urlRouterProvider.otherwise('/usuariosList');
+            $urlRouterProvider.otherwise('/');
         }]);
     
     

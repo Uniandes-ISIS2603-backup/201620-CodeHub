@@ -6,21 +6,24 @@ and open the template in the editor.
 -->
 <div class="container-fluid" >
    
+<hr/>
+<h4>Lista de Usuarios</h4>
+<hr/>
     <table class="table table-striped" class="col-md-4">
         <thead>
             <tr>
-                <th>Name</th>  
                 <th>Id</th>
-                <th>Actions</th>
+                <th>Nombre</th>    
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="record in records">
-                <td id="{{$index}}-name">{{record.name}}</td>
                 <td id="{{$index}}-id">{{record.id}}</td>
+                <td id="{{$index}}-name">{{record.name}}</td>
 
                 <td>
-                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="usuarioEdit({usuarioId: record.id})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="usuarioEdit({usuarioId: record.id})"><span class="glyphicon glyphicon-edit"></span>Modificar</button>
                     <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record.id)"><span class="glyphicon glyphicon-minus"></span> Eliminar</button>
 
                 </td>
