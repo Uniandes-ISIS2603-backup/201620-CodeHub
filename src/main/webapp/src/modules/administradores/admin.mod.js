@@ -33,7 +33,7 @@
             }).state('adminEdit', {
                 url: '/admins/:adminId',
                 param: {
-                    cityId: null
+                    adminId: null
                 },
                 views: {
                     'mainView': {

@@ -116,8 +116,8 @@ public class AdminLogicMock
         
         logger.severe("No existe un administrador con ese id");
         throw new AdminLogicException("No se encuentra el Administrador con ese nombre."); 
-        
     }
+    
     
     public void eliminarAdministrador(int pId) throws AdminLogicException
     {
