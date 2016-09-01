@@ -35,6 +35,7 @@
                 $scope.currentRecord = {
                     id: undefined ,
                     name: '' ,
+                    email: ''
                 };
               
                 $scope.alerts = [];
