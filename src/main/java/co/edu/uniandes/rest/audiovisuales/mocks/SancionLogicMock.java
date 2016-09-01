@@ -128,9 +128,11 @@ public class SancionLogicMock
                 buscado = e;
             }
         }
+        logger.info("llego aqui");
         
         if(buscado!=null)
         {
+             logger.info("entro if");
             if(newSancion.getId()!=null)
                 buscado.setId(newSancion.getId());
             if(newSancion.getFecha()!=null)
