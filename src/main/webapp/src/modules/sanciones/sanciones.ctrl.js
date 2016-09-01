@@ -80,7 +80,7 @@
                             $http.get(context).then(function(response){
                                 $scope.records = response.data;    
                             }, responseError);
-                            $state.go('usuariosList');
+                            $state.go('sancionesList');
                         }, responseError); 
                 }
                 };

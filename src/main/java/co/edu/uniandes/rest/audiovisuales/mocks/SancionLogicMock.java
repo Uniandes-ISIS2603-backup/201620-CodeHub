@@ -113,22 +113,25 @@ public class SancionLogicMock
    }
    
   public SancionDTO putSancion(SancionDTO newSancion, Long id) throws SancionLogicException {
- 
+        logger.log(Level.INFO, "la sanci\u00f3n que llega es: {0} {1}", new Object[]{newSancion.getEstado(), newSancion.getFecha()});
         if(sanciones==null)
         {
             throw new SancionLogicException("No se encuentra inicializada la lista de sanciones.");
         }
         
         SancionDTO buscado = null;
-        
+        //logger.info("Id ingresado "+id);
         for(SancionDTO e : sanciones)
         {
-            if(e.getId().equals(id))
+             //logger.info("Id ingresado "+id+" otro "+e.getId());
+            if(e.getId().equals(id)||e.getId()==(id))
             {
                 buscado = e;
+                break;
             }
         }
-        logger.info("llego aqui");
+        
+        logger.info("llego aqui1");
         
         if(buscado!=null)
         {
@@ -137,8 +140,12 @@ public class SancionLogicMock
                 buscado.setId(newSancion.getId());
             if(newSancion.getFecha()!=null)
                 buscado.setFecha(newSancion.getFecha());
+            logger.info(newSancion.getEstado());
             if(newSancion.getEstado()!=null)
-                newSancion.setEstado(newSancion.getEstado());
+                buscado.setEstado(newSancion.getEstado());
+            
+            logger.info("id "+buscado.getId()+" fecha "+buscado.getFecha() +" estado "+buscado.getEstado()+" ");
+            
             return buscado;
         }
         else
@@ -149,7 +156,7 @@ public class SancionLogicMock
    public void deleteSancion(Long id) throws SancionLogicException {
        logger.info("Eliminando la sancion con id "+id);
        for (SancionDTO sancion : sanciones) {
-	            if (id == sancion.getId()){
+	            if (sancion.getId().equals(id)){
                         sanciones.remove(sancion);
                         return;
 	            }

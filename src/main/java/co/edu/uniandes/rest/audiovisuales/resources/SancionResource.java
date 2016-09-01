@@ -42,10 +42,11 @@ public class SancionResource
      public SancionDTO getSancion(@PathParam("id")Long id) throws SancionLogicException{
      return sancionLogic.getSancion(id);
      }
+     
       @PUT
-     @Path("{long:  \\d+}")
-      
+     @Path("{id:  \\d+}")
      public SancionDTO putSancion(@PathParam("id")long id, SancionDTO sancion ) throws SancionLogicException{
+          System.out.println("esto: "+sancion.getEstado()+" esto bien:"+sancion.getFecha());
      return sancionLogic.putSancion(sancion, id);
      }
      

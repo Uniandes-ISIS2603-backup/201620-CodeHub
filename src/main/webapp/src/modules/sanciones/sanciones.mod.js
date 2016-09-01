@@ -13,7 +13,7 @@
             $urlRouterProvider.otherwise("/sancionesList");
      
             $stateProvider.state('sancionesList', {
-                url: '/sanciona',
+                url: '/sanciones',
                 views: {
                     'mainView': {
                         controller: 'sancionesCtrl',
@@ -32,9 +32,9 @@
                 }
 
             }).state('sancionEdit', {
-                url: '/sanciones/:usancionId',
+                url: '/sanciones/:sancionId',
                 param: {
-                    cityId: null
+                    sancionId: null
                 },
                 views: {
                     'mainView': {
