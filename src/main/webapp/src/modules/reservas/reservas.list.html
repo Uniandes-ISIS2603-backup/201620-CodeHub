@@ -5,35 +5,34 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <div>
-         <table style="width:75%" align="center" class="table table-hover table-bordered" >
-  <tr>
-    <th>ID</th>
-    <th>Nombre Edificio</th>
-    <th>Fecha</th>
-    <th>Calificacion</th>
-    <th>estado</th>
-    <th>Sancion</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Mario Laserna</td>
-    <td>29/08/2016</td>
-    <td>4.0</td>
-    <td>Entregado</td>
-    <td>NO</td>
-    <td><button class="btn btn-default" type="button" ui-sref="reservaEdit({reservaId: record.id})">Editar</button>     
-    </td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Lleras</td>
-    <td>28/08/2016</td>
-    <td>3.0</td>
-    <td>Pendiente</td>
-    <td>SI</td>
-    <td><button class="btn btn-default" type="button" ui-sref='reservaList'>Editar</button>      
-    </td>
-  </tr>
-</table>
-    </div>
+    <table style="width:75%" align="center" class="table table-hover table-bordered" >
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Edificio</th>
+                <th>Fecha</th>
+                <th>Calificacion</th>
+                <th>estado</th>
+                <th>Sancion</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in records">
+                <td id="{{$index}}-id">{{record.id}}</td>
+                <td id="{{$index}}-edificio">{{record.edificio}}</td>
+                <td id="{{$index}}-fecha">{{record.nombre}}</td>
+                <td id="{{$index}}-calificacion">{{record.calificacion}}</td>
+                <td id="{{$index}}-estado">{{record.estado}}</td>
+                <td id="{{$index}}-sancion">{{record.sancion}}</td>
+
+                <td>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="reservaEdit({reservaID record.id})"><span class="glyphicon glyphicon-edit"></span> Editar</button>
+                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record.id)"><span class="glyphicon glyphicon-minus"></span> Eliminar</button>
+
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
