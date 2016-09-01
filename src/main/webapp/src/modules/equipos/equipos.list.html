@@ -18,7 +18,7 @@ html que se inyecta magicamente con el poder de angular al index para poder visu
                 <td id="{{$index}}-name">{{record.estado}}</td>
                 <td>
                     <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="equipoEdit({equipoCodigo: record.codigo})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
-                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteEquipo(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
 
                 </td>
             </tr>
