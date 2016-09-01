@@ -63,8 +63,29 @@
                         }, responseError);
                 };
             };
-
-
+            
+            /**
+             * borra el equipo con el código que llega por parámetro del recurso REST.
+             * @param {type} codigo
+             * @returns {undefined}
+             */
+            this.deleteRecord= function(codigo){
+                correntRecord = $scope.currentRecord;
+                showMessage("tratando :T", "info");
+                
+                if(codigo!=null){
+                    //trata de ejecutar el DELETE en el recurso REST
+                    return $http.delete(context+"/"+currentRecord.codigo)
+                            .then(function (){
+                                //$http.delete puede que funcione ...... creo
+                                //la cosa es que si no da error va a cambiar de estado regresando a 'equiposList'
+                                $state.go('equiposList');
+                            }, responseError);
+                } else {
+                    //si no había codigo entonces mandamos un error.
+                    showerror("mira el código que mandaste es \""+codigo+"\" y con nulos no puedo :T");
+                };
+            };
 
             // -----------------------------------------------------------------
             // Funciones para manejra los mensajes en la aplicación
