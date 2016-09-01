@@ -4,30 +4,31 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-
-
- 
-    
-  <div>
-   <hr/>
-    <h1>Agrega un nuevo Administrador a la base de datos</h1>
-    <hr/>
+<div class="col-md-6 well">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+    <form novalidate name="form" id="admin-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+        
+        <div ng-messages="form.$error">
+            <div ng-message="required">Añadir Administrador a la base de Datos</div>
+        </div>
    
-    
-  <form style="width:75%" >
-  <div class="form-group">
-  <label for="email">Nombre Completo:</label>
-  <input type="email" class="form-control" id="nombre">
-  </div>
-  
-  <div class="form-group">
-    <label for="pwd">Correo Electronico</label>
-    <input type="text" class="form-control" id="correo">
-  </div>
-
-  <button type="submit" class="btn btn-default">Crear Administrador</button>
-  </form>
-  </div>
-    
+        <fieldset>
+            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                
+                <label for="name" class="col-md-2 control-label">Nombre</label>
+                <div class="col-md-10">
+                   <input id="nombre" name="name" class="form-control" type="text" ng-model="currentRecord.name" ng-init="currentRecord.name" required />
+                </div>
+                <label for="email" class="col-md-2 control-label">Correo Electronico</label>
+                <div class="col-md-10">
+                    <input id="email" name="email" class="form-control" type="email" ng-model="currentRecord.email" ng-init="currentRecord.email" required />
+                </div>
+             
+            <button type="submit" >Guardar</button> 
+            <button type="button" ui-sref='adminList'>Cancelar</button>
+        </fieldset>
+    </form>
+</div>
 
 
