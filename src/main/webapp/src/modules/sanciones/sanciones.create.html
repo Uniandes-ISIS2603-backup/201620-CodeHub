@@ -4,30 +4,36 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<div>
-   <form style="width:75%" novalidate name="form" id="city-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+
+<div class="col-md-6 well">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+    <form novalidate name="form" id="usuario-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)" style="background-color:#ebccd1 ;">
         
         <div ng-messages="form.$error">
-            <div ng-message="required">Crear Sancion lala4</div>
+            <div ng-message="required">Añadir usuario</div>
         </div>
    
         <fieldset>
             <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
-            <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
-                <label for="estado" class="col-md-2 control-label">Estado</label>
-                <div class="col-md-10">
-                    <input id="id" name="id" class="form-control" type="text" ng-model="currentRecord.estado" ng-init="currentRecord.estado" required />
-                </div>
-            </div>
+            
             <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
                 <label for="fecha" class="col-md-2 control-label">Fecha</label>
                 <div class="col-md-10">
-                    <input id="fecha" name="fecha" class="form-control" type="date" ng-model="currentRecord.fecha" ng-init="currentRecord.fecha" required />
+                    <input id="fecha" name="fecha" class="form-control" type="text" ng-model="currentRecord.fecha" ng-init="currentRecord.fecha" required />
                 </div>
             </div>
-           
-            <button class="btn btn-default" type="button" ui-sref='sancionesList'>Cancel</button>
-            <button class="btn btn-default" type="submit" >Save</button>    
+                        
+                
+             <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="estado" class="col-md-2 control-label">Estado</label>
+                <div class="col-md-10">
+                    <input id="estado" name="estado" class="form-control" type="text" ng-model="currentRecord.estado" ng-init="currentRecord.estado" required />
+                </div>  
+                
+            </div>  
+            <button type="submit" style="background-color:crimson;">Guardar</button>  
+            <button type="button" ui-sref='usuariosList'style="background-color:crimson;">Cancelar</button>
+              
         </fieldset>
     </form>
 </div>

@@ -69,7 +69,21 @@
                         }, responseError);
                 };
             };
-
+                this.deleteRecord = function (id) {
+                currentRecord = $scope.currentRecord;
+                if(id!=null)
+                {            
+                    // ejecuta delete en el recurso REST
+                    return $http.delete(context + "/" + id,currentRecord)
+                        .then(function () {
+                            $scope.records = {};
+                            $http.get(context).then(function(response){
+                                $scope.records = response.data;    
+                            }, responseError);
+                            $state.go('usuariosList');
+                        }, responseError); 
+                }
+                };
 
 
             // -----------------------------------------------------------------
