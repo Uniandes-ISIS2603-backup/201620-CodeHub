@@ -72,7 +72,7 @@ public class SancionDTO
      * @param estado the estado to set
      */
     public void setEstado(String estado) {
-        this.fecha = estado;
+        this.estado = estado;
     }
     /**
      * Convierte el objeto a una cadena
