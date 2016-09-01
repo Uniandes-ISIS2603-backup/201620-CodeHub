@@ -59,11 +59,11 @@ public class EquipoLogicMock {
 	 */  
     public List<EquipoDTO> darEquipos() throws EquipoLogicException{
         if (equipos == null) {
-    		logger.severe("Error interno: lista de ciudades no existe.");
-    		throw new EquipoLogicException("Error interno: lista de ciudades no existe.");    		
+    		logger.severe("Error interno: lista de equipos no existe.");
+    		throw new EquipoLogicException("Error interno: lista de equipos no existe.");    		
     	}
     	
-    	logger.info("retornando todas las ciudades");
+    	logger.info("retornando todas los equipos");
     	return equipos;
     }
     
@@ -118,8 +118,8 @@ public class EquipoLogicMock {
                     }
 	        }
        }//si no encuentra un equipo enotnces envia un error.
-       logger.severe("No existe una ciudad con ese id");
-       throw new EquipoLogicException("No existe una ciudad con ese id");
+       logger.severe("No existe un equipo con ese id");
+       throw new EquipoLogicException("No existe un equipo con ese id");
    }
    
    public void deleteEquipo(int pId) throws EquipoLogicException{
