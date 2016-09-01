@@ -94,9 +94,10 @@ public class EquipoLogicMock {
     		logger.info("Generando id para el nuevo Equipo");
     		int newId = 1;
 	        for (EquipoDTO equipo : equipos) {
-	            if (newId <= equipo.getCodigo()){
-	                newId =  equipo.getCodigo()+ 1;
+	            if (newId < equipo.getCodigo()){
+	                break;  
 	            }
+                    newId =  equipo.getCodigo()+ 1;
 	        }
 	        nuevoEquipo.setCodigo(newId);
     	}
