@@ -12,19 +12,15 @@ and open the template in the editor.
                 <th>Nombre Edificio</th>
                 <th>Fecha</th>
                 <th>Calificacion</th>
-                <th>estado</th>
-                <th>Sancion</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="record in records">
                 <td id="{{$index}}-id">{{record.id}}</td>
-                <td id="{{$index}}-edificio">{{record.edificio}}</td>
-                <td id="{{$index}}-fecha">{{record.nombre}}</td>
+                <td id="{{$index}}-nombre">{{record.name}}</td>
+                <td id="{{$index}}-fecha">{{record.fecha}}</td>
                 <td id="{{$index}}-calificacion">{{record.calificacion}}</td>
-                <td id="{{$index}}-estado">{{record.estado}}</td>
-                <td id="{{$index}}-sancion">{{record.sancion}}</td>
 
                 <td>
                     <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="reservaEdit({reservaID record.id})"><span class="glyphicon glyphicon-edit"></span> Editar</button>
