@@ -112,23 +112,38 @@ public class SancionLogicMock
 	  throw new SancionLogicException("No se encontro la sancion solicitada");
    }
    
-   public SancionDTO putSancion(SancionDTO newSancion, Long id) throws SancionLogicException {
-       logger.severe("Actualizando la sancion con id "+id);
-                 for (SancionDTO sancion : sanciones)
-                 {
-	            if (newSancion.getId() == sancion.getId())
-                    {
-	            sancion.setEstado(newSancion.getEstado());
-                    return newSancion;
-                        //sancion.setName(newNameCity); 
-	            }
-	        }
-                 
-          logger.severe("No se encontro la sancion solicitada");
-	  throw new SancionLogicException("No se encontro la sancion solicitada");
-                 
-                 
-   }
+  public SancionDTO putSancion(SancionDTO newSancion, Long id) throws SancionLogicException {
+ 
+        if(sanciones==null)
+        {
+            throw new SancionLogicException("No se encuentra inicializada la lista de sanciones.");
+        }
+        
+        SancionDTO buscado = null;
+        
+        for(SancionDTO e : sanciones)
+        {
+            if(e.getId().equals(id))
+            {
+                buscado = e;
+            }
+        }
+        
+        if(buscado!=null)
+        {
+            if(newSancion.getId()!=null)
+                buscado.setId(newSancion.getId());
+            if(newSancion.getFecha()!=null)
+                buscado.setFecha(newSancion.getFecha());
+            if(newSancion.getEstado()!=null)
+                newSancion.setEstado(newSancion.getEstado());
+            return buscado;
+        }
+        else
+        {
+           throw new SancionLogicException("No se encuentra el estado con ese id."); 
+        }
+    }
    public void deleteSancion(Long id) throws SancionLogicException {
        logger.info("Eliminando la sancion con id "+id);
        for (SancionDTO sancion : sanciones) {
