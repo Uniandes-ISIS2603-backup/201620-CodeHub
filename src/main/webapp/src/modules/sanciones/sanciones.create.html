@@ -13,17 +13,16 @@ and open the template in the editor.
         </div>
    
         <fieldset>
-            <input id="codigo" class="form-control" type="hidden" ng-model="currentRecord.id"/>
-            
+            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
             <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
                 <label for="estado" class="col-md-2 control-label">Estado</label>
                 <div class="col-md-10">
                     <input id="estado" name="estado" class="form-control" type="text" ng-model="currentRecord.estado" ng-init="currentRecord.estado" required />
-                </div>        
+                </div>
                 <label for="fecha" class="col-md-2 control-label">Fecha</label>
                 <div class="col-md-10">
-                    <input id="fecha" name="fecha" class="form-control" type="text" ng-model="currentRecord.fecha" ng-init="currentRecord.fecha" required />
-                </div>   
+                   <input id="fecha" name="fecha" class="form-control" type="text" ng-model="currentRecord.fecha" ng-init="currentRecord.fecha" required />
+                </div>               
             <button type="submit" style="background-color:crimson;">Guardar</button>  
             <button type="button" ui-sref='usuariosList'style="background-color:crimson;">Cancelar</button>
             </div>
