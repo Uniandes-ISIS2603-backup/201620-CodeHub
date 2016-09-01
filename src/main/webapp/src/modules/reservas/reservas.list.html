@@ -23,7 +23,7 @@ and open the template in the editor.
                 <td id="{{$index}}-calificacion">{{record.calificacion}}</td>
 
                 <td>
-                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="reservaEdit({reservaID record.id})"><span class="glyphicon glyphicon-edit"></span> Editar</button>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="reservaEdit({reservaID: record.id})"><span class="glyphicon glyphicon-edit"></span> Editar</button>
                     <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record.id)"><span class="glyphicon glyphicon-minus"></span> Eliminar</button>
 
                 </td>
