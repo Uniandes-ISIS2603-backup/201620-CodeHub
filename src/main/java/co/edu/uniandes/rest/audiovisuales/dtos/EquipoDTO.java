@@ -43,7 +43,7 @@ public class EquipoDTO {
      * Constructor vacio necesario porque aja(?)
      */
     public EquipoDTO() 
-    {
+    {//because of reasons.
     }
     
     /*--------------------
