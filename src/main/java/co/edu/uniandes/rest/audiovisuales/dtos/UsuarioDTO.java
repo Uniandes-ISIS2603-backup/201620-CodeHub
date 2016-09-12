@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Objeto de transferencia de datos de Usuarios.
  * @author Asistente
@@ -14,6 +17,8 @@ public class UsuarioDTO {
     private String name;
     private Boolean tieneSancion;
     
+    private List<SancionDTO> sanciones;
+    private List<ReservaDTO> reservas;
 
     /**
      * Constructor por defecto
@@ -31,6 +36,8 @@ public class UsuarioDTO {
 		this.id = id;
 		this.name = name;
                 this.tieneSancion = false;
+                this.sanciones = new ArrayList<>();
+                this.reservas = new ArrayList<>();
 	}
 
 	/**
@@ -67,6 +74,26 @@ public class UsuarioDTO {
     
     public void setTieneSancion(Boolean b){
         this.tieneSancion = b;
+    }
+    
+    public List<SancionDTO> getSanciones()
+    {
+        return sanciones;
+    }
+    
+    public void setSanciones(List<SancionDTO> sanciones)
+    {
+        this.sanciones = sanciones;
+    }
+    
+    public List<ReservaDTO> getReservas()
+    {
+        return reservas;
+    }
+    
+    public void setReservas(List<ReservaDTO> reservas)
+    {
+        this.reservas = reservas;
     }
     
     /**

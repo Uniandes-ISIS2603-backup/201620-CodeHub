@@ -20,16 +20,16 @@ import javax.ws.rs.Produces;
  *
  * @author orlando
  */
-@Path("reservas")
+@Path("usuarios/(idUsuario: \\d+)/reservas")
 @Produces("application/json")
 public class ReservaResource {
     
     ReservaLogicMock reservaLogic = new ReservaLogicMock();
     
     @GET
-    public List<ReservaDTO> getReservas() throws ReservaLogicException
+    public List<ReservaDTO> getReservas(@PathParam("idUsuario") Long idUsuario) throws ReservaLogicException
     {
-        return reservaLogic.getReservas();
+        return reservaLogic.getReservas(idUsuario);
     }
     
     @GET

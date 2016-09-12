@@ -21,7 +21,7 @@ import javax.ws.rs.Produces;
  *
  * @author lj.pinzon12
  */
-@Path("sanciones")
+@Path("usuarios/(idUsuario: \\d+)/sanciones")
 @Produces("application/json")
 public class SancionResource
 {
@@ -34,16 +34,11 @@ public class SancionResource
      * @throws SancionLogicException excepción retornada por la lógica
      */
     @GET
-    public List<SancionDTO> getSanciones() throws SancionLogicException {
-        return sancionLogic.getSanciones();
+    public List<SancionDTO> getSanciones(@PathParam("idUsuario") Long idUsuario) throws SancionLogicException {
+        return sancionLogic.getSanciones(idUsuario);
     }
-     @GET
-     @Path("{id:  \\d+}")
-     public SancionDTO getSancion(@PathParam("id")Long id) throws SancionLogicException{
-     return sancionLogic.getSancion(id);
-     }
      
-      @PUT
+     @PUT
      @Path("{id:  \\d+}")
      public SancionDTO putSancion(@PathParam("id")long id, SancionDTO sancion ) throws SancionLogicException{
           System.out.println("esto: "+sancion.getEstado()+" esto bien:"+sancion.getFecha());
@@ -52,10 +47,8 @@ public class SancionResource
      
      @DELETE
      @Path("{id:  \\d+}")
-     public List<SancionDTO> deleteSancion(@PathParam("id")Long id) throws SancionLogicException{
-         sancionLogic.deleteSancion(id);
-         
-     return sancionLogic.getSanciones();
+     public SancionDTO deleteSancion(@PathParam("id")Long id) throws SancionLogicException{
+         return sancionLogic.deleteSancion(id);
      }
 
    
@@ -68,7 +61,7 @@ public class SancionResource
      * suministrado
      */
     @POST
-    public SancionDTO creatSancion(SancionDTO sancion) throws SancionLogicException {
+    public SancionDTO createSancion(SancionDTO sancion) throws SancionLogicException {
         return sancionLogic.createSancion(sancion);
     }
 }

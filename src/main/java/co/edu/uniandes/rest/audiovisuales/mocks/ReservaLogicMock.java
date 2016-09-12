@@ -6,6 +6,7 @@
 package co.edu.uniandes.rest.audiovisuales.mocks;
 
 import co.edu.uniandes.rest.audiovisuales.dtos.ReservaDTO;
+import co.edu.uniandes.rest.audiovisuales.dtos.SancionDTO;
 import co.edu.uniandes.rest.audiovisuales.exceptions.ReservaLogicException;
 
 import java.util.ArrayList;
@@ -29,9 +30,9 @@ public class ReservaLogicMock {
         if(reservas == null)
         {
             reservas = new ArrayList<>();
-            reservas.add(new ReservaDTO(new Date(2016, 8, 10), 0.0, "ML", 1L));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 11), 0.0, "W", 2L));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 12), 0.0, "AU", 3L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 10), 0.0, "ML", 1L, -1l));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 11), 0.0, "W", 2L, -1l));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), 0.0, "AU", 3L, -1L));
         }
         
         logger.setLevel(Level.INFO);
@@ -40,7 +41,7 @@ public class ReservaLogicMock {
         logger.info("ciudades"+  reservas );
     }
     
-    public List<ReservaDTO> getReservas() throws ReservaLogicException
+    public List<ReservaDTO> getReservas(Long idUsuario) throws ReservaLogicException
     {
         if(reservas == null)
         {
@@ -48,7 +49,16 @@ public class ReservaLogicMock {
             throw new ReservaLogicException("Error Interno: lista de usuarios no existe.");
         }
         logger.info("retornando todos los reservas");
-        return reservas;
+        List<ReservaDTO> reservasUsuario = new ArrayList<>(); 
+        for(int i = 0; i<reservas.size();i++)
+        {
+            ReservaDTO actual = reservas.get(i);
+            if(actual.getIdUsuario()==idUsuario)
+            {
+                reservasUsuario.add(actual);
+            }
+        }
+    	return reservasUsuario;
     }
     
     public ReservaDTO getReserva(Long id)throws ReservaLogicException

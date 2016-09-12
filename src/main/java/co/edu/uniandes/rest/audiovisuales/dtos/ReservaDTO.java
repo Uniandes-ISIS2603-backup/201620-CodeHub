@@ -5,7 +5,9 @@
  */
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *Objeto de transferencia de datos de Reservas.
@@ -20,18 +22,21 @@ public class ReservaDTO
     private String nombreEdificio;
     private Long id;
     
+    private Long idUsuario;
+    
     public ReservaDTO()
     {
         
     }
 
-    public ReservaDTO( Date fecha, Double calificacion,  String nombreEdificio, Long id) {
+    public ReservaDTO( Date fecha, Double calificacion,  String nombreEdificio, Long id, Long idUsuario) {
         this.estado = true;
         this.fecha = fecha;
         this.calificacion = calificacion;
         this.generoSancion = false;
         this.nombreEdificio = nombreEdificio;
         this.id = id;
+        this.idUsuario = idUsuario;
     }
 
     public Boolean getEstado() {
@@ -90,6 +95,20 @@ public class ReservaDTO
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    /**
+     * @return the id
+     */
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
     
     public String toString()

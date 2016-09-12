@@ -14,6 +14,7 @@ public class EdificioDTO
     private Long id;
     private String bloque;
     private String nombre;
+    private AdminDTO admin;
 
     /**
      * Constructor por defecto
@@ -77,12 +78,30 @@ public class EdificioDTO
         this.bloque = bloque;
     }
     
+    public AdminDTO getAdmin()
+    {
+        return admin;
+    }
+    
+    public void setAdmin(AdminDTO admin)
+    {
+        this.admin = admin;
+    }
+    
     /**
      * Convierte el objeto a una cadena
      * @return el mensaje con el objeto
      */
     @Override
     public String toString() {
-    	return "{ id : " + getId() + ", bloque : \"" + getBloque() + "\", nombre : \""+getNombre()+"\" }" ;  
+        int adminID = -1;
+        if(admin!=null)
+        {
+            adminID=getAdmin().getID();
+        }
+    	return "{ id : " + getId() 
+                + ", bloque : \"" + getBloque() 
+                + "\", nombre : \""+getNombre()
+                +"\", admin : \""+adminID+"}" ;  
     }
 }

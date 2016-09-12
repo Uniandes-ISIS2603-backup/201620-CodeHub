@@ -52,6 +52,7 @@ public class UsuarioResource {
     {
         return usuarioLogic.getCity(id);
     }
+    
     /**
      * Agrega un usuario
      *

@@ -33,9 +33,9 @@ public class SancionLogicMock
     	if (sanciones == null) {
             sanciones = new ArrayList<>();
     	logger.info("Inicializa la lista de sanciones");
-            sanciones.add(new SancionDTO(1L, "15/07/2016", "vigente"));
-            sanciones.add(new SancionDTO(2L, "17/06/2016", "saldada"));
-            sanciones.add(new SancionDTO(3L, "04/08/2016", "vigente"));
+            sanciones.add(new SancionDTO(1L, "15/07/2016", "vigente",-1l));
+            sanciones.add(new SancionDTO(2L, "17/06/2016", "saldada",-1l));
+            sanciones.add(new SancionDTO(3L, "04/08/2016", "vigente",-1l));
         }
         
     	// indica que se muestren todos los mensajes
@@ -50,14 +50,23 @@ public class SancionLogicMock
 	 * @return lista de sanciones
 	 * @throws SancionLogicException cuando no existe la lista en memoria  
 	 */    
-    public List<SancionDTO> getSanciones() throws SancionLogicException {
+    public List<SancionDTO> getSanciones(Long idUsuario) throws SancionLogicException {
     	if (sanciones == null) {
     		logger.severe("Error interno: lista de sanciones no existe.");
     		throw new SancionLogicException("Error interno: lista de sanciones no existe.");    		
     	}
     	
     	logger.info("retornando todas las sanciones");
-    	return sanciones;
+        List<SancionDTO> sancionesUsuario = new ArrayList<>(); 
+        for(int i = 0; i<sanciones.size();i++)
+        {
+            SancionDTO actual = sanciones.get(i);
+            if(actual.getIdUsuario()==idUsuario)
+            {
+                sancionesUsuario.add(actual);
+            }
+        }
+    	return sancionesUsuario;
     }
 
  
@@ -153,12 +162,12 @@ public class SancionLogicMock
            throw new SancionLogicException("No se encuentra el estado con ese id."); 
         }
     }
-   public void deleteSancion(Long id) throws SancionLogicException {
+   public SancionDTO deleteSancion(Long id) throws SancionLogicException {
        logger.info("Eliminando la sancion con id "+id);
        for (SancionDTO sancion : sanciones) {
 	            if (sancion.getId().equals(id)){
                         sanciones.remove(sancion);
-                        return;
+                        return sancion;
 	            }
 	        }
           logger.severe("No se encontro la ciudad solicitada");
