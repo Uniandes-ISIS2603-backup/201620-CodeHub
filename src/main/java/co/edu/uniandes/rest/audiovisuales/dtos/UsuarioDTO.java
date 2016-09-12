@@ -19,6 +19,8 @@ public class UsuarioDTO {
     
     private List<SancionDTO> sanciones;
     private List<ReservaDTO> reservas;
+    
+    private List<Double> calificaciones;
 
     /**
      * Constructor por defecto
@@ -38,6 +40,7 @@ public class UsuarioDTO {
                 this.tieneSancion = false;
                 this.sanciones = new ArrayList<>();
                 this.reservas = new ArrayList<>();
+                this.calificaciones = new ArrayList<>();
 	}
 
 	/**
@@ -94,6 +97,25 @@ public class UsuarioDTO {
     public void setReservas(List<ReservaDTO> reservas)
     {
         this.reservas = reservas;
+    }
+    
+    public void addCalificacion(double calificacion)
+    {
+        calificaciones.add(calificacion);
+    }
+    
+    public double getPromedioCalificaciones()
+    {
+        if(calificaciones.size()!=0)
+        {
+          double contador = 0.0;
+            for(int i = 0; i<calificaciones.size();i++)
+            {
+                contador+= calificaciones.get(i);
+            }
+            return contador/calificaciones.size();  
+        }
+        return 0.0;
     }
     
     /**

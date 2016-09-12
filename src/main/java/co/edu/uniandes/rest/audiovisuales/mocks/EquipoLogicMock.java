@@ -40,9 +40,9 @@ public class EquipoLogicMock {
     public EquipoLogicMock(){
         if(equipos ==null){
             equipos = new ArrayList<>();
-            equipos.add(new EquipoDTO(1,"bien"));
-            equipos.add(new EquipoDTO(2,"roto"));
-            equipos.add(new EquipoDTO(3,"reservado"));
+            equipos.add(new EquipoDTO(1,"bien", -1L));
+            equipos.add(new EquipoDTO(2,"roto", -1L));
+            equipos.add(new EquipoDTO(3,"reservado", -1L));
         }
         // indica que se muestren todos los mensajes
     	logger.setLevel(Level.INFO);
@@ -57,14 +57,23 @@ public class EquipoLogicMock {
 	 * @return lista de equipos.
 	 * @throws EquipoLogicException cuando no existe la lista en memoria.
 	 */  
-    public List<EquipoDTO> darEquipos() throws EquipoLogicException{
+    public List<EquipoDTO> darEquipos(Long idEdificio) throws EquipoLogicException{
         if (equipos == null) {
     		logger.severe("Error interno: lista de equipos no existe.");
     		throw new EquipoLogicException("Error interno: lista de equipos no existe.");    		
     	}
     	
     	logger.info("retornando todas los equipos");
-    	return equipos;
+    	List<EquipoDTO> equiposEdificio = new ArrayList<>(); 
+        for(int i = 0; i<equipos.size();i++)
+        {
+            EquipoDTO actual = equipos.get(i);
+            if(actual.getIdEdificio()==idEdificio)
+            {
+                equiposEdificio.add(actual);
+            }
+        }
+    	return equiposEdificio;
     }
     
      /**

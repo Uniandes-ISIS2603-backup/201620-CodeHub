@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Sebastian
@@ -14,7 +17,10 @@ public class EdificioDTO
     private Long id;
     private String bloque;
     private String nombre;
+    
     private AdminDTO admin;
+    
+    private List<EquipoDTO> equipos;
 
     /**
      * Constructor por defecto
@@ -34,6 +40,7 @@ public class EdificioDTO
 	this.id = id;
 	this.nombre = nombre;
         this.bloque = bloque;
+        this.equipos = new ArrayList<>();
     }
 
 	/**
@@ -86,6 +93,16 @@ public class EdificioDTO
     public void setAdmin(AdminDTO admin)
     {
         this.admin = admin;
+    }
+    
+    public List<EquipoDTO> getEquipos()
+    {
+        return equipos;
+    }
+    
+    public void setEquipos(List<EquipoDTO> equipos)
+    {
+        this.equipos = equipos;
     }
     
     /**

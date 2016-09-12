@@ -21,7 +21,7 @@ import javax.ws.rs.Produces;
  *Clase que implementa el recurso REST correspondiente a "Equipo".
  * @author c.zambrano10
  */
-@Path("equipos")
+@Path("edificios/(idEdificio: \\d+)/equipos")
 @Produces("application/json")
 public class EquipoResource {
     EquipoLogicMock EquipoLogic = new EquipoLogicMock();
@@ -32,8 +32,8 @@ public class EquipoResource {
      * @throws EquipoLogicException excepción retornada por la lógica
      */
     @GET
-    public List<EquipoDTO> getEquipos() throws EquipoLogicException {
-        return EquipoLogic.darEquipos();
+    public List<EquipoDTO> getEquipos(@PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
+        return EquipoLogic.darEquipos(idEdificio);
     }
 
    

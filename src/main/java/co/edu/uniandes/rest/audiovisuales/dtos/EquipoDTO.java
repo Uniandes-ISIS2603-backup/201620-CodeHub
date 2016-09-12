@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Objeto de transferencia de Equipos
  * @author c.zambrano10
@@ -26,6 +29,11 @@ public class EquipoDTO {
      * Estado en que se encuentra el equipo
      */
     private String estado;
+    private boolean disponible;
+    
+    private Long idEdificio;
+    
+    private List<ReservaDTO> reservas;
     
     /*-------------------------
             Constructores.
@@ -35,9 +43,12 @@ public class EquipoDTO {
      * @param pCodigo el codigo del equipo a crear. pCodigo !=null && pCodigo!=0.
      * @param pEstado el estado del equipo a crear. pEstado !=null&& pEstado!=""
      */
-    public EquipoDTO(int pCodigo, String pEstado){
+    public EquipoDTO(int pCodigo, String pEstado, Long edificio){
         codigo = pCodigo;
-        estado = pEstado;        
+        estado = pEstado;
+        idEdificio = edificio;
+        disponible = true;
+        reservas = new ArrayList<>();
     }
     /**
      * Constructor vacio necesario porque aja(?)
@@ -77,6 +88,41 @@ public class EquipoDTO {
     public void setEstado(String pEstado){
         estado = pEstado;
     }
+    /**
+     * @return the id
+     */
+    public Long getIdEdificio() {
+        return idEdificio;
+    }
+    
+    public boolean getDisponible()
+    {
+        return disponible;
+    }
+    
+    public void setDisponible(boolean disponible)
+    {
+        this.disponible = disponible;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setIdEdificio(Long idEdificio) {
+        this.idEdificio = idEdificio;
+    }
+    
+    public List<ReservaDTO> getReservas()
+    {
+        return reservas;
+    }
+    
+    public void addReserva(ReservaDTO reserva)
+    {
+        this.reservas.add(reserva);
+    }
+
+    
     /**
      * Metodo to string para enviar la información como un JSON
      * @return la informacion de la clase como un JSON en un string.
