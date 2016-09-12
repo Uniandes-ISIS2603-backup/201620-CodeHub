@@ -14,6 +14,10 @@ import java.util.List;
  */
 public class EquipoDTO {
     
+    public final static int DISPONIBLE = 1;
+    public final static int RESERVADO = 1;
+    public final static int AVERIADO = 1;
+    
     /*-----------------------
             Atributos.
     -------------------------*/
@@ -28,7 +32,7 @@ public class EquipoDTO {
     /**
      * Estado en que se encuentra el equipo
      */
-    private String estado;
+    private int estado;
     private boolean disponible;
     
     private Long idEdificio;
@@ -43,7 +47,7 @@ public class EquipoDTO {
      * @param pCodigo el codigo del equipo a crear. pCodigo !=null && pCodigo!=0.
      * @param pEstado el estado del equipo a crear. pEstado !=null&& pEstado!=""
      */
-    public EquipoDTO(int pCodigo, String pEstado, Long edificio){
+    public EquipoDTO(int pCodigo, int pEstado, Long edificio){
         codigo = pCodigo;
         estado = pEstado;
         idEdificio = edificio;
@@ -78,14 +82,14 @@ public class EquipoDTO {
      * Metodo para conocer el estado del equipo.
      * @return el estado del equipo.
      */
-    public String getEstado(){
+    public int getEstado(){
         return estado;
     }
     /**
      * Metodo para modificar el estado del equipo.
      * @param pEstado el nuevo estado del equipo. pEstado !=null&& pEstado!=""
      */
-    public void setEstado(String pEstado){
+    public void setEstado(int pEstado){
         estado = pEstado;
     }
     /**

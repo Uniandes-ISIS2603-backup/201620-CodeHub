@@ -42,7 +42,7 @@ public class ReservaLogicMock {
         logger.info("ciudades"+  reservas );
     }
     
-    public List<ReservaDTO> getReservas(Long idUsuario) throws ReservaLogicException
+    public List<ReservaDTO> getReservasUsuario(Long idUsuario) throws ReservaLogicException
     {
         if(reservas == null)
         {

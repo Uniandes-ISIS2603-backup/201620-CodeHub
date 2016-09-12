@@ -76,6 +76,21 @@ public class EquipoLogicMock {
     	return equiposEdificio;
     }
     
+    public List<EquipoDTO> darEquiposEstado(Long idEdificio, int estado) throws EquipoLogicException {
+    	
+        List<EquipoDTO> equi = darEquipos(idEdificio);
+        List<EquipoDTO> lista =new ArrayList<>();
+        for(int i = 0; i<equi.size();i++)
+        {
+            EquipoDTO actual = equi.get(i);
+            if(actual.getEstado()==estado)
+            {
+                lista.add(actual);
+            }
+        }
+    	return lista;
+    }
+    
      /**
      * Agrega un Equipo a la lista.
      * @param nuevoEquipo equipo a adicionar

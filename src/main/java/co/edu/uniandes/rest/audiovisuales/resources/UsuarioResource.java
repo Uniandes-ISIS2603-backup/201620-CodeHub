@@ -48,9 +48,30 @@ public class UsuarioResource {
 
     @GET
     @Path("{id: \\d+}")
-    public UsuarioDTO getEdificio(@PathParam("id") Long id) throws UsuarioLogicException
+    public UsuarioDTO getUsuario(@PathParam("id") Long id) throws UsuarioLogicException
     {
-        return usuarioLogic.getCity(id);
+        return usuarioLogic.getUsuario(id);
+    }
+    
+    @GET
+    @Path("estudiantes")
+    public List<UsuarioDTO> getEstudiantes() throws UsuarioLogicException
+    {
+        return usuarioLogic.getUsuarioTipo(UsuarioDTO.ESTUDIANTE);
+    }
+    
+    @GET
+    @Path("profesores")
+    public List<UsuarioDTO> getProfesores() throws UsuarioLogicException
+    {
+        return usuarioLogic.getUsuarioTipo(UsuarioDTO.PROFESOR);
+    }
+    
+    @GET
+    @Path("administradores")
+    public List<UsuarioDTO> getAdmins() throws UsuarioLogicException
+    {
+        return usuarioLogic.getUsuarioTipo(UsuarioDTO.ADMIN);
     }
     
     /**

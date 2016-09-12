@@ -37,9 +37,9 @@ public class UsuarioLogicMock {
 
     	if (usuarios == null) {
             usuarios = new ArrayList<>();
-            usuarios.add(new UsuarioDTO(1L, "Rubby Casallas"));
-            usuarios.add(new UsuarioDTO(2L, "Fernando de la Rosa"));
-            usuarios.add(new UsuarioDTO(3L, "Rodrigo Cardoso"));
+            usuarios.add(new UsuarioDTO(1L, "Rubby Casallas",2));
+            usuarios.add(new UsuarioDTO(2L, "Fernando de la Rosa",2));
+            usuarios.add(new UsuarioDTO(3L, "Rodrigo Cardoso",2));
         }
         
     	// indica que se muestren todos los mensajes
@@ -64,8 +64,27 @@ public class UsuarioLogicMock {
     	logger.info("retornando todos los usuarios");
     	return usuarios;
     }
+    
+    public List<UsuarioDTO> getUsuarioTipo(int tipo) throws UsuarioLogicException {
+    	if (usuarios == null) {
+    		logger.severe("Error interno: lista de usuarios no existe.");
+    		throw new UsuarioLogicException("Error interno: lista de usuarios no existe.");    		
+    	}
+    	
+    	logger.info("retornando todos los usuarios");
+        List<UsuarioDTO> lista =new ArrayList<>();
+        for(int i = 0; i<usuarios.size();i++)
+        {
+            UsuarioDTO actual = usuarios.get(i);
+            if(actual.getTipo()==tipo)
+            {
+                lista.add(actual);
+            }
+        }
+    	return lista;
+    }
 
-    public UsuarioDTO getCity(Long id) throws UsuarioLogicException
+    public UsuarioDTO getUsuario(Long id) throws UsuarioLogicException
     {
         if(usuarios==null)
         {

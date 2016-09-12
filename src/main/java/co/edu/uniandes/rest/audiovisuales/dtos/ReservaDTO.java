@@ -15,6 +15,14 @@ import java.util.List;
  */
 public class ReservaDTO 
 {
+    public final static int SIN_APROBAR = 1;
+    public final static int ACTIVA = 2;
+    public final static int INACTIVA = 3;
+    public final static int CANCELADA = 4;
+    public final static int RECHAZADA = 5;
+    
+    
+    
     private int estado; //1-Creada sin aprobar, 2-Activa, 3-Inactiva, 4-Cancelada, 5-Rechazada
     private Date fecha;
     private Double calificacion;

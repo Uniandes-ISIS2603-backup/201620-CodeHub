@@ -34,8 +34,14 @@ public class SancionResource
      * @throws SancionLogicException excepción retornada por la lógica
      */
     @GET
-    public List<SancionDTO> getSanciones(@PathParam("idUsuario") Long idUsuario) throws SancionLogicException {
-        return sancionLogic.getSanciones(idUsuario);
+    public List<SancionDTO> getSancionesUsuario(@PathParam("idUsuario") Long idUsuario) throws SancionLogicException {
+        return sancionLogic.getSancionesUsuario(idUsuario);
+    }
+    
+    @GET
+    @Path("{id:  \\d+}")
+    public SancionDTO getSancion(@PathParam("id") Long id) throws SancionLogicException {
+        return sancionLogic.getSancion(id);
     }
      
      @PUT

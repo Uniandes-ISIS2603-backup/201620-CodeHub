@@ -50,7 +50,7 @@ public class SancionLogicMock
 	 * @return lista de sanciones
 	 * @throws SancionLogicException cuando no existe la lista en memoria  
 	 */    
-    public List<SancionDTO> getSanciones(Long idUsuario) throws SancionLogicException {
+    public List<SancionDTO> getSancionesUsuario(Long idUsuario) throws SancionLogicException {
     	if (sanciones == null) {
     		logger.severe("Error interno: lista de sanciones no existe.");
     		throw new SancionLogicException("Error interno: lista de sanciones no existe.");    		

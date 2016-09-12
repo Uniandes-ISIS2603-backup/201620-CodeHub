@@ -13,9 +13,15 @@ import java.util.List;
  * @author Asistente
  */
 public class UsuarioDTO {
+    
+    public final static int ESTUDIANTE = 1;
+    public final static int PROFESOR = 2;
+    public final static int ADMIN = 3;
+    
     private Long id;
     private String name;
     private Boolean tieneSancion;
+    private int tipo;
     
     private List<SancionDTO> sanciones;
     private List<ReservaDTO> reservas;
@@ -33,11 +39,12 @@ public class UsuarioDTO {
      * @param id identificador del usuario
      * @param name nombre del usuario
      */
-    public UsuarioDTO(Long id, String name) {
+    public UsuarioDTO(Long id, String name, int tipo) {
 		super();
 		this.id = id;
 		this.name = name;
                 this.tieneSancion = false;
+                this.tipo = tipo;
                 this.sanciones = new ArrayList<>();
                 this.reservas = new ArrayList<>();
                 this.calificaciones = new ArrayList<>();
@@ -92,6 +99,11 @@ public class UsuarioDTO {
     public List<ReservaDTO> getReservas()
     {
         return reservas;
+    }
+    
+    public int getTipo()
+    {
+        return tipo;
     }
     
     public void setReservas(List<ReservaDTO> reservas)

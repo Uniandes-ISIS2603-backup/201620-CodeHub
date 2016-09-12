@@ -8,6 +8,7 @@ package co.edu.uniandes.rest.audiovisuales.resources;
 import co.edu.uniandes.rest.audiovisuales.dtos.ReservaDTO;
 import co.edu.uniandes.rest.audiovisuales.mocks.ReservaLogicMock;
 import co.edu.uniandes.rest.audiovisuales.exceptions.ReservaLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -27,16 +28,51 @@ public class ReservaResource {
     ReservaLogicMock reservaLogic = new ReservaLogicMock();
     
     @GET
-    public List<ReservaDTO> getReservas(@PathParam("idUsuario") Long idUsuario) throws ReservaLogicException
+    public List<ReservaDTO> getReservasUsuario(@PathParam("idUsuario") Long idUsuario) throws ReservaLogicException
     {
-        return reservaLogic.getReservas(idUsuario);
+        return reservaLogic.getReservasUsuario(idUsuario);
     }
     
     @GET
     @Path("{id:  \\d+}")
-    public ReservaDTO getreserva(@PathParam("id")Long id) throws ReservaLogicException
+    public ReservaDTO getReserva(@PathParam("id")Long id) throws ReservaLogicException
     {
         return reservaLogic.getReserva(id);
+    }
+    
+    @GET
+    @Path("pendientes")
+    public List<ReservaDTO> getReservasPendientes(@PathParam("idUsuario")Long idUsuario) throws ReservaLogicException
+    {
+        List<ReservaDTO> res = getReservasUsuario(idUsuario);
+        List<ReservaDTO> pendientes = new ArrayList<ReservaDTO>();
+        for (int i = 0; i< res.size();i++)
+        {
+            ReservaDTO actual = res.get(i);
+            if(actual.getEstado()==ReservaDTO.SIN_APROBAR)
+            {
+                pendientes.add(actual);
+            }
+        }
+        return pendientes;
+    }
+    
+    @GET
+    @Path("calificacion")
+    public double getCalificacionSistema(@PathParam("idUsuario")Long idUsuario) throws ReservaLogicException
+    {
+        double contador = 0.0;
+        int size = 0;
+        List<ReservaDTO> res = getReservasUsuario(idUsuario);
+        for (int i = 0; i< res.size();i++)
+        {
+            if(res.get(i).getEstado()==ReservaDTO.INACTIVA)
+            {
+                contador+=res.get(i).getCalificacion();
+                size++;
+            }
+        }
+        return size!=0? contador/size : 0.0;
     }
     
     @POST

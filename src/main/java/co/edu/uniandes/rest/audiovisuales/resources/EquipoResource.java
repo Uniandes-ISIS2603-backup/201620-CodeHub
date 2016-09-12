@@ -35,6 +35,24 @@ public class EquipoResource {
     public List<EquipoDTO> getEquipos(@PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
         return EquipoLogic.darEquipos(idEdificio);
     }
+    
+    @GET
+    @Path("disponibles")
+    public List<EquipoDTO> getEquiposDisponibles(@PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
+        return EquipoLogic.darEquiposEstado(idEdificio, EquipoDTO.DISPONIBLE);
+    }
+    
+    @GET
+    @Path("reservados")
+    public List<EquipoDTO> getEquiposReservados(@PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
+        return EquipoLogic.darEquiposEstado(idEdificio, EquipoDTO.RESERVADO);
+    }
+    
+    @GET
+    @Path("averiados")
+    public List<EquipoDTO> getEquiposAveriados(@PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
+        return EquipoLogic.darEquiposEstado(idEdificio, EquipoDTO.AVERIADO);
+    }
 
    
     /**
@@ -76,7 +94,7 @@ public class EquipoResource {
     
     @GET
     @Path("{id:\\d+}")
-    public EquipoDTO getCity(@PathParam("id")int id)throws EquipoLogicException{
+    public EquipoDTO getEquipo(@PathParam("id")int id)throws EquipoLogicException{
         return EquipoLogic.getEquipo(id);
     }
     
