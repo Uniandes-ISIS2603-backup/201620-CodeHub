@@ -16,7 +16,6 @@ public class UsuarioDTO {
     
     public final static int ESTUDIANTE = 1;
     public final static int PROFESOR = 2;
-    public final static int ADMIN = 3;
     
     private Long id;
     private String name;

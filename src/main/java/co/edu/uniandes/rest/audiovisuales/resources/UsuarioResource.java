@@ -67,13 +67,6 @@ public class UsuarioResource {
         return usuarioLogic.getUsuarioTipo(UsuarioDTO.PROFESOR);
     }
     
-    @GET
-    @Path("administradores")
-    public List<UsuarioDTO> getAdmins() throws UsuarioLogicException
-    {
-        return usuarioLogic.getUsuarioTipo(UsuarioDTO.ADMIN);
-    }
-    
     /**
      * Agrega un usuario
      *
