@@ -25,7 +25,7 @@ public class EquipoDTO {
     /**
      * Codigo de identificación
      */
-    private int id;
+    private Long id;
    /**
     * Tipo de equipo
     */
@@ -48,7 +48,7 @@ public class EquipoDTO {
      * @param pCodigo el codigo del equipo a crear. pCodigo !=null && pCodigo!=0.
      * @param pEstado el estado del equipo a crear. pEstado !=null&& pEstado!=""
      */
-    public EquipoDTO(int pCodigo, int pEstado, Long edificio){
+    public EquipoDTO(Long pCodigo, int pEstado, Long edificio){
         id = pCodigo;
         estado = pEstado;
         idEdificio = edificio;
@@ -70,14 +70,14 @@ public class EquipoDTO {
      * Metodo para conocer el codigo del equipo
      * @return el codigo del equipo
      */
-    public int getId(){
+    public Long getId(){
         return id;
     }
     /**
      * Metodo para modificar el codigo del equipo.
      * @param pCodigo el codigo nuevo del equipo. pCodigo !=null
      */
-    public void setId(int pCodigo){
+    public void setId(Long pCodigo){
         id= pCodigo;
     }
     /**

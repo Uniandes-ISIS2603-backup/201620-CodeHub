@@ -39,9 +39,9 @@ public class EquipoLogicMock {
     public EquipoLogicMock(){
         if(equipos ==null){
             equipos = new ArrayList<>();
-            equipos.add(new EquipoDTO(1,EquipoDTO.DISPONIBLE, -1L));
-            equipos.add(new EquipoDTO(2,EquipoDTO.AVERIADO, -1L));
-            equipos.add(new EquipoDTO(3,EquipoDTO.RESERVADO, -1L));
+            equipos.add(new EquipoDTO(1L,EquipoDTO.DISPONIBLE, -1L));
+            equipos.add(new EquipoDTO(2L,EquipoDTO.AVERIADO, -1L));
+            equipos.add(new EquipoDTO(3L,EquipoDTO.RESERVADO, -1L));
         }
         // indica que se muestren todos los mensajes
     	logger.setLevel(Level.INFO);
@@ -115,7 +115,7 @@ public class EquipoLogicMock {
 
     		// genera un id para el equipo
     		logger.info("Generando id para el nuevo Equipo");
-    		int newId = 1;
+    		Long newId = 1L;
 	        for (EquipoDTO equipo : equipos) {
 	            if (newId < equipo.getId()){
 	                break;  

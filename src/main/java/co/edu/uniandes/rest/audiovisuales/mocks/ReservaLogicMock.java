@@ -31,8 +31,8 @@ public class ReservaLogicMock {
         if(reservas == null)
         {
             reservas = new ArrayList<>();
-            reservas.add(new ReservaDTO(new Date(2016, 8, 10),new Date(2016, 8, 12), "ML", 1L, -1l, new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 11),new Date(2016, 8, 12), "W", 2L, -1l ,new ArrayList<EquipoDTO>()));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 10),new Date(2016, 8, 12), "ML", 1L, -1L, new ArrayList<EquipoDTO>()));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 11),new Date(2016, 8, 12), "W", 2L, -1L,new ArrayList<EquipoDTO>()));
             reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "AU", 3L, -1L, new ArrayList<EquipoDTO>()));
         }
         
