@@ -114,7 +114,7 @@ public class EdificioDTO
         int adminID = -1;
         if(admin!=null)
         {
-            adminID=getAdmin().getID();
+            adminID=getAdmin().getId();
         }
     	return "{ id : " + getId() 
                 + ", bloque : \"" + getBloque() 

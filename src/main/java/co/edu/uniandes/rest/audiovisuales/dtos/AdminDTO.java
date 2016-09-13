@@ -35,6 +35,16 @@ public class AdminDTO
         this.correo = correo;
     }
 
+        public int getId()
+    {
+        return id;
+    }
+    
+    public void setId(int pId)
+    {
+        id = pId;
+    }
+    
     /**
      * @return the name
      */
@@ -63,15 +73,7 @@ public class AdminDTO
         this.correo = correo;
     }
     
-    public int getID()
-    {
-        return id;
-    }
-    
-    public void setID(int pID)
-    {
-        id = pID;
-    }
+
     
         
 
@@ -81,7 +83,7 @@ public class AdminDTO
     @Override
     public String toString() 
     {
-    	return "{ codigo : " + getID() + ", nombre : \"" + getName() + ", correo : \"" + getEmail() +  "\" }" ;  
+    	return "{ id : " + getId() + ", nombre : \"" + getName() + ", correo : \"" + getEmail() +  "\" }" ;  
     }
 
 

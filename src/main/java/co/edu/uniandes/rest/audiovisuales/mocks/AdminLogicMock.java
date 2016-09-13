@@ -70,11 +70,11 @@ public class AdminLogicMock
     
     public AdminDTO crearAdministrador(AdminDTO nuevoAdmin) throws AdminLogicException
     {   
-        if(nuevoAdmin.getID()!=0)
+        if(nuevoAdmin.getId()!=0)
         {
             for (AdminDTO administrador : administradores) 
             {
-	        if (administrador.getID()==(nuevoAdmin.getID()))
+	        if (administrador.getId()==(nuevoAdmin.getId()))
                 {
                     logger.severe("Ya existe un administrador con ese id");
 	            throw new AdminLogicException("Ya existe un administrador con ese id");
@@ -87,12 +87,12 @@ public class AdminLogicMock
             int nuevoID = 1;
              for (AdminDTO administrador : administradores) 
             {
-                if (nuevoID <= administrador.getID())
+                if (nuevoID <= administrador.getId())
                 {
-                    nuevoID = administrador.getID()+1;
+                    nuevoID = administrador.getId()+1;
                 }
             }
-             nuevoAdmin.setID(nuevoID);
+             nuevoAdmin.setId(nuevoID);
         }
         logger.info("El administrador " + nuevoAdmin.toString() + " se esta agregando");
         administradores.add(nuevoAdmin);
@@ -101,11 +101,11 @@ public class AdminLogicMock
     
     public AdminDTO actualizarAdministrador(AdminDTO pAdmin, int pID) throws AdminLogicException
     {
-        if(pAdmin.getID() != 0)
+        if(pAdmin.getId() != 0)
         {
             for (AdminDTO admin : administradores)
             {
-                if (admin.getID()==pID)
+                if (admin.getId()==pID)
                 {
                     admin.setName(pAdmin.getName());
                     admin.setEmail(pAdmin.getEmail());
@@ -130,7 +130,7 @@ public class AdminLogicMock
         
         for(AdminDTO admin : administradores)
         {
-            if(pId==admin.getID())
+            if(pId==admin.getId())
             {
                 administradores.remove(admin);
             }

@@ -62,8 +62,8 @@
                         }, responseError);
                 };
             };
-            
-            this.deleteRecord = function (id) {
+            this.deleteRecord = function (id) 
+            {
                 currentRecord = $scope.currentRecord;
                 if(id!=null)
                 {            
