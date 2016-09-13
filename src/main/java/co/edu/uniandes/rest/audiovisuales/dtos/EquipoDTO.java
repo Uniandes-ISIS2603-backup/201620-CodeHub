@@ -6,6 +6,7 @@
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class EquipoDTO {
     /**
      * Codigo de identificación
      */
-    private int codigo;
+    private int id;
    /**
     * Tipo de equipo
     */
@@ -34,7 +35,7 @@ public class EquipoDTO {
      */
     private int estado;
     private boolean disponible;
-    
+    private Date quedaLibre;
     private Long idEdificio;
     
     private List<ReservaDTO> reservas;
@@ -48,10 +49,11 @@ public class EquipoDTO {
      * @param pEstado el estado del equipo a crear. pEstado !=null&& pEstado!=""
      */
     public EquipoDTO(int pCodigo, int pEstado, Long edificio){
-        codigo = pCodigo;
+        id = pCodigo;
         estado = pEstado;
         idEdificio = edificio;
         disponible = true;
+        quedaLibre = new Date();
         reservas = new ArrayList<>();
     }
     /**
@@ -68,15 +70,15 @@ public class EquipoDTO {
      * Metodo para conocer el codigo del equipo
      * @return el codigo del equipo
      */
-    public int getCodigo(){
-        return codigo;
+    public int getId(){
+        return id;
     }
     /**
      * Metodo para modificar el codigo del equipo.
      * @param pCodigo el codigo nuevo del equipo. pCodigo !=null
      */
-    public void setCodigo(int pCodigo){
-        codigo= pCodigo;
+    public void setId(int pCodigo){
+        id= pCodigo;
     }
     /**
      * Metodo para conocer el estado del equipo.
@@ -109,6 +111,15 @@ public class EquipoDTO {
         this.disponible = disponible;
     }
 
+    public Date getQuedaLibre()
+    {
+        return quedaLibre;
+    }
+    
+    public void setQuedaLibre(Date nuevaFecha)
+    {
+        quedaLibre = nuevaFecha;
+    }
     /**
      * @param id the id to set
      */
@@ -133,6 +144,6 @@ public class EquipoDTO {
      */
     @Override
     public String toString(){
-        return "{ codigo: "+codigo+", estado: \""+estado+"\"}";
+        return "{ codigo: "+id+", estado: \""+estado+"\"}";
     }
 }
