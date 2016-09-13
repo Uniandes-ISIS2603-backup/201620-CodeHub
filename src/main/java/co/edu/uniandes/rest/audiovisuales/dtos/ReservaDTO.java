@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
  */
 public class ReservaDTO 
 {
-    public final static int SIN_APROBAR = 1;
+    public final static int EN_REVISION = 1;
     public final static int ACTIVA = 2;
     public final static int INACTIVA = 3;
     public final static int CANCELADA = 4;
@@ -24,7 +23,8 @@ public class ReservaDTO
     
     
     private int estado; //1-Creada sin aprobar, 2-Activa, 3-Inactiva, 4-Cancelada, 5-Rechazada
-    private Date fecha;
+    private Date fechaInicial;
+    private Date fechaFinal;
     private Double calificacion;
     private Boolean generoSancion;
     private String nombreEdificio;
@@ -39,10 +39,10 @@ public class ReservaDTO
         
     }
 
-    public ReservaDTO( Date fecha,  String nombreEdificio, Long id, Long idUsuario, List<EquipoDTO> equipos) {
+    public ReservaDTO( Date fechaInicial, Date fechaFinal,  String nombreEdificio, Long id, Long idUsuario, List<EquipoDTO> equipos) {
         this.estado = 1;
-        this.fecha = fecha;
-        this.calificacion = calificacion;
+        this.fechaInicial = fechaInicial;
+        this.fechaFinal = fechaFinal;
         this.generoSancion = false;
         this.nombreEdificio = nombreEdificio;
         this.id = id;
@@ -54,8 +54,12 @@ public class ReservaDTO
         return estado;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public Date getFechaInicial() {
+        return fechaInicial;
+    }
+    
+    public Date getFechaFinal() {
+        return fechaFinal;
     }
 
     public Double getCalificacion() {
@@ -74,10 +78,11 @@ public class ReservaDTO
         return id;
     }
     
-    public void update(int pEstado,Date pFecha,Double pCalificacion, Boolean pSancion,String pEdificio, Long pId)
+    public void update(int pEstado,Date pFechaInicial, Date pFechaFinal ,Double pCalificacion, Boolean pSancion,String pEdificio, Long pId)
     {
         estado = pEstado;
-        fecha = pFecha;
+        fechaInicial = pFechaInicial;
+        fechaFinal = pFechaFinal;
         calificacion = pCalificacion;
         generoSancion = pSancion;
         nombreEdificio = pEdificio;
@@ -88,8 +93,12 @@ public class ReservaDTO
         this.estado = estado;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setFechaInicial(Date fecha) {
+        this.fechaInicial = fecha;
+    }
+    
+    public void setFechaFinal(Date fecha) {
+        this.fechaFinal = fecha;
     }
 
     public void setCalificacion(Double calificacion) {

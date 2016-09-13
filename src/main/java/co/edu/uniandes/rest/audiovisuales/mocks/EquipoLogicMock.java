@@ -9,7 +9,6 @@ import co.edu.uniandes.rest.audiovisuales.dtos.EquipoDTO;
 import co.edu.uniandes.rest.audiovisuales.exceptions.EquipoLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -101,11 +100,11 @@ public class EquipoLogicMock {
     	logger.info("recibiendo solicitud de agregar equipo " + nuevoEquipo);
     	
     	// el nuevo equipo tiene id ?
-    	if ( nuevoEquipo.getCodigo()!= 0 ) {
+    	if ( nuevoEquipo.getId()!= 0 ) {
 	    	// busca el equipo con el id suministrado
 	        for (EquipoDTO equipo : equipos) {
 	        	// si existe una ciudad con ese id
-	            if (equipo.getCodigo()== nuevoEquipo.getCodigo()){
+	            if (equipo.getId()== nuevoEquipo.getId()){
 	            	logger.severe("Ya existe un equipo con ese id");
 	                throw new EquipoLogicException("Ya existe un equipo con ese id");
 	            }
@@ -118,12 +117,12 @@ public class EquipoLogicMock {
     		logger.info("Generando id para el nuevo Equipo");
     		int newId = 1;
 	        for (EquipoDTO equipo : equipos) {
-	            if (newId < equipo.getCodigo()){
+	            if (newId < equipo.getId()){
 	                break;  
 	            }
-                    newId =  equipo.getCodigo()+ 1;
+                    newId =  equipo.getId()+ 1;
 	        }
-	        nuevoEquipo.setCodigo(newId);
+	        nuevoEquipo.setId(newId);
     	}
     	
         // agrega el equipo
@@ -133,11 +132,11 @@ public class EquipoLogicMock {
     }
     
     public EquipoDTO updateEquipo (EquipoDTO pEquipo, int pId) throws EquipoLogicException{
-       if(pEquipo.getCodigo()!=0){
+       if(pEquipo.getId()!=0){
            for (int i=0; i<equipos.size(); i++) {
 	        	// si existe un equipo con ese id la actualiza
                         EquipoDTO Equipo= equipos.get(i);
-	            if (Equipo.getCodigo()== pId){
+	            if (Equipo.getId()== pId){
                         Equipo.setEstado(pEquipo.getEstado());
                         return Equipo;
                     }
@@ -150,7 +149,7 @@ public class EquipoLogicMock {
    public void deleteEquipo(int pId) throws EquipoLogicException{
        logger.log(Level.INFO, "eliminando el equipo con id: {0} .", pId);
        for(EquipoDTO equipo : equipos){
-           if(pId ==equipo.getCodigo()){
+           if(pId ==equipo.getId()){
                equipos.remove(equipo);//busca y elimina el equipo
                return;
            }

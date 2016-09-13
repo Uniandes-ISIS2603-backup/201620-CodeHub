@@ -31,9 +31,9 @@ public class ReservaLogicMock {
         if(reservas == null)
         {
             reservas = new ArrayList<>();
-            reservas.add(new ReservaDTO(new Date(2016, 8, 10), "ML", 1L, -1l, new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 11), "W", 2L, -1l ,new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 12), "AU", 3L, -1L, new ArrayList<EquipoDTO>()));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 10),new Date(2016, 8, 12), "ML", 1L, -1l, new ArrayList<EquipoDTO>()));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 11),new Date(2016, 8, 12), "W", 2L, -1l ,new ArrayList<EquipoDTO>()));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "AU", 3L, -1L, new ArrayList<EquipoDTO>()));
         }
         
         logger.setLevel(Level.INFO);
@@ -77,6 +77,20 @@ public class ReservaLogicMock {
         return r;
     }
     
+    public List<ReservaDTO> getReservasPendientes(Long idUsuario) throws ReservaLogicException
+    {
+        List<ReservaDTO> res = getReservasUsuario(idUsuario);
+        List<ReservaDTO> pendientes = new ArrayList<>();
+        for (int i = 0; i< res.size();i++)
+        {
+            ReservaDTO actual = res.get(i);
+            if(actual.getEstado()==ReservaDTO.EN_REVISION)
+            {
+                pendientes.add(actual);
+            }
+        }
+        return pendientes;
+    }
     public ReservaDTO createReserva(ReservaDTO newReserva)throws ReservaLogicException
     {
         logger.info("recibiendo solicitud de agregar usuario " + newReserva);
@@ -119,7 +133,8 @@ public class ReservaLogicMock {
             ReservaDTO reserva = reservas.get(i);
             if(reserva.getId().equals(pReserva.getId())){
                 reserva.update(pReserva.getEstado(),
-                        pReserva.getFecha(),
+                        pReserva.getFechaInicial(),
+                        pReserva.getFechaFinal(),
                         pReserva.getCalificacion(),
                         pReserva.getGeneroSancion(),
                         pReserva.getNombreEdificio(),

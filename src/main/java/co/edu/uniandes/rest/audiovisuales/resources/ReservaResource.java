@@ -44,17 +44,7 @@ public class ReservaResource {
     @Path("pendientes")
     public List<ReservaDTO> getReservasPendientes(@PathParam("idUsuario")Long idUsuario) throws ReservaLogicException
     {
-        List<ReservaDTO> res = getReservasUsuario(idUsuario);
-        List<ReservaDTO> pendientes = new ArrayList<ReservaDTO>();
-        for (int i = 0; i< res.size();i++)
-        {
-            ReservaDTO actual = res.get(i);
-            if(actual.getEstado()==ReservaDTO.SIN_APROBAR)
-            {
-                pendientes.add(actual);
-            }
-        }
-        return pendientes;
+         return reservaLogic.getReservasPendientes(idUsuario);
     }
     
     @GET
