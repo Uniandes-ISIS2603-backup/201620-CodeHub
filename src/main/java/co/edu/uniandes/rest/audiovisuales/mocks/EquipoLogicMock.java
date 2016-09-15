@@ -39,9 +39,9 @@ public class EquipoLogicMock {
     public EquipoLogicMock(){
         if(equipos ==null){
             equipos = new ArrayList<>();
-            equipos.add(new EquipoDTO(1L,EquipoDTO.DISPONIBLE, -1L));
-            equipos.add(new EquipoDTO(2L,EquipoDTO.AVERIADO, -1L));
-            equipos.add(new EquipoDTO(3L,EquipoDTO.RESERVADO, -1L));
+            equipos.add(new EquipoDTO(1L,EquipoDTO.DISPONIBLE, 1L));
+            equipos.add(new EquipoDTO(2L,EquipoDTO.AVERIADO, 1L));
+            equipos.add(new EquipoDTO(3L,EquipoDTO.RESERVADO, 1L));
         }
         // indica que se muestren todos los mensajes
     	logger.setLevel(Level.INFO);
@@ -49,6 +49,17 @@ public class EquipoLogicMock {
         // muestra información 
     	logger.info("Inicializa la lista de equipos");
     	logger.info("ciudades" + equipos );
+    }
+    
+    public List<EquipoDTO> darEquipos() throws EquipoLogicException{
+        if (equipos == null) {
+    		logger.severe("Error interno: lista de equipos no existe.");
+    		throw new EquipoLogicException("Error interno: lista de equipos no existe.");    		
+    	}
+    	
+    	logger.info("retornando todas los equipos");
+
+    	return equipos;
     }
     
     /**

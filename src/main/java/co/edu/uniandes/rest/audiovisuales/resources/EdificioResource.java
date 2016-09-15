@@ -6,6 +6,7 @@
 package co.edu.uniandes.rest.audiovisuales.resources;
 
 import co.edu.uniandes.rest.audiovisuales.dtos.EdificioDTO;
+import co.edu.uniandes.rest.audiovisuales.dtos.EquipoDTO;
 import co.edu.uniandes.rest.audiovisuales.exceptions.EdificioLogicException;
 import co.edu.uniandes.rest.audiovisuales.mocks.EdificioLogicMock;
 import java.util.List;

@@ -16,12 +16,14 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 /**
  *Clase que implementa el recurso REST correspondiente a "Equipo".
  * @author c.zambrano10
  */
-@Path("edificios/(idEdificio: \\d+)/equipos")
+
+@Path("equipos")
 @Produces("application/json")
 public class EquipoResource {
     EquipoLogicMock EquipoLogic = new EquipoLogicMock();
@@ -32,26 +34,20 @@ public class EquipoResource {
      * @throws EquipoLogicException excepción retornada por la lógica
      */
     @GET
+    public List<EquipoDTO> getEquipos() throws EquipoLogicException {
+        return EquipoLogic.darEquipos();
+    }
+    
+    @GET
+    @Path("/edificios/(idEdificio: \\d+)/equipos")
     public List<EquipoDTO> getEquipos(@PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
         return EquipoLogic.darEquipos(idEdificio);
     }
     
     @GET
-    @Path("disponibles")
-    public List<EquipoDTO> getEquiposDisponibles(@PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
-        return EquipoLogic.darEquiposEstado(idEdificio, EquipoDTO.DISPONIBLE);
-    }
-    
-    @GET
-    @Path("reservados")
-    public List<EquipoDTO> getEquiposReservados(@PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
-        return EquipoLogic.darEquiposEstado(idEdificio, EquipoDTO.RESERVADO);
-    }
-    
-    @GET
-    @Path("averiados")
-    public List<EquipoDTO> getEquiposAveriados(@PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
-        return EquipoLogic.darEquiposEstado(idEdificio, EquipoDTO.AVERIADO);
+    @Path("edificios/(idEdificio: \\d+)/equipos")
+    public List<EquipoDTO> getEquiposDisponibles(@PathParam("idEdificio") Long idEdificio, @QueryParam("estado") int estado) throws EquipoLogicException {
+        return EquipoLogic.darEquiposEstado(idEdificio, estado);
     }
 
    
