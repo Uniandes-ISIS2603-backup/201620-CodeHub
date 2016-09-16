@@ -8,7 +8,6 @@ package co.edu.uniandes.rest.audiovisuales.resources;
 import co.edu.uniandes.rest.audiovisuales.dtos.ReservaDTO;
 import co.edu.uniandes.rest.audiovisuales.mocks.ReservaLogicMock;
 import co.edu.uniandes.rest.audiovisuales.exceptions.ReservaLogicException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -21,7 +20,7 @@ import javax.ws.rs.Produces;
  *
  * @author orlando
  */
-@Path("usuarios/(idUsuario: \\d+)/reservas")
+@Path("usuarios/{idUsuario}/reservas")
 @Produces("application/json")
 public class ReservaResource {
     
@@ -34,7 +33,7 @@ public class ReservaResource {
     }
     
     @GET
-    @Path("{id:  \\d+}")
+    @Path("{id: \\d+}")
     public ReservaDTO getReserva(@PathParam("id")Long id) throws ReservaLogicException
     {
         return reservaLogic.getReserva(id);
@@ -72,10 +71,9 @@ public class ReservaResource {
     }
     
     @PUT
-    public ReservaDTO updateReserva(ReservaDTO reserva) throws ReservaLogicException
+    @Path("{id:\\d+}")
+    public ReservaDTO updateReserva(@PathParam("id") int id, ReservaDTO reserva) throws ReservaLogicException
     {
         return reservaLogic.updateReserva(reserva);
-    }
-    
-    
+    }  
 }
