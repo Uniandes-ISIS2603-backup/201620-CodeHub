@@ -23,7 +23,7 @@ import javax.ws.rs.QueryParam;
  * @author c.zambrano10
  */
 
-@Path("equipos")
+@Path("edificios/{idEdificio}/equipos")
 @Produces("application/json")
 public class EquipoResource {
     EquipoLogicMock EquipoLogic = new EquipoLogicMock();
@@ -34,20 +34,27 @@ public class EquipoResource {
      * @throws EquipoLogicException excepción retornada por la lógica
      */
     @GET
+    @Path("/equipos")
     public List<EquipoDTO> getEquipos() throws EquipoLogicException {
         return EquipoLogic.darEquipos();
     }
     
     @GET
-    @Path("/edificios/(idEdificio: \\d+)/equipos")
-    public List<EquipoDTO> getEquipos(@PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
+    public List<EquipoDTO> getEquiposEdificio(@PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
         return EquipoLogic.darEquipos(idEdificio);
     }
     
     @GET
-    @Path("edificios/(idEdificio: \\d+)/equipos")
-    public List<EquipoDTO> getEquiposDisponibles(@PathParam("idEdificio") Long idEdificio, @QueryParam("estado") int estado) throws EquipoLogicException {
-        return EquipoLogic.darEquiposEstado(idEdificio, estado);
+    @Path("{id:\\d+}")
+    public EquipoDTO getEquipo(@PathParam("id")int id)throws EquipoLogicException{
+        return EquipoLogic.getEquipo(id);
+    }
+    
+    @GET
+    @Path("/")
+    public List<EquipoDTO> getEquiposEstado (@QueryParam("estado") int estado, @PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
+        
+           return EquipoLogic.darEquiposEstado(idEdificio, estado);
     }
 
    
@@ -86,12 +93,5 @@ public class EquipoResource {
     public void deleteEquipo(@PathParam("id") int pId)throws EquipoLogicException{
         EquipoLogic.deleteEquipo(pId);//envia el id a eliminar
         
-    }
-    
-    @GET
-    @Path("{id:\\d+}")
-    public EquipoDTO getEquipo(@PathParam("id")int id)throws EquipoLogicException{
-        return EquipoLogic.getEquipo(id);
-    }
-    
+    }  
 }
