@@ -48,6 +48,7 @@ public class ReservaDTO
         this.id = id;
         this.idUsuario = idUsuario;
         this.equipos = equipos;
+        this.calificacion = 0.0;
     }
 
     public int getEstado() {

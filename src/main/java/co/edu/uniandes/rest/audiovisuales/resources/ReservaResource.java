@@ -48,10 +48,11 @@ public class ReservaResource {
     
     @GET
     @Path("calificacion")
-    public double getCalificacionSistema(@PathParam("idUsuario")Long idUsuario) throws ReservaLogicException
+    public String getCalificacionSistema(@PathParam("idUsuario")Long idUsuario) throws ReservaLogicException
     {
         double contador = 0.0;
         int size = 0;
+        double calificacion= 0;
         List<ReservaDTO> res = getReservasUsuario(idUsuario);
         for (int i = 0; i< res.size();i++)
         {
@@ -61,7 +62,14 @@ public class ReservaResource {
                 size++;
             }
         }
-        return size!=0? contador/size : 0.0;
+        if(size==0){
+            calificacion = 0.0;
+        }
+        else{
+            calificacion = contador/size;
+        }
+        
+        return "{ calificacion: " + calificacion + "\" }";
     }
     
     @POST
