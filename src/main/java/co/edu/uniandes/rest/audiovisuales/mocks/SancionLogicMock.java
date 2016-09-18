@@ -33,9 +33,9 @@ public class SancionLogicMock
     	if (sanciones == null) {
             sanciones = new ArrayList<>();
     	logger.info("Inicializa la lista de sanciones");
-            sanciones.add(new SancionDTO(1L, "15/07/2016", "vigente",-1l));
-            sanciones.add(new SancionDTO(2L, "17/06/2016", "saldada",-1l));
-            sanciones.add(new SancionDTO(3L, "04/08/2016", "vigente",-1l));
+            sanciones.add(new SancionDTO(1L, "15/07/2016", "vigente",1l));
+            sanciones.add(new SancionDTO(2L, "17/06/2016", "saldada",2l));
+            sanciones.add(new SancionDTO(3L, "04/08/2016", "vigente",3l));
         }
         
     	// indica que se muestren todos los mensajes
