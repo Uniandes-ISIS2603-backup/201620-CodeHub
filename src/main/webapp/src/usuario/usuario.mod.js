@@ -22,7 +22,7 @@
                     'hijoView': {
                         controller: 'reservasUsuarioCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservasUsuario.list.html'
+                        templateUrl: basePath + 'reservas/reservasUsuario.list.html'
                     }
                 }
             });

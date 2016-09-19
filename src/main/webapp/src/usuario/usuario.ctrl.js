@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 (function (ng) {
-    var mod = ng.module("usuariosModule");
+    var mod = ng.module("usuarioModule");
 
-    mod.controller("usuariosCtrl", ['$scope', '$state', '$stateParams', '$http', 'usuariosContext', function ($scope, $state, $stateParams, $http, context) {
+    mod.controller("usuarioCtrl", ['$scope', '$state', '$stateParams', '$http', 'usuarioContext', function ($scope, $state, $stateParams, $http, context) {
 
             // inicialmente el listado de ciudades está vacio
             $scope.records = {};
