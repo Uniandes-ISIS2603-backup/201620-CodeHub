@@ -7,13 +7,13 @@
     var mod = ng.module("equiposModule", ["ngMessages","ui.router"]);
     mod.constant("equiposContext", "api/equipos");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/equipos/';
+            var basePath = 'src/templates/administrador/equipos/';
             $urlRouterProvider.otherwise("/equiposList");
      
             $stateProvider.state('equiposList', {
                 url: '/equipos',
                 views: {
-                    'mainView': {
+                    'hijoView': {
                         controller: 'equiposCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'equipos.list.html'
@@ -22,7 +22,7 @@
             }).state('equiposCreate', {
                 url: '/equipos/create',
                 views: {
-                    'mainView': {
+                    'hijoView': {
                         controller: 'equiposCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'equipos.create.html'
@@ -35,7 +35,7 @@
                     equipoCodigo: null
                 },
                 views: {
-                    'mainView': {
+                    'hijoView': {
                         controller: 'equiposCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'equipos.create.html'

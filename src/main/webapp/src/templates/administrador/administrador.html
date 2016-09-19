@@ -1,0 +1,12 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+ <ul class="nav nav-tabs"> 
+                 <button>
+                  <a ui-sref="reservaAdminList">Reservas</a>
+                </button> 
+                <button>
+                  <a ui-sref="equiposList">Equipos</a>
+                </button>    
+                <button>
+                  <a ui-sref="usuariosList">Usuarios</a>
+                </button>
+            </ul>
