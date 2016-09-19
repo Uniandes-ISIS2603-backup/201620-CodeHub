@@ -122,7 +122,7 @@ public class SancionLogicMock
    }
    
   public SancionDTO putSancion(SancionDTO newSancion, Long id) throws SancionLogicException {
-        logger.log(Level.INFO, "la sanci\u00f3n que llega es: {0} {1}", new Object[]{newSancion.getEstado(), newSancion.getFecha()});
+
         if(sanciones==null)
         {
             throw new SancionLogicException("No se encuentra inicializada la lista de sanciones.");
