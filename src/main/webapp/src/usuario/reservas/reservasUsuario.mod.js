@@ -7,25 +7,35 @@
     var mod = ng.module("reservasUsuarioModule", ["ngMessages","ui.router"]);
     mod.constant("reservasUsuarioContext", "reservas");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/usuario/reservas/';
+            var basePath = 'src/usuario/';
             $urlRouterProvider.otherwise("/reservasUsuarioList");
      
             $stateProvider.state('reservasUsuarioList', {
                 url: '/reservas',
                 views: {
-                    'usuarioView': {
+                    'mainView': {
+                        controller: 'usuarioCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'usuario.html'
+                    },
+                    'hijoView': {
                         controller: 'reservasUsuarioCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservasUsuario.list.html'
+                        templateUrl: basePath + 'reservas/reservasUsuario.list.html'
                     }
                 }
             }).state('reservasUsuarioCreate', {
                 url: '/reservas/create',
                 views: {
-                    'usuarioView': {
+                    'mainView': {
+                        controller: 'usuarioCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'usuario.html'
+                    },
+                    'hijoView': {
                         controller: 'reservasUsuarioCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservasUsuario.create.html'
+                        templateUrl: basePath + 'reservas/reservasUsuario.create.html'
                     }
                 }
 
@@ -35,10 +45,15 @@
                     reservaId: null
                 },
                 views: {
-                    'usuarioView': {
+                    'mainView': {
+                        controller: 'usuarioCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'usuario.html'
+                    },
+                    'hijoView': {
                         controller: 'reservasUsuarioCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservasUsuario.create.html'
+                        templateUrl: basePath + 'reservas/reservasUsuario.create.html'
                     }
                 }
             });

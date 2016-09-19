@@ -8,7 +8,7 @@
 
     mod.controller("usuarioCtrl", ['$scope', '$state', '$stateParams', '$http', 'usuarioContext', function ($scope, $state, $stateParams, $http, context) {
 
-            // inicialmente el listado de ciudades está vacio
+           // inicialmente el listado de ciudades está vacio
             $scope.records = {};
             // carga las ciudades
             $http.get(context).then(function(response){
@@ -52,7 +52,7 @@
                         .then(function () {
                             // $http.post es una promesa
                             // cuando termine bien, cambie de estado
-                            $state.go('usuariosList');
+                            $state.go('usuarioList');
                         }, responseError);
                         
                 // si el id no es null, es un registro existente entonces lo actualiza
