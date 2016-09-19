@@ -5,24 +5,24 @@
  */
 
 (function (ng) {
-    var mod = ng.module("adminModule", ["ngMessages","ui.router"]);
-    mod.constant("adminContext", "api/admin");
+    var mod = ng.module("usuarioModule", ["ngMessages","ui.router"]);
+    mod.constant("usuarioContext", "api/usuario");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/administrador/'; 
-            $urlRouterProvider.otherwise("/admin");
+            var basePath = 'src/usuario/'; 
+            $urlRouterProvider.otherwise("/usuario");
      
-            $stateProvider.state('admin', {
-                url: '/admins',
+            $stateProvider.state('usuario', {
+                url: '/usuario',
                 views: {
                     'mainView': {
-                        controller: 'adminCtrl',
+                        controller: 'usuarioCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'admin.html'
+                        templateUrl: basePath + 'usuario.html'
                     },
                     'hijoView': {
-                        controller: 'reservasAdminCtrl',
+                        controller: 'reservasUsuarioCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservas/reservasAdmin.list.html'
+                        templateUrl: basePath + 'reservasUsuario.list.html'
                     }
                 }
             });

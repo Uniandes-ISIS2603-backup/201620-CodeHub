@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 (function (ng) {
-    var mod = ng.module("reservasModule");
+    var mod = ng.module("reservasAdminModule");
 
-    mod.controller("reservasCtrl", ['$scope', '$state', '$stateParams', '$http', 'reservasContext', function ($scope, $state, $stateParams, $http, context) {
+    mod.controller("reservasAdminCtrl", ['$scope', '$state', '$stateParams', '$http', 'reservasAdminContext', function ($scope, $state, $stateParams, $http, context) {
 
             // inicialmente el listado de ciudades está vacio
             $scope.records = {};
