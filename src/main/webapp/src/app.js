@@ -5,8 +5,7 @@
  */
 (function (ng) {
 
-var mod = ng.module("mainApp", ["ui.router","usuariosModule","edificiosModule",
-    "equiposModule","sancionesModule","adminModule","reservasModule","ngMessages"]);
+var mod = ng.module("mainApp", ["ui.router","ngMessages","edificiosModule","reservasUsuarioModule","sancionesModule","adminModule","usuariosModule","reservasAdminModule","equiposModule"]);
 
     mod.config(['$logProvider', function ($logProvider) {
             $logProvider.debugEnabled(true);

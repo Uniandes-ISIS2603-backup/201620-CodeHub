@@ -4,41 +4,41 @@
  * and open the template in the editor.
  */
 (function (ng) {
-    var mod = ng.module("reservasUsuarioModule", ["ngMessages","ui.router"]);
-    mod.constant("reservasUsuarioContext", "reservas");
+    var mod = ng.module("reservasAdminModule", ["ngMessages","ui.router"]);
+    mod.constant("reservasAdminContext", "reservas");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/templates/usuario/reservas/';
-            $urlRouterProvider.otherwise("/reservasUsuarioList");
+            var basePath = 'src/administrador/reservas/';
+            $urlRouterProvider.otherwise("/reservasAdminList");
      
-            $stateProvider.state('reservasUsuarioList', {
+            $stateProvider.state('reservasAdminList', {
                 url: '/reservas',
                 views: {
-                    'usuarioView': {
-                        controller: 'reservasUsuarioCtrl',
+                    'hijoView': {
+                        controller: 'reservasAdminCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservasUsuario.list.html'
+                        templateUrl: basePath + 'reservasAdmin.list.html'
                     }
                 }
-            }).state('reservasUsuarioCreate', {
+            }).state('reservasAdminCreate', {
                 url: '/reservas/create',
                 views: {
-                    'usuarioView': {
-                        controller: 'reservasUsuarioCtrl',
+                    'hijoView': {
+                        controller: 'reservasAdminCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'reservasUsuario.create.html'
                     }
                 }
 
-            }).state('reservaUsuarioEdit', {
+            }).state('reservaAdminEdit', {
                 url: '/reservas/:reservaId',
                 param: {
                     reservaId: null
                 },
                 views: {
-                    'usuarioView': {
-                        controller: 'reservasUsuarioCtrl',
+                    'hijoView': {
+                        controller: 'reservasAdminCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservasUsuario.create.html'
+                        templateUrl: basePath + 'reservasAdmin.create.html'
                     }
                 }
             });

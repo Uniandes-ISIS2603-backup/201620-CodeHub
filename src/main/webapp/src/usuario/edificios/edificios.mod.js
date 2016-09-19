@@ -7,7 +7,7 @@
     var mod = ng.module("edificiosModule", ["ngMessages","ui.router"]);
     mod.constant("edificiosContext", "api/edificios");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/edificios/';
+            var basePath = 'src/usuario/edificios/';
             $urlRouterProvider.otherwise("/edificiosList");
      
             $stateProvider.state('edificiosList', {

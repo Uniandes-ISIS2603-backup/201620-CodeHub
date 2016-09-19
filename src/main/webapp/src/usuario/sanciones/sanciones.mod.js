@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 (function (ng) {
-
     var mod = ng.module("sancionesModule", ["ngMessages","ui.router"]);
     mod.constant("sancionesContext", "api/sanciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/modules/sanciones/';
+            var basePath = 'src/usuario/sanciones/';
             $urlRouterProvider.otherwise("/sancionesList");
      
             $stateProvider.state('sancionesList', {
@@ -19,28 +17,6 @@
                         controller: 'sancionesCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'sanciones.list.html'
-                    }
-                }
-            }).state('sancionCreate', {
-                url: '/sanciones/create',
-                views: {
-                    'mainView': {
-                        controller: 'sancionesCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'sanciones.create.html'
-                    }
-                }
-
-            }).state('sancionEdit', {
-                url: '/sanciones/:sancionId',
-                param: {
-                    sancionId: null
-                },
-                views: {
-                    'mainView': {
-                        controller: 'sancionesCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'sanciones.create.html'
                     }
                 }
             });
