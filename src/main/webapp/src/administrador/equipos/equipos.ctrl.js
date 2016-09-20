@@ -37,6 +37,7 @@
                 $scope.alerts = [];
             }
 
+
             this.cargarEquipos= function(idEdificio){
                 showMessage("tratando :T", "info");
                     //trata de ejecutar el DELETE en el recurso REST
@@ -48,6 +49,7 @@
                             $state.reload();
                         }, responseError);
             };
+            
             
             this.saveRecord = function (codigo) {
                 currentRecord = $scope.currentRecord;

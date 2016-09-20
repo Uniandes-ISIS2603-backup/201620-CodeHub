@@ -12,8 +12,8 @@
             $urlRouterProvider.otherwise("/admin");
      
             $stateProvider.state('admin', {
-                url: '/admin/{idAdmin:int}',
-                param: {'idAdmin' : null},
+                url: '/admin/{adminId:int}',
+                param: {'adminId' : null},
                 views: {
                     'mainView': {
                         controller: 'adminCtrl',
