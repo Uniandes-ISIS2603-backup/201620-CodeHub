@@ -40,7 +40,11 @@
                     // ejecuta delete en el recurso REST
                     return $http.get(context + "/" + id)
                         .then(function (response) {
-                            $scope.currentRecord = response.data;
+                            $scope.records = response.data;
+                            $stateParams.edificioId = $scope.currentRecord.edificioId;
+                            document.getElementById("infoAdmin").getElementById("id").innerHTML=$scope.currentRecord.id;
+                            document.getElementById("infoAdmin").getElementById("nombre").innerHTML=$scope.currentRecord.name;
+                            document.getElementById("infoAdmin").getElementById("edificioId").innerHTML=$scope.currentRecord.edificioId;
                             $state.go('equiposList({edificioId:  $scope.currentRecord.edificioId})');
                         }, responseError); 
 

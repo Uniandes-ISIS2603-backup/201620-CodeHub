@@ -34,12 +34,6 @@ public class EquipoResource {
      * @throws EquipoLogicException excepción retornada por la lógica
      */
     @GET
-    @Path("/equipos")
-    public List<EquipoDTO> getEquipos() throws EquipoLogicException {
-        return EquipoLogic.darEquipos();
-    }
-    
-    @GET
     public List<EquipoDTO> getEquiposEdificio(@PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
         return EquipoLogic.darEquipos(idEdificio);
     }
