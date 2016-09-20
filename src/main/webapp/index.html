@@ -57,12 +57,11 @@ and open the template in the editor.
       <div class="wrapper" style="background-color:white;width:350px;center">
     <form class="form-signin">       
       <h2 class="form-signin-heading">Please login</h2>
-      <input type="text" class="form-control" placeholder="Email Address" autofocus="">
-      <input type="password" class="form-control" placeholder="Password">      
+      <input type="text" class="form-control" placeholder="ID" ng-init="id" ng-model="id" autofocus="">
       <label class="checkbox">
         <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
       </label>
-      <button class="btn btn-lg btn-primary btn btn-success btn-block" ui-sref="admin" >Login</button>   
+      <button class="btn btn-lg btn-primary btn btn-success btn-block" ui-sref="admin({idAdmin: id})" >Login</button>   
       <button class="btn btn-lg btn-primary btn btn-success btn-block" ui-sref="usuario" >Login Profesor</button>
     </form>
   </div>

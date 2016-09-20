@@ -5,13 +5,13 @@
  */
 (function (ng) {
     var mod = ng.module("reservasUsuarioModule", ["ngMessages","ui.router"]);
-    mod.constant("reservasUsuarioContext", "reservas");
+    mod.constant("reservasUsuarioContext", "api/usuarios");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/usuario/';
             $urlRouterProvider.otherwise("/reservasUsuarioList");
      
             $stateProvider.state('reservasUsuarioList', {
-                url: '/reservas',
+                url: '{idUsuario:int}/reservas',
                 views: {
                     'mainView': {
                         controller: 'usuarioCtrl',
@@ -35,7 +35,7 @@
                     'hijoView': {
                         controller: 'reservasUsuarioCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservas/reservasUsuario.create.html'
+                        templateUrl: basePath + 'reservas/reservaUsuario.create.html'
                     }
                 }
 
@@ -53,7 +53,7 @@
                     'hijoView': {
                         controller: 'reservasUsuarioCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservas/reservasUsuario.create.html'
+                        templateUrl: basePath + 'reservas/reservaUsuario.create.html'
                     }
                 }
             });

@@ -7,16 +7,21 @@
     var mod = ng.module("edificiosModule", ["ngMessages","ui.router"]);
     mod.constant("edificiosContext", "api/edificios");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/usuario/edificios/';
+            var basePath = 'src/usuario/';
             $urlRouterProvider.otherwise("/edificiosList");
      
             $stateProvider.state('edificiosList', {
                 url: '/edificios',
                 views: {
                     'mainView': {
+                        controller: 'usuarioCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'usuario.html'
+                    },
+                    'hijoView': {
                         controller: 'edificiosCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'edificios.list.html'
+                        templateUrl: basePath + 'edificios/edificios.list.html'
                     }
                 }
             });

@@ -6,7 +6,8 @@
             // inicialmente el listado de equipos está vacio
             $scope.records = {};
             // carga los equipos
-            $http.get(context).then(function(response){
+    
+            $http.get(context+$stateParams.edificioId+"/equipos").then(function(response){
                 $scope.records = response.data;    
             }, responseError);
 
@@ -36,7 +37,18 @@
                 $scope.alerts = [];
             }
 
-
+            this.cargarEquipos= function(idEdificio){
+                showMessage("tratando :T", "info");
+                    //trata de ejecutar el DELETE en el recurso REST
+                return $http.get(context+"/"+idEdificio/equipos)
+                        .then(function (response){
+                            //$http.delete puede que funcione ...... creo
+                            //la cosa es que si no da error va a cambiar de estado regresando a 'equiposList'
+                            $scope.records = response.data;
+                            $state.reload();
+                        }, responseError);
+            };
+            
             this.saveRecord = function (codigo) {
                 currentRecord = $scope.currentRecord;
                 

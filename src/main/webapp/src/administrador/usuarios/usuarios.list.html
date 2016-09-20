@@ -60,26 +60,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', end
 <br>
 
 
-<table style="width:100%">
-  <tr>
-    <th>Id</th>
-    <th>Nombre</th>
-    <th>Acción</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Juanita Perez</td>
-    <td>
-      <button>Editar</button>
-    </td>
+<table class="table table-striped" class="col-md-4" style="background-color:MediumTurquoise;"  align="center">
+        <thead>
+            <tr>
+                <th align="center">Id</th>
+                <th align="center">Nombre</th>    
+                <th align="center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in records">
+                <td id="{{$index}}-id" align="center">{{record.id}}</td>
+                <td id="{{$index}}-name" align="center">{{record.name}}</td>
 
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Juan Romero</td>
-    <td>
-      <button>Editar</button>
-    </td>
-  </tr>
-</table>
+                <td>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="reservasAdminList({usuarioId: record.id})" style="color:green;" align="center"><span class="glyphicon glyphicon-eye-open"></span>Ver Reservas</button>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="sancionesList({usuarioId: record.id})" style="color:green;" align="center"><span class="glyphicon glyphicon-eye-open"></span>Ver Sanciones</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </html>

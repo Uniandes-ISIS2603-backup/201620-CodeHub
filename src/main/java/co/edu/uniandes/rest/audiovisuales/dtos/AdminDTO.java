@@ -14,6 +14,7 @@ public class AdminDTO
     private int id;
     private String nombre;
     private String correo;
+    private Long edificioId;
   
     /**
      * Constructor por defecto
@@ -27,12 +28,13 @@ public class AdminDTO
      * @param id identificador del edificio
      * @param nombre nombre del edificio
      */
-    public AdminDTO(int pId, String nombre, String correo) 
+    public AdminDTO(int pId, String nombre, String correo, Long edificioId) 
     {
 	super();
         this.id = pId;
 	this.nombre = nombre;
         this.correo = correo;
+        this.edificioId = edificioId;
     }
 
         public int getId()

@@ -28,13 +28,25 @@
                 $scope.currentRecord = {
                     id: undefined ,
                     name: '' ,
-                    email: ''
+                    email: '',
+                    edificioId:''
                 };
               
                 $scope.alerts = [];
             }
 
+            this.login = function(id){
+                currentRecord = $scope.currentRecord;          
+                    // ejecuta delete en el recurso REST
+                    return $http.get(context + "/" + id)
+                        .then(function (response) {
+                            $scope.currentRecord = response.data;
+                            $state.go('equiposList({edificioId:  $scope.currentRecord.edificioId})');
+                        }, responseError); 
 
+                };
+            
+            
             this.saveRecord = function (id) {
                 currentRecord = $scope.currentRecord;
                 

@@ -12,7 +12,8 @@
             $urlRouterProvider.otherwise("/admin");
      
             $stateProvider.state('admin', {
-                url: '/admin',
+                url: '/admin/{idAdmin:int}',
+                param: {'idAdmin' : null},
                 views: {
                     'mainView': {
                         controller: 'adminCtrl',
@@ -20,9 +21,9 @@
                         templateUrl: basePath + 'admin.html'
                     },
                     'hijoView': {
-                        controller: 'reservasAdminCtrl',
+                        controller: 'equiposCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservas/reservasAdmin.list.html'
+                        templateUrl: basePath + 'equipos/equipos.list.html'
                     }
                 }
             });

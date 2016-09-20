@@ -5,27 +5,39 @@
  */
 (function (ng) {
     var mod = ng.module("equiposModule", ["ngMessages","ui.router"]);
-    mod.constant("equiposContext", "api/equipos");
+    mod.constant("equiposContext", "api/edificios/");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/administrador/equipos/';
+            var basePath = 'src/administrador/';
             $urlRouterProvider.otherwise("/equiposList");
      
             $stateProvider.state('equiposList', {
-                url: '/equipos',
+                url: '{edificioId:int}/equipos',
+                parent: 'edificiosList',
+                param: {'edificioId' : null},   
                 views: {
+                    'mainView': {
+                        controller: 'adminCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'admin.html'
+                    },
                     'hijoView': {
                         controller: 'equiposCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'equipos.list.html'
+                        templateUrl: basePath + 'equipos/equipos.list.html'
                     }
                 }
             }).state('equiposCreate', {
                 url: '/equipos/create',
                 views: {
+                    'mainView': {
+                        controller: 'adminCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'admin.html'
+                    },
                     'hijoView': {
                         controller: 'equiposCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'equipos.create.html'
+                        templateUrl: basePath + 'equipos/equipos.create.html'
                     }
                 }
 
@@ -35,10 +47,15 @@
                     equipoCodigo: null
                 },
                 views: {
+                    'mainView': {
+                        controller: 'adminCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'admin.html'
+                    },
                     'hijoView': {
                         controller: 'equiposCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'equipos.create.html'
+                        templateUrl: basePath + 'equipos/equipos.create.html'
                     }
                 }
             });

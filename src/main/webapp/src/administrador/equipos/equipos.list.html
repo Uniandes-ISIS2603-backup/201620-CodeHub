@@ -50,7 +50,6 @@ and open the template in the editor.
   <br>
 </fieldset>
 
-
 <input type="text"> Atributo:
 <select>
   <option value="1">Nombre</option>
@@ -59,33 +58,26 @@ and open the template in the editor.
 </select>
 <br>
 
+    <table class="table table-striped" class="col-md-4">
+        <thead>
+            <tr>
+                <th>Id(equipo)</th>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in records">
+                <td id="{{$index}}-name">{{record.id}}</td>
+                <td id="{{$index}}-name">{{record.nombre}}</td>
+                <td id="{{$index}}-name">{{record.estado}}</td>
+                <td>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="equipoEdit({equipoCodigo: record.codigo})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteEquipo(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
 
-<table style="width:100%">
-  <tr>
-    <th>Id(equipo)</th>
-    <th>Nombre</th>
-    <th>Calificacion(1-5)</th>
-    <th>Estado</th>
-    <th>Acción</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Valerie Liberty Profesor</td>
-    <td>4</td>
-    <td>Sancionada</td>
-    <td>
-      <button>Ver reserva </button>
-    </td>
-
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Marco Botton Estudiante</td>
-    <td>5</td>
-    <td>Inactiva</td>
-    <td>
-      <button>Ver reserva </button>
-    </td>
-  </tr>
-</table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </html>

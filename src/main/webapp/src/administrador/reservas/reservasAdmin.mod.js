@@ -5,27 +5,37 @@
  */
 (function (ng) {
     var mod = ng.module("reservasAdminModule", ["ngMessages","ui.router"]);
-    mod.constant("reservasAdminContext", "reservas");
+    mod.constant("reservasAdminContext", "api/reservas");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            var basePath = 'src/administrador/reservas/';
+            var basePath = 'src/administrador/';
             $urlRouterProvider.otherwise("/reservasAdminList");
      
             $stateProvider.state('reservasAdminList', {
                 url: '/reservas',
                 views: {
+                    'mainView': {
+                        controller: 'adminCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'admin.html'
+                    },
                     'hijoView': {
                         controller: 'reservasAdminCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservasAdmin.list.html'
+                        templateUrl: basePath + 'reservas/reservasAdmin.list.html'
                     }
                 }
             }).state('reservasAdminCreate', {
                 url: '/reservas/create',
                 views: {
+                    'mainView': {
+                        controller: 'adminCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'admin.html'
+                    },
                     'hijoView': {
                         controller: 'reservasAdminCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservasUsuario.create.html'
+                        templateUrl: basePath + 'reservas/reservasUsuario.create.html'
                     }
                 }
 
@@ -35,10 +45,15 @@
                     reservaId: null
                 },
                 views: {
+                    'mainView': {
+                        controller: 'adminCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'admin.html'
+                    },
                     'hijoView': {
                         controller: 'reservasAdminCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservasAdmin.create.html'
+                        templateUrl: basePath + 'reservas/reservasAdmin.create.html'
                     }
                 }
             });
