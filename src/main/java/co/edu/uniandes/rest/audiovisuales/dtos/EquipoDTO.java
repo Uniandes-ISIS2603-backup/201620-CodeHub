@@ -16,8 +16,8 @@ import java.util.List;
 public class EquipoDTO {
     
     public final static int DISPONIBLE = 1;
-    public final static int RESERVADO = 1;
-    public final static int AVERIADO = 1;
+    public final static int RESERVADO = 2;
+    public final static int AVERIADO = 3;
     
     /*-----------------------
             Atributos.
