@@ -32,9 +32,9 @@ public class AdminLogicMock
             administradores = new ArrayList<>();
             administradores.add(new AdminDTO(1L,"Admin1", "Admin1@uniandes.edu.co",1L));
             administradores.add(new AdminDTO(2L,"Admin2","Admin2@uniandes.edu.co",2L));
-            administradores.add(new AdminDTO(3L,"Admin3","Admin3@uniandes.edu.co",2L));
-            administradores.add(new AdminDTO(4L,"Admin4","Admin4@uniandes.edu.co",2L));
-            administradores.add(new AdminDTO(5L,"Admin5","Admin5@uniandes.edu.co",2L));
+            administradores.add(new AdminDTO(3L,"Admin3","Admin3@uniandes.edu.co",5L));
+            administradores.add(new AdminDTO(4L,"Admin4","Admin4@uniandes.edu.co",3L));
+            administradores.add(new AdminDTO(5L,"Admin5","Admin5@uniandes.edu.co",4L));
         }
         // indica que se muestren todos los mensajes
     	logger.setLevel(Level.INFO);

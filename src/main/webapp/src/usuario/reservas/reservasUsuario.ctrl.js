@@ -12,8 +12,23 @@
             $scope.records = {};
             // carga las ciudades
             $http.get("api/usuarios/"+$stateParams.usuarioId).then(function(response){
-                var obj = response.data;
-                var usuarioId = obj.id;
+                var usr = response.data;
+                var str = "Nombre: "+usr.name+"<br>Tipo: ";
+                if(usr.tipo==1)
+                {
+                    str+="Estudiante<br>";
+                }
+                else
+                {
+                    str+="Profesor<br>";
+                }
+                if(usr.tieneSancion=="true")
+                {
+                    str+="";
+                }
+                
+                document.getElementById("infoUsuario").innerHTML = str;
+                var usuarioId = usr.id;
                 $http.get(context+"/"+usuarioId+"/reservas").then(function(response){
                     $scope.records = response.data;    
                 }, responseError);

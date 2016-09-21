@@ -11,7 +11,7 @@
             $urlRouterProvider.otherwise("/equiposAdminList");
      
             $stateProvider.state('equiposAdminList', {
-                url: '/edificio/{edificioId:int}/equipos',
+                url: '/edificioAdmin/{edificioId:int}/equipos',
                 param: {'edificioId' : null},   
                 views: {
                     'mainView': {
