@@ -111,7 +111,7 @@ public class EdificioDTO
      */
     @Override
     public String toString() {
-        int adminID = -1;
+        Long adminID = -1L;
         if(admin!=null)
         {
             adminID=getAdmin().getId();
