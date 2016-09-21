@@ -25,10 +25,10 @@
             
             // el controlador recibió un equipoCodigo ??
             // revisa los parámetros (ver el :equipoCodigo en la definición de la ruta)
-            if ($stateParams.equipoCodigo !== null && $stateParams.equipoCodigo !== undefined) {
+            if ($stateParams.equipoId !== null && $stateParams.equipoId !== undefined) {
                 
                 // toma el id del parámetro
-                codigo = $stateParams.equipoCodigo;
+                codigo = $stateParams.equipoId;
                 // obtiene el dato del recurso REST
                 $http.get(context + "/" + codigo)
                     .then(function (response) {

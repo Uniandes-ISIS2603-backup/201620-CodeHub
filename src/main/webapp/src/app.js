@@ -15,5 +15,4 @@ var mod = ng.module("mainApp", ["ui.router","ngMessages","edificiosModule","rese
             $urlRouterProvider.otherwise('/');
         }]);
     
-    
     })(window.angular);

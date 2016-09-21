@@ -5,14 +5,14 @@
 
           
             $scope.records = {};
-            $http.get(context).then(function(response){
-                $scope.records = response.data;    
-            }, responseError);
-
+            if($stateParams.adminId!==undefined)
+            {
+                document.getElementById('idU').innerHTML = $stateParams.adminId;
+            }
+            $scope.idU = document.getElementById('idU').innerHTML;
            
             if ($stateParams.adminId !== null && $stateParams.adminId !== undefined) {
-                
-                
+
                 id = $stateParams.adminId;
 
                 $http.get(context + "/" + id)

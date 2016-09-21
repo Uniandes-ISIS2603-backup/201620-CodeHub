@@ -41,9 +41,10 @@
                 }
 
             }).state('equipoAdminEdit', {
-                url: '/equipos/:equipoCodigo',
+                url: '/{edificioId:int}/equipos/{equipoId:int}',
                 param: {
-                    equipoCodigo: null
+                    edificioId: null,
+                    equipoId: null
                 },
                 views: {
                     'mainView': {

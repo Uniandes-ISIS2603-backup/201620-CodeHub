@@ -78,7 +78,7 @@ and open the template in the editor.
                 <td id="{{$index}}-name">{{record.disponible}}</td>
                 <td id="{{$index}}-name">{{record.quedaLibre}}</td>
                 <td>
-                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="equipoAdminEdit({equipoCodigo: record.codigo})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="equipoAdminEdit({edificioId: record.idEdificio, equipoId: record.id})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
                     <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteEquipo(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
 
                 </td>

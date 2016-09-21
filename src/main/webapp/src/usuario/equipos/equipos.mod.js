@@ -25,38 +25,6 @@
                         templateUrl: basePath + 'equipos/equipos.list.html'
                     }
                 }
-            }).state('equiposCreate', {
-                url: '/equipos/create',
-                views: {
-                    'mainView': {
-                        controller: 'usuarioCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'usuario.html'
-                    },
-                    'hijoView': {
-                        controller: 'equiposCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'equipos/equipos.create.html'
-                    }
-                }
-
-            }).state('equipoEdit', {
-                url: '/equipos/:equipoCodigo',
-                param: {
-                    equipoCodigo: null
-                },
-                views: {
-                    'mainView': {
-                        controller: 'usuarioCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'usuario.html'
-                    },
-                    'hijoView': {
-                        controller: 'equiposCtrl',
-                        controllerAs: 'ctrl',
-                        templateUrl: basePath + 'equipos/equipos.create.html'
-                    }
-                }
             });
         }]);
 })(window.angular);

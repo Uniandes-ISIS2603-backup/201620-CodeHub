@@ -9,10 +9,11 @@
     mod.controller("usuarioCtrl", ['$scope', '$state', '$stateParams', '$http', 'usuarioContext', function ($scope, $state, $stateParams, $http, context) {
 
             $scope.records = {};
-
-            $http.get(context).then(function(response){
-                $scope.records = response.data;    
-            }, responseError);
+            if($stateParams.usuarioId!==undefined)
+            {
+                document.getElementById('idU').innerHTML = $stateParams.usuarioId;
+            }
+            $scope.idU = document.getElementById('idU').innerHTML;
 
             if ($stateParams.usuarioId !== null && $stateParams.usuarioId !== undefined) {
                 

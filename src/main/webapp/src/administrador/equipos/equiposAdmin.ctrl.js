@@ -6,6 +6,7 @@
             // inicialmente el listado de equipos está vacio
             $scope.records = {};
             // carga los equipos
+            console.log($stateParams);
             if($stateParams.edificioId==undefined)
             {    
             $http.get("api/admin/"+$stateParams.adminId).then(function(response){
@@ -25,12 +26,12 @@
             
             // el controlador recibió un equipoCodigo ??
             // revisa los parámetros (ver el :equipoCodigo en la definición de la ruta)
-            if ($stateParams.equipoCodigo !== null && $stateParams.equipoCodigo !== undefined) {
+            if ($stateParams.equipoId !== null && $stateParams.equipoId !== undefined) {
                 
                 // toma el id del parámetro
-                codigo = $stateParams.equipoCodigo;
+                id = $stateParams.equipoId;
                 // obtiene el dato del recurso REST
-                $http.get(context + "/" + codigo)
+                $http.get("api/edificios/"+$stateParams.edificioId+"/equipos/" + id)
                     .then(function (response) {
                         // $http.get es una promesa
                         // cuando llegue el dato, actualice currentRecord
@@ -42,7 +43,7 @@
             {
                 // el registro actual debe estar vacio
                 $scope.currentRecord = {
-                    codigo: undefined /*Tipo int. El valor se asigna en el backend*/,
+                    id: undefined /*Tipo int. El valor se asigna en el backend*/,
                     estado: '' /*Tipo String*/,
                 };
               
