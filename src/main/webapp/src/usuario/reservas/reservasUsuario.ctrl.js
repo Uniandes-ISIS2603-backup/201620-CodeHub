@@ -11,9 +11,14 @@
             // inicialmente el listado de ciudades está vacio
             $scope.records = {};
             // carga las ciudades
-            $http.get(context).then(function(response){
-                $scope.records = response.data;    
+            $http.get("api/usuarios/"+$stateParams.usuarioId).then(function(response){
+                var obj = response.data;
+                var usuarioId = obj.id;
+                $http.get(context+"/"+usuarioId+"/reservas").then(function(response){
+                    $scope.records = response.data;    
+                }, responseError);
             }, responseError);
+            
 
             // el controlador recibió un reservaId ??
             // revisa los parámetros (ver el :reservaId en la definición de la ruta)

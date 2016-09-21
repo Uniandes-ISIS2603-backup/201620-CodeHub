@@ -12,7 +12,8 @@
             $urlRouterProvider.otherwise("/usuario");
      
             $stateProvider.state('usuario', {
-                url: '/usuario',
+                url: '/usuario/{usuarioId:int}',
+                param: {'usuarioId' : null},
                 views: {
                     'mainView': {
                         controller: 'usuarioCtrl',

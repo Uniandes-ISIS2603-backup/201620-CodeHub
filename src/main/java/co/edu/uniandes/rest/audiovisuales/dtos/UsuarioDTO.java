@@ -105,6 +105,11 @@ public class UsuarioDTO {
         return tipo;
     }
     
+    public void setTipo(int pTipo)
+    {
+        tipo = pTipo;
+    }
+    
     public void setReservas(List<ReservaDTO> reservas)
     {
         this.reservas = reservas;

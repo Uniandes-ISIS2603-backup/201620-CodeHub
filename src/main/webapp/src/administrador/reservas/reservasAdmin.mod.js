@@ -12,6 +12,7 @@
      
             $stateProvider.state('reservasAdminList', {
                 url: '/reservas',
+                param: {'usuarioId' : null},
                 views: {
                     'mainView': {
                         controller: 'adminCtrl',

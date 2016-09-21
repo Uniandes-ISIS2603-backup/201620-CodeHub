@@ -46,35 +46,28 @@
   <br>
 </fieldset>
 
-<table style="width:100%">
-  <tr>
-    <th>Id(equipo)</th>
-    <th>Equipo(tipo)</th>
-    <th>Calificacion(1-5)</th>
-    <th>Fecha</th>
-    <th>Estado</th>
-    <th>Acción</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Laptop</td>
-    <td>4</td>
-    <td>05/05/25</td>
-    <td>Activa</td>
-    <td>
-      <button>Ver reserva </button>
-    </td>
+<table style="width:75%" align="center" class="table table-hover table-bordered" >
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Edificio</th>
+                <th>Fecha</th>
+                <th>Calificacion</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in records">
+                <td id="{{$index}}-id">{{record.id}}</td>
+                <td id="{{$index}}-name">{{record.nombreEdificio}}</td>
+                <td id="{{$index}}-fecha">{{record.fecha}}</td>
+                <td id="{{$index}}-calificacion">{{record.calificacion}}</td>
 
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Laptop</td>
-    <td>5</td>
-    <td>07/03/25</td>
-    <td>Inactiva</td>
-    <td>
-      <button>Ver reserva </button>
-    </td>
-  </tr>
-</table>
+                <td>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="reservaEdit({reservaID: record.id})"><span class="glyphicon glyphicon-edit"></span> Ver Reserva</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
 </html>
