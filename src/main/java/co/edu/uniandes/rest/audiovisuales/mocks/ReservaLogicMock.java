@@ -39,6 +39,10 @@ public class ReservaLogicMock {
             reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "ML", 7L, 2L, new ArrayList<EquipoDTO>()));
             reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "ML", 8L, 1L, new ArrayList<EquipoDTO>()));
             reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "W", 9L, 4L, new ArrayList<EquipoDTO>()));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "AU", 10L, 5L, new ArrayList<EquipoDTO>()));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "G", 11L, 6L, new ArrayList<EquipoDTO>()));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "G", 12L, 6L, new ArrayList<EquipoDTO>()));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "W", 13L, 5L, new ArrayList<EquipoDTO>()));
         }
         
         logger.setLevel(Level.INFO);
