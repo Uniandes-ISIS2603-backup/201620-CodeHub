@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 (function (ng) {
-    var mod = ng.module("equiposModule", ["ngMessages","ui.router"]);
+    var mod = ng.module("equiposAdminModule", ["ngMessages","ui.router"]);
     mod.constant("equiposContext", "api/edificios/");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/administrador/';
-            $urlRouterProvider.otherwise("/equiposList");
+            $urlRouterProvider.otherwise("/equiposAdminList");
      
-            $stateProvider.state('equiposList', {
+            $stateProvider.state('equiposAdminList', {
                 url: '/edificio/{edificioId:int}/equipos',
                 param: {'edificioId' : null},   
                 views: {
@@ -20,12 +20,12 @@
                         templateUrl: basePath + 'admin.html'
                     },
                     'hijoView': {
-                        controller: 'equiposCtrl',
+                        controller: 'equiposAdminCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'equipos/equipos.list.html'
+                        templateUrl: basePath + 'equipos/equiposAdmin.list.html'
                     }
                 }
-            }).state('equiposCreate', {
+            }).state('equiposAdminCreate', {
                 url: '/equipos/create',
                 views: {
                     'mainView': {
@@ -34,13 +34,13 @@
                         templateUrl: basePath + 'admin.html'
                     },
                     'hijoView': {
-                        controller: 'equiposCtrl',
+                        controller: 'equiposAdminCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'equipos/equipos.create.html'
+                        templateUrl: basePath + 'equipos/equiposAdmin.create.html'
                     }
                 }
 
-            }).state('equipoEdit', {
+            }).state('equipoAdminEdit', {
                 url: '/equipos/:equipoCodigo',
                 param: {
                     equipoCodigo: null
@@ -52,9 +52,9 @@
                         templateUrl: basePath + 'admin.html'
                     },
                     'hijoView': {
-                        controller: 'equiposCtrl',
+                        controller: 'equiposAdminCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'equipos/equipos.create.html'
+                        templateUrl: basePath + 'equipos/equiposAdmin.create.html'
                     }
                 }
             });

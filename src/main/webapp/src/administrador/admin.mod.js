@@ -22,9 +22,9 @@
                         templateUrl: basePath + 'admin.html'
                     },
                     'hijoView': {
-                        controller: 'equiposCtrl',
+                        controller: 'equiposAdminCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'equipos/equipos.list.html'
+                        templateUrl: basePath + 'equipos/equiposAdmin.list.html'
                     }
                 }
             });

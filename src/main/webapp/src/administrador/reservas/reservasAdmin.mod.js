@@ -41,8 +41,9 @@
                 }
 
             }).state('reservaAdminEdit', {
-                url: '/reservas/:reservaId',
+                url: '/usuario/{usuarioId:int}/reservas/:reservaId',
                 param: {
+                    usuarioId: null,
                     reservaId: null
                 },
                 views: {

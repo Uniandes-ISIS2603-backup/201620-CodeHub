@@ -59,22 +59,26 @@ and open the template in the editor.
 </select>
 <br>
 
-    <table class="table table-striped" class="col-md-4">
+    <table style="width:75%" class="table table-striped" class="col-md-4">
         <thead>
             <tr>
                 <th>Id(equipo)</th>
-                <th>Nombre</th>
+                <th>Tipo</th>
                 <th>Estado</th>
+                <th>Disponible</th>
+                <th>Queda Disponible</th>
                 <th>Acción</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="record in records">
                 <td id="{{$index}}-name">{{record.id}}</td>
-                <td id="{{$index}}-name">{{record.nombre}}</td>
+                <td id="{{$index}}-name">{{record.tipo}}</td>
                 <td id="{{$index}}-name">{{record.estado}}</td>
+                <td id="{{$index}}-name">{{record.disponible}}</td>
+                <td id="{{$index}}-name">{{record.quedaLibre}}</td>
                 <td>
-                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="equipoEdit({equipoCodigo: record.codigo})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="equipoAdminEdit({equipoCodigo: record.codigo})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
                     <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteEquipo(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
 
                 </td>

@@ -29,7 +29,7 @@ public class EquipoDTO {
    /**
     * Tipo de equipo
     */
-    //private String tipo;
+    private String tipo;
     /**
      * Estado en que se encuentra el equipo
      */
@@ -48,13 +48,14 @@ public class EquipoDTO {
      * @param pCodigo el codigo del equipo a crear. pCodigo !=null && pCodigo!=0.
      * @param pEstado el estado del equipo a crear. pEstado !=null&& pEstado!=""
      */
-    public EquipoDTO(Long pCodigo, int pEstado, Long edificio){
+    public EquipoDTO(Long pCodigo, int pEstado, Long edificio, String tipo){
         id = pCodigo;
         estado = pEstado;
         idEdificio = edificio;
         disponible = true;
         quedaLibre = new Date();
         reservas = new ArrayList<>();
+        this.tipo = tipo;
     }
     /**
      * Constructor vacio necesario porque aja(?)
@@ -104,6 +105,15 @@ public class EquipoDTO {
     public boolean getDisponible()
     {
         return disponible;
+    }
+    
+    public String getTipo() {
+        return tipo;
+    }
+    
+    public void setTipo(String pTipo)
+    {
+        tipo = pTipo;
     }
     
     public void setDisponible(boolean disponible)

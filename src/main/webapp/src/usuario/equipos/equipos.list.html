@@ -5,6 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
+
 <head>
   <style>
     table {
@@ -27,7 +28,7 @@ and open the template in the editor.
     }
     
     body {
-      background:linear-gradient(30deg, royalblue,purple, royalblue, purple, royalblue);
+      background-color: CornflowerBlue;
       font-family: arial, sans-serif;
     }
     
@@ -42,34 +43,43 @@ and open the template in the editor.
     }
   </style>
 </head>
-<h1>Nombre usuario</h1>
+
+<h1>Edificio ML </h1>
+<fieldset style="width:180px">
+  Equipo:id1
+  <br> Tipo: Computador
+  <br>
+</fieldset>
 
 <input type="text"> Atributo:
 <select>
-  <option value="1">Fecha</option>
+  <option value="1">Nombre</option>
   <option value="2">Id</option>
-  <option value="3">Estado</option>
+  <option value="3">Tipo</option>
 </select>
 <br>
 
-
-<table style="width:75%" class="table table-striped" class="col-md-4" align="center">
+    <table class="table table-striped" class="col-md-4">
         <thead>
             <tr>
-                <th align="center">Id</th>
-                <th align="center">Fecha</th>
-                <th align="center">Estado</th>
-                <th align="center">Acciones</th>
+                <th>Id(equipo)</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+                <th>Disponible</th>
+                <th>Queda Disponible</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="record in records">
-                <td id="{{$index}}-id">{{record.id}}</td>
-                <td id="{{$index}}-fecha">{{record.fecha}}</td>
-                <td id="{{$index}}-estado">{{record.estado}}</td>
-
+            <tr ng-repeat="record in records">
+                <td id="{{$index}}-name">{{record.id}}</td>
+                <td id="{{$index}}-name">{{record.tipo}}</td>
+                <td id="{{$index}}-name">{{record.estado}}</td>
+                <td id="{{$index}}-name">{{record.disponible}}</td>
+                <td id="{{$index}}-name">{{record.quedaLibre}}</td>
                 <td>
-                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="sancionEdit({usuarioId: record.idUsuario, sancionId: record.id})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"></span> Agregar a Reserva</button>
+
                 </td>
             </tr>
         </tbody>

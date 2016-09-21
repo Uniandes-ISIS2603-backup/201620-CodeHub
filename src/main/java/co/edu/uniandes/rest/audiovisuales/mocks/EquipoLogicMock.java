@@ -39,9 +39,9 @@ public class EquipoLogicMock {
     public EquipoLogicMock(){
         if(equipos ==null){
             equipos = new ArrayList<>();
-            equipos.add(new EquipoDTO(1L,EquipoDTO.DISPONIBLE, 1L));
-            equipos.add(new EquipoDTO(2L,EquipoDTO.AVERIADO, 1L));
-            equipos.add(new EquipoDTO(3L,EquipoDTO.RESERVADO, 1L));
+            equipos.add(new EquipoDTO(1L,EquipoDTO.DISPONIBLE, 1L, "Laptop"));
+            equipos.add(new EquipoDTO(2L,EquipoDTO.AVERIADO, 1L, "Microfono"));
+            equipos.add(new EquipoDTO(3L,EquipoDTO.RESERVADO, 1L, "Tablet"));
         }
         // indica que se muestren todos los mensajes
     	logger.setLevel(Level.INFO);

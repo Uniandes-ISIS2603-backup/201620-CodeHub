@@ -5,14 +5,15 @@
  */
 
 (function (ng) {
-    var mod = ng.module("sancionesAdminModule", ["ngMessages","ui.router"]);
-    mod.constant("sancionesAdminContext", "api/sanciones");
+    var mod = ng.module("sancionesModule", ["ngMessages","ui.router"]);
+    mod.constant("sancionesContext", "api/sanciones");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/administrador/';
             $urlRouterProvider.otherwise("/sancionesList");
      
             $stateProvider.state('sancionesList', {
-                url: '{idUsuario:int}/sanciones',
+                url: '{usuarioId:int}/sanciones',
+                param: {'usuarioId' : null},
                 views: {
                     'mainView': {
                         controller: 'adminCtrl',
@@ -20,12 +21,26 @@
                         templateUrl: basePath + 'admin.html'
                     },
                     'hijoView': {
-                        controller: 'sancionesAdminCtrl',
+                        controller: 'sancionesCtrl',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'sanciones/sanciones.list.html'
                     }
                 }
-            });
+            }).state('sancionEdit', {
+                url: '{usuarioId:int}/sanciones/{sancionId:int}',
+                param: {'usuarioId' : null, 'sancionId' : null},
+                views: {
+                    'mainView': {
+                        controller: 'adminCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'admin.html'
+                    },
+                    'hijoView': {
+                        controller: 'sancionesCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'sanciones/sanciones.create.html'
+                    }
+                }});
         }]);
 })(window.angular);
 

@@ -4,17 +4,18 @@
  * and open the template in the editor.
  */
 (function (ng) {
-    var mod = ng.module("sancionesAdminModule");
+    var mod = ng.module("sancionesModule");
 
-    mod.controller("sancionesAdminCtrl", ['$scope', '$state', '$stateParams', '$http', 'sancionesAdminContext', function ($scope, $state, $stateParams, $http, context) {
+    mod.controller("sancionesCtrl", ['$scope', '$state', '$stateParams', '$http', 'sancionesContext', function ($scope, $state, $stateParams, $http, context) {
 
             // inicialmente el listado de ciudades está vacio
             $scope.records = {};
             // carga las ciudades
-            $http.get(context).then(function(response){
+            if($stateParams.usuarioId!==undefined){
+            $http.get("api/usuarios/"+$stateParams.usuarioId+"/sanciones").then(function(response){
                 $scope.records = response.data;    
             }, responseError);
-
+            }
             // el controlador recibió un cityId ??
             // revisa los parámetros (ver el :cityId en la definición de la ruta)
             if ($stateParams.sancionId !== null && $stateParams.sancionId !== undefined) {
@@ -22,7 +23,7 @@
                 // toma el id del parámetro
                 id = $stateParams.sancionId;
                 // obtiene el dato del recurso REST
-                $http.get(context + "/" + id)
+                $http.get("api/usuarios/"+$stateParams.usuarioId+"/sanciones/" + id)
                     .then(function (response) {
                         // $http.get es una promesa
                         // cuando llegue el dato, actualice currentRecord
@@ -60,7 +61,7 @@
                 } else {
                     
                     // ejecuta PUT en el recurso REST
-                    return $http.put(context + "/" + currentRecord.id, currentRecord)
+                    return $http.put("api/usuario/"+$stateParams.usuarioId + "/sanciones/" + currentRecord.id, currentRecord)
                         .then(function () {
                             // $http.put es una promesa
                             // cuando termine bien, cambie de estado
