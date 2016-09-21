@@ -11,7 +11,7 @@
             // inicialmente el listado de ciudades está vacio
             $scope.records = {};
             // carga las ciudades
-            $http.get(context).then(function(response){
+            $http.get("api/usuarios/"+$stateParams.usuarioId+"/reservas").then(function(response){
                 $scope.records = response.data;    
             }, responseError);
 
@@ -22,7 +22,7 @@
                 // toma el id del parámetro
                 id = $stateParams.reservaId;
                 // obtiene el dato del recurso REST
-                $http.get(context + "/" + id)
+                $http.get("api/usuarios/"+$stateParams.usuarioId+"/reservas" + "/" + id)
                     .then(function (response) {
                         // $http.get es una promesa
                         // cuando llegue el dato, actualice currentRecord
