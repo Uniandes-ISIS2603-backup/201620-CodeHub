@@ -10,7 +10,8 @@
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/administrador/'; 
             $urlRouterProvider.otherwise("/admin");
-     
+            
+            
             $stateProvider.state('admin', {
                 url: '/admin/{adminId:int}',
                 param: {'adminId' : null},
@@ -21,8 +22,8 @@
                         templateUrl: basePath + 'admin.html'
                     },
                     'hijoView': {
-                        //controller: 'equiposCtrl',
-                        //controllerAs: 'ctrl',
+                        controller: 'equiposCtrl',
+                        controllerAs: 'ctrl',
                         templateUrl: basePath + 'equipos/equipos.list.html'
                     }
                 }

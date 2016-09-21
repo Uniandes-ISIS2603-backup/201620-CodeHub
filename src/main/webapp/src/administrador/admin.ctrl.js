@@ -14,17 +14,11 @@
                 
                 
                 id = $stateParams.adminId;
-                
+
                 $http.get(context + "/" + id)
                     .then(function (response) {
-                       
-                        $scope.currentRecord = response.data;
-                        $scope.info=
-                                $sce.trustAsHtml("<div id=\"infoAdmin\" data-id=\""+$scope.currentRecord.id
-                                +"\" data-nombre=\""+$scope.currentRecord.name
-                                +"\" data-correo=\""+$scope.currentRecord.email
-                                +"\" data-edificioId=\""+$scope.currentRecord.edificioId
-                                +"\"></div>");
+                       $scope.currentRecord = response.data;
+                       $stateParams.edificioId = $scope.currentRecord.edificioId;
                     }, responseError);
 
             } else
@@ -38,20 +32,7 @@
                 };
               
                 $scope.alerts = [];
-            }
-
-            this.login = function(id){
-                currentRecord = $scope.currentRecord;          
-                    // ejecuta delete en el recurso REST
-                    return $http.get(context + "/" + id)
-                        .then(function (response) {
-                            $scope.currentRecord = response.data
-                            $stateParams.edificioId = $scope.currentRecord.edificioId;
-                            $state.go('equiposList({edificioId:  $scope.currentRecord.edificioId})');
-                        }, responseError); 
-
-                };
-            
+            }          
             
             this.saveRecord = function (id) {
                 currentRecord = $scope.currentRecord;

@@ -36,7 +36,7 @@ public class AdminResource
     
     @GET
     @Path("{id:\\d+}")
-    public AdminDTO getAdmin(@PathParam("id") int id) throws AdminLogicException
+    public AdminDTO getAdmin(@PathParam("id") Long id) throws AdminLogicException
     {
         return adminLogic.getAdmin(id);
     }

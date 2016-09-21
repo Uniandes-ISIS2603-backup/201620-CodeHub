@@ -30,8 +30,8 @@ public class AdminLogicMock
         if(administradores==null)
         {
             administradores = new ArrayList<>();
-            administradores.add(new AdminDTO(1,"Admin1", "Admin1@uniandes.edu.co",1L));
-            administradores.add(new AdminDTO(2,"Admin2","Admin2@uniandes.edu.co",1L));
+            administradores.add(new AdminDTO(1L,"Admin1", "Admin1@uniandes.edu.co",1L));
+            administradores.add(new AdminDTO(2L,"Admin2","Admin2@uniandes.edu.co",1L));
         }
         // indica que se muestren todos los mensajes
     	logger.setLevel(Level.INFO);
@@ -52,20 +52,21 @@ public class AdminLogicMock
         return administradores;
     }
     
-    public AdminDTO getAdmin(int id) throws AdminLogicException
+    public AdminDTO getAdmin(Long id) throws AdminLogicException
     {
-        AdminDTO admin = administradores.get(id-1);
         if (administradores == null)
         {
             throw new AdminLogicException("No se encuentra inicializada la lista de Administradores.");
         }
-        if (admin == null)
-        {
-            logger.log(Level.SEVERE, "El administrador con el Id: {0} no existe", id);
-            throw new AdminLogicException("El administrador no se encuentra en la lista");
-        }
-        return admin;
         
+        for(AdminDTO admin : administradores)
+        {
+            if(admin.getId().equals(id))
+            {
+                return admin;
+            }
+        }
+        throw new AdminLogicException("No se encuentra el administrador con ese id.");
     }
     
     public AdminDTO crearAdministrador(AdminDTO nuevoAdmin) throws AdminLogicException
@@ -84,7 +85,7 @@ public class AdminLogicMock
         else
         {
             logger.info("Se esta generando un nuevo id para el Administrador");
-            int nuevoID = 1;
+            Long nuevoID = 1L;
              for (AdminDTO administrador : administradores) 
             {
                 if (nuevoID <= administrador.getId())

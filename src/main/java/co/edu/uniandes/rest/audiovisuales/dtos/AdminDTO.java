@@ -11,7 +11,7 @@ package co.edu.uniandes.rest.audiovisuales.dtos;
  */
 public class AdminDTO 
 {
-    private int id;
+    private Long id;
     private String nombre;
     private String correo;
     private Long edificioId;
@@ -28,7 +28,7 @@ public class AdminDTO
      * @param id identificador del edificio
      * @param nombre nombre del edificio
      */
-    public AdminDTO(int pId, String nombre, String correo, Long edificioId) 
+    public AdminDTO(Long pId, String nombre, String correo, Long edificioId) 
     {
 	super();
         this.id = pId;
@@ -37,12 +37,12 @@ public class AdminDTO
         this.edificioId = edificioId;
     }
 
-        public int getId()
+        public Long getId()
     {
         return id;
     }
     
-    public void setId(int pId)
+    public void setId(Long pId)
     {
         id = pId;
     }

@@ -6,11 +6,16 @@
             // inicialmente el listado de equipos está vacio
             $scope.records = {};
             // carga los equipos
-    
-            $http.get(context+$stateParams.edificioId+"/equipos").then(function(response){
-                $scope.records = response.data;    
-            }, responseError);
-
+            var edificioId = -1;
+            $http.get("api/admin/"+$stateParams.adminId).then(function(response){
+                var admin = response.data;
+                edificioId = admin.edificioId;
+                $http.get(context+edificioId+"/equipos").then(function(response){  
+                    $scope.records = response.data;
+                    console.log($scope.records);
+                }, responseError);
+            }, responseError);           
+            
             // el controlador recibió un equipoCodigo ??
             // revisa los parámetros (ver el :equipoCodigo en la definición de la ruta)
             if ($stateParams.equipoCodigo !== null && $stateParams.equipoCodigo !== undefined) {
