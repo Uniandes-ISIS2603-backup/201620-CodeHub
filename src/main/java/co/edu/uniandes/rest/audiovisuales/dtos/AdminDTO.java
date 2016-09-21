@@ -75,10 +75,16 @@ public class AdminDTO
         this.correo = correo;
     }
     
-
+    public Long getEdificioId()
+    {
+        return edificioId;
+    }
     
-        
-
+    public void setEdificioId(Long edificioId)
+    {
+        this.edificioId = edificioId;
+    }
+      
     /**
      * Convierte el objeto a una cadena
      */

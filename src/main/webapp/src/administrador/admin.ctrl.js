@@ -19,6 +19,12 @@
                     .then(function (response) {
                        
                         $scope.currentRecord = response.data;
+                        $scope.info=
+                                $sce.trustAsHtml("<div id=\"infoAdmin\" data-id=\""+$scope.currentRecord.id
+                                +"\" data-nombre=\""+$scope.currentRecord.name
+                                +"\" data-correo=\""+$scope.currentRecord.email
+                                +"\" data-edificioId=\""+$scope.currentRecord.edificioId
+                                +"\"></div>");
                     }, responseError);
 
             } else

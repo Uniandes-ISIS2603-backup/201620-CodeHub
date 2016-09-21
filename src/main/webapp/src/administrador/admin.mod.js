@@ -21,8 +21,8 @@
                         templateUrl: basePath + 'admin.html'
                     },
                     'hijoView': {
-                        controller: 'equiposCtrl',
-                        controllerAs: 'ctrl',
+                        //controller: 'equiposCtrl',
+                        //controllerAs: 'ctrl',
                         templateUrl: basePath + 'equipos/equipos.list.html'
                     }
                 }
