@@ -36,11 +36,12 @@ public class SancionLogicMock
             sanciones.add(new SancionDTO(1L, "15/07/2016", "vigente",1l));
             sanciones.add(new SancionDTO(2L, "17/06/2016", "saldada",1l));
             sanciones.add(new SancionDTO(3L, "04/08/2016", "saldada",2l));
-            sanciones.add(new SancionDTO(3L, "05/03/2016", "vigente",2l));
-            sanciones.add(new SancionDTO(3L, "06/04/2016", "saldada",3l));
-            sanciones.add(new SancionDTO(3L, "07/05/2016", "vigente",3l));
-            sanciones.add(new SancionDTO(3L, "08/06/2016", "saldada",4l));
-            sanciones.add(new SancionDTO(3L, "09/07/2016", "vigente",4l));
+            sanciones.add(new SancionDTO(4L, "05/03/2016", "vigente",2l));
+            sanciones.add(new SancionDTO(5L, "06/04/2016", "saldada",3l));
+            sanciones.add(new SancionDTO(6L, "07/05/2016", "vigente",3l));
+            sanciones.add(new SancionDTO(7L, "08/06/2016", "saldada",4l));
+            sanciones.add(new SancionDTO(8L, "09/07/2016", "vigente",4l));
+            sanciones.add(new SancionDTO(9L, "09/07/2016", "vigente",5l));
         }
         
     	// indica que se muestren todos los mensajes
