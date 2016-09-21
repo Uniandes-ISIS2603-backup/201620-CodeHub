@@ -40,6 +40,9 @@ public class UsuarioLogicMock {
             usuarios.add(new UsuarioDTO(1L, "Rubby Casallas",2));
             usuarios.add(new UsuarioDTO(2L, "Fernando de la Rosa",2));
             usuarios.add(new UsuarioDTO(3L, "Rodrigo Cardoso",2));
+            usuarios.add(new UsuarioDTO(4L, "Sebastian Martinez",1));
+            usuarios.add(new UsuarioDTO(5L, "Camilo Gomez",1));
+            usuarios.add(new UsuarioDTO(6L, "Sandra Lopez",1));
         }
         
     	// indica que se muestren todos los mensajes

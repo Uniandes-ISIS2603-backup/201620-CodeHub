@@ -34,6 +34,8 @@ public class EdificioLogicMock {
             edificios.add(new EdificioDTO(1L, "ML", "Mario Laserna"));
             edificios.add(new EdificioDTO(2L, "W", "Carlos Pacheco Devia"));
             edificios.add(new EdificioDTO(3L, "SD", "Julio Mario Santo Domingo"));
+            edificios.add(new EdificioDTO(4L, "AU", "Aulas"));
+            edificios.add(new EdificioDTO(5L, "G", "Franco"));
         }
     }
     
