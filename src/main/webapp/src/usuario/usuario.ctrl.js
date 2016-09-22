@@ -13,7 +13,7 @@
             {
                 document.getElementById('idU').innerHTML = $stateParams.usuarioId;
             }
-            $scope.idU = document.getElementById('idU').innerHTML;
+            $scope.idU = parseInt(document.getElementById('idU').innerHTML);
 
             if ($stateParams.usuarioId !== null && $stateParams.usuarioId !== undefined) {
                 

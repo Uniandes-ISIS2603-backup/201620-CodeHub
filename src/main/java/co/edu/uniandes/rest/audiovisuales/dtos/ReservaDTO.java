@@ -27,10 +27,10 @@ public class ReservaDTO
     private Date fechaFinal;
     private Double calificacion;
     private Boolean generoSancion;
-    private String nombreEdificio;
+    private Long edificioId;
     private Long id;
     
-    private List<EquipoDTO> equipos;
+    private Long idEquipo;
     
     private Long idUsuario;
     
@@ -39,15 +39,15 @@ public class ReservaDTO
         
     }
 
-    public ReservaDTO( Date fechaInicial, Date fechaFinal,  String nombreEdificio, Long id, Long idUsuario, List<EquipoDTO> equipos) {
+    public ReservaDTO( Date fechaInicial, Date fechaFinal,  Long edificioId, Long id, Long idUsuario, Long idEquipo) {
         this.estado = 1;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
         this.generoSancion = false;
-        this.nombreEdificio = nombreEdificio;
+        this.edificioId = edificioId;
         this.id = id;
         this.idUsuario = idUsuario;
-        this.equipos = equipos;
+        this.idEquipo = idEquipo;
         this.calificacion = 0.0;
     }
 
@@ -71,22 +71,22 @@ public class ReservaDTO
         return generoSancion;
     }
 
-    public String getNombreEdificio() {
-        return nombreEdificio;
+    public Long getEdificioId() {
+        return edificioId;
     }
 
     public Long getId() {
         return id;
     }
     
-    public void update(int pEstado,Date pFechaInicial, Date pFechaFinal ,Double pCalificacion, Boolean pSancion,String pEdificio, Long pId)
+    public void update(int pEstado,Date pFechaInicial, Date pFechaFinal ,Double pCalificacion, Boolean pSancion,Long pEdificio, Long pId)
     {
         estado = pEstado;
         fechaInicial = pFechaInicial;
         fechaFinal = pFechaFinal;
         calificacion = pCalificacion;
         generoSancion = pSancion;
-        nombreEdificio = pEdificio;
+        edificioId = pEdificio;
         id = pId;
     }
 
@@ -110,8 +110,8 @@ public class ReservaDTO
         this.generoSancion = generoSancion;
     }
 
-    public void setNombreEdificio(String nombreEdificio) {
-        this.nombreEdificio = nombreEdificio;
+    public void setNombreEdificio(long edificioId) {
+        this.edificioId = edificioId;
     }
 
     public void setId(Long id) {
@@ -132,19 +132,19 @@ public class ReservaDTO
         this.idUsuario = idUsuario;
     }
     
-    public List<EquipoDTO> getEquipos()
+    public Long getEquipos()
     {
-        return equipos;
+        return idEquipo;
     }
     
-    public void setEquipos(List<EquipoDTO> equipos)
+    public void setEquipos(Long idEquipo)
     {
-        this.equipos = equipos;
+        this.idEquipo = idEquipo;
     }
     
     public String toString()
     {
-        return "{ id : " + getId() + ", name : \"" + getNombreEdificio()+ "\" }" ;
+        return "{ id : " + getId() + ", name : \"" + getEdificioId()+ "\" }" ;
     }
     
 

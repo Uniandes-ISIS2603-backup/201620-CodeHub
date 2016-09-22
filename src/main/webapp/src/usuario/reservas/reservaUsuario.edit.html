@@ -1,0 +1,67 @@
+<html>
+<head>
+  <style>
+    div {
+      width: 100%;
+      font-family: "Verdana";
+    }
+    
+    body {
+      background-color: CornflowerBlue;
+    }
+    
+    fieldset {
+      background-color: white;
+    }
+  </style>
+</head>
+
+<div>
+  <fieldset>
+    <legend> Reserva </legend>
+    <table>
+      <tr>
+        <td id="nombre">Nombre: 'NombreUsuario'
+          <br>
+        </td>
+        <th></th>
+        <td>Cancelar:
+          <select>
+            <option value="1">Si</option>
+            <option value="2">No</option>
+          </select>
+          <br>
+        </td>
+      </tr>
+    </table>
+    <div id="tipo">'TipoUsuario'</div>
+    <br> Calificacion:
+    <select>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <br> Estado:
+    <select>
+      <option value="1">Activo</option>
+      <option value="2">Finalizada</option>
+      <option value="3">Cancelada</option>
+      <option value="4">En Revision</option>
+    </select>
+    <br>
+
+
+    <fieldset style="width:200px">
+      <legend> Comentarios </legend>
+      <textarea style="border: 2px solid black " name="Comentarios" rows="5" cols="40"></textarea>
+    </fieldset>
+    <br>
+
+    <button>Guardar</button>
+    <br>
+
+  </fieldset>
+</div>
+</html>

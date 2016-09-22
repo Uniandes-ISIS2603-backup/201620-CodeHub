@@ -21,47 +21,42 @@
     <legend> Reserva </legend>
     <table>
       <tr>
-        <td>Nombre: 'NombreUsuario'
+        <td id="nombre">Nombre: 'NombreUsuario'
           <br>
         </td>
         <th></th>
-        <td>Cancelar:
-          <select>
-            <option value="1">Si</option>
-            <option value="2">No</option>
-          </select>
-          <br>
-        </td>
       </tr>
     </table>
-    'TipoUsuario'
-    <br> Calificacion:
-    <select>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-    <br> Estado:
-    <select>
-      <option value="1">Activo</option>
-      <option value="2">Finalizada</option>
-      <option value="3">Cancelada</option>
-      <option value="4">En Revision</option>
-    </select>
-    <br>
+    <div id="tipo">'TipoUsuario'</div>
+    <div>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+    <form style="width:75%" novalidate name="form" id="reserva-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+        
+        <div ng-messages="form.$error">
+            <div ng-message="required">Crear Reserva</div>
+        </div>
+   
+        <fieldset>
+            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+            <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                <label for="fecha" class="col-md-2 control-label">Fecha de Inicio</label>
+                <div class="col-md-10">
+                    <input id="fecha" name="fecha" class="form-control" type="date" ng-model="currentRecord.fechaInicial" ng-init="currentRecord.fechaInicial" required />
+                </div>
+                <label for="fecha" class="col-md-2 control-label">Fecha de Entrega</label>
+                <div class="col-md-10">
+                    <input id="fecha" name="fecha" class="form-control" type="date" ng-model="currentRecord.fechaFinal" ng-init="currentRecord.fechaFinal" required />
+                </div>
+                
+            </div>
+    
+                <div>
+            <button class="btn btn-primary" type="submit">Generar Reserva</button>
+            <button class="btn btn-default" type="button" ui-sref='reservasUsuarioList({usuarioId: idU})'>Cancelar</button>    
+                </div>
+        </fieldset>
+    </form>
+</div>
 
-
-    <fieldset style="width:200px">
-      <legend> Comentarios </legend>
-      <textarea style="border: 2px solid black " name="Comentarios" rows="5" cols="40"></textarea>
-    </fieldset>
-    <br>
-
-    <button>Guardar</button>
-    <br>
-
-  </fieldset>
 </div>
 </html>

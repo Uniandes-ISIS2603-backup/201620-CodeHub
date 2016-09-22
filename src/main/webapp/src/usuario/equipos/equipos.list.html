@@ -78,7 +78,7 @@ and open the template in the editor.
                 <td id="{{$index}}-name">{{record.disponible}}</td>
                 <td id="{{$index}}-name">{{record.quedaLibre}}</td>
                 <td>
-                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"></span> Agregar a Reserva</button>
+                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="reservaUsuarioCreate({edificioId: record.idEdificio, equipoId: record.id})"><span class="glyphicon glyphicon-edit"></span>Reservar</button>
 
                 </td>
             </tr>

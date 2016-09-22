@@ -30,19 +30,19 @@ public class ReservaLogicMock {
         if(reservas == null)
         {
             reservas = new ArrayList<>();
-            reservas.add(new ReservaDTO(new Date(2016, 8, 10),new Date(2016, 8, 12), "ML", 1L, 1L, new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 11),new Date(2016, 8, 12), "W", 2L, 2L,new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "AU", 3L, 3L, new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "ML", 4L, 3L, new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "W", 5L, 3L, new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "AU", 6L, 1L, new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "ML", 7L, 2L, new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "ML", 8L, 1L, new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "W", 9L, 4L, new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "AU", 10L, 5L, new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "G", 11L, 6L, new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "G", 12L, 6L, new ArrayList<EquipoDTO>()));
-            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), "W", 13L, 5L, new ArrayList<EquipoDTO>()));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 10),new Date(2016, 8, 12), 2L, 1L, 1L, 1L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 11),new Date(2016, 8, 12), 3L, 2L, 2L,1L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), 5L, 3L, 3L, 1L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), 4L, 4L, 3L, 1L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), 3L, 5L, 3L, 1L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), 3L, 6L, 1L, 1L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), 1L, 7L, 2L, 1L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), 1L, 8L, 1L,1L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), 2L, 9L, 4L, 1L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), 4L, 10L, 5L, 1L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), 3L, 11L, 6L, 1L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), 2L, 12L, 6L, 1L));
+            reservas.add(new ReservaDTO(new Date(2016, 8, 12), new Date(2016, 8, 12), 1L, 13L, 5L, 1L));
         }
         
         logger.setLevel(Level.INFO);
@@ -146,7 +146,7 @@ public class ReservaLogicMock {
                         pReserva.getFechaFinal(),
                         pReserva.getCalificacion(),
                         pReserva.getGeneroSancion(),
-                        pReserva.getNombreEdificio(),
+                        pReserva.getEdificioId(),
                         pReserva.getId());
                 
                 r = reserva;

@@ -19,9 +19,9 @@
             if ($stateParams.equipoId !== null && $stateParams.equipoId !== undefined) {
                 
                 // toma el id del parámetro
-                codigo = $stateParams.equipoId;
+                id = $stateParams.equipoId;
                 // obtiene el dato del recurso REST
-                $http.get(context + "/" + codigo)
+                $http.get(context + "/" + id)
                     .then(function (response) {
                         // $http.get es una promesa
                         // cuando llegue el dato, actualice currentRecord

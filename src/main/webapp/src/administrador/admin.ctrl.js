@@ -9,7 +9,7 @@
             {
                 document.getElementById('idU').innerHTML = $stateParams.adminId;
             }
-            $scope.idU = document.getElementById('idU').innerHTML;
+            $scope.idU = parseInt(document.getElementById('idU').innerHTML);
            
             if ($stateParams.adminId !== null && $stateParams.adminId !== undefined) {
 

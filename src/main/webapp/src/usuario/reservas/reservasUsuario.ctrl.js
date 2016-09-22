@@ -11,8 +11,16 @@
             // inicialmente el listado de ciudades está vacio
             $scope.records = {};
             // carga las ciudades
+            console.log($stateParams);
+            if($stateParams.usuarioId==undefined)
+            {
+                $stateParams.usuarioId = document.getElementById('idU').innerHTML;
+            }
+            $scope.idU = parseInt(document.getElementById('idU').innerHTML);
+            
             $http.get("api/usuarios/"+$stateParams.usuarioId).then(function(response){
                 var usr = response.data;
+                
                 var str = "Nombre: "+usr.name+"<br>Tipo: ";
                 if(usr.tipo==1)
                 {
@@ -26,12 +34,25 @@
                 {
                     str+="";
                 }
-                
+                if(document.getElementById("infoUsuario")!==null){
                 document.getElementById("infoUsuario").innerHTML = str;
                 var usuarioId = usr.id;
                 $http.get(context+"/"+usuarioId+"/reservas").then(function(response){
                     $scope.records = response.data;    
                 }, responseError);
+                }
+                else
+                {
+                   document.getElementById("nombre").innerHTML = "Nombre: "+usr.name+" ";
+                if(usr.tipo==1)
+                {
+                    document.getElementById("tipo").innerHTML = "Tipo: Estudiante<br>";
+                }
+                else
+                {
+                    document.getElementById("tipo").innerHTML = "Tipo: Profesor<br>";
+                }
+                }
             }, responseError);
             
 
@@ -55,25 +76,37 @@
                 // el registro actual debe estar vacio
                 $scope.currentRecord = {
                     id: undefined /*Tipo Long. El valor se asigna en el backend*/,
-                    name: '' /*Tipo String*/,
-                };
+                    estado: '' /*Tipo String*/,
+                    fechaInicial: '',
+                    fechaFinal: '',
+                    calificacion: 0.0,
+                    generoSancion: false,
+                    edificioId: '',
+                    };
               
                 $scope.alerts = [];
             }
 
 
             this.saveRecord = function (id) {
-                currentRecord = $scope.currentRecord;
-                
                 // si el id es null, es un registro nuevo, entonces lo crea
                 if (id == null) {
-
+                $http.get("api/edificios/"+$stateParams.edificioId+"/equipos/" + $stateParams.equipoId)
+                    .then(function (response) {
+                        var equipo = response.data;
+                        $scope.currentRecord.edificioId = equipo.edificioId;
+                        $scope.currentRecord.idUsuario = $stateParams.usuarioId;
+                        $scope.currentRecord.idEquipo = equipo.id;
+                        $scope.currentRecord.calificacion = 0.0;
+                        $scope.currentRecord.generoSancion = false;
+                    }, responseError);
+                
                     // ejecuta POST en el recurso REST
-                    return $http.post(context, currentRecord)
+                    return $http.post("api/usuarios/"+$stateParams.usuarioId+"/reservas", $scope.currentRecord)
                         .then(function () {
                             // $http.post es una promesa
                             // cuando termine bien, cambie de estado
-                            $state.go('reservasList');
+                            $state.go('reservasUsuarioList({usuarioId: idU})');
                         }, responseError);
                         
                 // si el id no es null, es un registro existente entonces lo actualiza

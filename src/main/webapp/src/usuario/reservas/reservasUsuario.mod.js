@@ -11,7 +11,8 @@
             $urlRouterProvider.otherwise("/reservasUsuarioList");
      
             $stateProvider.state('reservasUsuarioList', {
-                url: '{idUsuario:int}/reservas',
+                url: '{usuarioId:int}/reservas',
+                param: {'usuarioId': null},
                 views: {
                     'mainView': {
                         controller: 'usuarioCtrl',
@@ -24,8 +25,9 @@
                         templateUrl: basePath + 'reservas/reservasUsuario.list.html'
                     }
                 }
-            }).state('reservasUsuarioCreate', {
-                url: '/reservas/create',
+            }).state('reservaUsuarioCreate', {
+                url: '/reservas/create/{edificioId:int}/{equipoId:int}',
+                param: { 'edificioId': null, 'equipoId' : null},
                 views: {
                     'mainView': {
                         controller: 'usuarioCtrl',
