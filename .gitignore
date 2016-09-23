@@ -8,7 +8,7 @@ tmp/
 *.class
 
 # Binaries produced by Maven
-/target/
+target/
 
 # Package Files
 *.jar
