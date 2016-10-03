@@ -8,7 +8,7 @@
 		<version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>audiovisuales.web</artifactId>
+    <artifactId>audiovisuales-web</artifactId>
     <packaging>war</packaging>
 
     <name>codeHubAudiovisuales</name>
