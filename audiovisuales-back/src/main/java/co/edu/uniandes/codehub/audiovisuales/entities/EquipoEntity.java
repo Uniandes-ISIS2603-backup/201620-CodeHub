@@ -13,6 +13,6 @@ import javax.persistence.Entity;
  * @author c.zambrano10
  */
 @Entity
-public class EquipoEntity {
+public class EquipoEntity extends BaseEntity implements Serializable{
     
 }
