@@ -15,6 +15,6 @@ import javax.persistence.Entity;
 @Entity
 public class AdministradorEntity extends BaseEntity implements Serializable
 {
-    
+    //...
 }
  
