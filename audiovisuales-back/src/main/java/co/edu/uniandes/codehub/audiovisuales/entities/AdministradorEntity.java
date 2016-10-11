@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -23,6 +24,7 @@ public class AdministradorEntity extends BaseEntity implements Serializable
     private String nombre;
     private String correo;
     
+    @OneToOne
     private EdificioEntity edificio;
     
      /**
@@ -81,8 +83,8 @@ public class AdministradorEntity extends BaseEntity implements Serializable
     }
     
      /**
-     * Obtiene la colección de edificios.
-     * @return colección edificios. 
+     * Obtiene la colecciï¿½n de edificios.
+     * @return colecciï¿½n edificios. 
      */
     public EdificioEntity getEdificio() 
     {

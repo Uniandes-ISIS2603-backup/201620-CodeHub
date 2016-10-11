@@ -40,7 +40,8 @@ public class AdministradorPersistenceTest {
      * @return el jar que va a desplegar para la prueba
      */
     @Deployment
-    public static JavaArchive createDeployment() {
+    public static JavaArchive createDeployment() 
+    {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(AdministradorEntity.class.getPackage())
                 .addPackage(AdministradorPersistence.class.getPackage())
@@ -173,7 +174,7 @@ public class AdministradorPersistenceTest {
     {
         AdministradorEntity entity = data.get(0);
         administradorPersistence.delete(entity.getId());
-        AdministradorEntity deleted = em.find(AdministradorEntity.class, entity.getId());
+        AdministradorEntity deleted = emptyType.find(AdministradorEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
@@ -188,7 +189,7 @@ public class AdministradorPersistenceTest {
         AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
 
         newEntity.setId(entity.getId());
-        AdministradorPersistence.update(newEntity);
+        administradorPersistence.update(newEntity);
         AdministradorEntity resp = em.find(AdministradorEntity.class, entity.getId());
         Assert.assertEquals(newEntity.getName(), resp.getName());
     }

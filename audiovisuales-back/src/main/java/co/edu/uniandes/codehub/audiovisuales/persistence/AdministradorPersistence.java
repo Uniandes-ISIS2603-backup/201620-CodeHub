@@ -6,6 +6,7 @@
 package co.edu.uniandes.codehub.audiovisuales.persistence;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity;
+import java.util.List;
 import javax.ejb.Stateless;
 import java.util.logging.Level;
 import java.util.logging.Logger;
