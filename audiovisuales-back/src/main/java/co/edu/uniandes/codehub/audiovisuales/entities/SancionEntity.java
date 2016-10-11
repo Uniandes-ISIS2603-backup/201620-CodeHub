@@ -6,8 +6,6 @@
 package co.edu.uniandes.codehub.audiovisuales.entities;
 
 import java.io.Serializable;
-import java.util.Date;
-
 /**
  *
  * @author lj.pinzon12
