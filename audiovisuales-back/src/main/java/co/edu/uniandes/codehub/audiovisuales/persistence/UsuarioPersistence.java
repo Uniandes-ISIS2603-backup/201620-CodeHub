@@ -24,7 +24,7 @@ public class UsuarioPersistence {
     protected EntityManager em;  
     
      public UsuarioEntity find(Long id) {
-        LOGGER.log(Level.INFO, "Consultando company con id={0}", id);
+        LOGGER.log(Level.INFO, "Consultando usuario con id={0}", id);
         return em.find(UsuarioEntity.class, id);
     }
 }
