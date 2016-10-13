@@ -15,6 +15,9 @@ import javax.persistence.Entity;
  */
 @Entity
 public class EquipoEntity extends BaseEntity implements Serializable{
+    /**------------------
+     *      Atributos
+     -------------------*/
     
     /**
     * ID del equipo
@@ -36,7 +39,15 @@ public class EquipoEntity extends BaseEntity implements Serializable{
      * fecha en la que el equipo queda libre
      */
     private Date quedaLibre;
+    /**
+     * id del edificio al cual pertenece el equipo
+     */
+    private Long idEdificio;
 
+     /**------------------
+     *      Atributos
+     -------------------*/
+    
     public void setId(Long id) {
         this.id = id;
     }
@@ -84,5 +95,5 @@ public class EquipoEntity extends BaseEntity implements Serializable{
     public Long getIdEdificio() {
         return idEdificio;
     }
-    private Long idEdificio;
+   
 }
