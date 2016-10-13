@@ -25,7 +25,6 @@ public class ReservaEntity extends BaseEntity implements Serializable{
     private Double calificacion;
     private Boolean generoSancion;
     private Long edificioId;
-    private Long id;
     private Long idEquipo;
     private Long idUsuario;
 
@@ -75,14 +74,6 @@ public class ReservaEntity extends BaseEntity implements Serializable{
 
     public void setEdificioId(Long edificioId) {
         this.edificioId = edificioId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Long getIdEquipo() {
