@@ -19,5 +19,5 @@ import javax.ejb.Stateless;
 @Stateless
 public class EquipoPersistence {
     
-    private static final logger LOGGER=null;
+    //private static final logger LOGGER=null;
 }
