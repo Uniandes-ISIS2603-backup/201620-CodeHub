@@ -5,6 +5,11 @@
  */
 package co.edu.uniandes.codehub.audiovisuales.test.persistence;
 
+import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
+import co.edu.uniandes.codehub.audiovisuales.persistence.UsuarioPersistence;
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -37,6 +42,19 @@ public class UsuarioPersistenceTest {
     public void tearDown() {
     }
 
+    /**
+     *
+     * @return el jar que va a desplegar para la prueba
+     */
+    @Deployment
+    public static JavaArchive createDeployment() {
+        return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(UsuarioEntity.class.getPackage())
+                .addPackage(UsuarioPersistence.class.getPackage())
+                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
+    }
+    
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
