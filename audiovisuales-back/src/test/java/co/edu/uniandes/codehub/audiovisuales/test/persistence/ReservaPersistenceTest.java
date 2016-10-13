@@ -42,7 +42,7 @@ public class ReservaPersistenceTest {
      */
     @Test
     public void testFind() throws Exception {
-        fail("find");
+        
     }
     
 }
