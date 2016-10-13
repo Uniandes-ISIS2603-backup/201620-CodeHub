@@ -6,11 +6,14 @@
 package co.edu.uniandes.codehub.audiovisuales.persistence;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.ejb.Stateless;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 
 /**
