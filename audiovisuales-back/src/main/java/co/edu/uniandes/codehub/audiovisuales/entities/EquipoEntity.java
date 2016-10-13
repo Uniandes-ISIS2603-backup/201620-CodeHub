@@ -10,17 +10,31 @@ import java.sql.Date;
 import javax.persistence.Entity;
 
 /**
- *
+ * clase que representa un equipo en la base de datos (?)
  * @author c.zambrano10
  */
 @Entity
 public class EquipoEntity extends BaseEntity implements Serializable{
     
-    
+    /**
+    * ID del equipo
+    */
     private Long id;
+    /**
+     * Tipo del equipo
+     */
     private String tipo;
+    /**
+     * Estado del equipo
+     */
     private int estado;
+    /**
+     * disponibilidad del equipo
+     */
     private boolean disponible;
+    /**
+     * fecha en la que el equipo queda libre
+     */
     private Date quedaLibre;
 
     public void setId(Long id) {
