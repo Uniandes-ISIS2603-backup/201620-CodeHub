@@ -40,9 +40,9 @@ public class EquipoEntity extends BaseEntity implements Serializable{
      */
     private Date quedaLibre;
     /**
-     * id del edificio al cual pertenece el equipo
+     * Edificio al cual pertenece el equipo
      */
-    private Long idEdificio;
+    private EdificioEntity edificio;
 
      /**------------------
      *      Atributos
@@ -68,8 +68,8 @@ public class EquipoEntity extends BaseEntity implements Serializable{
         this.quedaLibre = quedaLibre;
     }
 
-    public void setIdEdificio(Long idEdificio) {
-        this.idEdificio = idEdificio;
+    public void setIdEdificio(EdificioEntity idEdificio) {
+        this.edificio = idEdificio;
     }
 
     public Long getId() {
@@ -92,8 +92,8 @@ public class EquipoEntity extends BaseEntity implements Serializable{
         return quedaLibre;
     }
 
-    public Long getIdEdificio() {
-        return idEdificio;
+    public EdificioEntity getIdEdificio() {
+        return edificio;
     }
    
 }

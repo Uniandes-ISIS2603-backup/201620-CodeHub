@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.codehub.audiovisuales.persistence;
 
+import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -19,5 +20,13 @@ import javax.ejb.Stateless;
 @Stateless
 public class EquipoPersistence {
     
-    private static final logger LOGGER=null;
+    private static final Logger LOGGER= Logger.getLogger(EquipoPersistence.class.getName());
+    
+    @PersistenceContext(unitName = "CodehubPU")
+    protected EntityManager em;  
+    
+     public EquipoEntity find(Long id) {
+        LOGGER.log(Level.INFO, "Consultando eqiupo con id={0}", id);
+        return em.find(EquipoEntity.class, id);
+    }
 }
