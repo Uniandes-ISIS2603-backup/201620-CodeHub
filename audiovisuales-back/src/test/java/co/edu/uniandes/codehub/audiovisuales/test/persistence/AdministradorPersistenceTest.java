@@ -7,7 +7,6 @@ package co.edu.uniandes.codehub.audiovisuales.test.persistence;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity;
 import co.edu.uniandes.codehub.audiovisuales.persistence.AdministradorPersistence;
-import com.sun.xml.rpc.processor.modeler.j2ee.xml.emptyType;
 import java.util.ArrayList;
 import java.util.List;
 
