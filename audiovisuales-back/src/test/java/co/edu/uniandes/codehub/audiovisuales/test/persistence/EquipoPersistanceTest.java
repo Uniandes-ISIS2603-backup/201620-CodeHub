@@ -121,11 +121,13 @@ public class EquipoPersistanceTest {
             reservas.add(res);
         }
         
-        
+        //todos los quipos tienen las mismas reservas
         for (int i = 0; i < 3; i++) {
             EquipoEntity entity = factory.manufacturePojo(EquipoEntity.class);
+            //se agrega el edificio.
             entity.setEdificio(edificioEntity);
-            entity.setReservas(Array);
+            //se agregan las reservas.
+            entity.setReservas(reservas);
             em.persist(entity);
             data.add(entity);
         }
