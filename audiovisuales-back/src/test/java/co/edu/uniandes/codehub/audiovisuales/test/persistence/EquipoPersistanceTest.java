@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.codehub.audiovisuales.test.persistence;
+import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
+import co.edu.uniandes.codehub.audiovisuales.persistence.EquipoPersistence;
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
 
 import org.junit.*;
 
@@ -14,12 +19,18 @@ import org.junit.*;
 public class EquipoPersistanceTest {
 
     /**-----------------------------------
-     *          Constructor
+     *          Metodos de Test
      ------------------------------------*/
-    public EquipoPersistanceTest() {
-        
-        //vacio por que ajá
+    @Deployment
+    public static JavaArchive createDeployment() 
+    {
+        return ShrinkWrap.create(JavaArchive.class)
+                .addPackage(EquipoEntity.class.getPackage())
+                .addPackage(EquipoPersistence.class.getPackage())
+                .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+                .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
+    
     @BeforeClass
     public static void setUpClass() {
     }
