@@ -6,7 +6,12 @@
 package co.edu.uniandes.codehub.audiovisuales.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -17,6 +22,30 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     
     public final static int ESTUDIANTE = 1;
     public final static int PROFESOR = 2;
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SancionEntity> sanciones = new ArrayList<>();
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ReservaEntity> reservas = new ArrayList<>();
+    
+    public List<SancionEntity> getSanciones(){
+        return sanciones;
+    }
+    
+    public List<ReservaEntity> getReservas(){
+        return reservas;
+    }
+    
+    public void setSanciones(List<SancionEntity> sanciones){
+        this.sanciones = sanciones;
+    }
+    
+    public void setReservas(List<ReservaEntity> reservas){
+        this.reservas = reservas;
+    }
     
     private Boolean tieneSancion;
     private int tipo;
