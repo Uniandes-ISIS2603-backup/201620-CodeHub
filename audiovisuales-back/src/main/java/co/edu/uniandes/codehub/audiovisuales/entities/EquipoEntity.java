@@ -44,7 +44,7 @@ public class EquipoEntity extends BaseEntity implements Serializable{
     @ManyToOne
     private EdificioEntity edificio;
     /**
-     * reservas del equipo.
+     * Reservas del equipo.
      */
     @OneToMany
     private ArrayList<ReservaEntity> reservas;
