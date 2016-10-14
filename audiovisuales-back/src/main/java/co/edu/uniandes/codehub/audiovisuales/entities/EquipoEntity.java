@@ -81,6 +81,10 @@ public class EquipoEntity extends BaseEntity implements Serializable{
         this.disponible = disponible;
     }
 
+    /**
+     * cambia la fecha en que queda libre el equipo
+     * @param quedaLibre 
+     */
     public void setQuedaLibre(Date quedaLibre) {
         this.quedaLibre = quedaLibre;
     }
