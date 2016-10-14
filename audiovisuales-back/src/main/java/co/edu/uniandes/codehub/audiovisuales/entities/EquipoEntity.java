@@ -7,8 +7,10 @@ package co.edu.uniandes.codehub.audiovisuales.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * clase que representa un equipo en la base de datos (?)
@@ -41,6 +43,11 @@ public class EquipoEntity extends BaseEntity implements Serializable{
      */
     @ManyToOne
     private EdificioEntity edificio;
+    /**
+     * reservas del equipo.
+     */
+    @OneToMany
+    private ArrayList<ReservaEntity> reservas;
 
      /**------------------
      *      Metodos
@@ -63,7 +70,7 @@ public class EquipoEntity extends BaseEntity implements Serializable{
         this.quedaLibre = quedaLibre;
     }
 
-    public void setIdEdificio(EdificioEntity idEdificio) {
+    public void setEdificio(EdificioEntity idEdificio) {
         this.edificio = idEdificio;
     }
 
@@ -83,8 +90,15 @@ public class EquipoEntity extends BaseEntity implements Serializable{
         return quedaLibre;
     }
 
-    public EdificioEntity getIdEdificio() {
+    public EdificioEntity getEdificio() {
         return edificio;
     }
-   
+
+    public ArrayList<ReservaEntity> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(ArrayList<ReservaEntity> reservas) {
+        this.reservas = reservas;
+    }  
 }
