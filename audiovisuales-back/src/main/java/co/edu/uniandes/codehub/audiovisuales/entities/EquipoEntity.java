@@ -57,10 +57,18 @@ public class EquipoEntity extends BaseEntity implements Serializable{
      -------------------*/
  
 
+    /**
+     * cambia el tipo del equipo
+     * @param tipo el nuevo tipo del equipo. tipo!=null && tipo!=""
+     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
+    /**
+     * 
+     * @param estado 
+     */
     public void setEstado(int estado) {
         this.estado = estado;
     }
