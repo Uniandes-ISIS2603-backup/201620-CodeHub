@@ -107,6 +107,7 @@ public class EquipoPersistanceTest {
         
         for (int i = 0; i < 3; i++) {
             EquipoEntity entity = factory.manufacturePojo(EquipoEntity.class);
+            entity.setEdificio(edificioEntity);
             em.persist(entity);
             data.add(entity);
         }
@@ -131,5 +132,22 @@ public class EquipoPersistanceTest {
         long buscar = data.get(0).getId();
         EquipoEntity respuesta = equipoPersistence.find(buscar);
         Assert.assertEquals("la busqueda no arrojó el elemento correcto",respuesta,data.get(0));
+    }
+    
+    /**
+     * Test para asegurarse de que la búsqueda por edificios de los equipos funciona correctamente.
+     * Todos los equipos en el Array de data tienen el mismo edificio, esa es la base del test.
+     */
+    @Test
+    public void testFindByEdificio(){
+        //caso 1:
+        List<EquipoEntity> respuesta= equipoPersistence.findByedificio(edificioEntity);
+        Assert.assertArrayEquals("La lista de equipos no es la lista de datos",respuesta.toArray(),data.toArray());
+        //caso 2:
+        edificioEntity.setId(2L);
+        respuesta= equipoPersistence.findByedificio(edificioEntity); 
+        EquipoEntity[] e = new EquipoEntity[respuesta.size()];
+        edificioEntity.setId(1L);
+        Assert.assertArrayEquals("Las listas no pueden ser iguales!!!",respuesta.toArray(), e);
     }
 }
