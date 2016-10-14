@@ -48,6 +48,13 @@ public class EquipoPersistence {
          
      }
      
+     public EquipoEntity juanByName(String name){
+         LOGGER.log(Level.INFO, "Consultando Equipo con el Juan = ", name);
+         TypedQuery<EquipoEntity> q = em.createQuery("SELECT e FROM EquipoEntity e where e.name = :name", EquipoEntity.class);
+         q =q.setParameter("name", name);
+         return q.getSingleResult();
+     }
+     
      public EquipoEntity create(EquipoEntity entity){
          LOGGER.info("Creando un Equipo nuevo");
         em.persist(entity);
@@ -66,4 +73,5 @@ public class EquipoPersistence {
         EquipoEntity entity = em.find(EquipoEntity.class, id);
         em.remove(entity);
     }
+     
 }
