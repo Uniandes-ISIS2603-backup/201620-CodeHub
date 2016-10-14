@@ -7,7 +7,14 @@ package co.edu.uniandes.codehub.audiovisuales.test.persistence;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
 import co.edu.uniandes.codehub.audiovisuales.persistence.UsuarioPersistence;
+import java.util.ArrayList;
+import java.util.List;
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
@@ -16,26 +23,36 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import uk.co.jemos.podam.api.PodamFactory;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 /**
  *
  * @author ln.bello10
  */
+@RunWith(Arquillian.class)
 public class UsuarioPersistenceTest {
     
     public UsuarioPersistenceTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
     @Before
     public void setUp() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
     }
     
     @After
@@ -60,4 +77,31 @@ public class UsuarioPersistenceTest {
     //
     // @Test
     // public void hello() {}
+    @Inject
+    private UsuarioPersistence usuarioPersistence;
+    
+    @PersistenceContext
+    private EntityManager em;
+    
+    @Inject
+    UserTransaction utx;
+    
+    private List<UsuarioEntity> data = new ArrayList<UsuarioEntity>();
+    
+    
+    private void clearData() {
+        em.createQuery("delete from ReservaEntity").executeUpdate();
+        em.createQuery("delete from SancionEntity").executeUpdate();
+        em.createQuery("delete from UsuarioEntity").executeUpdate();
+    }
+    
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        for (int i = 0; i < 3; i++) {
+            UsuarioEntity entity = factory.manufacturePojo(UsuarioEntity.class);
+            em.persist(entity);
+            data.add(entity);
+        }
+    }
+            
 }
