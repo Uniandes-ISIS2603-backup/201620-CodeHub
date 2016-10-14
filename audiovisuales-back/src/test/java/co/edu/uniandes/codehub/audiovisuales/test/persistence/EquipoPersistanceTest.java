@@ -115,9 +115,21 @@ public class EquipoPersistanceTest {
      *          Metodos de Test
      ------------------------------------*/
     
+    /**
+     * Test para asegurarse de que la búsqueda de todos los equipos arroje la lista corecta.
+     */
     @Test
     public void testFindAll(){
         List<EquipoEntity> respuesta= equipoPersistence.findAll();
-        Assert.assertEquals(respuesta,data);
+        Assert.assertArrayEquals("La respuesta no corresponde con los datos obtenidos.",respuesta.toArray(),data.toArray());
+    }
+    /**
+     * Test para asegurarse de que la búsqueda de un equipo por ID sea correcta. 
+     */
+    @Test
+    public void testFind(){
+        long buscar = data.get(0).getId();
+        EquipoEntity respuesta = equipoPersistence.find(buscar);
+        Assert.assertEquals("la busqueda no arrojó el elemento correcto",respuesta,data.get(0));
     }
 }
