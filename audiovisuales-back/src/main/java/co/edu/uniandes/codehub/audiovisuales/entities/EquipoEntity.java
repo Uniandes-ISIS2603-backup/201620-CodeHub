@@ -66,13 +66,17 @@ public class EquipoEntity extends BaseEntity implements Serializable{
     }
 
     /**
-     * 
+     * Cambia el estado del equipo
      * @param estado 
      */
     public void setEstado(int estado) {
         this.estado = estado;
     }
 
+    /**
+     * Cambia la disponibilidad
+     * @param disponible 
+     */
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
