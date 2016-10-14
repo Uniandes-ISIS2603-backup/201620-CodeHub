@@ -97,7 +97,6 @@ public class EquipoPersistanceTest {
     /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
-     *
      */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
