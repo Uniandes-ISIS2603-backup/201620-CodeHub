@@ -115,4 +115,9 @@ public class EquipoPersistanceTest {
      *          Metodos de Test
      ------------------------------------*/
     
+    @Test
+    public void testFindAll(){
+        List<EquipoEntity> respuesta= equipoPersistence.findAll();
+        Assert.assertEquals(respuesta,data);
+    }
 }
