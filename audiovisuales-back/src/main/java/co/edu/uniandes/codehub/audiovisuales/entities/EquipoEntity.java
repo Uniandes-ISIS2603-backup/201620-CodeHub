@@ -8,6 +8,7 @@ package co.edu.uniandes.codehub.audiovisuales.entities;
 import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 /**
  * clase que representa un equipo en la base de datos (?)
@@ -19,10 +20,6 @@ public class EquipoEntity extends BaseEntity implements Serializable{
      *      Atributos
      -------------------*/
     
-    /**
-    * ID del equipo
-    */
-    private Long id;
     /**
      * Tipo del equipo
      */
@@ -42,15 +39,13 @@ public class EquipoEntity extends BaseEntity implements Serializable{
     /**
      * Edificio al cual pertenece el equipo
      */
+    @ManyToOne
     private EdificioEntity edificio;
 
      /**------------------
-     *      Atributos
+     *      Metodos
      -------------------*/
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
+ 
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
@@ -70,10 +65,6 @@ public class EquipoEntity extends BaseEntity implements Serializable{
 
     public void setIdEdificio(EdificioEntity idEdificio) {
         this.edificio = idEdificio;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getTipo() {
