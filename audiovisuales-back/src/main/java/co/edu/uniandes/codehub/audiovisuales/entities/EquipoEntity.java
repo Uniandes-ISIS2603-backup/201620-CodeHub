@@ -89,6 +89,10 @@ public class EquipoEntity extends BaseEntity implements Serializable{
         this.quedaLibre = quedaLibre;
     }
 
+    /**
+     * cambia el edificio del equipo
+     * @param idEdificio 
+     */
     public void setEdificio(EdificioEntity idEdificio) {
         this.edificio = idEdificio;
     }
