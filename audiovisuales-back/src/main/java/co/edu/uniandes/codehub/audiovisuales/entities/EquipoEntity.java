@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * clase que representa un equipo en la base de datos (?)
@@ -41,11 +42,13 @@ public class EquipoEntity extends BaseEntity implements Serializable{
     /**
      * Edificio al cual pertenece el equipo
      */
+    @PodamExclude
     @ManyToOne
     private EdificioEntity edificio;
     /**
      * Reservas del equipo.
      */
+    @PodamExclude
     @OneToMany
     private ArrayList<ReservaEntity> reservas;
 
