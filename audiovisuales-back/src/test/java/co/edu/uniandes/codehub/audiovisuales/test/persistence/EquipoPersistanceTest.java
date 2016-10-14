@@ -6,6 +6,7 @@
 package co.edu.uniandes.codehub.audiovisuales.test.persistence;
 import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
+import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
 import co.edu.uniandes.codehub.audiovisuales.persistence.EquipoPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,14 @@ public class EquipoPersistanceTest {
      * edifcio "dueño" de los equipos en la prueba
      */
     EdificioEntity edificioEntity;
+    /**
+     * reservas "hijas" de los equipos de prueba
+     */
+    ArrayList<ReservaEntity> reservas;
 
+    /**
+     * lista co los equipos de prueba
+     */
     private List<EquipoEntity> data = new ArrayList<EquipoEntity>();
     /**-----------------------------------
      *     Metodos de configuración
@@ -92,6 +100,7 @@ public class EquipoPersistanceTest {
     private void clearData() {
         em.createQuery("delete from EquipoEntity").executeUpdate();
         em.createQuery("delete from EdificioEntity").executeUpdate();
+        em.createQuery("delete from ReservaEntity").executeUpdate();
     }
 
     /**
@@ -100,14 +109,23 @@ public class EquipoPersistanceTest {
      */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
+        //edificio de pruebas.
         edificioEntity = factory.manufacturePojo(EdificioEntity.class);
         edificioEntity.setId(1L);
         em.persist(edificioEntity);
+        //reservas de pruevas
+        for(int  i=0; i<3;i++){
+            ReservaEntity res = factory.manufacturePojo(ReservaEntity.class);
+            res.setId((Long)(long)i); //esto es valido? :v
+            em.persist(res);
+            reservas.add(res);
+        }
         
         
         for (int i = 0; i < 3; i++) {
             EquipoEntity entity = factory.manufacturePojo(EquipoEntity.class);
             entity.setEdificio(edificioEntity);
+            entity.setReservas(Array);
             em.persist(entity);
             data.add(entity);
         }
