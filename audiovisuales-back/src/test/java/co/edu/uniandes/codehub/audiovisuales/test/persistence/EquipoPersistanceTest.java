@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.codehub.audiovisuales.test.persistence;
+import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
 import co.edu.uniandes.codehub.audiovisuales.persistence.EquipoPersistence;
 import java.util.ArrayList;
@@ -54,6 +55,11 @@ public class EquipoPersistanceTest {
 
     @Inject
     UserTransaction utx;
+    
+    /**
+     * edifcio "dueño" de los equipos en la prueba
+     */
+    EdificioEntity edificioEntity;
 
     private List<EquipoEntity> data = new ArrayList<EquipoEntity>();
     /**-----------------------------------
@@ -83,9 +89,9 @@ public class EquipoPersistanceTest {
     /**
      * Limpia las tablas que están implicadas en la prueba.
      */
-    private void clearData() 
-    {
+    private void clearData() {
         em.createQuery("delete from EquipoEntity").executeUpdate();
+        em.createQuery("delete from EdificioEntity").executeUpdate();
     }
 
     /**
@@ -93,9 +99,13 @@ public class EquipoPersistanceTest {
      * pruebas.
      *
      */
-    private void insertData() 
-    {
+    private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
+        edificioEntity = factory.manufacturePojo(EdificioEntity.class);
+        edificioEntity.setId(1L);
+        em.persist(edificioEntity);
+        
+        
         for (int i = 0; i < 3; i++) {
             EquipoEntity entity = factory.manufacturePojo(EquipoEntity.class);
             em.persist(entity);
