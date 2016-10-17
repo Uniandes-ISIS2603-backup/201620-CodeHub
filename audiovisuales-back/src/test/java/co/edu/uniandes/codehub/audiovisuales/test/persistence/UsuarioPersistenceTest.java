@@ -19,6 +19,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -102,6 +103,76 @@ public class UsuarioPersistenceTest {
             em.persist(entity);
             data.add(entity);
         }
+    }
+    
+    @Test
+    public void createUsuarioTest(){
+        PodamFactory factory = new PodamFactoryImpl();
+        UsuarioEntity entity = factory.manufacturePojo(UsuarioEntity.class);
+        
+        UsuarioEntity result = usuarioPersistence.create(entity);
+        
+        Assert.assertNotNull(result);
+        UsuarioEntity usuario = em.find(UsuarioEntity.class, result.getId());
+        Assert.assertNotNull(usuario);
+        Assert.assertEquals(entity.getName(), usuario.getName());
+    }
+    
+    @Test
+    public void getUsuariosTest(){
+        
+        List<UsuarioEntity> usuarios = usuarioPersistence.findAll();
+        Assert.assertEquals(data.size(), usuarios.size());
+        for(UsuarioEntity usu:usuarios){
+            boolean encontrado = false;
+            for(UsuarioEntity otro : data){
+                if(usu.getId().equals(otro.getId())){
+                    encontrado = true;
+                }
+            }
+            Assert.assertTrue(encontrado);
+        }
+    }
+    
+    @Test
+    public void getUsuarioTest(){
+        
+        UsuarioEntity pojo = data.get(0);
+        
+        UsuarioEntity prueba = usuarioPersistence.find(pojo.getId());
+        Assert.assertNotNull(prueba);
+        Assert.assertEquals(pojo.getName(), prueba.getName());  
+    }
+    
+    @Test
+    public void getUsuarioByNameTest(){
+        UsuarioEntity pojo = data.get(0);
+        UsuarioEntity prueba = usuarioPersistence.findByName(pojo.getName());
+        Assert.assertNotNull(prueba);
+        Assert.assertEquals(pojo.getName(), prueba.getName());
+    }
+    
+    @Test
+    public void deleteUsuarioTest(){
+        
+        UsuarioEntity pojo = data.get(0);
+        usuarioPersistence.delete(pojo.getId());
+        UsuarioEntity prueba = em.find(UsuarioEntity.class, pojo.getId());
+        Assert.assertNull(prueba);
+    }
+    
+    @Test
+    public void updateUsuarioTest(){
+        
+        UsuarioEntity uno = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        UsuarioEntity dos = factory.manufacturePojo(UsuarioEntity.class);
+        
+        dos.setId(uno.getId());
+        usuarioPersistence.update(dos);
+        UsuarioEntity fin = em.find(UsuarioEntity.class, uno.getId());
+        
+        Assert.assertEquals(dos.getName(), fin.getName());
     }
             
 }
