@@ -53,7 +53,7 @@ public class SancionPersistence
 
     public SancionEntity update(SancionEntity entity) 
     {
-        LOGGER.log(Level.INFO, "Actualizando sancion con id={0}", entity.getIdentificador());
+        LOGGER.log(Level.INFO, "Actualizando sancion con id={0}", entity.getId());
         return em.merge(entity);
     }
 

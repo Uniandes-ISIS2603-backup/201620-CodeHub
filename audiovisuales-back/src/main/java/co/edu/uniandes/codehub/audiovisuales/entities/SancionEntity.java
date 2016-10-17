@@ -6,6 +6,8 @@
 package co.edu.uniandes.codehub.audiovisuales.entities;
 
 import java.io.Serializable;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
  * @author lj.pinzon12
@@ -14,7 +16,11 @@ public class SancionEntity extends BaseEntity implements Serializable
 {
     private String fecha;
     private String estado;
-    private int id;
+    
+    @PodamExclude
+    @ManyToOne
+    private UsuarioEntity usuario;
+    public String getFecha;
         
      /**
      * Obtiene el atributo fecha.
@@ -66,9 +72,9 @@ public class SancionEntity extends BaseEntity implements Serializable
      * @param id nuevo valor del atributo
      *
      */
-    public void setIdentificador(int id) 
+    public void setUsuario(UsuarioEntity id) 
     {
-        this.id = id;
+        this.usuario = usuario;
     }
     /**
      * Obtiene el atributo id.
@@ -76,9 +82,9 @@ public class SancionEntity extends BaseEntity implements Serializable
      * @return atributo id.
      *
      */
-    public int getIdentificador()
+    public UsuarioEntity getUsuario()
     {
-        return id;
+        return usuario;
     }
       
 }
