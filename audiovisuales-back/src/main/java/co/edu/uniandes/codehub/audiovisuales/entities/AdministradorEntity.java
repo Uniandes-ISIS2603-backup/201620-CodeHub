@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 
 /**
@@ -24,7 +25,7 @@ public class AdministradorEntity extends BaseEntity implements Serializable
     private String nombre;
     private String correo;
     
-    @OneToOne(mappedBy="admin", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(fetch=FetchType.LAZY,cascade={CascadeType.PERSIST,CascadeType.REMOVE},optional=false)
     private EdificioEntity edificio;
  
     

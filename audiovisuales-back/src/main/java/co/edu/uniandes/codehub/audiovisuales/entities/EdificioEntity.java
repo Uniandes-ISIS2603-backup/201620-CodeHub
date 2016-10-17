@@ -29,13 +29,7 @@ public class EdificioEntity extends BaseEntity implements Serializable
    //-----------
     // Metodos
     //-----------
-   
-   /**
-     * Administrador del edificio
-     */
-   
-   @OneToOne
-   private AdministradorEntity admin; 
+
    
    /**
      * Equipos del edificio
@@ -58,17 +52,7 @@ public class EdificioEntity extends BaseEntity implements Serializable
    {
        return this.bloque;
    }
-   
-   public void setAdmin(AdministradorEntity a)
-   {
-       this.admin = a;
-   }
-   
-   public AdministradorEntity getAdmin()
-   {
-       return admin;
-   }
-   
+
    public void setEquipos(ArrayList<EquipoEntity> e)
    {
        this.equipos = e;
