@@ -79,6 +79,7 @@ public class SancionPersistenceTest
     /**-----------------------------------
      *     Metodos de configuración
      ------------------------------------*/
+    
     /**
      * Configuración inicial de la prueba.
      */
@@ -160,7 +161,7 @@ public class SancionPersistenceTest
     @Test
     public void testFindByFecha(){
         //caso 1:
-        String respuesta= data.get(0).getFecha;
+        String respuesta= data.get(0).getFecha();
         Assert.assertEquals("La lista de equipos no es la lista de datos",respuesta,data.get(0));
         
     }

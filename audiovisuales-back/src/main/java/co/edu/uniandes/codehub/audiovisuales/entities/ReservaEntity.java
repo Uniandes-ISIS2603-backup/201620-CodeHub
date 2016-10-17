@@ -9,6 +9,8 @@ package co.edu.uniandes.codehub.audiovisuales.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
 public class ReservaEntity extends BaseEntity implements Serializable{
@@ -27,6 +29,10 @@ public class ReservaEntity extends BaseEntity implements Serializable{
     private Long edificioId;
     private Long idEquipo;
     private Long idUsuario;
+    
+    @PodamExclude
+    @ManyToOne
+    private UsuarioEntity usuario;
 
     public int getEstado() {
         return estado;

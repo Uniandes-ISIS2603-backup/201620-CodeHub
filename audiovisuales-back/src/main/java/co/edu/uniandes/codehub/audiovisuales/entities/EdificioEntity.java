@@ -8,6 +8,7 @@ package co.edu.uniandes.codehub.audiovisuales.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -32,7 +33,7 @@ public class EdificioEntity extends BaseEntity implements Serializable
    /**
      * Administrador del edificio
      */
-   @PodamExclude
+   
    @OneToOne
    private AdministradorEntity admin; 
    
@@ -40,7 +41,7 @@ public class EdificioEntity extends BaseEntity implements Serializable
      * Equipos del edificio
      */
    @PodamExclude
-   @OneToMany
+   @OneToMany(mappedBy = "edificio", cascade= CascadeType.ALL, orphanRemoval = true)
    private List<EquipoEntity> equipos = new ArrayList<>(); 
    
    

@@ -12,6 +12,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  *
  * @author lj.pinzon12
  */
+
 public class SancionEntity extends BaseEntity implements Serializable
 {
     private String fecha;
@@ -20,7 +21,8 @@ public class SancionEntity extends BaseEntity implements Serializable
     @PodamExclude
     @ManyToOne
     private UsuarioEntity usuario;
-    public String getFecha;
+    
+    
         
      /**
      * Obtiene el atributo fecha.

@@ -20,23 +20,13 @@ import javax.persistence.OneToOne;
 @Entity
 public class AdministradorEntity extends BaseEntity implements Serializable
 {
-    private Long id;
+    
     private String nombre;
     private String correo;
     
-    @OneToOne
+    @OneToOne(mappedBy="admin", cascade = CascadeType.ALL, orphanRemoval = true)
     private EdificioEntity edificio;
-    
-     /**
-     * Obtiene el atributo id.
-     *
-     * @return atributo id.
-     *
-     */
-    public Long getId()
-    {
-        return id;
-    }
+ 
     
      /**
      * Obtiene el atributo nombre.
