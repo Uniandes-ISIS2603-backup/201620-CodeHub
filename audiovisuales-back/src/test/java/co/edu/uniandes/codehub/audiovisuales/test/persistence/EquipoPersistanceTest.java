@@ -187,6 +187,10 @@ public class EquipoPersistanceTest {
         Assert.assertEquals("no se está actualizando el equipo.", prueba, equipoPersistence.update(prueba));
     }
     
+    /**
+     * revisa que se eliminen los equipos.
+     */
+    @Test
     public void testDelete(){
         EquipoEntity eq = data.get(2);
         data.remove(2);
