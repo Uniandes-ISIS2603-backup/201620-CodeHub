@@ -34,32 +34,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class UsuarioPersistenceTest {
-    
-    public UsuarioPersistenceTest() {
-    }
-    
-    @Before
-    public void setUp() {
-        try {
-            utx.begin();
-            em.joinTransaction();
-            clearData();
-            insertData();
-            utx.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            try {
-                utx.rollback();
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
-        }
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
+        
     /**
      *
      * @return el jar que va a desplegar para la prueba
@@ -89,6 +64,23 @@ public class UsuarioPersistenceTest {
     
     private List<UsuarioEntity> data = new ArrayList<UsuarioEntity>();
     
+     @Before
+    public void setUp() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
     
     private void clearData() {
         em.createQuery("delete from ReservaEntity").executeUpdate();
@@ -108,14 +100,14 @@ public class UsuarioPersistenceTest {
     @Test
     public void createUsuarioTest(){
         PodamFactory factory = new PodamFactoryImpl();
-        UsuarioEntity entity = factory.manufacturePojo(UsuarioEntity.class);
+        UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
         
-        UsuarioEntity result = usuarioPersistence.create(entity);
+        UsuarioEntity result = usuarioPersistence.create(newEntity);
         
         Assert.assertNotNull(result);
-        UsuarioEntity usuario = em.find(UsuarioEntity.class, result.getId());
-        Assert.assertNotNull(usuario);
-        Assert.assertEquals(entity.getName(), usuario.getName());
+        UsuarioEntity entity = em.find(UsuarioEntity.class, result.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(newEntity.getName(), entity.getName());
     }
     
     @Test

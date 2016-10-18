@@ -49,7 +49,7 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     }
     
     private Boolean tieneSancion;
-    private int tipo;
+    private Integer tipo;
     
     public Boolean getTieneSancion(){
         return this.tieneSancion;

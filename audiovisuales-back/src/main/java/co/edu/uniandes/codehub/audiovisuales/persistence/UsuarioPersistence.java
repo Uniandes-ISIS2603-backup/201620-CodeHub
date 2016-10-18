@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import static javax.ws.rs.client.Entity.entity;
 
 /**
@@ -45,6 +46,7 @@ public class UsuarioPersistence {
          return q.getResultList();
      }
      
+     @Transactional
      public UsuarioEntity create(UsuarioEntity entity){
          LOGGER.log(Level.INFO, "Creando un nuevo usuario");
          em.persist(entity);
@@ -52,11 +54,13 @@ public class UsuarioPersistence {
         return entity;
      }
      
+     @Transactional
      public UsuarioEntity update(UsuarioEntity entity){
          LOGGER.log(Level.INFO, "Actualizando usuario con id={0}", entity.getId());
          return em.merge(entity);
      }
      
+     @Transactional
      public void delete(Long id){
          LOGGER.log(Level.INFO, "Borrando usuario con id={0}",id);
          UsuarioEntity entity = em.find(UsuarioEntity.class, id);
