@@ -130,7 +130,7 @@ public class SancionPersistenceTest
             entity.setUsuario(usuarioEntity);
             //se agregan las reservas.
             entity.setEstado("vigente"+i);
-            entity.setFecha("1i/0i/2016");
+            entity.setFecha("1"+i+"/0"+i+"/2016");
             em.persist(entity);
             data.add(entity);
         }
@@ -180,7 +180,7 @@ public class SancionPersistenceTest
     public void testFindByFecha(){
         //caso 1:
         String respuesta= data.get(0).getFecha();
-        Assert.assertEquals("La lista de equipos no es la lista de datos",respuesta,data.get(0));
+        Assert.assertEquals("La lista de equipos no es la lista de datos",respuesta,data.get(0).getFecha());
         
     }
 }
