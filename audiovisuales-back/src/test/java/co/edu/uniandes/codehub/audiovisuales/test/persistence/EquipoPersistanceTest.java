@@ -195,8 +195,6 @@ public class EquipoPersistanceTest {
         EquipoEntity eq = data.get(2);
         data.remove(2);
         equipoPersistence.delete(eq.getId());
-        Assert.assertArrayEquals("no se esta eliminando el equipo.",data.toArray(), equipoPersistence.findAll().toArray());
-        //otro por si acaso
         Assert.assertNull("no debería poder encontrar nada", equipoPersistence.find(eq.getId()));
     }
 }
