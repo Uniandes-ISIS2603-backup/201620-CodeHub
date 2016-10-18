@@ -128,7 +128,9 @@ public class EquipoPersistanceTest {
      @Test
     public void testFindAll(){
         List<EquipoEntity> respuesta= equipoPersistence.findAll();
-        Assert.assertArrayEquals("La respuesta no corresponde con los datos obtenidos.",data.toArray(),respuesta.toArray());
+        for(EquipoEntity equipo:data){
+            Assert.assertTrue("no contiene un equipo.",respuesta.contains(equipo));
+        }
     }
     /**
      * Test para asegurarse de que la búsqueda de un equipo por ID sea correcta. 
@@ -151,11 +153,13 @@ public class EquipoPersistanceTest {
     public void testFindByEdificio(){
         //caso 1: los equipos tiene un edificio
         List<EquipoEntity> respuesta= equipoPersistence.findByedificio(edificioEntity);
-        Assert.assertArrayEquals("La lista de equipos no es la lista de datos",data.toArray(),respuesta.toArray());
+        for(EquipoEntity equipo:data){
+            Assert.assertTrue("no contiene un equipo.",respuesta.contains(equipo));
+        }
         //caso 2: los equipos no tienen un edificio
         edificioEntity.setId(2L);
         respuesta= equipoPersistence.findByedificio(edificioEntity); 
-        EquipoEntity[] e = new EquipoEntity[respuesta.size()];
+        EquipoEntity[] e = new EquipoEntity[0];
         edificioEntity.setId(1L);
         Assert.assertArrayEquals("Las listas no pueden ser iguales!!!",e, respuesta.toArray());
     }
