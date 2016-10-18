@@ -117,6 +117,14 @@ public class ReservaPersistenceTest {
        
     }
     
+     @Test
+    public void testFindAll(){
+        List<ReservaEntity> respuesta= reservaPersistence.findAll();
+        for(ReservaEntity equipo:data){
+            Assert.assertTrue("no contiene un equipo.",respuesta.contains(equipo));
+        }
+    }
+    
     @Test
      public void getReservasTest() 
     {
