@@ -34,10 +34,18 @@ public class EdificioPersistence
      }
 
     public EdificioEntity findByName(String name) {
-        LOGGER.log(Level.INFO, "Consultando company con name = {0}", name);
+        LOGGER.log(Level.INFO, "Consultando el edicio con nombre = {0}", name);
         TypedQuery<EdificioEntity> q
                 = em.createQuery("select e from EdificioEntity e where e.name = :name", EdificioEntity.class);
         q = q.setParameter("name", name); 
+        return q.getSingleResult();
+    }
+    
+    public EdificioEntity findByBloque(String bloque) {
+        LOGGER.log(Level.INFO, "Consultando el edificio con bloque = {0}", bloque);
+        TypedQuery<EdificioEntity> q
+                = em.createQuery("select e from EdificioEntity e where e.bloque = :bloque", EdificioEntity.class);
+        q = q.setParameter("bloque", bloque); 
         return q.getSingleResult();
     }
 
@@ -45,6 +53,13 @@ public class EdificioPersistence
         LOGGER.info("Consultando todos los edificios");
         Query q = em.createQuery("select e from EdificioEntity e");
         return q.getResultList();
+    }
+    
+    public EdificioEntity findByAdmin(Long adminId) {
+        LOGGER.log(Level.INFO, "Consultando el edificio con admin Id = {0}", ""+adminId);
+       TypedQuery<EdificioEntity> q = em.createQuery("select e from EdificioEntity e where e.admin = :adminid", EdificioEntity.class);
+        q = q.setParameter("adminid", adminId);
+        return q.getSingleResult();
     }
 
     public EdificioEntity create(EdificioEntity entity) {
@@ -55,12 +70,12 @@ public class EdificioPersistence
     }
 
     public EdificioEntity update(EdificioEntity entity) {
-        LOGGER.log(Level.INFO, "Actualizando edificio con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Actualizando el edificio con id={0}", entity.getId());
         return em.merge(entity);
     }
 
     public void delete(Long id) {
-        LOGGER.log(Level.INFO, "Borrando edificio con id={0}", id);
+        LOGGER.log(Level.INFO, "Borrando el edificio con id={0}", id);
         EdificioEntity entity = em.find(EdificioEntity.class, id);
         em.remove(entity);
     }
