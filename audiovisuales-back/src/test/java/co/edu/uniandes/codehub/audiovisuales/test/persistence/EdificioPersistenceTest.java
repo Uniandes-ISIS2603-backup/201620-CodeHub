@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.codehub.audiovisuales.test.persistence;
 
+import co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity;
 import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.persistence.EdificioPersistence;
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class EdificioPersistenceTest {
     @Inject
     UserTransaction utx;
 
-    private List<EdificioEntity> data = new ArrayList<>();
+    private List<EdificioEntity> data = new ArrayList<EdificioEntity>();
     
     
     @Before
@@ -71,16 +72,19 @@ public class EdificioPersistenceTest {
     }
     
     private void clearData() {
-        em.createQuery("delete from AdminEntity").executeUpdate();
         em.createQuery("delete from EdificioEntity").executeUpdate();
     }
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        for (int i = 0; i < 3; i++) {
+        Integer name = 1;
+        for (int i = 0; i < 5; i++) {            
             EdificioEntity entity = factory.manufacturePojo(EdificioEntity.class);
+            entity.setBloque(""+name);
+            entity.setName(""+name);
             em.persist(entity);
             data.add(entity);
+            name++;
         }
     }
     

@@ -51,7 +51,7 @@ public class EdificioPersistence
 
     public List<EdificioEntity> findAll() {
         LOGGER.info("Consultando todos los edificios");
-        Query q = em.createQuery("select e from EdificioEntity e");
+        TypedQuery<EdificioEntity> q = em.createQuery("select e from EdificioEntity e", EdificioEntity.class);
         return q.getResultList();
     }
     
