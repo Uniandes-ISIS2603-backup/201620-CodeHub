@@ -23,7 +23,7 @@ import static javax.ws.rs.client.Entity.entity;
  */
 public class UsuarioPersistence {
     
-    private static final Logger LOGGER = Logger.getLogger(EdificioPersistence.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(UsuarioPersistence.class.getName());
 
     @PersistenceContext(unitName = "CodehubPU")
     protected EntityManager em;  
