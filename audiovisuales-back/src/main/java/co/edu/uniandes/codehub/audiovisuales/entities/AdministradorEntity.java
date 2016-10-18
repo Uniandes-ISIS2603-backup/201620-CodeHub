@@ -29,9 +29,7 @@ public class AdministradorEntity extends BaseEntity implements Serializable
     
      /**
      * Obtiene el atributo nombre.
-     *
      * @return atributo nombre.
-     *
      */
     public String getNombre()
     {
@@ -40,9 +38,7 @@ public class AdministradorEntity extends BaseEntity implements Serializable
     
      /**
      * Establece el valor del atributo nombre.
-     *
      * @param nombre nuevo valor del atributo
-     *
      */
     public void setNombre(String nombre) 
     {
@@ -51,9 +47,7 @@ public class AdministradorEntity extends BaseEntity implements Serializable
     
       /**
      * Obtiene el atributo correo.
-     *
      * @return atributo correo.
-     *
      */
     public String getCorreo()
     {
@@ -62,9 +56,7 @@ public class AdministradorEntity extends BaseEntity implements Serializable
     
      /**
      * Establece el valor del atributo correo.
-     *
      * @param correo nuevo valor del atributo
-     *
      */
     public void setCorreo(String correo) 
     {

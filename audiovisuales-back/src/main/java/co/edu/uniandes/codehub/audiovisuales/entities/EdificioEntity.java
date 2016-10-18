@@ -49,31 +49,55 @@ public class EdificioEntity extends BaseEntity implements Serializable
     // Metodos
     //-----------
    
+   /**
+     * Establece el bloque del edificio.
+     * @param b nuevo valor. 
+     */
    public void setBloque(String b)
    {
        this.bloque = b;
    }
    
+    /**
+     * Obtiene el bloque del edificio.
+     * @return bloque. 
+     */
    public String getBloque()
    {
        return this.bloque;
    }
    
+   /**
+     * Establece el admin del edificio.
+     * @param a nuevo valor. 
+     */
    public void setAdmin(AdministradorEntity a)
    {
        this.admin = a;
    }
    
+   /**
+     * Obtiene el admin del edificio.
+     * @return admin. 
+     */
    public AdministradorEntity getAdmin()
    {
        return this.admin;
    }
 
+   /**
+     * Establece los equipos registrados en el edificio.
+     * @param e lista de equipos. 
+     */
    public void setEquipos(ArrayList<EquipoEntity> e)
    {
        this.equipos = e;
    }
    
+   /**
+     * Obtiene la lista de equipos del edificio.
+     * @return equipos. 
+     */
    public List<EquipoEntity> getEquipos()
    {
        return equipos;
