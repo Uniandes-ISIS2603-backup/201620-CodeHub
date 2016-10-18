@@ -29,6 +29,9 @@ public class EdificioEntity extends BaseEntity implements Serializable
    //-----------
     // Metodos
     //-----------
+   @PodamExclude
+   @OneToOne(mappedBy= "edificio")
+   private AdministradorEntity admin;
 
    
    /**

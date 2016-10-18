@@ -24,14 +24,14 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     public final static int PROFESOR = 2;
     
     
-    
-    
-    
+    @PodamExclude 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ReservaEntity> reservas = new ArrayList<>();
-    
+
+    @PodamExclude
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SancionEntity> sanciones = new ArrayList<>();
+
     public List<SancionEntity> getSanciones(){
         return sanciones;
     }
