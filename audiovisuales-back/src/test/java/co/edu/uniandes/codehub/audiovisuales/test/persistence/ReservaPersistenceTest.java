@@ -23,6 +23,7 @@ import static org.junit.Assert.*;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -89,17 +90,76 @@ public class ReservaPersistenceTest {
         }
     }
     
-    @After
-    public void tearDown() {
+     @Test
+    public void createReservaTest() 
+    {
+        PodamFactory factory = new PodamFactoryImpl();
+        ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
+
+        ReservaEntity result = reservaPersistence.create(newEntity);
+
+        Assert.assertNotNull(result);
+        ReservaEntity entity = em.find(ReservaEntity.class, result.getId());
+        Assert.assertNotNull(entity);
+       
+        //BaseEntity
+        Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+        
+        //ReservaEntity
+        Assert.assertEquals(newEntity.getEstado(), entity.getEstado());
+        Assert.assertEquals(newEntity.getFechaInicial(), entity.getFechaInicial());
+        Assert.assertEquals(newEntity.getFechaFinal(), entity.getFechaFinal());
+        Assert.assertEquals(newEntity.getCalificacion(), entity.getCalificacion());
+        Assert.assertEquals(newEntity.getEdificioId(), entity.getEdificioId());
+        Assert.assertEquals(newEntity.getGeneroSancion(), entity.getGeneroSancion());
+        
+       
+    }
+    
+    @Test
+     public void getReservasTest() 
+    {
+        List<ReservaEntity> list = reservaPersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (ReservaEntity ent : list) {
+            boolean found = false;
+            for (ReservaEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+   
+     @Test
+      public void deleteReservaTest() 
+    {
+        ReservaEntity entity = data.get(0);
+        reservaPersistence.delete(entity.getId());
+        ReservaEntity deleted = em.find(ReservaEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+      
+      @Test
+    public void updateReservaTest() 
+    {
+        ReservaEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
+
+        newEntity.setId(entity.getId());
+        reservaPersistence.update(newEntity);
+        ReservaEntity resp = em.find(ReservaEntity.class, entity.getId());
+        
+        //BaseEntity
+        Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getId(), resp.getId());
+
     }
 
-    /**
-     * Test of find method, of class ReservaPersistence.
-     */
-    @Test
-    public void testFind() throws Exception {
-        
-    }
+   
 
     private void clearData() {
         em.createQuery("delete from DepartmentEntity").executeUpdate();
