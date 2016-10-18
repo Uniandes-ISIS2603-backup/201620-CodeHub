@@ -8,6 +8,7 @@ import co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -17,6 +18,7 @@ import javax.persistence.TypedQuery;
  *
  * @author lj.pinzon12
  */
+@Stateless
 public class SancionPersistence
 {
      private static final Logger LOGGER = Logger.getLogger(SancionPersistence.class.getName());

@@ -6,9 +6,12 @@
   <persistence-unit name="CompanyPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:app/jdbc/company</jta-data-source>
-    <class>co.edu.uniandes.csw.company.entities.CompanyEntity</class>
-    <class>co.edu.uniandes.csw.company.entities.EmployeeEntity</class>
-    <class>co.edu.uniandes.csw.company.entities.DepartmentEntity</class>
+    <class>co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity</class>
+    <class>co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity</class>
+    <class>co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity</class>
+    <class>co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity</class>
+    <class>co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity</class>
+    <class>co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity</class>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
