@@ -51,7 +51,7 @@ public class EquipoEntity extends BaseEntity implements Serializable{
      * Reservas del equipo.
      */
     @PodamExclude
-    @OneToMany(mappedBy = "edificio", cascade= CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "equipo", cascade= CascadeType.ALL, orphanRemoval = true)
     private ArrayList<ReservaEntity> reservas;
 
     
