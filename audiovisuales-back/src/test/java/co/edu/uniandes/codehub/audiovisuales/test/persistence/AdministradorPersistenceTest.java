@@ -22,7 +22,6 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.jvnet.hk2.osgiadapter.Logger;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -115,7 +114,16 @@ public class AdministradorPersistenceTest {
         Assert.assertNotNull(result);
         AdministradorEntity entity = em.find(AdministradorEntity.class, result.getId());
         Assert.assertNotNull(entity);
+       
+        //BaseEntity
         Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+        
+        //AdministradorEntity
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getCorreo(), entity.getCorreo());
+        Assert.assertEquals(newEntity.getEdificio(), entity.getEdificio());
+       
     }
 
     /**
@@ -148,7 +156,15 @@ public class AdministradorPersistenceTest {
         AdministradorEntity entity = data.get(0);
         AdministradorEntity newEntity = administradorPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
+        
+        //BaseEntity
+        Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+        
+        //AdministradorEntity
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getCorreo(), entity.getCorreo());
+        Assert.assertEquals(newEntity.getEdificio(), entity.getEdificio());
     }
 
     /**
@@ -160,7 +176,15 @@ public class AdministradorPersistenceTest {
         AdministradorEntity entity = data.get(0);
         AdministradorEntity newEntity = administradorPersistence.findByName(entity.getName());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
+        
+        //BaseEntity
+        Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+        
+        //AdministradorEntity
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getCorreo(), entity.getCorreo());
+        Assert.assertEquals(newEntity.getEdificio(), entity.getEdificio());
     }
 
     /**
@@ -188,6 +212,10 @@ public class AdministradorPersistenceTest {
         newEntity.setId(entity.getId());
         administradorPersistence.update(newEntity);
         AdministradorEntity resp = em.find(AdministradorEntity.class, entity.getId());
+        
+        //BaseEntity
         Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getId(), resp.getId());
+
     }
 }
