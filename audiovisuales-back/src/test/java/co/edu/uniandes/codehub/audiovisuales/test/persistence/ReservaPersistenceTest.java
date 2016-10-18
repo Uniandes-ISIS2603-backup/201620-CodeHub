@@ -121,7 +121,7 @@ public class ReservaPersistenceTest {
     public void testFindAll(){
         List<ReservaEntity> respuesta= reservaPersistence.findAll();
         for(ReservaEntity equipo:data){
-            Assert.assertTrue("no contiene un equipo.",respuesta.contains(equipo));
+            Assert.assertTrue("no contiene un reserva.",respuesta.contains(equipo));
         }
     }
     
