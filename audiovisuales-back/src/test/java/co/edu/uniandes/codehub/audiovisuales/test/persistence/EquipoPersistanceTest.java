@@ -145,7 +145,7 @@ public class EquipoPersistanceTest {
     @Test
     public void testFindAll(){
         List<EquipoEntity> respuesta= equipoPersistence.findAll();
-        Assert.assertArrayEquals("La respuesta no corresponde con los datos obtenidos.",respuesta.toArray(),data.toArray());
+        Assert.assertArrayEquals("La respuesta no corresponde con los datos obtenidos.",data.toArray(),respuesta.toArray());
     }
     /**
      * Test para asegurarse de que la búsqueda de un equipo por ID sea correcta. 
@@ -154,7 +154,7 @@ public class EquipoPersistanceTest {
     public void testFind(){
         long buscar = data.get(0).getId();
         EquipoEntity respuesta = equipoPersistence.find(buscar);
-        Assert.assertEquals("la busqueda no arrojó el elemento correcto",respuesta,data.get(0));
+        Assert.assertEquals("la busqueda no arrojó el elemento correcto",data.get(0),respuesta);
     }
     
     /**
@@ -163,14 +163,49 @@ public class EquipoPersistanceTest {
      */
     @Test
     public void testFindByEdificio(){
-        //caso 1:
+        //caso 1: los equipos tiene un edificio
         List<EquipoEntity> respuesta= equipoPersistence.findByedificio(edificioEntity);
-        Assert.assertArrayEquals("La lista de equipos no es la lista de datos",respuesta.toArray(),data.toArray());
-        //caso 2:
+        Assert.assertArrayEquals("La lista de equipos no es la lista de datos",data.toArray(),respuesta.toArray());
+        //caso 2: los equipos no tienen un edificio
         edificioEntity.setId(2L);
         respuesta= equipoPersistence.findByedificio(edificioEntity); 
         EquipoEntity[] e = new EquipoEntity[respuesta.size()];
         edificioEntity.setId(1L);
-        Assert.assertArrayEquals("Las listas no pueden ser iguales!!!",respuesta.toArray(), e);
+        Assert.assertArrayEquals("Las listas no pueden ser iguales!!!",e, respuesta.toArray());
+    }
+    
+    /**
+     * Test para asegurar la creación de un nuevo equipo.
+     */
+    @Test
+    public void testCreate(){
+        //se crea un nuevo equipo para probar si se agregar o no un objeto.
+        PodamFactory factory = new PodamFactoryImpl();
+        EquipoEntity entity = factory.manufacturePojo(EquipoEntity.class);
+        entity.setId(55L);
+        equipoPersistence.create(entity);
+        Assert.assertEquals("no se agrega o se encuentra el equipo.",entity, equipoPersistence.find(55L));
+    }
+    
+    /**
+     * Test para asegurar la actualización de un equipo.
+     */
+    @Test
+    public void testUpdate(){
+        EquipoEntity prueba= data.get(0);
+        prueba.setTipo("aguacate");
+        //prueba actual
+        Assert.assertEquals("no se está actualizando el equipo.", prueba, equipoPersistence.update(prueba));
+        //por si acaso
+        Assert.assertEquals("no se está actualizando el equipo.", prueba.getTipo(), equipoPersistence.update(prueba).getTipo());
+    }
+    
+    public void testDelete(){
+        EquipoEntity eq = data.get(2);
+        data.remove(2);
+        equipoPersistence.delete(eq.getId());
+        Assert.assertArrayEquals("no se esta eliminando el equipo.",data.toArray(), equipoPersistence.findAll().toArray());
+        //otro por si acaso
+        Assert.assertNull("no debería poder encontrar nada", equipoPersistence.find(eq.getId()));
     }
 }

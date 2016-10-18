@@ -69,7 +69,7 @@ public class EquipoPersistence {
      
      public void delete(Long id) 
     {
-        LOGGER.log(Level.INFO, "Borrando Reserva con id={0}", id);
+        LOGGER.log(Level.INFO, "Borrando equipo con id={0}", id);
         EquipoEntity entity = em.find(EquipoEntity.class, id);
         em.remove(entity);
     }
