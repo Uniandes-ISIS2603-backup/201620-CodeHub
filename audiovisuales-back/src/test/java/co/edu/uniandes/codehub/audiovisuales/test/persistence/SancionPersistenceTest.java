@@ -183,4 +183,35 @@ public class SancionPersistenceTest
         Assert.assertEquals("La lista de equipos no es la lista de datos",respuesta,data.get(0).getFecha());
         
     }
+        /**
+     * Test para asegurar la creación de un nueva reserva.
+     */
+    @Test
+    public void testCreate(){
+        //se crea un nuevo equipo para probar si se agregar o no un objeto.
+        PodamFactory factory = new PodamFactoryImpl();
+        SancionEntity entity = factory.manufacturePojo(SancionEntity.class);
+        Assert.assertEquals("no se agrega o se encuentra la sancion.",entity, sancionPersistence.create(entity));
+        Assert.assertEquals("no la encuentra",entity, sancionPersistence.find(entity.getId()));
+    }
+    /**
+     * Test para asegurar la actualización de una reserva.
+     */
+     @Test
+    public void testUpdate(){
+        SancionEntity prueba= data.get(0);
+        prueba.setEstado("vigente");
+        //prueba actual
+        Assert.assertEquals("no se está actualizando la reserva.", prueba, sancionPersistence.update(prueba));
+    }
+        /**
+     * revisa que se eliminen las reservas.
+     */
+    @Test
+    public void testDelete(){
+        SancionEntity eq = data.get(2);
+        data.remove(2);
+        sancionPersistence.delete(eq.getId());
+        Assert.assertNull("no debería poder encontrar nada", sancionPersistence.find(eq.getId()));
+    }
 }
