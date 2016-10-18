@@ -57,10 +57,10 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     public void setTieneSancion(Boolean sancion){
         this.tieneSancion=sancion;
     }
-    public int getTipo(){
+    public Integer getTipo(){
         return this.tipo;
     }
-    public void setTipo(int tipo){
+    public void setTipo(Integer tipo){
         this.tipo=tipo;
     }
 }

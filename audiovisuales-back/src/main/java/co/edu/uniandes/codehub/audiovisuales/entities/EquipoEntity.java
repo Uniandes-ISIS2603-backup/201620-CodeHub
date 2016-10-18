@@ -6,7 +6,7 @@
 package co.edu.uniandes.codehub.audiovisuales.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -30,11 +30,11 @@ public class EquipoEntity extends BaseEntity implements Serializable{
     /**
      * Estado del equipo
      */
-    private int estado;
+    private Integer estado;
     /**
      * disponibilidad del equipo
      */
-    private boolean disponible;
+    private Boolean disponible;
     /**
      * fecha en la que el equipo queda libre
      */
@@ -69,7 +69,7 @@ public class EquipoEntity extends BaseEntity implements Serializable{
      * Cambia el estado del equipo
      * @param estado 
      */
-    public void setEstado(int estado) {
+    public void setEstado(Integer estado) {
         this.estado = estado;
     }
 
@@ -77,7 +77,7 @@ public class EquipoEntity extends BaseEntity implements Serializable{
      * Cambia la disponibilidad
      * @param disponible 
      */
-    public void setDisponible(boolean disponible) {
+    public void setDisponible(Boolean disponible) {
         this.disponible = disponible;
     }
 
@@ -101,11 +101,11 @@ public class EquipoEntity extends BaseEntity implements Serializable{
         return tipo;
     }
 
-    public int getEstado() {
+    public Integer getEstado() {
         return estado;
     }
 
-    public boolean isDisponible() {
+    public Boolean isDisponible() {
         return disponible;
     }
 
