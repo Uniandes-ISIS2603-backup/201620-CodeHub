@@ -168,9 +168,8 @@ public class EquipoPersistanceTest {
         //se crea un nuevo equipo para probar si se agregar o no un objeto.
         PodamFactory factory = new PodamFactoryImpl();
         EquipoEntity entity = factory.manufacturePojo(EquipoEntity.class);
-        entity.setId(55L);
-        equipoPersistence.create(entity);
-        Assert.assertEquals("no se agrega o se encuentra el equipo.",entity, equipoPersistence.find(55L));
+        Assert.assertEquals("no se agrega o se encuentra el equipo.",entity, equipoPersistence.create(entity));
+        Assert.assertEquals("no lo encuentra",entity, equipoPersistence.find(entity.getId()));
     }
     
     /**
@@ -182,8 +181,6 @@ public class EquipoPersistanceTest {
         prueba.setTipo("aguacate");
         //prueba actual
         Assert.assertEquals("no se está actualizando el equipo.", prueba, equipoPersistence.update(prueba));
-        //por si acaso
-        Assert.assertEquals("no se está actualizando el equipo.", prueba.getTipo(), equipoPersistence.update(prueba).getTipo());
     }
     
     public void testDelete(){
