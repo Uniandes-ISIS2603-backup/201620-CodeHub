@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 
@@ -36,18 +35,13 @@ public class AdministradorPersistence
         return em.find(AdministradorEntity.class, id);
      }
      
-      public AdministradorEntity findByName(String nombre) 
+      public AdministradorEntity findByName(String name) 
       {
-          try
-          {
-        LOGGER.log(Level.INFO, "Consultando administrador con nombre= ", nombre);
-        TypedQuery<AdministradorEntity> q = em.createQuery("select u from AdministradorEntity u where u.nombre = :nombre", AdministradorEntity.class);
-        q = q.setParameter("nombre", nombre);
-        return q.getSingleResult();
-         } catch(NoResultException e) {
-        return null;
-    }
-       }
+         LOGGER.log(Level.INFO, "Consultando usuario con nombre= ", name);
+         TypedQuery<AdministradorEntity> q = em.createQuery("SELECT u FROM AdministradorEntity u where u.name= :name",AdministradorEntity.class);
+         q = q.setParameter("name", name);
+         return q.getSingleResult();
+      }
      
      public List<AdministradorEntity> findAll() 
      {
