@@ -54,11 +54,10 @@ public class EquipoEntity extends BaseEntity implements Serializable{
     @OneToMany
     private ArrayList<ReservaEntity> reservas;
 
+    
      /**------------------
      *      Metodos
      -------------------*/
- 
-
     /**
      * cambia el tipo del equipo
      * @param tipo el nuevo tipo del equipo. tipo!=null && tipo!=""

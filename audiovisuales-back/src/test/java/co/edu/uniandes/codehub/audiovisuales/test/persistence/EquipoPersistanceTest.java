@@ -64,15 +64,11 @@ public class EquipoPersistanceTest {
      * edifcio "dueño" de los equipos en la prueba
      */
     EdificioEntity edificioEntity;
-    /**
-     * reservas "hijas" de los equipos de prueba
-     */
-    ArrayList<ReservaEntity> reservas;
 
     /**
-     * lista co los equipos de prueba
+     * lista con los equipos de prueba
      */
-    private List<EquipoEntity> data = new ArrayList<EquipoEntity>();
+    private final List<EquipoEntity> data = new ArrayList<EquipoEntity>();
     /**-----------------------------------
      *     Metodos de configuración
      ------------------------------------*/
@@ -103,7 +99,6 @@ public class EquipoPersistanceTest {
     private void clearData() {
         em.createQuery("delete from EquipoEntity").executeUpdate();
         em.createQuery("delete from EdificioEntity").executeUpdate();
-        em.createQuery("delete from ReservaEntity").executeUpdate();
     }
 
     /**
@@ -112,25 +107,13 @@ public class EquipoPersistanceTest {
      */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        //edificio de pruebas.
+        //agrega un edificio de prueba
         edificioEntity = factory.manufacturePojo(EdificioEntity.class);
         edificioEntity.setId(1L);
         em.persist(edificioEntity);
-        //reservas de pruevas
-        for(int  i=0; i<3;i++){
-            ReservaEntity res = factory.manufacturePojo(ReservaEntity.class);
-            res.setId((Long)(long)i); //esto es valido? :v
-            em.persist(res);
-            reservas.add(res);
-        }
-        
-        //todos los quipos tienen las mismas reservas
         for (int i = 0; i < 3; i++) {
             EquipoEntity entity = factory.manufacturePojo(EquipoEntity.class);
-            //se agrega el edificio.
             entity.setEdificio(edificioEntity);
-            //se agregan las reservas.
-            entity.setReservas(reservas);
             em.persist(entity);
             data.add(entity);
         }
@@ -138,11 +121,11 @@ public class EquipoPersistanceTest {
     /**-----------------------------------
      *          Metodos de Test
      ------------------------------------*/
-    
+
     /**
      * Test para asegurarse de que la búsqueda de todos los equipos arroje la lista corecta.
      */
-    @Test
+     @Test
     public void testFindAll(){
         List<EquipoEntity> respuesta= equipoPersistence.findAll();
         Assert.assertArrayEquals("La respuesta no corresponde con los datos obtenidos.",data.toArray(),respuesta.toArray());
@@ -150,9 +133,12 @@ public class EquipoPersistanceTest {
     /**
      * Test para asegurarse de que la búsqueda de un equipo por ID sea correcta. 
      */
-    @Test
+     @Test
     public void testFind(){
         long buscar = data.get(0).getId();
+        System.out.println("================================================================");
+        System.out.println("id:"+buscar);
+        System.out.println("================================================================");
         EquipoEntity respuesta = equipoPersistence.find(buscar);
         Assert.assertEquals("la busqueda no arrojó el elemento correcto",data.get(0),respuesta);
     }
@@ -190,7 +176,7 @@ public class EquipoPersistanceTest {
     /**
      * Test para asegurar la actualización de un equipo.
      */
-    @Test
+     @Test
     public void testUpdate(){
         EquipoEntity prueba= data.get(0);
         prueba.setTipo("aguacate");
