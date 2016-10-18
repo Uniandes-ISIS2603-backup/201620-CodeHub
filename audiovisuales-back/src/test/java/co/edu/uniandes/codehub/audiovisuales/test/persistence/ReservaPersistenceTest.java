@@ -74,6 +74,23 @@ public class ReservaPersistenceTest {
             }
         }
     }
+
+    private void clearData() {
+        em.createQuery("delete from ReservaEntity").executeUpdate();
+    }
+
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        Long id = 1L;
+        for (int i=0;i<3;i++)
+        {
+            ReservaEntity entity = factory.manufacturePojo(ReservaEntity.class);
+            entity.setId(id);
+            em.persist(entity);
+            data.add(entity);
+            id++;
+        }
+    }
     
     @Test
     public void createReservaTest() 
@@ -138,25 +155,5 @@ public class ReservaPersistenceTest {
         Assert.assertEquals(newEntity.getName(), resp.getName());
         
 
-    }
-
-   
-
-    private void clearData() {
-        em.createQuery("delete from ReservaEntity").executeUpdate();
-    }
-
-    private void insertData() {
-        PodamFactory factory = new PodamFactoryImpl();
-        Long id = 1L;
-        for (int i=0;i<3;i++)
-        {
-            ReservaEntity entity = factory.manufacturePojo(ReservaEntity.class);
-            entity.setId(id);
-            em.persist(entity);
-            data.add(entity);
-            id++;
-        }
-    }
-    
+    }    
 }
