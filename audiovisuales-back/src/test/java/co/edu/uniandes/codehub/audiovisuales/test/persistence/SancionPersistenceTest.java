@@ -15,11 +15,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -27,6 +29,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author lj.pinzon12
  */
+@RunWith(Arquillian.class)
 public class SancionPersistenceTest
 {
     
@@ -105,7 +108,7 @@ public class SancionPersistenceTest
      * Limpia las tablas que están implicadas en la prueba.
      */
     private void clearData() {
-        em.createQuery("delete from EquipoEntity").executeUpdate();
+        em.createQuery("delete from SancionEntity").executeUpdate();
         em.createQuery("delete from UsuarioEntity").executeUpdate();
     }
 
@@ -142,7 +145,22 @@ public class SancionPersistenceTest
     @Test
     public void testFindAll(){
         List<SancionEntity> respuesta= sancionPersistence.findAll();
-        Assert.assertArrayEquals("La respuesta no corresponde con los datos obtenidos.",respuesta.toArray(),data.toArray());
+        
+        Assert.assertEquals("la respuesta no tiene el mismo tamaño", respuesta.size(), data.size());
+
+        for(SancionEntity s1 : respuesta) {
+            boolean encontrado = false;
+            for (SancionEntity s2: data) {
+                if (s1.getId().equals(s2.getId())) {
+                    encontrado = true;
+                    break;
+                }
+            }
+            
+            Assert.assertTrue("no encuentra el elemento " + s1, encontrado);
+        }
+        
+        // Assert.assertArrayEquals("La respuesta no corresponde con los datos obtenidos.",respuesta.toArray(),data.toArray());
     }
     /**
      * Test para asegurarse de que la búsqueda de un equipo por ID sea correcta. 

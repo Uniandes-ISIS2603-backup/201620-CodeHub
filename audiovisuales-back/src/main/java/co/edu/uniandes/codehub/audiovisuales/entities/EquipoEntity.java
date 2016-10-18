@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.*;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -38,6 +39,7 @@ public class EquipoEntity extends BaseEntity implements Serializable{
     /**
      * fecha en la que el equipo queda libre
      */
+    @Temporal(TemporalType.DATE)
     private Date quedaLibre;
     /**
      * Edificio al cual pertenece el equipo
