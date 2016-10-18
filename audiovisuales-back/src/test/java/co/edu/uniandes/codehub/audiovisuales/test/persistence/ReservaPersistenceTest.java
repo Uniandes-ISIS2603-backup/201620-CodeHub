@@ -6,7 +6,6 @@
 package co.edu.uniandes.codehub.audiovisuales.test.persistence;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
-import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
 import co.edu.uniandes.codehub.audiovisuales.persistence.ReservaPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +14,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
@@ -55,8 +50,6 @@ public class ReservaPersistenceTest {
     
     @Inject
     UserTransaction utx;
-    
-    UsuarioEntity usuarioEntity;
     
     private List<ReservaEntity> data = new ArrayList<ReservaEntity>();
     
@@ -122,25 +115,12 @@ public class ReservaPersistenceTest {
     }
    
      @Test
-      public void deleteReservaTest() 
+    public void deleteReservaTest() 
     {
         ReservaEntity entity = data.get(0);
         reservaPersistence.delete(entity.getId());
         ReservaEntity deleted = em.find(ReservaEntity.class, entity.getId());
         Assert.assertNull(deleted);
-    }
-      
-      
-      @Test
-    public void testmierda(){
-        Assert.assertNotNull(data);
-        ReservaEntity[] e = new ReservaEntity[data.size()];
-        System.out.println("==================================================================================");
-        System.out.println("El tamaño del puto arreglo es"+data.size());
-        System.out.println("==================================================================================");
-        System.out.println("El puto arreglo es"+data.toArray());
-        System.out.println("==================================================================================");
-        Assert.assertArrayEquals(e,data.toArray());
     }
       
       @Test
@@ -163,21 +143,16 @@ public class ReservaPersistenceTest {
    
 
     private void clearData() {
-        em.createQuery("delete from DepartmentEntity").executeUpdate();
-        em.createQuery("delete from CompanyEntity").executeUpdate();
+        em.createQuery("delete from ReservaEntity").executeUpdate();
     }
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        usuarioEntity = factory.manufacturePojo(UsuarioEntity.class);
-        usuarioEntity.setId(1L);
-        em.persist(usuarioEntity);
         Long id = 1L;
         for (int i=0;i<3;i++)
         {
             ReservaEntity entity = factory.manufacturePojo(ReservaEntity.class);
             entity.setId(id);
-            entity.set
             em.persist(entity);
             data.add(entity);
             id++;

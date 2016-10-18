@@ -17,20 +17,23 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class ReservaEntity extends BaseEntity implements Serializable{
 
-//    public final static Integer EN_REVISION = 1;
-//    public final static Integer ACTIVA = 2;
-//    public final static Integer INACTIVA = 3;
-//    public final static Integer CANCELADA = 4;
-//    public final static Integer RECHAZADA = 5;
+    public final static Integer EN_REVISION = 1;
+    public final static Integer ACTIVA = 2;
+    public final static Integer INACTIVA = 3;
+    public final static Integer CANCELADA = 4;
+    public final static Integer RECHAZADA = 5;
     
     private Integer estado; //1-Creada sin aprobar, 2-Activa, 3-Inactiva, 4-Cancelada, 5-Rechazada
+    
     @Temporal(TemporalType.DATE)
     private Date fechaInicial;
+    
     @Temporal(TemporalType.DATE)
     private Date fechaFinal;
+    
     private Double calificacion;
+    
     private Boolean generoSancion;
-    private Long edificioId;
     
     @PodamExclude
     @ManyToOne
@@ -81,27 +84,19 @@ public class ReservaEntity extends BaseEntity implements Serializable{
         this.generoSancion = generoSancion;
     }
 
-    public Long getEdificioId() {
-        return edificioId;
+    public EquipoEntity getEquipo() {
+        return equipo;
     }
 
-    public void setEdificioId(Long edificioId) {
-        this.edificioId = edificioId;
-    }
-
-    public Long getIdEquipo() {
-        return idEquipo;
-    }
-
-    public void setIdEquipo(EquipoEntity idEquipo) {
+    public void setEquipo(EquipoEntity equipo) {
         this.equipo = equipo;
     }
 
-    public UsuarioEntity getIdUsuario() {
+    public UsuarioEntity getUsuario() {
         return usuario;
     }
 
-    public void setUUsuario(UsuarioEntity usuario) {
+    public void setUsuario(UsuarioEntity usuario) {
         this.usuario = usuario;
     }
     
