@@ -27,9 +27,15 @@ public class EdificioEntity extends BaseEntity implements Serializable
    private String bloque; 
    
    //-----------
-    // Metodos
+    // Relaciones
     //-----------
 
+   /**
+     * Administrador del edificio
+     */
+   @PodamExclude
+   @OneToOne(optional=true)
+   private AdministradorEntity admin; 
    
    /**
      * Equipos del edificio
@@ -51,6 +57,16 @@ public class EdificioEntity extends BaseEntity implements Serializable
    public String getBloque()
    {
        return this.bloque;
+   }
+   
+   public void setAdmin(AdministradorEntity a)
+   {
+       this.admin = a;
+   }
+   
+   public AdministradorEntity getAdmin()
+   {
+       return this.admin;
    }
 
    public void setEquipos(ArrayList<EquipoEntity> e)

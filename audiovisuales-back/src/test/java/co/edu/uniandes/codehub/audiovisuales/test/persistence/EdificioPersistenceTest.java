@@ -17,9 +17,9 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -41,7 +41,7 @@ public class EdificioPersistenceTest {
     }
 
     @Inject
-    private EdificioPersistence companyPersistence;
+    private EdificioPersistence edificioPersistence;
 
     @PersistenceContext
     private EntityManager em;
@@ -82,5 +82,105 @@ public class EdificioPersistenceTest {
             em.persist(entity);
             data.add(entity);
         }
+    }
+    
+    /**
+     * Prueba para crear un Edificio.
+     */
+    @Test
+    public void createEdificioTest() 
+    {
+        PodamFactory factory = new PodamFactoryImpl();
+        EdificioEntity newEntity = factory.manufacturePojo(EdificioEntity.class);
+
+        EdificioEntity result = edificioPersistence.create(newEntity);
+
+        Assert.assertNotNull(result);
+        EdificioEntity entity = em.find(EdificioEntity.class, result.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(newEntity.getName(), entity.getName());
+    }
+    
+     /**
+     * Prueba para consultar los edificios.
+     */
+    @Test
+    public void getEdificiosTest() 
+    {
+        List<EdificioEntity> list = edificioPersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (EdificioEntity ent : list) {
+            boolean found = false;
+            for (EdificioEntity entity : data) {
+                if (ent.getId().equals(entity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+    /**
+     * Prueba para consultar un edificio particular.
+     */
+    @Test
+    public void getEdificioTest() 
+    {
+        EdificioEntity entity = data.get(0);
+        EdificioEntity newEntity = edificioPersistence.find(entity.getId());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+    }
+    
+    /**
+     * Prueba para consultar un edificio pos su nombre.
+     */
+    @Test
+    public void getEdificioByNameTest() 
+    {
+        EdificioEntity entity = data.get(0);
+        EdificioEntity newEntity = edificioPersistence.findByName(entity.getName());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+    }
+    
+    /**
+     * Prueba para consultar un edificio pos su bloque.
+     */
+    @Test
+    public void getEdificioByBloqueTest() 
+    {
+        EdificioEntity entity = data.get(0);
+        EdificioEntity newEntity = edificioPersistence.findByBloque(entity.getBloque());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+    }
+    
+    /**
+     * Prueba para eliminar un edificio.
+     */
+    @Test
+    public void deleteEdificioTest() 
+    {
+        EdificioEntity entity = data.get(0);
+        edificioPersistence.delete(entity.getId());
+        EdificioEntity deleted = em.find(EdificioEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+    
+    /**
+     * Prueba para actualizar un edificio.
+     */
+    @Test
+    public void updateEdificioTest() 
+    {
+        EdificioEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        EdificioEntity newEntity = factory.manufacturePojo(EdificioEntity.class);
+
+        newEntity.setId(entity.getId());
+        edificioPersistence.update(newEntity);
+        EdificioEntity resp = em.find(EdificioEntity.class, entity.getId());
+        Assert.assertEquals(newEntity.getName(), resp.getName());
     }
 }
