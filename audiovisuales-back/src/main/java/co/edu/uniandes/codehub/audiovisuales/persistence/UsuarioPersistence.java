@@ -21,6 +21,7 @@ import static javax.ws.rs.client.Entity.entity;
  *
  * @author ln.bello10
  */
+@Stateless
 public class UsuarioPersistence {
     
     private static final Logger LOGGER = Logger.getLogger(UsuarioPersistence.class.getName());
@@ -32,6 +33,18 @@ public class UsuarioPersistence {
         LOGGER.log(Level.INFO, "Consultando usuario con id={0}", id);
         return em.find(UsuarioEntity.class, id);
     }
+     
+     public List<UsuarioEntity> findEstudiantes(){
+         LOGGER.log(Level.INFO, "Consultando estudiantes");
+         Query q = em.createQuery("SELECT u FROM UsuarioEntity u where u.tipo = 1",UsuarioEntity.class);
+         return q.getResultList();
+     }
+     
+     public List<UsuarioEntity> findProfesores(){
+         LOGGER.log(Level.INFO, "Consultando profesores");
+         Query q = em.createQuery("SELECT u FROM UsuarioEntity u where u.tipo= 2", UsuarioEntity.class);
+         return q.getResultList();
+     }
      
      public UsuarioEntity findByName(String name){
          LOGGER.log(Level.INFO, "Consultando usuario con name= ", name);
@@ -46,7 +59,7 @@ public class UsuarioPersistence {
          return q.getResultList();
      }
      
-     @Transactional
+     
      public UsuarioEntity create(UsuarioEntity entity){
          LOGGER.log(Level.INFO, "Creando un nuevo usuario");
          em.persist(entity);
@@ -54,13 +67,13 @@ public class UsuarioPersistence {
         return entity;
      }
      
-     @Transactional
+     
      public UsuarioEntity update(UsuarioEntity entity){
          LOGGER.log(Level.INFO, "Actualizando usuario con id={0}", entity.getId());
          return em.merge(entity);
      }
      
-     @Transactional
+     
      public void delete(Long id){
          LOGGER.log(Level.INFO, "Borrando usuario con id={0}",id);
          UsuarioEntity entity = em.find(UsuarioEntity.class, id);

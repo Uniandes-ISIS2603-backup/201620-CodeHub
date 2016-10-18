@@ -127,6 +127,20 @@ public class UsuarioPersistenceTest {
     }
     
     @Test
+    public void getUsuarioEstudiantesTest(){
+        List<UsuarioEntity> usuarios = usuarioPersistence.findEstudiantes();
+        Assert.assertNotNull(usuarios);
+        boolean encontrado = true;
+        for(UsuarioEntity usu: usuarios){
+            
+            if(usu.getTipo()==2){
+                encontrado = false;
+            }
+        }
+        Assert.assertTrue(encontrado);
+    }
+    
+    @Test
     public void getUsuarioTest(){
         
         UsuarioEntity pojo = data.get(0);
@@ -135,7 +149,7 @@ public class UsuarioPersistenceTest {
         Assert.assertNotNull(prueba);
         Assert.assertEquals(pojo.getName(), prueba.getName());  
     }
-    
+
     @Test
     public void getUsuarioByNameTest(){
         UsuarioEntity pojo = data.get(0);
