@@ -6,7 +6,6 @@
 package co.edu.uniandes.codehub.audiovisuales.test.persistence;
 import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
-import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
 import co.edu.uniandes.codehub.audiovisuales.persistence.EquipoPersistence;
 import java.util.ArrayList;
 import java.util.List;
