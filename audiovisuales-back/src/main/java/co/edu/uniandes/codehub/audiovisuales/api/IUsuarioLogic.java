@@ -6,6 +6,7 @@
 package co.edu.uniandes.codehub.audiovisuales.api;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
+import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public interface IUsuarioLogic {
 
     public UsuarioEntity getUsuarioByName(String name);
 
-    public UsuarioEntity createUsuario(UsuarioEntity entity);
+    public UsuarioEntity createUsuario(UsuarioEntity entity) throws AudiovisualesLogicException;
 
     public UsuarioEntity updateUsuario(UsuarioEntity entity);
 
