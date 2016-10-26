@@ -27,6 +27,12 @@ public class EdificioPersistence
     @PersistenceContext(unitName = "CodehubPU")
     protected EntityManager em;  
     
+    public List<EdificioEntity> findAll() {
+        LOGGER.info("Consultando todos los edificios");
+        TypedQuery<EdificioEntity> q = em.createQuery("select e from EdificioEntity e", EdificioEntity.class);
+        return q.getResultList();
+    }
+        
      public EdificioEntity find(Long id) {
         LOGGER.log(Level.INFO, "Consultando edificio con id={0}", id);
         return em.find(EdificioEntity.class, id);
@@ -37,7 +43,15 @@ public class EdificioPersistence
         TypedQuery<EdificioEntity> q
                 = em.createQuery("select e from EdificioEntity e where e.name = :name", EdificioEntity.class);
         q = q.setParameter("name", name); 
-        return q.getSingleResult();
+        List<EdificioEntity> ar = q.getResultList();
+        if(ar.isEmpty())
+        {
+            return null;
+        }
+        else
+        {
+            return ar.get(0);
+        }
     }
     
     public EdificioEntity findByBloque(String bloque) {
@@ -45,20 +59,30 @@ public class EdificioPersistence
         TypedQuery<EdificioEntity> q
                 = em.createQuery("select e from EdificioEntity e where e.bloque = :bloque", EdificioEntity.class);
         q = q.setParameter("bloque", bloque); 
-        return q.getSingleResult();
-    }
-
-    public List<EdificioEntity> findAll() {
-        LOGGER.info("Consultando todos los edificios");
-        TypedQuery<EdificioEntity> q = em.createQuery("select e from EdificioEntity e", EdificioEntity.class);
-        return q.getResultList();
+        List<EdificioEntity> ar = q.getResultList();
+        if(ar.isEmpty())
+        {
+            return null;
+        }
+        else
+        {
+            return ar.get(0);
+        }
     }
     
     public EdificioEntity findByAdmin(Long adminId) {
         LOGGER.log(Level.INFO, "Consultando el edificio con admin Id = {0}", ""+adminId);
        TypedQuery<EdificioEntity> q = em.createQuery("select e from EdificioEntity e where e.admin = :adminid", EdificioEntity.class);
         q = q.setParameter("adminid", adminId);
-        return q.getSingleResult();
+        List<EdificioEntity> ar = q.getResultList();
+        if(ar.isEmpty())
+        {
+            return null;
+        }
+        else
+        {
+            return ar.get(0);
+        }
     }
 
     public EdificioEntity create(EdificioEntity entity) {
