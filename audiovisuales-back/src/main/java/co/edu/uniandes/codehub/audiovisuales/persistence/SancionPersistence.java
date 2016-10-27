@@ -38,13 +38,21 @@ public class SancionPersistence
         q = q.setParameter("fecha", fecha);
         return q.getSingleResult();
        }
-     public SancionEntity findByUsuario(UsuarioEntity usuario) 
+     public SancionEntity findByUsuario(UsuarioEntity usuarioId) 
       {
           //ARREGLAR ESTE METODO DE ENCONTRAR POR USUARIO
-        LOGGER.log(Level.INFO, "Consultando sancion con fecha= ", usuario);
-        TypedQuery<SancionEntity> q = em.createQuery("select u from SancionEntity u where u.fecha = :fecha", SancionEntity.class);
-        q = q.setParameter("fecha", usuario);
-        return q.getSingleResult();
+        LOGGER.log(Level.INFO, "Consultando el edificio con admin Id = {0}", ""+usuarioId);
+       TypedQuery<SancionEntity> q = em.createQuery("select e from SancionEntity e where e.usuario = :usuarioid", SancionEntity.class);
+        q = q.setParameter("usuarioId", usuarioId);
+        List<SancionEntity> ar = q.getResultList();
+        if(ar.isEmpty())
+        {
+            return null;
+        }
+        else
+        {
+            return ar.get(0);
+        }
        }
      
      public List<SancionEntity> findAll() 
