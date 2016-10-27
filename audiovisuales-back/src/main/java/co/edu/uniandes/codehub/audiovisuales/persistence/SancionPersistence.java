@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.codehub.audiovisuales.persistence;
 import co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity;
+import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +36,14 @@ public class SancionPersistence
         LOGGER.log(Level.INFO, "Consultando sancion con fecha= ", fecha);
         TypedQuery<SancionEntity> q = em.createQuery("select u from SancionEntity u where u.fecha = :fecha", SancionEntity.class);
         q = q.setParameter("fecha", fecha);
+        return q.getSingleResult();
+       }
+     public SancionEntity findByUsuario(UsuarioEntity usuario) 
+      {
+          //ARREGLAR ESTE METODO DE ENCONTRAR POR USUARIO
+        LOGGER.log(Level.INFO, "Consultando sancion con fecha= ", usuario);
+        TypedQuery<SancionEntity> q = em.createQuery("select u from SancionEntity u where u.fecha = :fecha", SancionEntity.class);
+        q = q.setParameter("fecha", usuario);
         return q.getSingleResult();
        }
      
