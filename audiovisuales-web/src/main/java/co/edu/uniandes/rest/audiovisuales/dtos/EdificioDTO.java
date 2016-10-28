@@ -5,22 +5,19 @@
  */
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
-import java.util.ArrayList;
-import java.util.List;
+import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Sebastian
  */
+@XmlRootElement
 public class EdificioDTO 
 {
     private Long id;
     private String bloque;
     private String nombre;
-    
-    private AdminDTO admin;
-    
-    private List<EquipoDTO> equipos;
 
     /**
      * Constructor por defecto
@@ -36,11 +33,19 @@ public class EdificioDTO
      * @param bloque nombre del bloque
      */
     public EdificioDTO(Long id, String bloque, String nombre) {
-	super();
 	this.id = id;
 	this.nombre = nombre;
         this.bloque = bloque;
-        this.equipos = new ArrayList<>();
+    }
+    
+    /**
+     * Constructor con entity.
+     * @param entity el entity a convertir a DTO
+     */
+    public EdificioDTO(EdificioEntity entity) {
+	this.id = entity.getId();
+	this.nombre = entity.getName();
+        this.bloque = entity.getBloque();
     }
 
 	/**
@@ -85,40 +90,27 @@ public class EdificioDTO
         this.bloque = bloque;
     }
     
-    public AdminDTO getAdmin()
-    {
-        return admin;
-    }
-    
-    public void setAdmin(AdminDTO admin)
-    {
-        this.admin = admin;
-    }
-    
-    public List<EquipoDTO> getEquipos()
-    {
-        return equipos;
-    }
-    
-    public void setEquipos(List<EquipoDTO> equipos)
-    {
-        this.equipos = equipos;
-    }
-    
     /**
      * Convierte el objeto a una cadena
      * @return el mensaje con el objeto
      */
     @Override
     public String toString() {
-        Long adminID = -1L;
-        if(admin!=null)
-        {
-            adminID=getAdmin().getId();
-        }
     	return "{ id : " + getId() 
                 + ", bloque : \"" + getBloque() 
-                + "\", nombre : \""+getNombre()
-                +"\", admin : \""+adminID+"}" ;  
+                + "\", nombre : \""+getNombre()+"}"; 
+    }
+    
+    /**
+     * Convierte el objeto a un entity para ser usado en el back
+     * @return el entity analogo al objeto
+     */
+    public EdificioEntity toEntity()
+    {
+        EdificioEntity entity = new EdificioEntity();
+        entity.setId(id);
+        entity.setName(nombre);
+        entity.setBloque(bloque);
+        return entity;
     }
 }
