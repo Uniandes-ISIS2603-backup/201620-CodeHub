@@ -54,8 +54,26 @@ public class UsuarioDTO {
     
     public UsuarioDTO(UsuarioEntity entity){
         if(entity !=null){
-  
+            this.name=entity.getName();
+            this.id=entity.getId();
+            if(entity.getSanciones().isEmpty()){
+                this.tieneSancion=false;
+            }
+            else{
+                this.tieneSancion=true;
+            }
+            this.tipo=entity.getTipo();
         }
+    }
+    
+    public UsuarioEntity toEntity(){
+        UsuarioEntity usuario = new UsuarioEntity();
+        usuario.setId(this.getId());
+        usuario.setName(this.getName());
+        usuario.setTipo(this.getTipo());
+        usuario.setTieneSancion(this.getTieneSancion());
+        
+        return usuario;
     }
 
 	/**
