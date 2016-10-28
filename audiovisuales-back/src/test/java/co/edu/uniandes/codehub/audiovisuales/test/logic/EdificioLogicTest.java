@@ -88,6 +88,7 @@ public class EdificioLogicTest {
     }
     
      private void clearData() {
+        em.createQuery("delete from AdministradorEntity").executeUpdate();
         em.createQuery("delete from EdificioEntity").executeUpdate();
     }
 
@@ -200,22 +201,21 @@ public class EdificioLogicTest {
     /**
      * Prueba para obtener un edificio por su administrador.
      */
-    /*@Test
-    public void getEdificioByAdminTest() throws Exception{
-        EdificioEntity newEntity = factory.manufacturePojo(EdificioEntity.class);
+    @Test
+    public void getEdificioByAdminTest() throws AudiovisualesLogicException{
+        EdificioEntity entity = data.get(1);
         AdministradorEntity admin = factory.manufacturePojo(AdministradorEntity.class);
-        utx.begin();
-        em.joinTransaction();
-        em.persist(admin);
-        utx.commit();
-        newEntity.setAdmin(admin);
-        EdificioEntity entity = logic.createEdificio(newEntity);
+        entity.setAdmin(admin);
+        admin.setEdificio(entity);
+        adminPersistence.create(admin);
+        EdificioEntity updatedEntity = logic.updateEdificio(entity);
         EdificioEntity resultEntity = logic.getEdificioByAdmin(admin.getId());
+        
         Assert.assertNotNull(resultEntity);
-        Assert.assertEquals(entity.getName(), resultEntity.getName());
-        Assert.assertEquals(entity.getBloque(), resultEntity.getBloque());
-        Assert.assertEquals(entity.getId(), resultEntity.getId());
-    }*/
+        Assert.assertEquals(updatedEntity.getName(), resultEntity.getName());
+        Assert.assertEquals(updatedEntity.getBloque(), resultEntity.getBloque());
+        Assert.assertEquals(updatedEntity.getId(), resultEntity.getId());
+    }
     
     /**
      * Prueba para actualizar un edificio.
