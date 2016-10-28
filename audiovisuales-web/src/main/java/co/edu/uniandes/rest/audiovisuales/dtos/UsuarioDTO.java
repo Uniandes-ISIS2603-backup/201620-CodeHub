@@ -7,11 +7,14 @@ package co.edu.uniandes.rest.audiovisuales.dtos;
 
 import java.util.ArrayList;
 import java.util.List;
+import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Objeto de transferencia de datos de Usuarios.
  * @author Asistente
  */
+@XmlRootElement
 public class UsuarioDTO {
     
     public final static int ESTUDIANTE = 1;
@@ -48,6 +51,12 @@ public class UsuarioDTO {
                 this.reservas = new ArrayList<>();
                 this.calificaciones = new ArrayList<>();
 	}
+    
+    public UsuarioDTO(UsuarioEntity entity){
+        if(entity !=null){
+  
+        }
+    }
 
 	/**
      * @return the id
