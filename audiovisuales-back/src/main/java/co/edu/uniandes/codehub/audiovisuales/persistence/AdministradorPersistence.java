@@ -43,6 +43,20 @@ public class AdministradorPersistence
          return q.getSingleResult();
       }
      
+       public AdministradorEntity findByEdificio(Long edificioId) {
+        LOGGER.log(Level.INFO, "Consultando el administrador con edificio Id = {0}", ""+edificioId);
+        Query q = em.createQuery("SELECT ed FROM AdministradorEntity ed WHERE ed.edificio.id = :edificio");
+        q = q.setParameter("edificio", edificioId);
+        List<AdministradorEntity> ar = q.getResultList();
+        if(ar.isEmpty())
+        {
+            return null;
+        }
+        else
+        {
+            return ar.get(0);
+        }
+    }
      public List<AdministradorEntity> findAll() 
      {
         LOGGER.info("Consultando todos los administradores");
