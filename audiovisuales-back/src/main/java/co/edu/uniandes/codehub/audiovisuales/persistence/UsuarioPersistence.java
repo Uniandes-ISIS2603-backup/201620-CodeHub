@@ -48,7 +48,13 @@ public class UsuarioPersistence {
          LOGGER.log(Level.INFO, "Consultando usuario con name= ", name);
          TypedQuery<UsuarioEntity> q = em.createQuery("SELECT u FROM UsuarioEntity u where u.name= :name",UsuarioEntity.class);
          q = q.setParameter("name", name);
-         return q.getSingleResult();
+        List<UsuarioEntity> usu = q.getResultList();
+        if(usu.isEmpty()){
+            return null;
+        }
+        else{
+            return usu.get(0);
+        }
      }
      
      public List<UsuarioEntity> findAll(){
