@@ -25,9 +25,6 @@ public class UsuarioDTO {
     private Boolean tieneSancion;
     private int tipo;
     
-    private List<SancionDTO> sanciones;
-    private List<ReservaDTO> reservas;
-    
     private List<Double> calificaciones;
 
     /**
@@ -47,8 +44,6 @@ public class UsuarioDTO {
 		this.name = name;
                 this.tieneSancion = false;
                 this.tipo = tipo;
-                this.sanciones = new ArrayList<>();
-                this.reservas = new ArrayList<>();
                 this.calificaciones = new ArrayList<>();
 	}
     
@@ -112,21 +107,6 @@ public class UsuarioDTO {
         this.tieneSancion = b;
     }
     
-    public List<SancionDTO> getSanciones()
-    {
-        return sanciones;
-    }
-    
-    public void setSanciones(List<SancionDTO> sanciones)
-    {
-        this.sanciones = sanciones;
-    }
-    
-    public List<ReservaDTO> getReservas()
-    {
-        return reservas;
-    }
-    
     public int getTipo()
     {
         return tipo;
@@ -135,11 +115,6 @@ public class UsuarioDTO {
     public void setTipo(int pTipo)
     {
         tipo = pTipo;
-    }
-    
-    public void setReservas(List<ReservaDTO> reservas)
-    {
-        this.reservas = reservas;
     }
     
     public void addCalificacion(double calificacion)

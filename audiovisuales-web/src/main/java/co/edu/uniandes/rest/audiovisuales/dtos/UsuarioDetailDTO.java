@@ -5,10 +5,72 @@
  */
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
+import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
+import co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity;
+import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author ln.bello10
  */
-public class UsuarioDetailDTO {
+@XmlRootElement
+public class UsuarioDetailDTO extends UsuarioDTO{
+    
+    // relación  cero o muchos con sanciones 
+    private List<SancionDTO> sanciones = new ArrayList<>();
+    
+    // relación  cero o muchos con reservas
+    private List<ReservaDTO> reservas = new ArrayList<>();
+    
+    public UsuarioDetailDTO(){
+        super();
+    }
+    
+    public UsuarioDetailDTO(UsuarioEntity entity){
+        super(entity);
+        
+        List<SancionEntity> sancionesList = entity.getSanciones();
+        for (SancionEntity sancion : sancionesList) {
+            //this.sanciones.add(new SancionDTO(sancion));
+        }
+        List<ReservaEntity> reservasList = entity.getReservas();
+        for(ReservaEntity reserva : reservasList){
+            //this.reservas.add(new ReservaDTO(reserva));
+        }
+    }
+    
+    public UsuarioEntity toEntity() {
+        UsuarioEntity entity = super.toEntity();
+        
+         List<SancionDTO> sanciones = this.getSanciones();
+         for(SancionDTO san : this.sanciones){
+             //entity.getSanciones().add(san.toEntity());
+         }
+         
+         List<ReservaDTO> reservas = this.getReservas();
+         for(ReservaDTO res : this.reservas){
+             //entity.getReservas().add(res.toEntity());
+         }
+        return entity;
+    }
+    
+     public List<SancionDTO> getSanciones() {
+        return sanciones;
+    }
+
+    public void setSanciones(List<SancionDTO> sanciones) {
+        this.sanciones = sanciones;
+    }
+    
+    public List<ReservaDTO> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<ReservaDTO> reservas) {
+        this.reservas = reservas;
+    }
     
 }
