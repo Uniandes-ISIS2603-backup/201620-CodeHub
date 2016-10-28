@@ -7,8 +7,10 @@ package co.edu.uniandes.codehub.audiovisuales.test.logic;
 
 import co.edu.uniandes.codehub.audiovisuales.api.IEdificioLogic;
 import co.edu.uniandes.codehub.audiovisuales.ejbs.EdificioLogic;
+import co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity;
 import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
+import co.edu.uniandes.codehub.audiovisuales.persistence.AdministradorPersistence;
 import co.edu.uniandes.codehub.audiovisuales.persistence.EdificioPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +40,9 @@ public class EdificioLogicTest {
     
     @Inject
     private IEdificioLogic logic;
+    
+    @Inject
+    private AdministradorPersistence adminPersistence;
 
     @PersistenceContext
     private EntityManager em;
@@ -54,6 +59,10 @@ public class EdificioLogicTest {
                 .addPackage(EdificioLogic.class.getPackage())
                 .addPackage(IEdificioLogic.class.getPackage())
                 .addPackage(EdificioPersistence.class.getPackage())
+                .addPackage(AdministradorEntity.class.getPackage())
+                //.addPackage(AdministradorLogic.class.getPackage())
+                //.addPackage(IAdministradorLogic.class.getPackage())
+                .addPackage(AdministradorPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -187,6 +196,26 @@ public class EdificioLogicTest {
         Assert.assertEquals(entity.getBloque(), resultEntity.getBloque());
         Assert.assertEquals(entity.getId(), resultEntity.getId());
     }
+    
+    /**
+     * Prueba para obtener un edificio por su administrador.
+     */
+    /*@Test
+    public void getEdificioByAdminTest() throws Exception{
+        EdificioEntity newEntity = factory.manufacturePojo(EdificioEntity.class);
+        AdministradorEntity admin = factory.manufacturePojo(AdministradorEntity.class);
+        utx.begin();
+        em.joinTransaction();
+        em.persist(admin);
+        utx.commit();
+        newEntity.setAdmin(admin);
+        EdificioEntity entity = logic.createEdificio(newEntity);
+        EdificioEntity resultEntity = logic.getEdificioByAdmin(admin.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getName(), resultEntity.getName());
+        Assert.assertEquals(entity.getBloque(), resultEntity.getBloque());
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+    }*/
     
     /**
      * Prueba para actualizar un edificio.

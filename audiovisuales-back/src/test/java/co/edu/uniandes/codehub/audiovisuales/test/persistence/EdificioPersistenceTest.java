@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.codehub.audiovisuales.test.persistence;
 
+import co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity;
 import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.persistence.EdificioPersistence;
 import java.util.ArrayList;
@@ -48,6 +49,8 @@ public class EdificioPersistenceTest {
 
     @Inject
     UserTransaction utx;
+    
+    AdministradorEntity admin;
 
     private List<EdificioEntity> data = new ArrayList<EdificioEntity>();
     
@@ -71,19 +74,19 @@ public class EdificioPersistenceTest {
     }
     
     private void clearData() {
+        em.createQuery("delete from AdministradorEntity").executeUpdate();
         em.createQuery("delete from EdificioEntity").executeUpdate();
     }
 
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
-        Integer name = 1;
-        for (int i = 0; i < 5; i++) {            
+        admin = factory.manufacturePojo(AdministradorEntity.class);
+        admin.setId(1L);
+        //em.persist(admin);
+        for (int i = 0; i < 3; i++) {
             EdificioEntity entity = factory.manufacturePojo(EdificioEntity.class);
-            entity.setBloque(""+name);
-            entity.setName(""+name);
             em.persist(entity);
             data.add(entity);
-            name++;
         }
     }
     
@@ -158,6 +161,20 @@ public class EdificioPersistenceTest {
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
     }
+    
+    /**
+     * Prueba para consultar un edificio pos su administrador.
+     */
+    /*@Test
+    public void getEdificioByAdminTest()
+    {
+        EdificioEntity entity = data.get(0);
+        entity.setAdmin(admin);
+        EdificioEntity updatedEntity = edificioPersistence.update(entity);
+        EdificioEntity resultEntity = edificioPersistence.findByAdmin(admin.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(updatedEntity.getId(), resultEntity.getId());
+    }*/
     
     /**
      * Prueba para eliminar un edificio.
