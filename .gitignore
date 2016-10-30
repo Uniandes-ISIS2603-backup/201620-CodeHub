@@ -50,3 +50,4 @@ audiovisuales-web/nb-configuration.xml
 # IntelliJ
 .idea/
 /audiovisuales-back/nbproject/
+/audiovisuales-web/nbproject/

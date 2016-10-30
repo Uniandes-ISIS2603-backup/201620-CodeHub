@@ -12,7 +12,6 @@ import co.edu.uniandes.rest.audiovisuales.dtos.UsuarioDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.UsuarioDetailDTO;
 import co.edu.uniandes.rest.audiovisuales.exceptions.UsuarioLogicException;
 import co.edu.uniandes.rest.audiovisuales.mappers.WebApplicationExceptionMapper;
-import co.edu.uniandes.rest.audiovisuales.mocks.UsuarioLogicMock;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -85,19 +84,19 @@ public class UsuarioResource {
         }
     }
     
-    @GET
-    @Path("estudiantes")
-    public List<UsuarioDetailDTO> getEstudiantes() throws UsuarioLogicException
-    {
-        return listEntityToDTO(usuarioLogic.getEstudiantes());
-    }
-    
-    @GET
-    @Path("profesores")
-    public List<UsuarioDetailDTO> getProfesores() throws UsuarioLogicException
-    {
-        return listEntityToDTO(usuarioLogic.getProfesores());
-    }
+//    @GET
+//    @Path("estudiantes")
+//    public List<UsuarioDetailDTO> getEstudiantes() throws UsuarioLogicException
+//    {
+//        return listEntityToDTO(usuarioLogic.getEstudiantes());
+//    }
+//    
+//    @GET
+//    @Path("profesores")
+//    public List<UsuarioDetailDTO> getProfesores() throws UsuarioLogicException
+//    {
+//        return listEntityToDTO(usuarioLogic.getProfesores());
+//    }
     
     
     /**
