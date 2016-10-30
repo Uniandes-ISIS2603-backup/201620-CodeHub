@@ -20,6 +20,10 @@ public interface IUsuarioLogic {
     public UsuarioEntity getUsuario(Long id);
 
     public UsuarioEntity getUsuarioByName(String name);
+    
+    public List<UsuarioEntity> getEstudiantes();
+            
+    public List<UsuarioEntity> getProfesores();
 
     public UsuarioEntity createUsuario(UsuarioEntity entity) throws AudiovisualesLogicException;
 

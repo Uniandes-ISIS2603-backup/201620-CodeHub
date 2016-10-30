@@ -38,6 +38,16 @@ public class UsuarioLogic implements IUsuarioLogic {
     public UsuarioEntity getUsuarioByName(String name) {
         return persistence.findByName(name);
     }
+    
+   @Override
+    public List<UsuarioEntity> getEstudiantes(){
+        return persistence.findEstudiantes();
+    }
+    
+   @Override
+    public List<UsuarioEntity> getProfesores(){
+        return persistence.findProfesores();
+    }
 
     @Override
     public UsuarioEntity createUsuario(UsuarioEntity entity) throws AudiovisualesLogicException {

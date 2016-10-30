@@ -132,6 +132,34 @@ public class UsuarioLogicTest {
     }
     
     @Test
+    public void getUsuarioEstudiantesTest(){
+        List<UsuarioEntity> usuarios = logic.getEstudiantes();
+        Assert.assertNotNull(usuarios);
+        boolean encontrado = true;
+        for(UsuarioEntity usu: usuarios){
+            
+            if(usu.getTipo()==2){
+                encontrado = false;
+            }
+        }
+        Assert.assertTrue(encontrado);
+    }
+    
+    @Test
+    public void getUsuarioProfesoresTest(){
+        List<UsuarioEntity> usuarios = logic.getProfesores();
+        Assert.assertNotNull(usuarios);
+        boolean encontrado = true;
+        for(UsuarioEntity usu: usuarios){
+            
+            if(usu.getTipo()==1){
+                encontrado = false;
+            }
+        }
+        Assert.assertTrue(encontrado);
+    }
+    
+    @Test
     public void getUsuarioTest() {
         UsuarioEntity entity = data.get(0);
         UsuarioEntity resultEntity = logic.getUsuario(entity.getId());
