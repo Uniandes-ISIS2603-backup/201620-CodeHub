@@ -49,7 +49,8 @@ public class AdministradorLogic implements IAdministradorLogic
     }
     
     @Override
-    public AdministradorEntity createAdministrador(AdministradorEntity entity) throws AudiovisualesLogicException {
+    public AdministradorEntity createAdministrador(AdministradorEntity entity) throws AudiovisualesLogicException 
+    {
         AdministradorEntity entidad = getAdministradorByName(entity.getName());
         if (entidad != null) 
         {
