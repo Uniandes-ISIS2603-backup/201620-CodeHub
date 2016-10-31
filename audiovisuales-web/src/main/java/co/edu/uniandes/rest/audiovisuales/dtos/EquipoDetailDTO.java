@@ -20,6 +20,9 @@ public class EquipoDetailDTO extends EquipoDTO{
     /*-----------------------
             Atributos.
     -------------------------*/
+    /**
+     * Relación con el edificio dueño del equipo.
+     */
     private EdificioDTO edificio;
     
     private List<ReservaDTO> reservas= new ArrayList<ReservaDTO>();
