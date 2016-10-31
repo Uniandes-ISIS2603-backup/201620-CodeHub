@@ -40,7 +40,16 @@ public class AdministradorPersistence
          LOGGER.log(Level.INFO, "Consultando usuario con nombre= ", name);
          TypedQuery<AdministradorEntity> q = em.createQuery("SELECT u FROM AdministradorEntity u where u.name= :name",AdministradorEntity.class);
          q = q.setParameter("name", name);
-         return q.getSingleResult();
+         List<AdministradorEntity> lista = q.getResultList();
+         if (lista.isEmpty())
+         {
+             return null;
+         }
+         else
+         {
+             return lista.get(0);
+         }
+         
       }
      
        public AdministradorEntity findByEdificio(Long edificioId) {
