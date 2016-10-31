@@ -9,7 +9,6 @@ import co.edu.uniandes.codehub.audiovisuales.api.IEdificioLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.rest.audiovisuales.dtos.EdificioDetailDTO;
-import co.edu.uniandes.rest.audiovisuales.exceptions.EdificioLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -101,7 +100,7 @@ public class EdificioResource {
     
     @DELETE
     @Path("{id: \\d+}")
-    public EdificioDetailDTO eliminarEdificio(@PathParam("id") Long id) throws EdificioLogicException
+    public EdificioDetailDTO eliminarEdificio(@PathParam("id") Long id)
     {
         EdificioEntity ed = logic.getEdificio(id);
         if(ed==null)
