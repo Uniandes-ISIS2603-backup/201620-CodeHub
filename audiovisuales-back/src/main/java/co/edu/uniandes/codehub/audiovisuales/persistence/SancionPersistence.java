@@ -41,9 +41,9 @@ public class SancionPersistence
      public SancionEntity findByUsuario(UsuarioEntity usuarioId) 
       {
           //ARREGLAR ESTE METODO DE ENCONTRAR POR USUARIO
-        LOGGER.log(Level.INFO, "Consultando el edificio con admin Id = {0}", ""+usuarioId);
-       TypedQuery<SancionEntity> q = em.createQuery("select e from SancionEntity e where e.usuario = :usuarioid", SancionEntity.class);
-        q = q.setParameter("usuarioId", usuarioId);
+        LOGGER.log(Level.INFO, "Consultando el edificio con admin Id = {0}", ""+usuarioId.getId());
+       TypedQuery<SancionEntity> q = em.createQuery("select e from SancionEntity e where e.usuario.id = :usuarioid",SancionEntity.class);
+        q = q.setParameter("usuarioid", usuarioId.getId());
         List<SancionEntity> ar = q.getResultList();
         if(ar.isEmpty())
         {

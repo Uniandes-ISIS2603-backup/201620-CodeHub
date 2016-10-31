@@ -75,7 +75,7 @@ public class SancionEntity extends BaseEntity implements Serializable
      * @param id nuevo valor del atributo
      *
      */
-    public void setUsuario(UsuarioEntity id) 
+    public void setUsuario(UsuarioEntity usuario) 
     {
         this.usuario = usuario;
     }

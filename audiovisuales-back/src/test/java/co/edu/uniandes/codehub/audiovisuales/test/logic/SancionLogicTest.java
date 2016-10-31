@@ -9,7 +9,9 @@ import co.edu.uniandes.codehub.audiovisuales.api.ISancionLogic;
 import co.edu.uniandes.codehub.audiovisuales.ejbs.SancionLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity;
+import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
 import co.edu.uniandes.codehub.audiovisuales.persistence.SancionPersistence;
+import co.edu.uniandes.codehub.audiovisuales.persistence.UsuarioPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -38,6 +40,9 @@ public class SancionLogicTest
     
     @Inject
     private ISancionLogic logic;
+    
+    @Inject
+    private UsuarioPersistence user;
 
     @PersistenceContext
     private EntityManager em;
@@ -80,6 +85,7 @@ public class SancionLogicTest
     
      private void clearData() {
         em.createQuery("delete from SancionEntity").executeUpdate();
+        em.createQuery("delete from UsuarioEntity").executeUpdate();
     }
 
     private void insertData() {
@@ -121,6 +127,11 @@ public class SancionLogicTest
     @Test
     public void getSancionByUsuarioTest() {
         SancionEntity entity = data.get(1);
+        PodamFactory factory = new PodamFactoryImpl();
+        UsuarioEntity u = factory.manufacturePojo(UsuarioEntity.class);
+        user.create(u);
+        entity.setUsuario(u);
+        logic.updateSancion(entity);
         SancionEntity resultEntity = logic.getSancionByUsuario(entity.getUsuario());
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getFecha(), resultEntity.getFecha());
