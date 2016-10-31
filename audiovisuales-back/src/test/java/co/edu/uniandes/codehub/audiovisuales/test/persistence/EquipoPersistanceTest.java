@@ -151,13 +151,13 @@ public class EquipoPersistanceTest {
     @Test
     public void testFindByEdificio(){
         //caso 1: los equipos tiene un edificio
-        List<EquipoEntity> respuesta= equipoPersistence.findByedificio(edificioEntity);
+        List<EquipoEntity> respuesta= equipoPersistence.findByedificio(edificioEntity.getId());
         for(EquipoEntity equipo:data){
             Assert.assertTrue("no contiene un equipo.",respuesta.contains(equipo));
         }
         //caso 2: los equipos no tienen un edificio
         edificioEntity.setId(2L);
-        respuesta= equipoPersistence.findByedificio(edificioEntity); 
+        respuesta= equipoPersistence.findByedificio(edificioEntity.getId()); 
         EquipoEntity[] e = new EquipoEntity[0];
         edificioEntity.setId(1L);
         Assert.assertArrayEquals("Las listas no pueden ser iguales!!!",e, respuesta.toArray());

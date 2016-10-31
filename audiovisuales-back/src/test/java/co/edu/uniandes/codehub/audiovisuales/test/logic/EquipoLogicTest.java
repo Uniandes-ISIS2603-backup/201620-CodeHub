@@ -123,7 +123,7 @@ public class EquipoLogicTest {
     
     @Test
     public void getbyEdifcioTestSucces() throws AudiovisualesLogicException{
-        List<EquipoEntity> respuesta = logic.getByEdificio(edificioEntity);
+        List<EquipoEntity> respuesta = logic.getByEdificio(edificioEntity.getId());
         for (EquipoEntity eq : respuesta){
             Assert.assertTrue("no contiene un equipo.",data.contains(eq));
         }

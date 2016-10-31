@@ -35,7 +35,7 @@ public interface IEquipoLogic {
      * @return la lista con todos los equipos que pertenecen al edificio.
      * @throws co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException
      */
-    public List<EquipoEntity> getByEdificio(EdificioEntity edifcio) throws AudiovisualesLogicException;
+    public List<EquipoEntity> getByEdificio(Long idEdifcio) throws AudiovisualesLogicException;
     
     /**
      * agrega un equipo a la persistencia.

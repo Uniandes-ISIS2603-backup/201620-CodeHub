@@ -40,10 +40,10 @@ public class EquipoPersistence {
          return q.getResultList();
      }
      
-     public List<EquipoEntity>findByedificio(EdificioEntity entity){
-         LOGGER.log(Level.INFO, "Consultando Equipos en el edificio = ", entity.getName());
-        TypedQuery<EquipoEntity> q = em.createQuery("select e from EquipoEntity e where e.edificio.id = :edificio", EquipoEntity.class);
-        q = q.setParameter("edificio", entity.getId());
+     public List<EquipoEntity>findByedificio(Long id){
+         LOGGER.log(Level.INFO, "Consultando Equipos en el edificio de id = ", id);
+        TypedQuery<EquipoEntity> q = em.createQuery("select e from EquipoEntity e where e.edificio.id = :id", EquipoEntity.class);
+        q = q.setParameter("id", id);
         return q.getResultList();
          
      }

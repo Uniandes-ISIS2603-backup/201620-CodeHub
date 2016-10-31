@@ -48,15 +48,15 @@ public class EquipoLogic implements IEquipoLogic{
 
     /**
      * busca los equipos que pertenecen al edificio
-     * @param edificio el edificio al que pertenecen los edificios. edificio != null.
+     * @param idEdificio el id del edificio al que pertenecen los edificios. idEdificio != null.
      * @return la lista con los equipos que pertenecen al edificio dado.
      */
     @Override
-    public List<EquipoEntity> getByEdificio(EdificioEntity edificio)throws AudiovisualesLogicException {
-        if(edificio == null){
+    public List<EquipoEntity> getByEdificio(Long idEdificio)throws AudiovisualesLogicException {
+        if(idEdificio == null){
             throw new AudiovisualesLogicException("El edificio no puede ser nulo. ");
         }
-        return persistencia.findByedificio(edificio);
+        return persistencia.findByedificio(idEdificio);
     }
 
     /**
@@ -71,9 +71,11 @@ public class EquipoLogic implements IEquipoLogic{
             throw new AudiovisualesLogicException("El equipo enviado no es correcto, debe cumplir equipo!=null");
         }else if(equipo.getId() == null){
             throw new AudiovisualesLogicException("El equipo enviado no es correcto, debe cumplir equipo.id!=null");
+        }else if(persistencia.find(equipo.getId())!=null){
+            throw new AudiovisualesLogicException("Ya existe un equipo con ese ID. ");
         }
-        persistencia.create(equipo);
-        return equipo;
+        
+        return persistencia.create(equipo);
     }
 
     /**

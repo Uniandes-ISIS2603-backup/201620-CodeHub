@@ -6,9 +6,14 @@
 package co.edu.uniandes.rest.audiovisuales.resources;
 
 import co.edu.uniandes.codehub.audiovisuales.api.IEdificioLogic;
+import co.edu.uniandes.codehub.audiovisuales.api.IEquipoLogic;
 import co.edu.uniandes.codehub.audiovisuales.ejbs.EquipoLogic;
+import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
+import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.rest.audiovisuales.dtos.EquipoDTO;
+import co.edu.uniandes.rest.audiovisuales.dtos.EquipoDetailDTO;
 import co.edu.uniandes.rest.audiovisuales.exceptions.EquipoLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
@@ -19,6 +24,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *Clase que implementa el recurso REST correspondiente a "Equipo".
@@ -29,43 +35,56 @@ import javax.ws.rs.QueryParam;
 @Produces("application/json")
 public class EquipoResource {
     @Inject
-    private IEdificioLogic logic;
+    private IEquipoLogic logic;
     
+    /**
+     * método para converntir listas de EquiposEntity a listas de EquipoDetailDTO.
+     * @param entities la lista con las entities.
+     * @return una lista con los DTO.
+     */
+    public List<EquipoDetailDTO> listEntitytoDTO(List<EquipoEntity> entities){
+        List<EquipoDetailDTO> res = new ArrayList<EquipoDetailDTO>();
+        for(EquipoEntity entity: entities){
+            EquipoDetailDTO equipo = new EquipoDetailDTO(entity);
+            res.add(equipo);
+        }
+        return res;
+    }
 
     /**
      * Obtiene el listado de equipos.
+     * @param idEdificio
      * @return lista de equipos.
-     * @throws EquipoLogicException excepción retornada por la lógica
+     * @throws AudiovisualesLogicException excepción retornada por la lógica
      */
     @GET
-    public List<EquipoDTO> getEquiposEdificio(@PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
-        return EquipoLogic.darEquipos(idEdificio);
+    public List<EquipoDetailDTO> getEquiposEdificio(@PathParam("idEdificio") Long idEdificio) throws AudiovisualesLogicException {
+        List<EquipoEntity>equiposE = logic.getByEdificio(idEdificio);
+        return listEntitytoDTO(equiposE);
     }
     
     @GET
     @Path("{id:\\d+}")
-    public EquipoDTO getEquipo(@PathParam("id")int id)throws EquipoLogicException{
-        return EquipoLogic.getEquipo(id);
+    public EquipoDetailDTO getEquipo(@PathParam("id")Long id){
+        EquipoEntity entity =logic.getEquipo(id);
+        if(entity==null){
+            throw new WebApplicationException("El equipo no existe.", 404);
+        }
+        return new EquipoDetailDTO (entity);
     }
     
-    @GET
-    @Path("/")
-    public List<EquipoDTO> getEquiposEstado (@QueryParam("estado") int estado, @PathParam("idEdificio") Long idEdificio) throws EquipoLogicException {
-        
-           return EquipoLogic.darEquiposEstado(idEdificio, estado);
-    }
-
    
     /**
      * Agrega un equipo.
      *
      * @param equipo a agregar
      * @return datos del equipo a agregar
-     * @throws EquipoLogicException cuando ya existe un equipo con el id suministrado
+     * @throws AudiovisualesLogicException cuando ya existe un equipo con el id suministrado.
      */
     @POST
-    public EquipoDTO createEquipo(EquipoDTO equipo) throws EquipoLogicException {
-        return EquipoLogic.crearEquipo(equipo);
+    public EquipoDetailDTO createEquipo(EquipoDetailDTO equipo) throws AudiovisualesLogicException {
+        EquipoEntity e = logic.createEquipo(equipo.toEntity());
+        return new EquipoDetailDTO(e);
     }
     
     /**
@@ -73,23 +92,23 @@ public class EquipoResource {
      * @param id el id del equipo a modificar.
      * @param equipo el equipo que sirve de base para actualizar.
      * @return el equipo modificado.
-     * @throws EquipoLogicException . 
+     * @throws AudiovisualesLogicException . 
      */
     @PUT
     @Path("{id:\\d+}")
-    public EquipoDTO updateEquipo(@PathParam("id") int id, EquipoDTO equipo) throws EquipoLogicException{
-        return EquipoLogic.updateEquipo(equipo, id);
+    public EquipoDetailDTO updateEquipo(@PathParam("id") int id, EquipoDetailDTO equipo) throws AudiovisualesLogicException{
+        EquipoEntity e = logic.updateEquipo(equipo.toEntity());
+        return new EquipoDetailDTO(e);
     }
     
     /**
      * elimina un equipo.
      * @param pId el id de la ciudad a eliminar.
-     * @throws EquipoLogicException 
+     * @throws AudiovisualesLogicException. 
      */
     @DELETE
     @Path("{id:\\d+}")
-    public void deleteEquipo(@PathParam("id") int pId)throws EquipoLogicException{
-        EquipoLogic.deleteEquipo(pId);//envia el id a eliminar
-        
+    public void deleteEquipo(@PathParam("id") Long pId)throws AudiovisualesLogicException{
+        logic.deleteEquipo(pId);
     }  
 }
