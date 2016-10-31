@@ -95,6 +95,15 @@ public class EdificioEntity extends BaseEntity implements Serializable
    }
    
    /**
+     * Agrega un quipo nuevo a la lista de equipos de edificio.
+     * @param e nuevo equipos. 
+     */
+   public void addEquipo(EquipoEntity e)
+   {
+       equipos.add(e);
+   }
+   
+   /**
      * Obtiene la lista de equipos del edificio.
      * @return equipos. 
      */

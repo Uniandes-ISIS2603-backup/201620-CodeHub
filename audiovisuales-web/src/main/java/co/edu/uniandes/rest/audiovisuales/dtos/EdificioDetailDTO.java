@@ -41,8 +41,10 @@ public class EdificioDetailDTO extends EdificioDTO
         List<EquipoEntity> e = entity.getEquipos();
         for(int i=0;i<e.size();i++)
         {
-            
+            EquipoEntity equipo = e.get(i);
+            //equipos.add(new EquipoDTO(equipo));
         }
+        //admin = new AdminDTO(entity.getAdmin());
     }
     
     public AdminDTO getAdmin()
@@ -64,5 +66,24 @@ public class EdificioDetailDTO extends EdificioDTO
     {
        if(equipo!=null)
         equipos.add(equipo);
+    }
+    
+    /**
+     * Convierte el objeto a un entity para ser usado en el back
+     * @return el entity analogo al objeto
+     */
+    public EdificioEntity toEntity()
+    {
+        EdificioEntity entity = new EdificioEntity();
+        entity.setId(id);
+        entity.setName(nombre);
+        entity.setBloque(bloque);
+        //entity.setAdmin(admin.toEntity());
+        for(int i=0;i<equipos.size();i++)
+        {
+            EquipoDTO e = equipos.get(i);
+            //entity.addEquipo(e.toEntity());
+        }
+        return entity;
     }
 }

@@ -15,9 +15,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class EdificioDTO 
 {
-    private Long id;
-    private String bloque;
-    private String nombre;
+    protected Long id;
+    protected String bloque;
+    protected String nombre;
 
     /**
      * Constructor por defecto
