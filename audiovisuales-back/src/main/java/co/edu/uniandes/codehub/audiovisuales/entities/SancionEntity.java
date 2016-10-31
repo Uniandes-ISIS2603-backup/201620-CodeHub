@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.codehub.audiovisuales.entities;
 
+import co.edu.uniandes.rest.audiovisuales.dtos.UsuarioDTO;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -88,6 +89,16 @@ public class SancionEntity extends BaseEntity implements Serializable
     public UsuarioEntity getUsuario()
     {
         return usuario;
+    }
+
+    public void setUsuario(UsuarioDTO usuario)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setUsuario(UsuarioDTO usuario)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
       
 }

@@ -5,10 +5,19 @@
  */
 package co.edu.uniandes.rest.audiovisuales.resources;
 
+import co.edu.uniandes.codehub.audiovisuales.api.IEdificioLogic;
+import co.edu.uniandes.codehub.audiovisuales.api.ISancionLogic;
+import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
+import co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity;
+import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
+import co.edu.uniandes.rest.audiovisuales.dtos.EdificioDetailDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.SancionDTO;
+import co.edu.uniandes.rest.audiovisuales.dtos.SancionDetailDTO;
 import co.edu.uniandes.rest.audiovisuales.exceptions.SancionLogicException;
 import co.edu.uniandes.rest.audiovisuales.mocks.SancionLogicMock;
+import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,6 +25,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -25,49 +35,78 @@ import javax.ws.rs.Produces;
 @Produces("application/json")
 public class SancionResource
 {
-        SancionLogicMock sancionLogic = new SancionLogicMock();
-        
-    /**
-     * Obtiene el listado de sanciones.
-     *
-     * @return lista de sanciones
-     * @throws SancionLogicException excepción retornada por la lógica
-     */
-    @GET
-    public List<SancionDTO> getSancionesUsuario(@PathParam("idUsuario") Long idUsuario) throws SancionLogicException {
-        return sancionLogic.getSancionesUsuario(idUsuario);
+    @Inject
+    private ISancionLogic logic;
+    
+    private List<SancionDetailDTO> listEntityToDTO(List<SancionEntity> entities){
+        List<SancionDetailDTO> sanciones = new ArrayList<>();
+        for(int i=0;i<entities.size();i++)
+        {
+            SancionEntity e = entities.get(i);
+            sanciones.add(new SancionDetailDTO(e));
+        }
+        return sanciones;
     }
     
     @GET
-    @Path("{id:  \\d+}")
-    public SancionDTO getSancion(@PathParam("id") Long id) throws SancionLogicException {
-        return sancionLogic.getSancion(id);
+    public List<SancionDetailDTO> getSanciones()
+    {
+        return listEntityToDTO(logic.getSanciones());
     }
-     
-     @PUT
-     @Path("{id:  \\d+}")
-     public SancionDTO putSancion(@PathParam("id")long id, SancionDTO sancion ) throws SancionLogicException{
-          System.out.println("esto: "+sancion.getEstado()+" esto bien:"+sancion.getFecha());
-     return sancionLogic.putSancion(sancion, id);
-     }
-     
-     @DELETE
-     @Path("{id:  \\d+}")
-     public SancionDTO deleteSancion(@PathParam("id")Long id) throws SancionLogicException{
-         return sancionLogic.deleteSancion(id);
-     }
-
-   
-    /**
-     * Agrega una sancion
-     *
-     * @param sancion sancion a agregar
-     * @return datos de la sancion a agregar
-     * @throws SancionLogicException cuando ya existe una sancion con el id
-     * suministrado
-     */
+    
+    @GET
+    @Path("{id: \\d+}")
+    public SancionDetailDTO getSancion(@PathParam("id") Long id)
+    {
+        SancionEntity s = logic.getSancion(id);
+        if(s==null)
+        {
+            throw new WebApplicationException("La sancion no existe", 404);
+        }
+        return new SancionDetailDTO(s);
+    }
+    
+    @GET
+    @Path("{fecha}")
+    public SancionDetailDTO getSancionByFecha(@PathParam("fecha") String fecha)
+    {
+        SancionEntity f = logic.getSancionByFecha(fecha);
+        if(f!=null)
+        {
+            return new SancionDetailDTO(f);
+        }
+        else
+        {
+                throw new WebApplicationException("La sancion no existe", 404);
+        }
+    }
+    
     @POST
-    public SancionDTO createSancion(SancionDTO sancion) throws SancionLogicException {
-        return sancionLogic.createSancion(sancion);
+    public SancionDetailDTO agregarSancion(SancionDetailDTO nuevo) throws AudiovisualesLogicException
+    {
+        SancionEntity e = logic.createSancion(nuevo.toEntity());
+        return new SancionDetailDTO(e);
     }
+     
+    @PUT
+    @Path("{id: \\d+}")
+    public SancionDetailDTO actualizarSancion(@PathParam("id") Long id, SancionDetailDTO sancion)
+    {
+        SancionEntity s = logic.updateSancion(sancion.toEntity());
+        return new SancionDetailDTO(s);
+    }
+     
+    @DELETE
+    @Path("{id: \\d+}")
+    public SancionDetailDTO eliminarSancion(@PathParam("id") Long id)
+    {
+        SancionEntity s = logic.getSancion(id);
+        if(s==null)
+        {
+            throw new WebApplicationException("La sancion no existe", 404);
+        }
+        logic.deleteSancion(id);
+        return new SancionDetailDTO(s);
+    }
+
 }

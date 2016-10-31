@@ -5,14 +5,16 @@
  */
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
+import co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity;
+
 /**
  *
  * @author lj.pinzon12
  */
 public class SancionDTO
 {
-    private Long id;
-    private String fecha;
+    Long id;
+    String fecha;
     private String estado;
     
     private Long idUsuario;
@@ -21,7 +23,16 @@ public class SancionDTO
      * Constructor por defecto
      */
     public SancionDTO() {
+        
 	}
+    
+    public SancionDTO(SancionEntity entity) {
+
+        this.id = entity.getId();
+	this.fecha = entity.getFecha();
+        this.estado = entity.getEstado();
+    }
+    
 
     /**
      * Constructor con parámetros.
