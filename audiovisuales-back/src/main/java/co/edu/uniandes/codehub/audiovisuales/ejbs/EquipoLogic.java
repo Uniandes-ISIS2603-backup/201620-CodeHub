@@ -56,6 +56,12 @@ public class EquipoLogic implements IEquipoLogic{
         return persistencia.findByedificio(edifcio);
     }
 
+    /**
+     * Agrega un nuevo equipo a la persistencia.
+     * @param equipo el equipo a agregar.
+     * @return el equipo ya agregado.
+     * @throws AudiovisualesLogicException si equipo== null o equipo.id==null.
+     */
     @Override
     public EquipoEntity createEquipo(EquipoEntity equipo) throws AudiovisualesLogicException{
         if(equipo ==null){
@@ -67,6 +73,12 @@ public class EquipoLogic implements IEquipoLogic{
         return equipo;
     }
 
+    /**
+     * Actualiza un equipo en la persistencia
+     * @param equipo el equipo con los datos a modificar. equipo!=null.
+     * @return el equipo ya actualizado.
+     * @throws AudiovisualesLogicException si el id del equipo a actualizar no existe en la persistencia.
+     */
     @Override
     public EquipoEntity updateEquipo(EquipoEntity equipo)throws AudiovisualesLogicException{
         EquipoEntity eq = persistencia.find(equipo.getId());
@@ -77,6 +89,11 @@ public class EquipoLogic implements IEquipoLogic{
         return equipo;
     }
 
+    /**
+     * elimina un equipo con el id que llega por parámetro.
+     * @param id el id del equipo a eliminar.
+     * @throws AudiovisualesLogicException si no existe un equipo con ese id en la persistencia.
+     */
     @Override
     public void deleteEquipo(Long id)throws AudiovisualesLogicException{
         EquipoEntity eq = persistencia.find(id);

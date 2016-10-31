@@ -55,6 +55,7 @@ public class EquipoPersistence {
          return q.getSingleResult();
      }*/
      
+     
      public EquipoEntity create(EquipoEntity entity){
          LOGGER.info("Creando un Equipo nuevo");
         em.persist(entity);
