@@ -52,7 +52,12 @@ public class EquipoPersistence {
          LOGGER.log(Level.INFO, "Consultando Equipo con el Juan = ", name);
          TypedQuery<EquipoEntity> q = em.createQuery("SELECT e FROM EquipoEntity e where e.name = :name", EquipoEntity.class);
          q =q.setParameter("name", name);
-         return q.getSingleResult();
+         List<EquipoEntity> res = q.getSingleResult();
+         if(res.isEmpty()){
+            return null;
+         }else{
+         *  return res.get(0);
+         }
      }*/
      
      
