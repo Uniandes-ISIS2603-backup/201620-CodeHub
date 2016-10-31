@@ -7,6 +7,7 @@ package co.edu.uniandes.codehub.audiovisuales.api;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
+import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import java.util.List;
 
 /**
@@ -39,19 +40,22 @@ public interface IEquipoLogic {
      * agrega un equipo a la persistencia.
      * @param equipo el nuevo equipo a agregar. equipo!=null.
      * @return el equipo agregado en caso de no ocurrir ninguna violacion a la lógica.
+     * @throws co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException
      */
-    public EquipoEntity createEquipo(EquipoEntity equipo);
+    public EquipoEntity createEquipo(EquipoEntity equipo)throws AudiovisualesLogicException;
     
     /**
      * actualiza un equipo en la persistencia.
      * @param equipo el equipo con los datos nuevos a actualizar. equipo!=null.
      * @return el equipo actualizado en caso de no ocurrir ninguna violacion a la lógica.
+     * @throws co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException
      */
-    public EquipoEntity updateEquipo (EquipoEntity equipo);
+    public EquipoEntity updateEquipo (EquipoEntity equipo)throws AudiovisualesLogicException;
     
     /**
      * Elimina un equipo de la persistencia.
      * @param id el id del equipo a eliminar. id!=null.
+     * @throws co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException
      */
-    public void deleteEquipo (Long id);
+    public void deleteEquipo (Long id) throws AudiovisualesLogicException;
 }
