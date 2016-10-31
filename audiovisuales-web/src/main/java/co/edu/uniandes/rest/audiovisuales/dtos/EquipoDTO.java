@@ -6,9 +6,7 @@
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Objeto de transferencia de Equipos
@@ -24,19 +22,22 @@ public class EquipoDTO {
             Atributos.
     -------------------------*/
     /**
-     * Codigo de identificación
+     * Codigo de identificación.
      */
-    private Long id;
+    protected Long id;
    /**
-    * Tipo de equipo
+    * Tipo de equipo.
     */
-    private String tipo;
+    protected String tipo;
     /**
-     * Estado en que se encuentra el equipo
+     * Estado en que se encuentra el equipo.
      */
-    private int estado;
-    private boolean disponible;
-    private Date quedaLibre;
+    protected int estado;
+    /**
+     * saber si esta o no disponible.
+     */
+    protected boolean disponible;
+    protected Date quedaLibre;
     
     
     /*-------------------------
@@ -60,6 +61,8 @@ public class EquipoDTO {
         id = entity.getId();
         estado = entity.getEstado();
         disponible = entity.isDisponible();
+        quedaLibre = entity.getQuedaLibre();
+        tipo = entity.getTipo();
     }
     
     
@@ -138,5 +141,15 @@ public class EquipoDTO {
     @Override
     public String toString(){
         return "{ codigo: "+id+", estado: \""+estado+"\"}";
+    }
+    
+    private EquipoEntity toEntity(){
+        EquipoEntity equipo = new EquipoEntity();
+        equipo.setId(id);
+        equipo.setTipo(tipo);
+        equipo.setEstado(estado);
+        equipo.setDisponible(disponible);
+        equipo.setQuedaLibre(quedaLibre);
+        return equipo;
     }
 }

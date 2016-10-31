@@ -6,6 +6,7 @@
 package co.edu.uniandes.rest.audiovisuales.resources;
 
 import co.edu.uniandes.codehub.audiovisuales.api.IEdificioLogic;
+import co.edu.uniandes.codehub.audiovisuales.ejbs.EquipoLogic;
 import co.edu.uniandes.rest.audiovisuales.dtos.EquipoDTO;
 import co.edu.uniandes.rest.audiovisuales.exceptions.EquipoLogicException;
 import java.util.List;

@@ -56,7 +56,7 @@ public class EquipoPersistence {
          if(res.isEmpty()){
             return null;
          }else{
-         *  return res.get(0);
+           return res.get(0);
          }
      }*/
      

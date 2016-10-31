@@ -8,6 +8,7 @@ package co.edu.uniandes.codehub.audiovisuales.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -52,7 +53,7 @@ public class EquipoEntity extends BaseEntity implements Serializable{
      */
     @PodamExclude
     @OneToMany(mappedBy = "equipo", cascade= CascadeType.ALL, orphanRemoval = false)
-    private ArrayList<ReservaEntity> reservas;
+    private List<ReservaEntity> reservas;
 
     
      /**------------------
@@ -118,11 +119,11 @@ public class EquipoEntity extends BaseEntity implements Serializable{
         return edificio;
     }
 
-    public ArrayList<ReservaEntity> getReservas() {
+    public List<ReservaEntity> getReservas() {
         return reservas;
     }
 
-    public void setReservas(ArrayList<ReservaEntity> reservas) {
+    public void setReservas(List<ReservaEntity> reservas) {
         this.reservas = reservas;
     }  
     
