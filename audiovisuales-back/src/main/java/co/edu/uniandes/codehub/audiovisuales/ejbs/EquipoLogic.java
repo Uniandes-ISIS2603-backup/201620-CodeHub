@@ -48,12 +48,15 @@ public class EquipoLogic implements IEquipoLogic{
 
     /**
      * busca los equipos que pertenecen al edificio
-     * @param edifcio el edificio al que pertenecen los edificios. edificio != null.
+     * @param edificio el edificio al que pertenecen los edificios. edificio != null.
      * @return la lista con los equipos que pertenecen al edificio dado.
      */
     @Override
-    public List<EquipoEntity> getByEdificio(EdificioEntity edifcio) {
-        return persistencia.findByedificio(edifcio);
+    public List<EquipoEntity> getByEdificio(EdificioEntity edificio)throws AudiovisualesLogicException {
+        if(edificio == null){
+            throw new AudiovisualesLogicException("El edificio no puede ser nulo. ");
+        }
+        return persistencia.findByedificio(edificio);
     }
 
     /**
@@ -92,15 +95,19 @@ public class EquipoLogic implements IEquipoLogic{
     /**
      * elimina un equipo con el id que llega por parámetro.
      * @param id el id del equipo a eliminar.
-     * @throws AudiovisualesLogicException si no existe un equipo con ese id en la persistencia.
+     * @throws AudiovisualesLogicException si no existe un equipo con ese id en la persistencia o si el id==null.
      */
     @Override
-    public void deleteEquipo(Long id)throws AudiovisualesLogicException{
+    public Long deleteEquipo(Long id)throws AudiovisualesLogicException{
+        if(id==null){
+            throw new AudiovisualesLogicException("El id no puede ser nulo. ");
+        }
         EquipoEntity eq = persistencia.find(id);
         if(eq ==null){
             throw new AudiovisualesLogicException("El equipo a eliminar no existe en la persistencia.");
         }
         persistencia.delete(id);
+        return id;
     }
     
 }
