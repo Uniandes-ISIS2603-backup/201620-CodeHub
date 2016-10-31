@@ -92,10 +92,10 @@ public class EquipoEntity extends BaseEntity implements Serializable{
 
     /**
      * cambia el edificio del equipo
-     * @param idEdificio 
+     * @param edificio 
      */
-    public void setEdificio(EdificioEntity idEdificio) {
-        this.edificio = idEdificio;
+    public void setEdificio(EdificioEntity edificio) {
+        this.edificio = edificio;
     }
 
     public String getTipo() {
@@ -125,4 +125,12 @@ public class EquipoEntity extends BaseEntity implements Serializable{
     public void setReservas(ArrayList<ReservaEntity> reservas) {
         this.reservas = reservas;
     }  
+    
+    /**
+     * Agrega una reserva a la lista de reservas del Entity.
+     * @param r la reserva a agregar. r!=null.
+     */
+    public void addReserva(ReservaEntity r){
+        reservas.add(r);
+    }
 }

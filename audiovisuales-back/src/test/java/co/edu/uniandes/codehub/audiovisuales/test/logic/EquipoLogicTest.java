@@ -120,4 +120,49 @@ public class EquipoLogicTest {
         EquipoEntity result = logic.createEquipo(nuevo);
         Assert.assertNull("Debe retornar nulo.",result);
     }
+    
+    @Test
+    public void getbyEdifcioTestSucces() throws AudiovisualesLogicException{
+        List<EquipoEntity> respuesta = logic.getByEdificio(edificioEntity);
+        for (EquipoEntity eq : respuesta){
+            Assert.assertTrue("no contiene un equipo.",data.contains(eq));
+        }
+    }
+    
+     @Test(expected = AudiovisualesLogicException.class)
+    public void getbyEdificioTestfail() throws Exception{
+        Assert.assertNull("debería ser nulo", logic.getByEdificio(null));
+    }
+    
+    @Test
+    public void updateEquipoTestSucces() throws AudiovisualesLogicException{
+        EquipoEntity eq = data.get(0);
+        eq.setTipo("Arracacha");
+        Assert.assertEquals("deberían ser el mismo.", eq, logic.updateEquipo(eq));
+        Assert.assertEquals("deberían tener el mismo tipo.", eq.getTipo(), logic.getEquipo(eq.getId()).getTipo());
+    }
+    
+    @Test(expected = AudiovisualesLogicException.class)
+    public void updateEquipoTestFail() throws Exception{
+        EquipoEntity equipo = factory.manufacturePojo(EquipoEntity.class);
+        Assert.assertNull("no debe retornar nada",logic.updateEquipo(equipo));
+    }
+    
+    @Test
+    public void deleteEquipoTestSuccess() throws AudiovisualesLogicException{
+        EquipoEntity eq = data.get(1);
+        logic.deleteEquipo(eq.getId());
+        Assert.assertNull("no debería encontrar nada", logic.getEquipo(eq.getId()));
+    }
+    
+    @Test(expected = AudiovisualesLogicException.class)
+    public void deleteEquipoTestFail1() throws Exception{
+        Assert.assertNotNull("no debería devolver nada",logic.deleteEquipo(null));
+    }
+    
+    @Test(expected = AudiovisualesLogicException.class)
+    public void deleteEquipoTestFail2() throws Exception{
+        EquipoEntity equipo = factory.manufacturePojo(EquipoEntity.class);
+        Assert.assertNotNull("no debería devolver nada",logic.deleteEquipo(equipo.getId()));
+    }
 }

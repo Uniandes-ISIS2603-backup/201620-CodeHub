@@ -33,8 +33,9 @@ public interface IEquipoLogic {
      * busca todos los equipos que pertenecen a un edifcio.
      * @param edifcio el edificio al que pertenecen los equipos. edificio!=null.
      * @return la lista con todos los equipos que pertenecen al edificio.
+     * @throws co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException
      */
-    public List<EquipoEntity> getByEdificio(EdificioEntity edifcio);
+    public List<EquipoEntity> getByEdificio(EdificioEntity edifcio) throws AudiovisualesLogicException;
     
     /**
      * agrega un equipo a la persistencia.
@@ -55,7 +56,8 @@ public interface IEquipoLogic {
     /**
      * Elimina un equipo de la persistencia.
      * @param id el id del equipo a eliminar. id!=null.
+     * @return el id del equipo ya eliminado.
      * @throws co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException
      */
-    public void deleteEquipo (Long id) throws AudiovisualesLogicException;
+    public Long deleteEquipo (Long id) throws AudiovisualesLogicException;
 }

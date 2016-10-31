@@ -5,10 +5,11 @@
  */
 package co.edu.uniandes.rest.audiovisuales.resources;
 
+import co.edu.uniandes.codehub.audiovisuales.api.IEdificioLogic;
 import co.edu.uniandes.rest.audiovisuales.dtos.EquipoDTO;
 import co.edu.uniandes.rest.audiovisuales.exceptions.EquipoLogicException;
-import co.edu.uniandes.rest.audiovisuales.mocks.EquipoLogicMock;
 import java.util.List;
+import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -26,7 +27,8 @@ import javax.ws.rs.QueryParam;
 @Path("edificios/{idEdificio}/equipos")
 @Produces("application/json")
 public class EquipoResource {
-    EquipoLogicMock EquipoLogic = new EquipoLogicMock();
+    @Inject
+    private IEdificioLogic logic;
 
     /**
      * Obtiene el listado de equipos.
