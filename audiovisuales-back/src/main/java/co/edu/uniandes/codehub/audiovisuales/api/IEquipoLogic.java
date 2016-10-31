@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.codehub.audiovisuales.api;
 
-import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import java.util.List;
@@ -31,7 +30,7 @@ public interface IEquipoLogic {
     
     /**
      * busca todos los equipos que pertenecen a un edifcio.
-     * @param edifcio el edificio al que pertenecen los equipos. edificio!=null.
+     * @param idEdifcio el id del edificio al que pertenecen los equipos. idEdificio!=null.
      * @return la lista con todos los equipos que pertenecen al edificio.
      * @throws co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException
      */

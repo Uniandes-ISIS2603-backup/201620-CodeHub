@@ -25,7 +25,7 @@ public class EquipoDetailDTO extends EquipoDTO{
      */
     private EdificioDTO edificio;
     
-    private List<ReservaDTO> reservas= new ArrayList<ReservaDTO>();
+    private List<ReservaDTO> reservas= new ArrayList<>();
     
     /*-------------------------
             Constructores.
