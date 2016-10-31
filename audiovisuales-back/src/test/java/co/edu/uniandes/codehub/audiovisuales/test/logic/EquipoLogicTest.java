@@ -114,10 +114,16 @@ public class EquipoLogicTest {
     }
     
     @Test(expected = AudiovisualesLogicException.class)
-    public void createEquipoTestFail() throws Exception{
+    public void createEquipoTestFail1() throws Exception{
         EquipoEntity nuevo = null;
         
         EquipoEntity result = logic.createEquipo(nuevo);
+        Assert.assertNull("Debe retornar nulo.",result);
+    }
+    
+    @Test(expected = AudiovisualesLogicException.class)
+    public void createEquipoTestFail2() throws Exception{
+        EquipoEntity result = logic.createEquipo(data.get(0));
         Assert.assertNull("Debe retornar nulo.",result);
     }
     
