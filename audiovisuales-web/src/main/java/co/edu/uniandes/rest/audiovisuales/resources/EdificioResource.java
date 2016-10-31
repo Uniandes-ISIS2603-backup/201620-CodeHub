@@ -54,14 +54,11 @@ public class EdificioResource {
     public EdificioDetailDTO getEdificio(@PathParam("id") Long id)
     {
         EdificioEntity ed = logic.getEdificio(id);
-        if(ed!=null)
-        {
-            return new EdificioDetailDTO(ed);
-        }
-        else
+        if(ed==null)
         {
             throw new WebApplicationException("El edifico no existe", 404);
         }
+        return new EdificioDetailDTO(ed);
     }
     
     @GET
@@ -96,7 +93,7 @@ public class EdificioResource {
     
     @PUT
     @Path("{id: \\d+}")
-    public EdificioDetailDTO actualizarEdificio(@PathParam("id") Long id, EdificioDetailDTO edificio) throws EdificioLogicException
+    public EdificioDetailDTO actualizarEdificio(@PathParam("id") Long id, EdificioDetailDTO edificio)
     {
         EdificioEntity ed = logic.updateEdificio(edificio.toEntity());
         return new EdificioDetailDTO(ed);
@@ -106,15 +103,12 @@ public class EdificioResource {
     @Path("{id: \\d+}")
     public EdificioDetailDTO eliminarEdificio(@PathParam("id") Long id) throws EdificioLogicException
     {
-         EdificioEntity ed = logic.getEdificio(id);
-        if(ed!=null)
-        {
-            logic.deleteEdificio(id);
-            return new EdificioDetailDTO(ed);
-        }
-        else
+        EdificioEntity ed = logic.getEdificio(id);
+        if(ed==null)
         {
             throw new WebApplicationException("El edifico no existe", 404);
         }
+        logic.deleteEdificio(id);
+        return new EdificioDetailDTO(ed);
     }
 }

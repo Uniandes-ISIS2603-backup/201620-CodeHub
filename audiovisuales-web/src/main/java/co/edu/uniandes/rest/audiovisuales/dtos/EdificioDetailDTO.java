@@ -24,25 +24,17 @@ public class EdificioDetailDTO extends EdificioDTO
     private List<EquipoDTO> equipos = new ArrayList<>();
     
     /**
-     * Constructor por defecto
-     */
-    public EdificioDetailDTO() 
-    {
-       super();       
-    }
-    
-    /**
-     * Constructor con entity.
+     * Constructor que transforma el entity a DTO .
      * @param entity el entity a convertir a DTO
      */
     public EdificioDetailDTO(EdificioEntity entity) {
 	super(entity);
-        //admin = entity.getAdmin();
+        
         List<EquipoEntity> e = entity.getEquipos();
         for(int i=0;i<e.size();i++)
         {
             EquipoEntity equipo = e.get(i);
-            //equipos.add(new EquipoDTO(equipo));
+            equipos.add(new EquipoDTO(equipo));
         }
         //admin = new AdminDTO(entity.getAdmin());
     }
@@ -82,7 +74,7 @@ public class EdificioDetailDTO extends EdificioDTO
         for(int i=0;i<equipos.size();i++)
         {
             EquipoDTO e = equipos.get(i);
-            //entity.addEquipo(e.toEntity());
+            entity.addEquipo(e.toEntity());
         }
         return entity;
     }
