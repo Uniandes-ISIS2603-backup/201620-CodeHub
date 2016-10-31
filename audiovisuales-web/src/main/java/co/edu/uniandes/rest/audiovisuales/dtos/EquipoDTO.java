@@ -143,7 +143,7 @@ public class EquipoDTO {
         return "{ codigo: "+id+", estado: \""+estado+"\"}";
     }
     
-    private EquipoEntity toEntity(){
+    public EquipoEntity toEntity(){
         EquipoEntity equipo = new EquipoEntity();
         equipo.setId(id);
         equipo.setTipo(tipo);

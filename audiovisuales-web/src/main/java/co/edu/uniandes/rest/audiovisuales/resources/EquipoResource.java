@@ -30,6 +30,7 @@ import javax.ws.rs.QueryParam;
 public class EquipoResource {
     @Inject
     private IEdificioLogic logic;
+    
 
     /**
      * Obtiene el listado de equipos.

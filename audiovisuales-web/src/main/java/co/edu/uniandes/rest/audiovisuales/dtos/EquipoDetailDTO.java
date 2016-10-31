@@ -60,7 +60,7 @@ public class EquipoDetailDTO extends EquipoDTO{
         this.reservas = reservas;
     }
     
-    private EquipoEntity toEntity(){
+    public EquipoEntity toEntity(){
         EquipoEntity equipo = new EquipoEntity();
         equipo.setId(id);
         equipo.setTipo(tipo);
@@ -79,5 +79,4 @@ public class EquipoDetailDTO extends EquipoDTO{
         equipo.setReservas(res);
         return equipo;
     }
-    
 }
