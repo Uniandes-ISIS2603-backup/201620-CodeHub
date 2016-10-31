@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
+import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,9 +37,7 @@ public class EquipoDTO {
     private int estado;
     private boolean disponible;
     private Date quedaLibre;
-    private Long idEdificio;
     
-    private List<ReservaDTO> reservas;
     
     /*-------------------------
             Constructores.
@@ -47,16 +46,23 @@ public class EquipoDTO {
      * Constructor para el DTO de equipo
      * @param pCodigo el codigo del equipo a crear. pCodigo !=null && pCodigo!=0.
      * @param pEstado el estado del equipo a crear. pEstado !=null&& pEstado!=""
+     * @param tipo el tipo del equipo a crear.
      */
-    public EquipoDTO(Long pCodigo, int pEstado, Long edificio, String tipo){
+    public EquipoDTO(Long pCodigo, int pEstado, String tipo){
         id = pCodigo;
         estado = pEstado;
-        idEdificio = edificio;
         disponible = true;
         quedaLibre = new Date();
-        reservas = new ArrayList<>();
         this.tipo = tipo;
     }
+   
+    public EquipoDTO(EquipoEntity entity){
+        id = entity.getId();
+        estado = entity.getEstado();
+        disponible = entity.isDisponible();
+    }
+    
+    
     /**
      * Constructor vacio necesario porque aja(?)
      */
@@ -95,12 +101,6 @@ public class EquipoDTO {
     public void setEstado(int pEstado){
         estado = pEstado;
     }
-    /**
-     * @return the id
-     */
-    public Long getIdEdificio() {
-        return idEdificio;
-    }
     
     public boolean getDisponible()
     {
@@ -130,23 +130,6 @@ public class EquipoDTO {
     {
         quedaLibre = nuevaFecha;
     }
-    /**
-     * @param id the id to set
-     */
-    public void setIdEdificio(Long idEdificio) {
-        this.idEdificio = idEdificio;
-    }
-    
-    public List<ReservaDTO> getReservas()
-    {
-        return reservas;
-    }
-    
-    public void addReserva(ReservaDTO reserva)
-    {
-        this.reservas.add(reserva);
-    }
-
     
     /**
      * Metodo to string para enviar la información como un JSON
