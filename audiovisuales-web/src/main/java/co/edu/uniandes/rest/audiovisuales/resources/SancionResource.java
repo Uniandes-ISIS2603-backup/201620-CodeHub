@@ -5,16 +5,11 @@
  */
 package co.edu.uniandes.rest.audiovisuales.resources;
 
-import co.edu.uniandes.codehub.audiovisuales.api.IEdificioLogic;
+
 import co.edu.uniandes.codehub.audiovisuales.api.ISancionLogic;
-import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
-import co.edu.uniandes.rest.audiovisuales.dtos.EdificioDetailDTO;
-import co.edu.uniandes.rest.audiovisuales.dtos.SancionDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.SancionDetailDTO;
-import co.edu.uniandes.rest.audiovisuales.exceptions.SancionLogicException;
-import co.edu.uniandes.rest.audiovisuales.mocks.SancionLogicMock;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
