@@ -11,7 +11,6 @@ import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicExcept
 import co.edu.uniandes.rest.audiovisuales.dtos.ReservaDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.ReservaDetailDTO;
 
-import co.edu.uniandes.rest.audiovisuales.exceptions.ReservaLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -22,7 +21,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response;
 
 /**
  *
@@ -46,7 +44,7 @@ public class ReservaResource {
     }
     
     @GET
-    public List<ReservaDetailDTO> getReservasUsuario(@PathParam("idUsuario") Long idUsuario) throws ReservaLogicException
+    public List<ReservaDetailDTO> getReservasUsuario(@PathParam("idUsuario") Long idUsuario) throws AudiovisualesLogicException
     {
         List<ReservaEntity> reservasE = reservaLogic.getReservasByUsuario(idUsuario);
         return listEntityToDTO(reservasE);
@@ -54,7 +52,7 @@ public class ReservaResource {
     
     @GET
     @Path("{id: \\d+}")
-    public ReservaDTO getReserva(@PathParam("id")Long id) throws ReservaLogicException
+    public ReservaDTO getReserva(@PathParam("id")Long id) throws AudiovisualesLogicException
     {
        ReservaEntity entity = reservaLogic.getReserva(id);
        if(entity==null)
@@ -74,7 +72,7 @@ public class ReservaResource {
     
     @GET
     @Path("calificacion")
-    public String getCalificacionSistema(@PathParam("idUsuario")Long idUsuario) throws ReservaLogicException
+    public String getCalificacionSistema(@PathParam("idUsuario")Long idUsuario) throws AudiovisualesLogicException
     {
         double contador = 0.0;
         int size = 0;
@@ -107,7 +105,7 @@ public class ReservaResource {
     
     @PUT
     @Path("{id:\\d+}")
-    public ReservaDTO updateReserva(@PathParam("id") int id, ReservaDTO reserva) throws ReservaLogicException
+    public ReservaDTO updateReserva(@PathParam("id") int id, ReservaDTO reserva) throws AudiovisualesLogicException
     {
         ReservaEntity entity = reservaLogic.updateReserva(reserva.toEntity());
         return new ReservaDetailDTO(entity);

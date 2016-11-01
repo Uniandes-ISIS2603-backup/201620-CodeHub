@@ -8,10 +8,7 @@ package co.edu.uniandes.rest.audiovisuales.resources;
 import co.edu.uniandes.codehub.audiovisuales.api.IUsuarioLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
-import co.edu.uniandes.rest.audiovisuales.dtos.UsuarioDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.UsuarioDetailDTO;
-import co.edu.uniandes.rest.audiovisuales.exceptions.UsuarioLogicException;
-import co.edu.uniandes.rest.audiovisuales.mappers.WebApplicationExceptionMapper;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -67,7 +64,7 @@ public class UsuarioResource {
 
     @GET
     @Path("{id: \\d+}")
-    public UsuarioDetailDTO getUsuario(@PathParam("id") Long id) throws UsuarioLogicException
+    public UsuarioDetailDTO getUsuario(@PathParam("id") Long id) throws AudiovisualesLogicException
     {
         return new UsuarioDetailDTO(usuarioLogic.getUsuario(id));
     }
@@ -114,7 +111,7 @@ public class UsuarioResource {
     
     @PUT
     @Path("{id: \\d+}")
-    public UsuarioDetailDTO actualizarUsuario(@PathParam("id") Long id, UsuarioDetailDTO usuario) throws UsuarioLogicException
+    public UsuarioDetailDTO actualizarUsuario(@PathParam("id") Long id, UsuarioDetailDTO usuario) throws AudiovisualesLogicException
     {
         UsuarioEntity usu = usuario.toEntity();
         usu.setId(id);
@@ -125,7 +122,7 @@ public class UsuarioResource {
     
     @DELETE
     @Path("{id: \\d+}")
-    public void eliminarUsuario(@PathParam("id") Long id) throws UsuarioLogicException
+    public void eliminarUsuario(@PathParam("id") Long id) throws AudiovisualesLogicException
     {
         usuarioLogic.deleteUsuario(id);
     }

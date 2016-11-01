@@ -7,10 +7,10 @@ package co.edu.uniandes.rest.audiovisuales.resources;
 
 import co.edu.uniandes.codehub.audiovisuales.api.IAdministradorLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity;
+import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.rest.audiovisuales.dtos.AdminDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.AdminDetailDTO;
 
-import co.edu.uniandes.rest.audiovisuales.exceptions.AdminLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -47,14 +47,14 @@ public class AdminResource
     }
     
     @GET
-    public List<AdminDetailDTO> getAdministradores() throws AdminLogicException
+    public List<AdminDetailDTO> getAdministradores() throws AudiovisualesLogicException
     {
         return listEntityToDTO(adminLogic.getAdministradores());
     }
     
     @GET
     @Path("{id:\\d+}")
-    public AdminDTO getAdmin(@PathParam("id") Long id) throws AdminLogicException
+    public AdminDTO getAdmin(@PathParam("id") Long id) throws AudiovisualesLogicException
     {
         AdministradorEntity entidad = adminLogic.getAdministrador(id);
         if(entidad==null)
@@ -81,7 +81,7 @@ public class AdminResource
     }
     
     @POST
-    public AdminDTO agregarAdministrador(AdminDTO nuevo) throws AdminLogicException
+    public AdminDTO agregarAdministrador(AdminDTO nuevo) throws AudiovisualesLogicException
     {
         AdministradorEntity entidad = adminLogic.updateAdministrador(nuevo.toEntity());
         return new AdminDetailDTO(entidad);
@@ -89,7 +89,7 @@ public class AdminResource
 
     @PUT
     @Path("{id:\\d+}")
-    public AdminDTO actualizarAdministrador(@PathParam("id") int id, AdminDTO admin) throws AdminLogicException
+    public AdminDTO actualizarAdministrador(@PathParam("id") int id, AdminDTO admin) throws AudiovisualesLogicException
     {
         AdministradorEntity entidad = adminLogic.updateAdministrador(admin.toEntity());
         return new AdminDetailDTO(entidad);
@@ -97,7 +97,7 @@ public class AdminResource
 
     @DELETE
     @Path("{id:\\d+}")
-    public AdminDetailDTO eliminarAdministrador(@PathParam("id") Long id) throws AdminLogicException
+    public AdminDetailDTO eliminarAdministrador(@PathParam("id") Long id) throws AudiovisualesLogicException
     {
        AdministradorEntity entidad = adminLogic.getAdministrador(id);
        if (entidad == null)
