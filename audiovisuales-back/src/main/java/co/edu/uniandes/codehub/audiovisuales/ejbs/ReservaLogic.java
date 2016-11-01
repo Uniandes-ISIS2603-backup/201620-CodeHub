@@ -33,8 +33,8 @@ public class ReservaLogic implements IReservaLogic{
     }
 
     @Override
-    public ReservaEntity getReservaByUsuario(String name) {
-       return persistence.findByName(name);
+    public List<ReservaEntity> getReservasByUsuario(Long id) {
+       return persistence.findByIdUsuario(id);
     }
 
     @Override

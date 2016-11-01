@@ -18,7 +18,7 @@ public interface IReservaLogic {
     
     public ReservaEntity getReserva(Long id);
     
-    public ReservaEntity getReservaByUsuario(String name);
+    public List<ReservaEntity> getReservasByUsuario(Long id);
     
     public ReservaEntity createReserva(ReservaEntity entity);
     

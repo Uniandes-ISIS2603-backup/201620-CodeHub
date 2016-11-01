@@ -5,46 +5,73 @@
  */
 package co.edu.uniandes.rest.audiovisuales.resources;
 
+import co.edu.uniandes.codehub.audiovisuales.api.IReservaLogic;
+import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
 import co.edu.uniandes.rest.audiovisuales.dtos.ReservaDTO;
-import co.edu.uniandes.rest.audiovisuales.mocks.ReservaLogicMock;
+import co.edu.uniandes.rest.audiovisuales.dtos.ReservaDetailDTO;
+
 import co.edu.uniandes.rest.audiovisuales.exceptions.ReservaLogicException;
+import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 
 /**
  *
- * @author orlando
+ * @author o.sabogal10
  */
 @Path("usuarios/{idUsuario}/reservas")
 @Produces("application/json")
 public class ReservaResource {
     
-    ReservaLogicMock reservaLogic = new ReservaLogicMock();
+   // ReservaLogicMock reservaLogic = new ReservaLogicMock();
+    
+    @Inject
+    private IReservaLogic reservaLogic;
+    
+    public List<ReservaDetailDTO> listEntityToDTO(List<ReservaEntity> entities)
+    {
+        List<ReservaDetailDTO> reservas = new ArrayList<>();
+        for(ReservaEntity reserva: entities)
+        {
+            reservas.add(new ReservaDetailDTO(reserva));
+        }
+        return reservas;
+    }
     
     @GET
-    public List<ReservaDTO> getReservasUsuario(@PathParam("idUsuario") Long idUsuario) throws ReservaLogicException
+    public List<ReservaDetailDTO> getReservasUsuario(@PathParam("idUsuario") Long idUsuario) throws ReservaLogicException
     {
-        return reservaLogic.getReservasUsuario(idUsuario);
+        List<ReservaEntity> reservasE = reservaLogic.getReservasByUsuario(idUsuario);
+        return listEntityToDTO(reservasE);
     }
     
     @GET
     @Path("{id: \\d+}")
     public ReservaDTO getReserva(@PathParam("id")Long id) throws ReservaLogicException
     {
-        return reservaLogic.getReserva(id);
+       ReservaEntity entity = reservaLogic.getReserva(id);
+       if(entity==null)
+       {
+           throw new WebApplicationException("La reserva no existe.", 404);
+       }
+       return new ReservaDetailDTO(entity);
     }
     
-    @GET
+  /**  @GET
     @Path("pendientes")
     public List<ReservaDTO> getReservasPendientes(@PathParam("idUsuario")Long idUsuario) throws ReservaLogicException
     {
-         return reservaLogic.getReservasPendientes(idUsuario);
+         
     }
+   **/
     
     @GET
     @Path("calificacion")
@@ -53,7 +80,7 @@ public class ReservaResource {
         double contador = 0.0;
         int size = 0;
         double calificacion= 0;
-        List<ReservaDTO> res = getReservasUsuario(idUsuario);
+        List<ReservaDetailDTO> res = getReservasUsuario(idUsuario);
         for (int i = 0; i< res.size();i++)
         {
             if(res.get(i).getEstado()==ReservaDTO.INACTIVA)
@@ -73,15 +100,17 @@ public class ReservaResource {
     }
     
     @POST
-    public ReservaDTO createReserva(ReservaDTO reserva) throws ReservaLogicException
+    public ReservaDetailDTO createReserva(ReservaDTO reserva) throws ReservaLogicException
     {
-        return reservaLogic.createReserva(reserva);
+        ReservaEntity entity = reservaLogic.createReserva(reserva.toEntity());
+        return new ReservaDetailDTO(entity);
     }
     
     @PUT
     @Path("{id:\\d+}")
     public ReservaDTO updateReserva(@PathParam("id") int id, ReservaDTO reserva) throws ReservaLogicException
     {
-        return reservaLogic.updateReserva(reserva);
+        ReservaEntity entity = reservaLogic.updateReserva(reserva.toEntity());
+        return new ReservaDetailDTO(entity);
     }  
 }

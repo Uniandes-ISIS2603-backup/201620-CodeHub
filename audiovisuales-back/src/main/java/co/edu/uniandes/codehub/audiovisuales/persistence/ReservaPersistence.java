@@ -30,16 +30,16 @@ public class ReservaPersistence
     protected EntityManager em;  
     
      public ReservaEntity find(Long id) {
-        LOGGER.log(Level.INFO, "Consultando company con id={0}", id);
+        LOGGER.log(Level.INFO, "Consultando reserva con id={0}", id);
         return em.find(ReservaEntity.class, id);
     }
      
-     public ReservaEntity findByName(String nombre) 
-      {
-        LOGGER.log(Level.INFO, "Consultando Reserva con nombre= ", nombre);
-        TypedQuery<ReservaEntity> q = em.createQuery("select u from ReservaEntity u where u.nombre = :nombre", ReservaEntity.class);
-        q = q.setParameter("nombre", nombre);
-        return q.getSingleResult();
+     public List<ReservaEntity> findByIdUsuario(Long id) 
+      {//No estoy seguro de esto.
+        LOGGER.log(Level.INFO, "Consultando Reservas con id de usuario = ", id);
+        TypedQuery<ReservaEntity> q = em.createQuery("select u from ReservaEntity u where u.usuario.id = :usuarioId", ReservaEntity.class);
+        q = q.setParameter("usuarioId", id);
+        return q.getResultList();
        }
      
      public List<ReservaEntity> findAll() 
