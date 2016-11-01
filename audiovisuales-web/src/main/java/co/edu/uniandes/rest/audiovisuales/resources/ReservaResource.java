@@ -32,8 +32,6 @@ import javax.ws.rs.core.Response;
 @Produces("application/json")
 public class ReservaResource {
     
-   // ReservaLogicMock reservaLogic = new ReservaLogicMock();
-    
     @Inject
     private IReservaLogic reservaLogic;
     
