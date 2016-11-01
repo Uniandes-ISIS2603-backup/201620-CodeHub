@@ -6,6 +6,7 @@
 package co.edu.uniandes.codehub.audiovisuales.api;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
+import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public interface IReservaLogic {
     
     public List<ReservaEntity> getReservasByUsuario(Long id);
     
-    public ReservaEntity createReserva(ReservaEntity entity);
+    public ReservaEntity createReserva(ReservaEntity entity) throws AudiovisualesLogicException;
     
     public ReservaEntity updateReserva(ReservaEntity entity);
     

@@ -9,6 +9,8 @@ package co.edu.uniandes.codehub.audiovisuales.test.logic;
 import co.edu.uniandes.codehub.audiovisuales.api.IReservaLogic;
 import co.edu.uniandes.codehub.audiovisuales.ejbs.ReservaLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
+import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
+import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.codehub.audiovisuales.persistence.ReservaPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +49,8 @@ public class ReservaLogicTest {
     
     private List<ReservaEntity> data = new ArrayList<ReservaEntity>();
     
+    UsuarioEntity usuarioEntity;
+    
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -84,6 +88,7 @@ public class ReservaLogicTest {
     private void insertData()
     {
         PodamFactory factory = new PodamFactoryImpl();
+
         for(int i = 0 ; i<5;i++)
         {
             ReservaEntity entity = factory.manufacturePojo(ReservaEntity.class);
@@ -93,7 +98,7 @@ public class ReservaLogicTest {
     }
     
     @Test
-    public void createReservaTest()
+    public void createReservaTestSuccess() throws AudiovisualesLogicException
     {
         ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
         
@@ -105,4 +110,60 @@ public class ReservaLogicTest {
         Assert.assertEquals(newEntity.getId(), entity.getId());
     }
     
+    @Test(expected = AudiovisualesLogicException.class)
+    public void createReservaTestFail() throws AudiovisualesLogicException
+    {
+        ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
+        newEntity.setId(data.get(0).getId());
+        ReservaEntity resultado = logic.createReserva(newEntity);
+        Assert.assertNull(resultado);
+    }
+    
+     @Test
+    public void getReservasTest() {
+        List<ReservaEntity> list = logic.getReservas();
+        Assert.assertEquals(data.size(), list.size());
+        for (ReservaEntity entity : list) 
+        {
+            boolean found = false;
+            for (ReservaEntity dataEntity : data) {
+                if (entity.getId().equals(dataEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+    @Test
+    public void getReservaTest() {
+        ReservaEntity entity = data.get(0);
+        ReservaEntity resultEntity = logic.getReserva(entity.getId());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getName(), resultEntity.getName());
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+    }
+    
+    @Test
+    public void updateReservaTest()
+    {
+        ReservaEntity entity = data.get(0);
+        ReservaEntity updated = factory.manufacturePojo(ReservaEntity.class);
+        
+        updated.setId(entity.getId());
+        logic.updateReserva(updated);
+        
+        ReservaEntity result = em.find(ReservaEntity.class, entity.getId());
+        
+        Assert.assertEquals(updated.getId(), result.getId());
+    }
+    
+    //esto no deberia existir
+    @Test
+    public void deletReservaTest() {
+        ReservaEntity entity = data.get(1);
+        logic.deleteReserva(entity.getId());
+        ReservaEntity resultEntity = em.find(ReservaEntity.class, entity.getId());
+        Assert.assertNull(resultEntity);
+    }
 }

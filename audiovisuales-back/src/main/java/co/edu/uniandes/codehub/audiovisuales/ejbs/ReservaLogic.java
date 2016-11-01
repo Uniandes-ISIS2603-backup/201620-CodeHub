@@ -8,6 +8,7 @@ package co.edu.uniandes.codehub.audiovisuales.ejbs;
 
 import co.edu.uniandes.codehub.audiovisuales.api.IReservaLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
+import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.codehub.audiovisuales.persistence.ReservaPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -38,8 +39,17 @@ public class ReservaLogic implements IReservaLogic{
     }
 
     @Override
-    public ReservaEntity createReserva(ReservaEntity entity) {
-        return persistence.create(entity);
+    public ReservaEntity createReserva(ReservaEntity entity) throws AudiovisualesLogicException{
+        ReservaEntity existe = getReserva(entity.getId());
+        if (existe != null)
+        {
+            throw new AudiovisualesLogicException("Ya existe una reserva con ese nombre");
+        }
+        else
+        {
+            persistence.create(entity);
+        }
+        return entity;
     }
 
     @Override
