@@ -27,13 +27,9 @@ public class ReservaDTO
     private Date fechaInicial;
     private Date fechaFinal;
     private Double calificacion;
-    private Boolean generoSancion;
-    
+    private Boolean generoSancion;   
     private Long id;
-    
-    private Long idEquipo;
-    
-    private Long idUsuario;
+
     
     public ReservaDTO()
     {
@@ -47,8 +43,6 @@ public class ReservaDTO
         this.generoSancion = false;
         
         this.id = id;
-        this.idUsuario = idUsuario;
-        this.idEquipo = idEquipo;
         this.calificacion = 0.0;
     }
     
@@ -60,12 +54,22 @@ public class ReservaDTO
         this.fechaInicial = entity.getFechaInicial();
         this.fechaFinal = entity.getFechaFinal();
         this.generoSancion = entity.getGeneroSancion();
-        
         this.id = entity.getId();
-        
-        this.idEquipo = entity.getEquipo().getId();
         this.calificacion = entity.getCalificacion();
         }
+    }
+    
+    public ReservaEntity toEntity()
+    {
+        ReservaEntity reserva = new ReservaEntity();
+        reserva.setId(this.getId());
+        reserva.setEstado(this.getEstado());
+        reserva.setCalificacion(this.getCalificacion());
+        reserva.setGeneroSancion(this.getGeneroSancion());
+        reserva.setFechaInicial(this.getFechaInicial());
+        reserva.setFechaFinal(this.getFechaFinal());
+        
+        return reserva;
     }
 
     public int getEstado() {
@@ -128,33 +132,9 @@ public class ReservaDTO
         this.id = id;
     }
     
-    /**
-     * @return the id
-     */
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-    
-    public Long getEquipos()
-    {
-        return idEquipo;
-    }
-    
-    public void setEquipos(Long idEquipo)
-    {
-        this.idEquipo = idEquipo;
-    }
-    
     public String toString()
     {
-        return "{ id : " + getId() + ", name : \"" + getIdUsuario()+ "\" }" ;
+        return "{ id : " + getId() + ", estado : \"" + getEstado()+ "\" }" ;
     }
     
 
