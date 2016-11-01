@@ -7,6 +7,7 @@ package co.edu.uniandes.rest.audiovisuales.resources;
 
 import co.edu.uniandes.codehub.audiovisuales.api.IReservaLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
+import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.rest.audiovisuales.dtos.ReservaDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.ReservaDetailDTO;
 
@@ -100,7 +101,7 @@ public class ReservaResource {
     }
     
     @POST
-    public ReservaDetailDTO createReserva(ReservaDTO reserva) throws ReservaLogicException
+    public ReservaDetailDTO createReserva(ReservaDTO reserva) throws AudiovisualesLogicException
     {
         ReservaEntity entity = reservaLogic.createReserva(reserva.toEntity());
         return new ReservaDetailDTO(entity);
