@@ -52,7 +52,7 @@ public class UsuarioDetailDTO extends UsuarioDTO{
          
          List<ReservaDTO> reservas = this.getReservas();
          for(ReservaDTO res : this.reservas){
-             //entity.getReservas().add(res.toEntity());
+             entity.getReservas().add(res.toEntity());
          }
         return entity;
     }
