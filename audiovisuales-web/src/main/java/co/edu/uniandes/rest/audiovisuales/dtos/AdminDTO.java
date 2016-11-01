@@ -5,16 +5,17 @@
  */
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
+import co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity;
+
 /**
  *
  * @author dcagua10
  */
 public class AdminDTO 
 {
-    private Long id;
-    private String nombre;
-    private String correo;
-    private Long edificioId;
+    protected Long id;
+    protected String nombre;
+    protected String correo;
   
     /**
      * Constructor por defecto
@@ -30,11 +31,16 @@ public class AdminDTO
      */
     public AdminDTO(Long pId, String nombre, String correo, Long edificioId) 
     {
-	super();
         this.id = pId;
 	this.nombre = nombre;
         this.correo = correo;
-        this.edificioId = edificioId;
+    }
+    
+    public AdminDTO(AdministradorEntity entity)
+    {
+        this.id = entity.getId();
+        this.nombre = entity.getName();
+        this.correo = entity.getCorreo();
     }
 
         public Long getId()
@@ -75,16 +81,6 @@ public class AdminDTO
         this.correo = correo;
     }
     
-    public Long getEdificioId()
-    {
-        return edificioId;
-    }
-    
-    public void setEdificioId(Long edificioId)
-    {
-        this.edificioId = edificioId;
-    }
-      
     /**
      * Convierte el objeto a una cadena
      */
@@ -92,6 +88,19 @@ public class AdminDTO
     public String toString() 
     {
     	return "{ id : " + getId() + ", nombre : \"" + getName() + ", correo : \"" + getEmail() +  "\" }" ;  
+    }
+    
+       /**
+     * Convierte el objeto a un entity para ser usado en el back
+     * @return el entity analogo al objeto
+     */
+    public AdministradorEntity toEntity()
+    {
+       AdministradorEntity entity = new AdministradorEntity();
+        entity.setId(id);
+        entity.setName(nombre);
+        entity.setCorreo(correo);
+        return entity;
     }
 
 
