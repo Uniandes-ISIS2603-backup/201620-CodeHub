@@ -58,6 +58,11 @@ public class EquipoResource {
         return listEntitytoDTO(equiposE);
     }
     
+    /**
+     * busca un equipo según su id
+     * @param id
+     * @return 
+     */
     @GET
     @Path("{id:\\d+}")
     public EquipoDetailDTO getEquipo(@PathParam("id")Long id){
