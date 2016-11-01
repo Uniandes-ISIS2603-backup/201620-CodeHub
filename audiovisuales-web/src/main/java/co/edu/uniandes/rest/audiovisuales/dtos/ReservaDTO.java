@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
+import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class ReservaDTO
     private Date fechaFinal;
     private Double calificacion;
     private Boolean generoSancion;
-    private Long edificioId;
+    
     private Long id;
     
     private Long idEquipo;
@@ -44,11 +45,27 @@ public class ReservaDTO
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
         this.generoSancion = false;
-        this.edificioId = edificioId;
+        
         this.id = id;
         this.idUsuario = idUsuario;
         this.idEquipo = idEquipo;
         this.calificacion = 0.0;
+    }
+    
+    public ReservaDTO (ReservaEntity entity)
+    {
+        if (entity!=null)
+        {
+        this.estado = entity.getEstado();
+        this.fechaInicial = entity.getFechaInicial();
+        this.fechaFinal = entity.getFechaFinal();
+        this.generoSancion = entity.getGeneroSancion();
+        
+        this.id = entity.getId();
+        
+        this.idEquipo = entity.getEquipo().getId();
+        this.calificacion = entity.getCalificacion();
+        }
     }
 
     public int getEstado() {
@@ -71,9 +88,7 @@ public class ReservaDTO
         return generoSancion;
     }
 
-    public Long getEdificioId() {
-        return edificioId;
-    }
+
 
     public Long getId() {
         return id;
@@ -86,7 +101,6 @@ public class ReservaDTO
         fechaFinal = pFechaFinal;
         calificacion = pCalificacion;
         generoSancion = pSancion;
-        edificioId = pEdificio;
         id = pId;
     }
 
@@ -108,10 +122,6 @@ public class ReservaDTO
 
     public void setGeneroSancion(Boolean generoSancion) {
         this.generoSancion = generoSancion;
-    }
-
-    public void setNombreEdificio(long edificioId) {
-        this.edificioId = edificioId;
     }
 
     public void setId(Long id) {
@@ -144,7 +154,7 @@ public class ReservaDTO
     
     public String toString()
     {
-        return "{ id : " + getId() + ", name : \"" + getEdificioId()+ "\" }" ;
+        return "{ id : " + getId() + ", name : \"" + getIdUsuario()+ "\" }" ;
     }
     
 
