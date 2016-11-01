@@ -20,7 +20,9 @@ import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -90,6 +92,17 @@ public class ReservaLogicTest {
         }
     }
     
-    
+    @Test
+    public void createReservaTest()
+    {
+        ReservaEntity newEntity = factory.manufacturePojo(ReservaEntity.class);
+        
+        ReservaEntity resultado = logic.createReserva(newEntity);
+        Assert.assertNotNull(resultado);
+        
+        ReservaEntity entity = em.find(ReservaEntity.class, resultado.getId());
+        
+        Assert.assertEquals(newEntity.getId(), entity.getId());
+    }
     
 }
