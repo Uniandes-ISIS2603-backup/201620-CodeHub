@@ -6,7 +6,6 @@
 package co.edu.uniandes.codehub.audiovisuales.ejbs;
 
 import co.edu.uniandes.codehub.audiovisuales.api.IEquipoLogic;
-import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.codehub.audiovisuales.persistence.EquipoPersistence;
