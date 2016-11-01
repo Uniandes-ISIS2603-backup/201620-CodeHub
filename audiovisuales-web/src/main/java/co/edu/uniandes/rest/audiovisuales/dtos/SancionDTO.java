@@ -110,4 +110,16 @@ public class SancionDTO
     public String toString() {
     	return "{ id : " + getId() + ", estado:"+ getEstado()+", fecha : \"" + getFecha() + "\" }" ;  
     }
+    
+    /**
+     * Convierte el objeto a un entity para ser usado en el back
+     * @return el entity analogo al objeto
+     */
+    public SancionEntity toEntity()
+    {
+        SancionEntity entity = new SancionEntity();
+        entity.setId(id);
+        entity.setFecha(fecha);
+        return entity;
+    }
 }

@@ -6,9 +6,6 @@
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity;
-import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**

@@ -34,11 +34,11 @@ public class UsuarioDetailDTO extends UsuarioDTO{
         
         List<SancionEntity> sancionesList = entity.getSanciones();
         for (SancionEntity sancion : sancionesList) {
-            //this.sanciones.add(new SancionDTO(sancion));
+            this.sanciones.add(new SancionDTO(sancion));
         }
         List<ReservaEntity> reservasList = entity.getReservas();
         for(ReservaEntity reserva : reservasList){
-            //this.reservas.add(new ReservaDTO(reserva));
+            this.reservas.add(new ReservaDTO(reserva));
         }
     }
     
@@ -47,7 +47,7 @@ public class UsuarioDetailDTO extends UsuarioDTO{
         
          List<SancionDTO> sanciones = this.getSanciones();
          for(SancionDTO san : this.sanciones){
-             //entity.getSanciones().add(san.toEntity());
+             entity.getSanciones().add(san.toEntity());
          }
          
          List<ReservaDTO> reservas = this.getReservas();

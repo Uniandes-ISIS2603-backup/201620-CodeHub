@@ -6,7 +6,6 @@
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity;
-import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -19,7 +18,7 @@ public class SancionDetailDTO extends SancionDTO
 {
     private UsuarioDTO usuario;
     
-//    private List<EquipoDTO> equipos = new ArrayList<>();
+//   private List<EquipoDTO> equipos = new ArrayList<>();
     
     /**
      * Constructor que transforma el entity a DTO .
@@ -48,7 +47,7 @@ public class SancionDetailDTO extends SancionDTO
         SancionEntity entity = new SancionEntity();
         entity.setId(id);
         entity.setFecha(fecha);
-       //entity.setUsuario(usuario);
+        entity.setUsuario(usuario.toEntity());
         return entity;
     }
 }

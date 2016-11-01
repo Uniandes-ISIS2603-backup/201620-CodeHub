@@ -41,8 +41,8 @@ public class EquipoDetailDTO extends EquipoDTO{
         super(entity);
         edificio = new EdificioDTO(entity.getEdificio());
         for(ReservaEntity reserva: entity.getReservas()){
-            //ReservaDTO r = new ReservaDTO(reserva);
-            //reservas.add(r);
+            ReservaDTO r = new ReservaDTO(reserva);
+            reservas.add(r);
         }
     }
 
@@ -79,8 +79,8 @@ public class EquipoDetailDTO extends EquipoDTO{
         res = new ArrayList<ReservaEntity>();
         
         for(ReservaDTO reserva: reservas){
-            //ReservaEntity r = reserva.toEntity();
-            //res.add(r);
+            ReservaEntity r = reserva.toEntity();
+            res.add(r);
         }
         equipo.setReservas(res);
         return equipo;
