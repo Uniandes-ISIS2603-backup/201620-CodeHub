@@ -6,7 +6,6 @@
 package co.edu.uniandes.codehub.audiovisuales.persistence;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
-import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
