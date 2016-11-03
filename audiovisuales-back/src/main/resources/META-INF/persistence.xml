@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-  <!-- 
-  Remplazar por los valores de su configuración
-  <persistence-unit name="CompanyPU" transaction-type="JTA">
+  <persistence-unit name="CodehubPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:app/jdbc/company</jta-data-source>
     <class>co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity</class>
-    <class>co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity</class>
+    <class>co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity</class>
+    <class>co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity</class>
     <class>co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity</class>
     <class>co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity</class>
-    <class>co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity</class>
-    <class>co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity</class>
+    <class>co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity</class>
+
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
       <property name="eclipselink.cache.type.default" value="NONE"/>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
-  </persistence-unit> 
-  -->
+  </persistence-unit>
 </persistence>
-
