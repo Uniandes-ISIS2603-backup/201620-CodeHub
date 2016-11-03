@@ -3,7 +3,7 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="CodehubPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <jta-data-source>java:app/jdbc/company</jta-data-source>
+    <jta-data-source>java:app/jdbc/audiovisuales</jta-data-source>
     <class>co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity</class>
     <class>co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity</class>
     <class>co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity</class>
