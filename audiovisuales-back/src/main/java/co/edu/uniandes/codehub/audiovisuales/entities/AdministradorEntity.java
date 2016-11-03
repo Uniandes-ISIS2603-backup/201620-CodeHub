@@ -64,8 +64,8 @@ public class AdministradorEntity extends BaseEntity implements Serializable
     }
     
      /**
-     * Obtiene la colecci�n de edificios.
-     * @return colecci�n edificios. 
+     * Obtiene la coleccion de edificios.
+     * @return coleccion edificios. 
      */
     public EdificioEntity getEdificio() 
     {
