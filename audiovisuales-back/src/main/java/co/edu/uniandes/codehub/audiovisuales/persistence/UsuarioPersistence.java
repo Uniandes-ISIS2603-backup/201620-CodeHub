@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Default;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -20,6 +21,7 @@ import javax.persistence.TypedQuery;
  * @author ln.bello10
  */
 @Stateless
+@Default
 public class UsuarioPersistence {
     
     private static final Logger LOGGER = Logger.getLogger(UsuarioPersistence.class.getName());

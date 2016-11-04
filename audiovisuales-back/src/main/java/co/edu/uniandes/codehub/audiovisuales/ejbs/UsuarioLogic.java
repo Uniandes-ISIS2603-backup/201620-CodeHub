@@ -17,7 +17,6 @@ import javax.inject.Inject;
  *
  * @author ln.bello10
  */
-
 @Stateless
 public class UsuarioLogic implements IUsuarioLogic {
 

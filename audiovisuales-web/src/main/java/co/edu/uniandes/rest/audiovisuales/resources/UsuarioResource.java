@@ -6,6 +6,7 @@
 package co.edu.uniandes.rest.audiovisuales.resources;
 
 import co.edu.uniandes.codehub.audiovisuales.api.IUsuarioLogic;
+import co.edu.uniandes.codehub.audiovisuales.ejbs.UsuarioLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.rest.audiovisuales.dtos.UsuarioDetailDTO;
@@ -40,7 +41,7 @@ public class UsuarioResource {
 //    UsuarioLogicMock usuarioLogic = new UsuarioLogicMock();
     
     @Inject
-    private IUsuarioLogic usuarioLogic;
+    public IUsuarioLogic usuarioLogic;
 
     private List<UsuarioDetailDTO> listEntityToDTO(List<UsuarioEntity> entities){
         List<UsuarioDetailDTO> usuarios = new ArrayList<>();
