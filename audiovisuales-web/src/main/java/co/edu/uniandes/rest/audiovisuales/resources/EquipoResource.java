@@ -1,4 +1,4 @@
-/*
+/**
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -38,7 +38,7 @@ public class EquipoResource {
      * @return una lista con los DTO.
      */
     public List<EquipoDetailDTO> listEntitytoDTO(List<EquipoEntity> entities){
-        List<EquipoDetailDTO> res = new ArrayList<EquipoDetailDTO>();
+        List<EquipoDetailDTO> res = new ArrayList<>();
         for(EquipoEntity entity: entities){
             EquipoDetailDTO equipo = new EquipoDetailDTO(entity);
             res.add(equipo);
