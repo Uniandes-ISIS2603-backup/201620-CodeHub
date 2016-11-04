@@ -7,7 +7,9 @@ package co.edu.uniandes.rest.audiovisuales.resources;
 
 
 import co.edu.uniandes.codehub.audiovisuales.api.ISancionLogic;
+import co.edu.uniandes.codehub.audiovisuales.api.IUsuarioLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity;
+import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.rest.audiovisuales.dtos.SancionDetailDTO;
 import java.util.ArrayList;
@@ -32,6 +34,9 @@ public class SancionResource
 {
     @Inject
     private ISancionLogic logic;
+  
+    @Inject
+    private IUsuarioLogic usuarioLogic;
     
     private List<SancionDetailDTO> listEntityToDTO(List<SancionEntity> entities){
         List<SancionDetailDTO> sanciones = new ArrayList<>();
@@ -44,9 +49,15 @@ public class SancionResource
     }
     
     @GET
-    public List<SancionDetailDTO> getSanciones()
+    public List<SancionDetailDTO> getSanciones(@PathParam("idUsuario") Long idUsuario)
     {
-        return listEntityToDTO(logic.getSanciones());
+        List<SancionDetailDTO> sanciones = new ArrayList<>();
+        UsuarioEntity usuario = usuarioLogic.getUsuario(idUsuario);
+        
+        if (usuario != null)
+            sanciones.add(new SancionDetailDTO(logic.getSancionByUsuario(usuario)));
+        
+        return sanciones;
     }
     
     @GET
