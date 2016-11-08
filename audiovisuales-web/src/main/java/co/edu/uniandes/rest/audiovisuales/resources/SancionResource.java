@@ -28,15 +28,12 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author lj.pinzon12
  */
-@Path("usuarios/{idUsuario: \\d+}/sanciones")
+@Path("usuarios/{idUsuario}/sanciones")
 @Produces("application/json")
 public class SancionResource
 {
     @Inject
     private ISancionLogic logic;
-  
-    @Inject
-    private IUsuarioLogic usuarioLogic;
     
     private List<SancionDetailDTO> listEntityToDTO(List<SancionEntity> entities){
         List<SancionDetailDTO> sanciones = new ArrayList<>();
@@ -47,17 +44,11 @@ public class SancionResource
         }
         return sanciones;
     }
-    
     @GET
-    public List<SancionDetailDTO> getSanciones(@PathParam("idUsuario") Long idUsuario)
+    public List<SancionDetailDTO> getSancionesUsuario(@PathParam("idUsuario") Long idUsuario) throws AudiovisualesLogicException
     {
-        List<SancionDetailDTO> sanciones = new ArrayList<>();
-        UsuarioEntity usuario = usuarioLogic.getUsuario(idUsuario);
-        
-        if (usuario != null)
-            sanciones.add(new SancionDetailDTO(logic.getSancionByUsuario(usuario)));
-        
-        return sanciones;
+        List<SancionEntity> sancionesE = logic.getSancionesByUsuario(idUsuario);
+        return listEntityToDTO(sancionesE);
     }
     
     @GET

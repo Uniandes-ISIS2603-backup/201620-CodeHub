@@ -132,10 +132,10 @@ public class SancionLogicTest
         user.create(u);
         entity.setUsuario(u);
         logic.updateSancion(entity);
-        SancionEntity resultEntity = logic.getSancionByUsuario(entity.getUsuario());
+        List<SancionEntity> resultEntity = logic.getSancionesByUsuario(entity.getUsuario().getId());
         Assert.assertNotNull(resultEntity);
-        Assert.assertEquals(entity.getFecha(), resultEntity.getFecha());
-        Assert.assertEquals(entity.getId(), resultEntity.getId());
+        Assert.assertEquals(entity.getFecha(), resultEntity.get(0).getFecha());
+        Assert.assertEquals(entity.getId(), resultEntity.get(0).getId());
     }
         /**
      * Prueba para actualizar una sancion.

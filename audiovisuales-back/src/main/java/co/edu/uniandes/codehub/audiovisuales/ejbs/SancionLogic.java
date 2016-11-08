@@ -44,12 +44,6 @@ public class SancionLogic implements ISancionLogic
     }
 
     @Override
-    public SancionEntity getSancionByUsuario(UsuarioEntity usuario)
-    {
-         return persistence.findByUsuario(usuario);
-    }
-
-    @Override
     public SancionEntity createSancion(SancionEntity entity) throws AudiovisualesLogicException
     {
         persistence.create(entity);
@@ -66,6 +60,12 @@ public class SancionLogic implements ISancionLogic
     public void deleteSancion(Long id)
     {
         persistence.delete(id);
+    }
+
+    @Override
+    public List<SancionEntity> getSancionesByUsuario(Long id)
+    {
+             return persistence.findByIdUsuario(id);
     }
     
 }

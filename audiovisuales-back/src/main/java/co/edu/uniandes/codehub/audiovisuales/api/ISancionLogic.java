@@ -22,7 +22,7 @@ public interface ISancionLogic
 
     public SancionEntity getSancionByFecha(String fecha);
     
-    public SancionEntity getSancionByUsuario(UsuarioEntity usuario);
+    public List<SancionEntity> getSancionesByUsuario(Long id);
 
     public SancionEntity createSancion(SancionEntity entity) throws AudiovisualesLogicException;
 

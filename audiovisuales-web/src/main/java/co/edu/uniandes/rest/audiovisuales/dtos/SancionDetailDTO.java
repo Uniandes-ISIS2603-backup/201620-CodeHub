@@ -21,6 +21,8 @@ public class SancionDetailDTO extends SancionDTO
 //   private List<EquipoDTO> equipos = new ArrayList<>();
 
     public SancionDetailDTO() {
+        
+        super();
     }
 
     /**
@@ -47,10 +49,9 @@ public class SancionDetailDTO extends SancionDTO
      */
     public SancionEntity toEntity()
     {
-        SancionEntity entity = new SancionEntity();
-        entity.setId(id);
-        entity.setFecha(fecha);
+        SancionEntity entity =super.toEntity();
         entity.setUsuario(usuario.toEntity());
+        
         return entity;
     }
 }

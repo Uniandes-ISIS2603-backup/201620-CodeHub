@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.codehub.audiovisuales.persistence;
 import co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity;
-import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,24 +36,7 @@ public class SancionPersistence
         TypedQuery<SancionEntity> q = em.createQuery("select u from SancionEntity u where u.fecha = :fecha", SancionEntity.class);
         q = q.setParameter("fecha", fecha);
         return q.getSingleResult();
-       }
-     public SancionEntity findByUsuario(UsuarioEntity usuarioId) 
-      {
-          //ARREGLAR ESTE METODO DE ENCONTRAR POR USUARIO
-        LOGGER.log(Level.INFO, "Consultando el edificio con admin Id = {0}", ""+usuarioId.getId());
-       TypedQuery<SancionEntity> q = em.createQuery("select e from SancionEntity e where e.usuario.id = :usuarioid",SancionEntity.class);
-        q = q.setParameter("usuarioid", usuarioId.getId());
-        List<SancionEntity> ar = q.getResultList();
-        if(ar.isEmpty())
-        {
-            return null;
-        }
-        else
-        {
-            return ar.get(0);
-        }
-       }
-     
+      }
      public List<SancionEntity> findAll() 
      {
         LOGGER.info("Consultando todas las sanciones");
@@ -82,5 +64,12 @@ public class SancionPersistence
         SancionEntity entity = em.find(SancionEntity.class, id);
         em.remove(entity);
     }
+        public List<SancionEntity> findByIdUsuario(Long id){
+                LOGGER.log(Level.INFO, "Consultando sanciones con id de usuario = ", id);
+        TypedQuery<SancionEntity> q = em.createQuery("select u from SancionEntity u where u.usuario.id = :usuarioId", SancionEntity.class);
+        q = q.setParameter("usuarioId", id);
+        return q.getResultList();
+        
+    } 
      
 }

@@ -17,7 +17,7 @@ public class SancionDTO
     String fecha;
     private String estado;
     
-    private Long idUsuario;
+ //   private Long idUsuario;
 
     /**
      * Constructor por defecto
@@ -46,7 +46,7 @@ public class SancionDTO
 		this.id = id;
 		this.fecha = fecha;
                 this.estado = estado;
-                this.idUsuario = idUsuario;
+              //  this.idUsuario = idUsuario;
 	}
 
 	/**
@@ -93,16 +93,16 @@ public class SancionDTO
     /**
      * @return the id
      */
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
+    //public Long getIdUsuario() {
+      //  return idUsuario;
+    //}
 
     /**
      * @param id the id to set
      */
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+    //public void setIdUsuario(Long idUsuario) {
+      //  this.idUsuario = idUsuario;
+    //}
     /**
      * Convierte el objeto a una cadena
      */
