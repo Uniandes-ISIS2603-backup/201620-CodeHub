@@ -57,6 +57,10 @@ public class EquipoDTO {
         this.tipo = tipo;
     }
    
+    /**
+     * 
+     * @param entity 
+     */
     public EquipoDTO(EquipoEntity entity){
         id = entity.getId();
         estado = entity.getEstado();
