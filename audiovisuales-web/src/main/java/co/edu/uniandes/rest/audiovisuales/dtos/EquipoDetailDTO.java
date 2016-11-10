@@ -45,6 +45,11 @@ public class EquipoDetailDTO extends EquipoDTO{
             reservas.add(r);
         }
     }
+    
+    public EquipoDetailDTO()
+    {
+        
+    }
 
     /*--------------------
             Metodos.

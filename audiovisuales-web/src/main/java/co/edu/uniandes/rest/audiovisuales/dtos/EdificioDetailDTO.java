@@ -23,6 +23,11 @@ public class EdificioDetailDTO extends EdificioDTO
     
     private List<EquipoDTO> equipos = new ArrayList<>();
     
+    public EdificioDetailDTO()
+    {
+        
+    }
+    
     /**
      * Constructor que transforma el entity a DTO .
      * @param entity el entity a convertir a DTO

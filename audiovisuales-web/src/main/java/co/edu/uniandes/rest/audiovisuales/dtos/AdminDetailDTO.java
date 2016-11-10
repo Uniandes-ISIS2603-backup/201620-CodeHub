@@ -16,6 +16,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class AdminDetailDTO extends AdminDTO
 {
     private EdificioDTO edificio;
+    
+    public AdminDetailDTO()
+    {
+        
+    }
       
     public AdminDetailDTO(AdministradorEntity entity) 
     {

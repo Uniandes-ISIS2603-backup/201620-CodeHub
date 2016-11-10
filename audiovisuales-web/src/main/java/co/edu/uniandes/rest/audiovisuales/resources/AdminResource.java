@@ -32,7 +32,7 @@ import javax.ws.rs.WebApplicationException;
 public class AdminResource 
 {
     @Inject
-    private IAdministradorLogic adminLogic;
+    public IAdministradorLogic adminLogic;
     
     public List<AdminDetailDTO> listEntityToDTO(List<AdministradorEntity> entities)
     {

@@ -70,7 +70,9 @@ public class AdministradorPersistence
      {
         LOGGER.info("Consultando todos los administradores");
         Query q = em.createQuery("select u from AdministradorEntity u");
-        return q.getResultList();
+        List<AdministradorEntity> resultado = q.getResultList();
+        LOGGER.info("Objeto 1 "+ resultado.get(0).toString());
+        return resultado;
     }
 
     public AdministradorEntity create(AdministradorEntity entity) 
