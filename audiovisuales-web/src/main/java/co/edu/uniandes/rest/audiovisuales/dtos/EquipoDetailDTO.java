@@ -71,6 +71,7 @@ public class EquipoDetailDTO extends EquipoDTO{
         this.reservas = reservas;
     }
     
+    @Override
     public EquipoEntity toEntity(){
         EquipoEntity equipo = new EquipoEntity();
         equipo.setId(id);

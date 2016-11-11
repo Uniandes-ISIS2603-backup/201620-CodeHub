@@ -120,7 +120,6 @@ public class AdministradorPersistenceTest {
         Assert.assertEquals(newEntity.getId(), entity.getId());
         
         //AdministradorEntity
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getCorreo(), entity.getCorreo());
         Assert.assertEquals(newEntity.getEdificio(), entity.getEdificio());
        
@@ -162,7 +161,6 @@ public class AdministradorPersistenceTest {
         Assert.assertEquals(newEntity.getId(), entity.getId());
         
         //AdministradorEntity
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getCorreo(), entity.getCorreo());
         Assert.assertEquals(newEntity.getEdificio(), entity.getEdificio());
     }
@@ -182,7 +180,6 @@ public class AdministradorPersistenceTest {
         Assert.assertEquals(newEntity.getId(), entity.getId());
         
         //AdministradorEntity
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getCorreo(), entity.getCorreo());
         Assert.assertEquals(newEntity.getEdificio(), entity.getEdificio());
     }
@@ -213,9 +210,39 @@ public class AdministradorPersistenceTest {
         administradorPersistence.update(newEntity);
         AdministradorEntity resp = em.find(AdministradorEntity.class, entity.getId());
         
-        //BaseEntity
-        Assert.assertEquals(newEntity.getName(), resp.getName());
-        Assert.assertEquals(newEntity.getId(), resp.getId());
 
+
+    }
+    
+    @Test
+    public void loginSuccesTest(){
+        AdministradorEntity entity = data.get(0);
+        AdministradorEntity resp = administradorPersistence.login(entity.getLogin(),entity.getPassword());
+        Assert.assertNotNull(resp);
+        
+        //BaseEntity
+        Assert.assertEquals(entity.getName(), resp.getName());
+        Assert.assertEquals(entity.getId(), resp.getId());
+    }
+    
+    @Test
+    public void loginFailTest(){
+        PodamFactory factory = new PodamFactoryImpl();
+        AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
+        
+        AdministradorEntity resp = administradorPersistence.login(newEntity.getLogin(),newEntity.getPassword());
+        Assert.assertNull(resp);
+    }
+    
+    @Test
+    public void checkUniqueTest(){
+        PodamFactory factory = new PodamFactoryImpl();
+        AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
+        
+        Assert.assertTrue(administradorPersistence.checkUniqueLogin(newEntity.getLogin()));
+        
+        AdministradorEntity entity = data.get(0);
+        
+        Assert.assertFalse(administradorPersistence.checkUniqueLogin(entity.getLogin()));
     }
 }

@@ -93,7 +93,7 @@ public class UsuarioLogicTest {
     @Test
     public void createUsuarioTestSuccess() throws AudiovisualesLogicException {
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
-
+        
         UsuarioEntity result = logic.createUsuario(newEntity);
         Assert.assertNotNull(result);
 
@@ -106,12 +106,13 @@ public class UsuarioLogicTest {
     @Test(expected = AudiovisualesLogicException.class)
     public void createUsuarioTestFail() throws Exception {
         UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
-        newEntity.setName(data.get(0).getName());
+        newEntity.setLogin(data.get(0).getLogin());
+        
         UsuarioEntity result = logic.createUsuario(newEntity);
         Assert.assertNull(result);
     }
     
-     @Test
+    @Test
     public void getUsuariosTest() {
         List<UsuarioEntity> list = logic.getUsuarios();
         Assert.assertEquals(data.size(), list.size());
@@ -173,7 +174,7 @@ public class UsuarioLogicTest {
         Assert.assertEquals(entity.getId(), resultEntity.getId());
     }
     
-        @Test
+    @Test
     public void updateUsuarioTest() {
         UsuarioEntity entity = data.get(0);
         UsuarioEntity updatedEntity = factory.manufacturePojo(UsuarioEntity.class);
@@ -194,6 +195,16 @@ public class UsuarioLogicTest {
         logic.deleteUsuario(entity.getId());
         UsuarioEntity resultEntity = em.find(UsuarioEntity.class, entity.getId());
         Assert.assertNull(resultEntity);
+    }
+    
+    @Test
+    public void loginTest() 
+    {
+        UsuarioEntity entity = data.get(1);
+        UsuarioEntity resultEntity = logic.login(entity.getLogin(),entity.getPassword());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getName(), resultEntity.getName());
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
     }
 
 }

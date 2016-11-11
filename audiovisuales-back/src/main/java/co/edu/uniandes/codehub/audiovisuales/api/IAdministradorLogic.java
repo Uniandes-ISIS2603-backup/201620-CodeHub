@@ -22,4 +22,5 @@ public interface IAdministradorLogic
     public AdministradorEntity createAdministrador(AdministradorEntity entity) throws AudiovisualesLogicException;
     public AdministradorEntity updateAdministrador(AdministradorEntity entity);
     public void deleteAdministrador(Long idAdmin);
+    public AdministradorEntity login(String login, String password);
 }

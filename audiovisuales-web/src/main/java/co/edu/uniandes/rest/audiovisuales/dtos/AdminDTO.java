@@ -16,6 +16,8 @@ public class AdminDTO
     protected Long id;
     protected String nombre;
     protected String correo;
+    protected String login;
+    protected String password;
   
     /**
      * Constructor por defecto
@@ -29,11 +31,13 @@ public class AdminDTO
      * @param id identificador del edificio
      * @param nombre nombre del edificio
      */
-    public AdminDTO(Long pId, String nombre, String correo, Long edificioId) 
+    public AdminDTO(Long pId, String nombre, String correo, Long edificioId, String login, String password) 
     {
         this.id = pId;
 	this.nombre = nombre;
         this.correo = correo;
+        this.login = login;
+        this.password = password;        
     }
     
     public AdminDTO(AdministradorEntity entity)
@@ -41,6 +45,8 @@ public class AdminDTO
         this.id = entity.getId();
         this.nombre = entity.getName();
         this.correo = entity.getCorreo();
+        this.login = entity.getLogin();
+        this.password = entity.getPassword();
     }
 
         public Long getId()
@@ -81,6 +87,22 @@ public class AdminDTO
         this.correo = correo;
     }
     
+    public void setLogin(String login){
+        this.login = login;
+    }
+    
+    public String getLogin(){
+        return login;
+    }
+    
+    public void setPassword(String password){
+        this.password = password;
+    }
+    
+    public String getPassword(){
+        return password;
+    }
+    
     /**
      * Convierte el objeto a una cadena
      */
@@ -100,6 +122,8 @@ public class AdminDTO
         entity.setId(id);
         entity.setName(nombre);
         entity.setCorreo(correo);
+        entity.setLogin(login);
+        entity.setPassword(password);
         return entity;
     }
 

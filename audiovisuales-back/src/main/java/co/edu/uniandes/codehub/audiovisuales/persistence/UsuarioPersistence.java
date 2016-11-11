@@ -85,4 +85,27 @@ public class UsuarioPersistence {
          UsuarioEntity entity = em.find(UsuarioEntity.class, id);
          em.remove(entity);
      }
+     
+     public UsuarioEntity login(String login, String password)
+     {
+         LOGGER.log(Level.INFO, "Consultando si la informacion de login es correcta.");
+         TypedQuery<UsuarioEntity> q = em.createQuery("SELECT u FROM UsuarioEntity u where u.login= :login AND u.password= :password",UsuarioEntity.class);
+         q = q.setParameter("login", login).setParameter("password", password);
+        List<UsuarioEntity> usu = q.getResultList();
+        if(usu.isEmpty()){
+            return null;
+        }
+        else{
+            return usu.get(0);
+        }
+     }
+     
+    public boolean checkUniqueLogin(String login)
+    {
+        LOGGER.log(Level.INFO, "Consultando si el login ingresado es unico.");
+        TypedQuery<UsuarioEntity> q = em.createQuery("SELECT u FROM UsuarioEntity u where u.login= :login",UsuarioEntity.class);
+        q = q.setParameter("login", login);
+        List<UsuarioEntity> resp = q.getResultList();
+        return resp.isEmpty();
+    }
 }

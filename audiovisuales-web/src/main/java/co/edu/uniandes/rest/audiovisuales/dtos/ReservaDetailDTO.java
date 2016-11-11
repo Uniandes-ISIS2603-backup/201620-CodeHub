@@ -48,6 +48,7 @@ public class ReservaDetailDTO extends ReservaDTO {
         this.usuario = usuario;
     }
     
+    @Override
     public ReservaEntity toEntity()
     {
         ReservaEntity reserva = super.toEntity();

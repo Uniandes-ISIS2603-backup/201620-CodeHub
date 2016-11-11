@@ -42,6 +42,7 @@ public class UsuarioDetailDTO extends UsuarioDTO{
         }
     }
     
+    @Override
     public UsuarioEntity toEntity() {
         UsuarioEntity entity = super.toEntity();
         

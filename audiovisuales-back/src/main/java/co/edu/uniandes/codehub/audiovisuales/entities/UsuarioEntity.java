@@ -23,7 +23,11 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     public final static int ESTUDIANTE = 1;
     public final static int PROFESOR = 2;
     
-    
+    private Boolean tieneSancion;
+    private Integer tipo;
+    private String login;
+    private String password;
+   
     @PodamExclude 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ReservaEntity> reservas = new ArrayList<>();
@@ -48,9 +52,6 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
         this.reservas = reservas;
     }
     
-    private Boolean tieneSancion;
-    private Integer tipo;
-    
     public Boolean getTieneSancion(){
         return this.tieneSancion;
     }
@@ -60,7 +61,25 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     public Integer getTipo(){
         return this.tipo;
     }
+    
     public void setTipo(Integer tipo){
         this.tipo=tipo;
     }
+    
+    public void setLogin(String login){
+        this.login = login;
+    }
+    
+    public String getLogin(){
+        return login;
+    }
+    
+    public void setPassword(String password){
+        this.password = password;
+    }
+    
+    public String getPassword(){
+        return password;
+    }
+    
 }

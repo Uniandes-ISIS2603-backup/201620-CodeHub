@@ -10,6 +10,7 @@ import co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.rest.audiovisuales.dtos.AdminDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.AdminDetailDTO;
+import co.edu.uniandes.rest.audiovisuales.dtos.LoginKeyDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,5 +108,17 @@ public class AdminResource
            adminLogic.deleteAdministrador(id);
            AdminDetailDTO adm = new AdminDetailDTO(entidad);
            return adm;      
-    }   
+    }
+    
+    @POST
+    public AdminDetailDTO login(LoginKeyDTO login)
+    {
+        AdministradorEntity entidad = adminLogic.login(login.getLogin(), login.getPassword());
+        if (entidad == null)
+       {
+           throw new WebApplicationException("No existe un administrador con ese login.");
+       }
+        
+       return new AdminDetailDTO(entidad);
+    }
 }
