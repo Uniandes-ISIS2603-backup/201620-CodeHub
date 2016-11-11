@@ -50,13 +50,12 @@ public class UsuarioLogic implements IUsuarioLogic {
 
     @Override
     public UsuarioEntity createUsuario(UsuarioEntity entity) throws AudiovisualesLogicException {
-        UsuarioEntity existe = getUsuarioByName(entity.getName());
-        if (existe != null) {
-            throw new AudiovisualesLogicException("Ya existe un usuario con ese nombre");
-        } else
-        {
-            persistence.create(entity);
+        
+        if (!persistence.checkUniqueLogin(entity.getLogin())) {
+            throw new AudiovisualesLogicException("Ya existe un usuario con ese login");
         }
+        
+        persistence.create(entity);
         return entity;
     }
 

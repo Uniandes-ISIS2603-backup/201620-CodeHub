@@ -51,10 +51,9 @@ public class AdministradorLogic implements IAdministradorLogic
     @Override
     public AdministradorEntity createAdministrador(AdministradorEntity entity) throws AudiovisualesLogicException 
     {
-        AdministradorEntity entidad = getAdministradorByName(entity.getName());
-        if (entidad != null) 
+        if (!persistence.checkUniqueLogin(entity.getLogin())) 
         {
-            throw new AudiovisualesLogicException("Ya existe un administrador con ese nombre");
+            throw new AudiovisualesLogicException("Ya existe un administrador con ese login.");
         }
         persistence.create(entity);
         return entity;

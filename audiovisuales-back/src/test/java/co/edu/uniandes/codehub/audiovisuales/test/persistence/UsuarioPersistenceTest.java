@@ -190,5 +190,33 @@ public class UsuarioPersistenceTest {
         
         Assert.assertEquals(dos.getName(), fin.getName());
     }
-            
+    
+    @Test
+    public void loginSuccesTest(){
+        UsuarioEntity pojo = data.get(0);
+        UsuarioEntity prueba = usuarioPersistence.login(pojo.getLogin(),pojo.getPassword());
+        Assert.assertNotNull(prueba);
+        Assert.assertEquals(pojo.getName(), prueba.getName());
+    }
+    
+    @Test
+    public void loginFailTest(){
+        PodamFactory factory = new PodamFactoryImpl();
+        UsuarioEntity newEntity = factory.manufacturePojo(UsuarioEntity.class);
+        
+        UsuarioEntity prueba = usuarioPersistence.login(newEntity.getLogin(),newEntity.getPassword());
+        Assert.assertNull(prueba);
+    }
+     
+    @Test
+    public void checkUniqueTest(){
+        PodamFactory factory = new PodamFactoryImpl();
+        UsuarioEntity pojo = factory.manufacturePojo(UsuarioEntity.class);
+        
+        Assert.assertTrue(usuarioPersistence.checkUniqueLogin(pojo.getLogin()));
+        
+        UsuarioEntity prueba = data.get(0);
+        
+        Assert.assertFalse(usuarioPersistence.checkUniqueLogin(prueba.getLogin()));
+    }
 }

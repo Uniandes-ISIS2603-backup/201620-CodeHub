@@ -9,6 +9,7 @@ import co.edu.uniandes.codehub.audiovisuales.api.IUsuarioLogic;
 import co.edu.uniandes.codehub.audiovisuales.ejbs.UsuarioLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
+import co.edu.uniandes.rest.audiovisuales.dtos.LoginKeyDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.UsuarioDetailDTO;
 import java.util.ArrayList;
 
@@ -126,6 +127,18 @@ public class UsuarioResource {
     public void eliminarUsuario(@PathParam("id") Long id) throws AudiovisualesLogicException
     {
         usuarioLogic.deleteUsuario(id);
+    }
+    
+    @POST
+    public UsuarioDetailDTO login(LoginKeyDTO login)
+    {
+        UsuarioEntity entidad = usuarioLogic.login(login.getLogin(), login.getPassword());
+        if (entidad == null)
+       {
+           throw new WebApplicationException("No existe un usuario con ese login.");
+       }
+        
+       return new UsuarioDetailDTO(entidad);
     }
 
 }

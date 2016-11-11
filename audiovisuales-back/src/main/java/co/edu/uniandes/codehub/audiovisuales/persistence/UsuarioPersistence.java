@@ -99,4 +99,13 @@ public class UsuarioPersistence {
             return usu.get(0);
         }
      }
+     
+    public boolean checkUniqueLogin(String login)
+    {
+        LOGGER.log(Level.INFO, "Consultando si el login ingresado es unico.");
+        TypedQuery<UsuarioEntity> q = em.createQuery("SELECT u FROM UsuarioEntity u where u.login= :login",UsuarioEntity.class);
+        q = q.setParameter("login", login);
+        List<UsuarioEntity> resp = q.getResultList();
+        return resp.isEmpty();
+    }
 }

@@ -125,7 +125,7 @@ public class AdministradorLogicTest
     public void createAdministradorTestFail() throws Exception 
     {
         AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
-        newEntity.setName(data.get(0).getName());
+        newEntity.setLogin(data.get(0).getLogin());
         AdministradorEntity result = logic.createAdministrador(newEntity);
         Assert.assertNull(result);
     }
@@ -180,7 +180,7 @@ public class AdministradorLogicTest
         Assert.assertEquals(entity.getId(), resultEntity.getId());
     }
     
-        @Test
+    @Test
     public void updateAdministradorTest() 
     {
         AdministradorEntity entity = data.get(0);
@@ -205,4 +205,13 @@ public class AdministradorLogicTest
         Assert.assertNull(resultEntity);
     }
 
+    @Test
+    public void loginTest() 
+    {
+        AdministradorEntity entity = data.get(1);
+        AdministradorEntity resultEntity = logic.login(entity.getLogin(),entity.getPassword());
+        Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getName(), resultEntity.getName());
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+    }
 }
