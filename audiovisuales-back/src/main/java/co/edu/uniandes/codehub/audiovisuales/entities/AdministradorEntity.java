@@ -23,7 +23,7 @@ public class AdministradorEntity extends BaseEntity implements Serializable
     private String nombre;
     private String correo;
     
-    @OneToOne(fetch=FetchType.EAGER)
+    @OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private EdificioEntity edificio;
  
     
