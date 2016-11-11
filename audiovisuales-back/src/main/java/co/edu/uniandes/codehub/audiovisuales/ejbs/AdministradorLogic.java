@@ -70,4 +70,9 @@ public class AdministradorLogic implements IAdministradorLogic
     {
         persistence.delete(id);
     }
+    
+    @Override
+    public AdministradorEntity login(String login, String password){
+        return persistence.login(login, password);
+    }
 }

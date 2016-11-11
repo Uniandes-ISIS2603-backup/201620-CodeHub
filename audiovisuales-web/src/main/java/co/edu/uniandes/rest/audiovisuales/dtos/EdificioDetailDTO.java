@@ -69,6 +69,7 @@ public class EdificioDetailDTO extends EdificioDTO
      * Convierte el objeto a un entity para ser usado en el back
      * @return el entity analogo al objeto
      */
+    @Override
     public EdificioEntity toEntity()
     {
         EdificioEntity entity = new EdificioEntity();

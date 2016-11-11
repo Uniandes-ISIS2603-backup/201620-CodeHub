@@ -41,12 +41,15 @@ public class AdminDetailDTO extends AdminDTO
      * Convierte el objeto a un entity para ser usado en el back
      * @return el entity analogo al objeto
      */
+    @Override
     public AdministradorEntity toEntity()
     {
         AdministradorEntity entity = new AdministradorEntity();
         entity.setId(id);
         entity.setName(nombre);
         entity.setCorreo(correo);
+        entity.setLogin(login);
+        entity.setPassword(password);
         entity.setEdificio(edificio.toEntity());
         return entity;
     }

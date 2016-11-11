@@ -6,7 +6,6 @@
 package co.edu.uniandes.codehub.audiovisuales.api;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity;
-import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import java.util.List;
 

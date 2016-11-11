@@ -94,4 +94,17 @@ public class AdministradorPersistence
         em.remove(entity);
     }
     
+    public AdministradorEntity login(String login, String password)
+     {
+         LOGGER.log(Level.INFO, "Consultando si la informacion de login es correcta.");
+         TypedQuery<AdministradorEntity> q = em.createQuery("SELECT u FROM AdministradorEntity u where u.login= :login AND u.password= :password",AdministradorEntity.class);
+         q = q.setParameter("login", login).setParameter("password", password);
+        List<AdministradorEntity> resp = q.getResultList();
+        if(resp.isEmpty()){
+            return null;
+        }
+        else{
+            return resp.get(0);
+        }
+     }
 }

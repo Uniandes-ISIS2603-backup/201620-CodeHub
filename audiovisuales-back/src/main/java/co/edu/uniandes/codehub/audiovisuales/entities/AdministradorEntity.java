@@ -20,30 +20,13 @@ import javax.persistence.OneToOne;
 public class AdministradorEntity extends BaseEntity implements Serializable
 {
     
-    private String nombre;
     private String correo;
+    private String login;
+    private String password;
     
     @OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private EdificioEntity edificio;
- 
     
-     /**
-     * Obtiene el atributo nombre.
-     * @return atributo nombre.
-     */
-    public String getNombre()
-    {
-        return nombre;
-    }
-    
-     /**
-     * Establece el valor del atributo nombre.
-     * @param nombre nuevo valor del atributo
-     */
-    public void setNombre(String nombre) 
-    {
-        this.nombre = nombre;
-    }
     
       /**
      * Obtiene el atributo correo.
@@ -81,6 +64,20 @@ public class AdministradorEntity extends BaseEntity implements Serializable
         this.edificio = edificio;
     }
     
+    public void setLogin(String login){
+        this.login = login;
+    }
     
+    public String getLogin(){
+        return login;
+    }
+    
+    public void setPassword(String password){
+        this.password = password;
+    }
+    
+    public String getPassword(){
+        return password;
+    }
 }
  

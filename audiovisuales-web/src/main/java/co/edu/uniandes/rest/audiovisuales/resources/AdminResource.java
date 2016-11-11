@@ -107,5 +107,6 @@ public class AdminResource
            adminLogic.deleteAdministrador(id);
            AdminDetailDTO adm = new AdminDetailDTO(entidad);
            return adm;      
-    }   
+    }
+    
 }

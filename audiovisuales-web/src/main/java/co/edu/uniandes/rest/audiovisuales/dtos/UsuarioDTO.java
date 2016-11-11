@@ -24,6 +24,9 @@ public class UsuarioDTO {
     private String name;
     private Boolean tieneSancion;
     private int tipo;
+    protected String login;
+    protected String password;
+  
     
     private List<Double> calificaciones;
 
@@ -38,13 +41,15 @@ public class UsuarioDTO {
      * @param id identificador del usuario
      * @param name nombre del usuario
      */
-    public UsuarioDTO(Long id, String name, int tipo) {
+    public UsuarioDTO(Long id, String name, int tipo, String login, String password) {
 		super();
 		this.id = id;
 		this.name = name;
                 this.tieneSancion = false;
                 this.tipo = tipo;
                 this.calificaciones = new ArrayList<>();
+                this.login = login;
+                this.password = password;
 	}
     
     public UsuarioDTO(UsuarioEntity entity){
@@ -58,6 +63,8 @@ public class UsuarioDTO {
                 this.tieneSancion=true;
             }
             this.tipo=entity.getTipo();
+            this.login = entity.getLogin();
+            this.password = entity.getPassword();
         }
     }
     
@@ -67,6 +74,8 @@ public class UsuarioDTO {
         usuario.setName(this.getName());
         usuario.setTipo(this.getTipo());
         usuario.setTieneSancion(this.getTieneSancion());
+        usuario.setLogin(login);
+        usuario.setPassword(password);
         
         return usuario;
     }
@@ -134,6 +143,22 @@ public class UsuarioDTO {
             return contador/calificaciones.size();  
         }
         return 0.0;
+    }
+    
+    public void setLogin(String login){
+        this.login = login;
+    }
+    
+    public String getLogin(){
+        return login;
+    }
+    
+    public void setPassword(String password){
+        this.password = password;
+    }
+    
+    public String getPassword(){
+        return password;
     }
     
     /**

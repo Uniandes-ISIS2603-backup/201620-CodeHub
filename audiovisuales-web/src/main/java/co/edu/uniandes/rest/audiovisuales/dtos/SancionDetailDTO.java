@@ -47,6 +47,7 @@ public class SancionDetailDTO extends SancionDTO
      * Convierte el objeto a un entity para ser usado en el back
      * @return el entity analogo al objeto
      */
+    @Override
     public SancionEntity toEntity()
     {
         SancionEntity entity =super.toEntity();

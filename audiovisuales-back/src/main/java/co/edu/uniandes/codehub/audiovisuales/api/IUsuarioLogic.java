@@ -34,4 +34,6 @@ public interface IUsuarioLogic {
     public Integer getNumberOfSancionesUsuario(Long id);
     
     public Integer getNumberOfReservasUsuario(Long id);
+    
+    public UsuarioEntity login(String password, String login);
 }

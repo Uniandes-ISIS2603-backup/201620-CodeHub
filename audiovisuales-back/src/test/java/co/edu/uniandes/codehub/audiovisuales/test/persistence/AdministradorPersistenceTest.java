@@ -120,7 +120,6 @@ public class AdministradorPersistenceTest {
         Assert.assertEquals(newEntity.getId(), entity.getId());
         
         //AdministradorEntity
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getCorreo(), entity.getCorreo());
         Assert.assertEquals(newEntity.getEdificio(), entity.getEdificio());
        
@@ -162,7 +161,6 @@ public class AdministradorPersistenceTest {
         Assert.assertEquals(newEntity.getId(), entity.getId());
         
         //AdministradorEntity
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getCorreo(), entity.getCorreo());
         Assert.assertEquals(newEntity.getEdificio(), entity.getEdificio());
     }
@@ -182,7 +180,6 @@ public class AdministradorPersistenceTest {
         Assert.assertEquals(newEntity.getId(), entity.getId());
         
         //AdministradorEntity
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getCorreo(), entity.getCorreo());
         Assert.assertEquals(newEntity.getEdificio(), entity.getEdificio());
     }
