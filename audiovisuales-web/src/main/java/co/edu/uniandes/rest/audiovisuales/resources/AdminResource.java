@@ -111,6 +111,7 @@ public class AdminResource
     }
     
     @POST
+    @Path("/login")
     public AdminDetailDTO login(LoginKeyDTO login)
     {
         AdministradorEntity entidad = adminLogic.login(login.getLogin(), login.getPassword());

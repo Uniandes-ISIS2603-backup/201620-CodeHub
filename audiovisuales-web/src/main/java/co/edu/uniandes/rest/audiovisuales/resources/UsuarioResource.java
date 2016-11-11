@@ -130,6 +130,7 @@ public class UsuarioResource {
     }
     
     @POST
+    @Path("/login")
     public UsuarioDetailDTO login(LoginKeyDTO login)
     {
         UsuarioEntity entidad = usuarioLogic.login(login.getLogin(), login.getPassword());
