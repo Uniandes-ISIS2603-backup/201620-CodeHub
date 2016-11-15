@@ -8,6 +8,7 @@ package co.edu.uniandes.rest.audiovisuales.resources;
 import co.edu.uniandes.codehub.audiovisuales.api.IEdificioLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
+import co.edu.uniandes.rest.audiovisuales.dtos.EdificioDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.EdificioDetailDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +85,7 @@ public class EdificioResource {
     }
     
     @POST
-    public EdificioDetailDTO agregarEdificio(EdificioDetailDTO nuevo) throws AudiovisualesLogicException
+    public EdificioDetailDTO agregarEdificio(EdificioDTO nuevo) throws AudiovisualesLogicException
     {
         EdificioEntity e = logic.createEdificio(nuevo.toEntity());
         return new EdificioDetailDTO(e);

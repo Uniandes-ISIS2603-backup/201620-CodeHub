@@ -41,7 +41,10 @@ public class EdificioDetailDTO extends EdificioDTO
             EquipoEntity equipo = e.get(i);
             equipos.add(new EquipoDTO(equipo));
         }
-        admin = new AdminDTO(entity.getAdmin());
+        if(entity.getAdmin()!=null)
+            admin = new AdminDTO(entity.getAdmin());
+        else
+            admin = new AdminDTO();
     }
     
     public AdminDTO getAdmin()
