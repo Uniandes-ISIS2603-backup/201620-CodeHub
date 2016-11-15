@@ -6,6 +6,7 @@
 package co.edu.uniandes.rest.audiovisuales.resources;
 
 import co.edu.uniandes.codehub.audiovisuales.api.IReservaLogic;
+import co.edu.uniandes.codehub.audiovisuales.api.IUsuarioLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.rest.audiovisuales.dtos.ReservaDTO;
@@ -32,6 +33,9 @@ public class ReservaResource {
     
     @Inject
     private IReservaLogic reservaLogic;
+    
+    @Inject
+    private IUsuarioLogic usuarioLogic;
     
     public List<ReservaDetailDTO> listEntityToDTO(List<ReservaEntity> entities)
     {
@@ -97,9 +101,11 @@ public class ReservaResource {
     }
     
     @POST
-    public ReservaDetailDTO createReserva(ReservaDTO reserva) throws AudiovisualesLogicException
+    public ReservaDetailDTO createReserva(ReservaDTO reserva, @PathParam("idUsuario")Long idUsuario) throws AudiovisualesLogicException
     {
-        ReservaEntity entity = reservaLogic.createReserva(reserva.toEntity());
+        ReservaEntity res = reserva.toEntity();
+        res.setUsuario(usuarioLogic.getUsuario(idUsuario));
+        ReservaEntity entity = reservaLogic.createReserva(res);
         return new ReservaDetailDTO(entity);
     }
     
