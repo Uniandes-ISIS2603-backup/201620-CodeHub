@@ -1,84 +1,43 @@
-
-
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-<head>
-  <style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    
-    td,
-    th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-      background-color: white;
-    }
-    
-    fieldset {
-      background-color: white;
-      font-family: arial, sans-serif;
-    }
-    
-    body {
-      background: rgba(183,222,237,1);
-background: -moz-linear-gradient(45deg, rgba(183,222,237,1) 0%, rgba(33,180,226,1) 50%, rgba(113,206,239,1) 84%, rgba(183,222,237,1) 100%);
-background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(183,222,237,1)), color-stop(50%, rgba(33,180,226,1)), color-stop(84%, rgba(113,206,239,1)), color-stop(100%, rgba(183,222,237,1)));
-background: -webkit-linear-gradient(45deg, rgba(183,222,237,1) 0%, rgba(33,180,226,1) 50%, rgba(113,206,239,1) 84%, rgba(183,222,237,1) 100%);
-background: -o-linear-gradient(45deg, rgba(183,222,237,1) 0%, rgba(33,180,226,1) 50%, rgba(113,206,239,1) 84%, rgba(183,222,237,1) 100%);
-background: -ms-linear-gradient(45deg, rgba(183,222,237,1) 0%, rgba(33,180,226,1) 50%, rgba(113,206,239,1) 84%, rgba(183,222,237,1) 100%);
-background: linear-gradient(45deg, rgba(183,222,237,1) 0%, rgba(33,180,226,1) 50%, rgba(113,206,239,1) 84%, rgba(183,222,237,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', endColorstr='#b7deed', GradientType=1 );
-      font-family: arial, sans-serif;
-    }
-    
-    button {
-      background-color: blue;
-      border: none;
-      color: white;
-      padding: 5px 20px;
-      text-align: center;
-      display: inline-block;
-      border-radius: 8px;
-    }
-  </style>
-</head>
 <h1>Lista Usuarios</h1>
 
-<input type="text"> Atributo:
-<select>
-  <option value="1">Nombre</option>
-  <option value="2">Id</option>
-</select>
-<br>
+<div class="row" >
+    <div class=" span3" ></div> 
+<div class="box span6 center" >
+					<div class="box-header data-original-title" style="height:45px;">
+						<h2><i class="halflings-icon white user"></i><span class="break"></span>Usuarios</h2>
+						<div class="box-icon">
+							<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						  <thead>
+							  <tr>
+								  <th>Id</th>
+								  <th>Nombre</th>
+								  <th>Acciones</th>
+							  </tr>
+						  </thead>   
+						  <tbody>
+							
+							<tr ng-repeat="record in records">
+                                                            <td id="{{$index}}-id" align="center">{{record.id}}</td>
+                                                            <td id="{{$index}}-name" align="center">{{record.name}}</td>
+
+                                                            <td>
+                                                                <button id="{{$index}}-edit-btn" class="btn btn-info" ui-sref="reservasAdminList({usuarioId: record.id})"  align="center">Ver Reservas</button>
+                                                                <button id="{{$index}}-edit-btn" class="btn btn-danger" ui-sref="sancionesList({usuarioId: record.id})"  align="center">Ver Sanciones</button>
+
+                                                            </td>
+                                                        </tr>
+						  </tbody>
+					  </table>            
+					</div>
+				</div><!--/span-->
+<div class=" span3" ></div> 
+</div>
 
 
-<table class="table table-striped" class="col-md-4" style="background-color:MediumTurquoise;"  align="center">
-        <thead>
-            <tr>
-                <th align="center">Id</th>
-                <th align="center">Nombre</th>    
-                <th align="center">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="record in records">
-                <td id="{{$index}}-id" align="center">{{record.id}}</td>
-                <td id="{{$index}}-name" align="center">{{record.name}}</td>
 
-                <td>
-                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="reservasAdminList({usuarioId: record.id})" style="color:green;" align="center"><span class="glyphicon glyphicon-eye-open"></span>Ver Reservas</button>
-                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="sancionesList({usuarioId: record.id})" style="color:green;" align="center"><span class="glyphicon glyphicon-eye-open"></span>Ver Sanciones</button>
-
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</html>

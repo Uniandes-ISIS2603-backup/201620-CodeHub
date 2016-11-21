@@ -1,48 +1,4 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
 
-<head>
-  <style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    
-    td,
-    th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-      background-color: white;
-    }
-    
-    fieldset {
-      background-color: white;
-      font-family: arial, sans-serif;
-    }
-    
-    body {
-      background-color: CornflowerBlue;
-      font-family: arial, sans-serif;
-    }
-    
-    button {
-      background-color: blue;
-      border: none;
-      color: white;
-      padding: 5px 20px;
-      text-align: center;
-      display: inline-block;
-      border-radius: 8px;
-    }
-  </style>
-</head>
 
 <h1 id="edificio"><B>Edificio ML </B></h1>
 <fieldset id="infoAdmin" style="width:180px">
@@ -58,20 +14,34 @@ and open the template in the editor.
   <option value="3">Tipo</option>
 </select>
 <br>
-
-    <table style="width:75%" class="table table-striped" class="col-md-4">
-        <thead>
-            <tr>
-                <th>Id(equipo)</th>
-                <th>Tipo</th>
-                <th>Estado</th>
-                <th>Disponible</th>
-                <th>Queda Disponible</th>
-                <th>Acción</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="record in records">
+<div class="row" >
+    <div class=" span3" ></div> 
+<div class="box span8 center" >
+					<div class="box-header data-original-title" style="height:45px;">
+						<h2><i class="halflings-icon white user"></i><span class="break"></span>Equipos</h2>
+						<div class="box-icon">
+							<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						  <thead>
+							  <tr>
+								 
+                                                                        <th>Id(equipo)</th>
+                                                                        <th>Tipo</th>
+                                                                        <th>Estado</th>
+                                                                        <th>Disponible</th>
+                                                                        <th>Queda Disponible</th>
+                                                                        <th>Acción</th>
+                                                                    
+							  </tr>
+						  </thead>   
+						  <tbody>
+							
+							<tr ng-repeat="record in records">
                 <td id="{{$index}}-name">{{record.id}}</td>
                 <td id="{{$index}}-name">{{record.tipo}}</td>
                 <td id="{{$index}}-name">{{record.estado}}</td>
@@ -83,6 +53,10 @@ and open the template in the editor.
 
                 </td>
             </tr>
-        </tbody>
-    </table>
-</html>
+						  </tbody>
+					  </table>            
+					</div>
+				</div><!--/span-->
+<div class=" span3" ></div> 
+</div>
+    
