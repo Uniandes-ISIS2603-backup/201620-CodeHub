@@ -8,6 +8,7 @@ package co.edu.uniandes.codehub.audiovisuales.entities;
 //import co.edu.uniandes.rest.audiovisuales.dtos.UsuarioDTO;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 /**
@@ -22,6 +23,7 @@ public class SancionEntity extends BaseEntity implements Serializable
     
     @PodamExclude
     @ManyToOne
+    @JoinColumn(name= "USUARIO_ID")
     private UsuarioEntity usuario;
     
     

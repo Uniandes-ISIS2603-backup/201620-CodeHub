@@ -29,11 +29,11 @@ public class UsuarioEntity extends BaseEntity implements Serializable {
     private String password;
    
     @PodamExclude 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<ReservaEntity> reservas = new ArrayList<>();
 
     @PodamExclude
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<SancionEntity> sanciones = new ArrayList<>();
 
     public List<SancionEntity> getSanciones(){

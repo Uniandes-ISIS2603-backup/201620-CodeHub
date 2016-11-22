@@ -9,6 +9,7 @@ package co.edu.uniandes.codehub.audiovisuales.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -42,6 +43,7 @@ public class ReservaEntity extends BaseEntity implements Serializable{
     
     @PodamExclude
     @ManyToOne
+    @JoinColumn(name= "USUARIO_ID")
     private UsuarioEntity usuario;
 
     public Integer getEstado() {
