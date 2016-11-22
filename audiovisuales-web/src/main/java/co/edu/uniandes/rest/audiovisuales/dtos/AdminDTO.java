@@ -62,28 +62,28 @@ public class AdminDTO
     /**
      * @return the name
      */
-    public String getName() {
+    public String getNombre() {
         return nombre;
     }
 
     /**
      * @param nombre the name to set
      */
-    public void setName(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
     
         /**
      * @return the name
      */
-    public String getEmail() {
+    public String getCorreo() {
         return correo;
     }
 
     /**
      * @param nombre the name to set
      */
-    public void setEmail(String correo) {
+    public void setCorreo(String correo) {
         this.correo = correo;
     }
     
@@ -109,7 +109,7 @@ public class AdminDTO
     @Override
     public String toString() 
     {
-    	return "{ id : " + getId() + ", nombre : \"" + getName() + ", correo : \"" + getEmail() +  "\" }" ;  
+    	return "{ id : " + getId() + ", nombre : \"" + getNombre() + ", correo : \"" + getCorreo() +  "\" }" ;  
     }
     
        /**

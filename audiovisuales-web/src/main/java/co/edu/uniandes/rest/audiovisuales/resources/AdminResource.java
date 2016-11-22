@@ -6,7 +6,9 @@
 package co.edu.uniandes.rest.audiovisuales.resources;
 
 import co.edu.uniandes.codehub.audiovisuales.api.IAdministradorLogic;
+import co.edu.uniandes.codehub.audiovisuales.api.IEdificioLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity;
+import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.rest.audiovisuales.dtos.AdminDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.AdminDetailDTO;
@@ -35,10 +37,13 @@ public class AdminResource
     @Inject
     public IAdministradorLogic adminLogic;
     
+    @Inject
+    public IEdificioLogic edificioLogic;
+    
     public List<AdminDetailDTO> listEntityToDTO(List<AdministradorEntity> entities)
     {
         List<AdminDetailDTO> administradores = new ArrayList<>();
-        for(int i = 0; i<administradores.size(); i++)
+        for(int i = 0; i<entities.size(); i++)
         {
             AdministradorEntity act = entities.get(i);
             AdminDetailDTO admin = new AdminDetailDTO(act);
@@ -82,9 +87,14 @@ public class AdminResource
     }
     
     @POST
-    public AdminDTO agregarAdministrador(AdminDTO nuevo) throws AudiovisualesLogicException
+    public AdminDTO agregarAdministrador(AdminDetailDTO nuevo) throws AudiovisualesLogicException
     {
-        AdministradorEntity entidad = adminLogic.updateAdministrador(nuevo.toEntity());
+        EdificioEntity edificio = edificioLogic.getEdificio(nuevo.getEdificio().getId());
+        AdministradorEntity admin = nuevo.toEntity();
+        admin.setEdificio(edificio);
+        edificio.setAdmin(admin);
+        edificioLogic.updateEdificio(edificio);
+        AdministradorEntity entidad = adminLogic.createAdministrador(admin);
         return new AdminDetailDTO(entidad);
     }
 

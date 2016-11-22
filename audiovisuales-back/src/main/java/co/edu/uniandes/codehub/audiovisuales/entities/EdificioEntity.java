@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -34,8 +35,9 @@ public class EdificioEntity extends BaseEntity implements Serializable
      * Administrador del edificio
      */
    @PodamExclude
-   @OneToOne(mappedBy= "edificio", optional=true)
-   private AdministradorEntity admin; 
+   @OneToOne(optional=true)
+   @JoinColumn(name = "admin_id")
+   private AdministradorEntity admin;
    
    /**
      * Equipos del edificio

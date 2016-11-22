@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 /**
@@ -24,7 +25,7 @@ public class AdministradorEntity extends BaseEntity implements Serializable
     private String login;
     private String password;
     
-    @OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToOne(mappedBy= "admin", cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private EdificioEntity edificio;
     
     
