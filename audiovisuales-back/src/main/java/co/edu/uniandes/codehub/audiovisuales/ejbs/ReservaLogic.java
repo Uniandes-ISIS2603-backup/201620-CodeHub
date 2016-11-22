@@ -43,7 +43,7 @@ public class ReservaLogic implements IReservaLogic{
         ReservaEntity existe = getReserva(entity.getId());
         if (existe != null)
         {
-            throw new AudiovisualesLogicException("Ya existe una reserva con ese nombre");
+            throw new AudiovisualesLogicException("Ya existe una reserva con ese id");
         }
         else
         {

@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.rest.audiovisuales.resources;
 
+import co.edu.uniandes.codehub.audiovisuales.api.IEquipoLogic;
 import co.edu.uniandes.codehub.audiovisuales.api.IReservaLogic;
 import co.edu.uniandes.codehub.audiovisuales.api.IUsuarioLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
@@ -36,6 +37,9 @@ public class ReservaResource {
     
     @Inject
     private IUsuarioLogic usuarioLogic;
+    
+    @Inject
+    private IEquipoLogic equipoLogic;
     
     public List<ReservaDetailDTO> listEntityToDTO(List<ReservaEntity> entities)
     {
