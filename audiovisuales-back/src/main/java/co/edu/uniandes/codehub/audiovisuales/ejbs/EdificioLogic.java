@@ -45,12 +45,6 @@ public class EdificioLogic implements IEdificioLogic {
     }
     
     @Override
-    public EdificioEntity getEdificioByAdmin(Long adminId)
-    {
-        return persistence.findByAdmin(adminId);
-    }
-    
-    @Override
     public EdificioEntity createEdificio(EdificioEntity entity) throws AudiovisualesLogicException {
         EdificioEntity existeName = getEdificioByName(entity.getName());
         if (existeName != null) 

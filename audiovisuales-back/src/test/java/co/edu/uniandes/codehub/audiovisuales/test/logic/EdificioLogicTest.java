@@ -199,25 +199,6 @@ public class EdificioLogicTest {
     }
     
     /**
-     * Prueba para obtener un edificio por su administrador.
-     */
-    @Test
-    public void getEdificioByAdminTest() throws AudiovisualesLogicException{
-        EdificioEntity entity = data.get(1);
-        AdministradorEntity admin = factory.manufacturePojo(AdministradorEntity.class);
-        entity.setAdmin(admin);
-        admin.setEdificio(entity);
-        adminPersistence.create(admin);
-        EdificioEntity updatedEntity = logic.updateEdificio(entity);
-        EdificioEntity resultEntity = logic.getEdificioByAdmin(admin.getId());
-        
-        Assert.assertNotNull(resultEntity);
-        Assert.assertEquals(updatedEntity.getName(), resultEntity.getName());
-        Assert.assertEquals(updatedEntity.getBloque(), resultEntity.getBloque());
-        Assert.assertEquals(updatedEntity.getId(), resultEntity.getId());
-    }
-    
-    /**
      * Prueba para actualizar un edificio.
      */
     @Test

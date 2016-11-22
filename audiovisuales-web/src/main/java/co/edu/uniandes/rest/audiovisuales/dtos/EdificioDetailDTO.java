@@ -19,8 +19,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class EdificioDetailDTO extends EdificioDTO
 {
     
-    private AdminDTO admin;
-    
     private List<EquipoDTO> equipos = new ArrayList<>();
     
     public EdificioDetailDTO()
@@ -41,20 +39,6 @@ public class EdificioDetailDTO extends EdificioDTO
             EquipoEntity equipo = e.get(i);
             equipos.add(new EquipoDTO(equipo));
         }
-        if(entity.getAdmin()!=null)
-            admin = new AdminDTO(entity.getAdmin());
-        else
-            admin = new AdminDTO();
-    }
-    
-    public AdminDTO getAdmin()
-    {
-        return admin;
-    }
-    
-    public void setAdmin(AdminDTO admin)
-    {
-        this.admin=admin;
     }
     
     public List<EquipoDTO> getEquipos()
@@ -79,7 +63,6 @@ public class EdificioDetailDTO extends EdificioDTO
         entity.setId(id);
         entity.setName(nombre);
         entity.setBloque(bloque);
-        entity.setAdmin(admin.toEntity());
         for(int i=0;i<equipos.size();i++)
         {
             EquipoDTO e = equipos.get(i);

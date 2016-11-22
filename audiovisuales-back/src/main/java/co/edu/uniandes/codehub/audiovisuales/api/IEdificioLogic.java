@@ -22,8 +22,6 @@ public interface IEdificioLogic
     public EdificioEntity getEdificioByName(String name);
     
     public EdificioEntity getEdificioByBloque(String bloque);
-    
-    public EdificioEntity getEdificioByAdmin(Long adminId);
 
     public EdificioEntity createEdificio(EdificioEntity entity) throws AudiovisualesLogicException;
 

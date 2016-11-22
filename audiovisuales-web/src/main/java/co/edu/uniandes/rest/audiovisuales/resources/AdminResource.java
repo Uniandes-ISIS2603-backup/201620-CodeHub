@@ -12,6 +12,7 @@ import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.rest.audiovisuales.dtos.AdminDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.AdminDetailDTO;
+import co.edu.uniandes.rest.audiovisuales.dtos.EdificioDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.LoginKeyDTO;
 
 import java.util.ArrayList;
@@ -90,10 +91,8 @@ public class AdminResource
     public AdminDTO agregarAdministrador(AdminDetailDTO nuevo) throws AudiovisualesLogicException
     {
         EdificioEntity edificio = edificioLogic.getEdificio(nuevo.getEdificio().getId());
+        nuevo.setEdificio(new EdificioDTO(edificio));
         AdministradorEntity admin = nuevo.toEntity();
-        admin.setEdificio(edificio);
-        edificio.setAdmin(admin);
-        edificioLogic.updateEdificio(edificio);
         AdministradorEntity entidad = adminLogic.createAdministrador(admin);
         return new AdminDetailDTO(entidad);
     }

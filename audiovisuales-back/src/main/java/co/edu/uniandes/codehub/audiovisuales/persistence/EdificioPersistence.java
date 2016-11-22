@@ -70,21 +70,6 @@ public class EdificioPersistence
             return ar.get(0);
         }
     }
-    
-    public EdificioEntity findByAdmin(Long adminId) {
-        LOGGER.log(Level.INFO, "Consultando el edificio con admin Id = {0}", ""+adminId);
-        Query q = em.createQuery("SELECT ed FROM EdificioEntity ed WHERE ed.admin.id = :admin");
-        q = q.setParameter("admin", adminId);
-        List<EdificioEntity> ar = q.getResultList();
-        if(ar.isEmpty())
-        {
-            return null;
-        }
-        else
-        {
-            return ar.get(0);
-        }
-    }
 
     public EdificioEntity create(EdificioEntity entity) {
         LOGGER.info("Creando un edificio");
