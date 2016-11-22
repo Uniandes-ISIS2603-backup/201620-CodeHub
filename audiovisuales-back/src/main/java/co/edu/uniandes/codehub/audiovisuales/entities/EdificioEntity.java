@@ -35,8 +35,7 @@ public class EdificioEntity extends BaseEntity implements Serializable
      * Administrador del edificio
      */
    @PodamExclude
-   @OneToOne(optional=true)
-   @JoinColumn(name = "admin_id")
+   @OneToOne(mappedBy= "edificio", optional=true)
    private AdministradorEntity admin;
    
    /**

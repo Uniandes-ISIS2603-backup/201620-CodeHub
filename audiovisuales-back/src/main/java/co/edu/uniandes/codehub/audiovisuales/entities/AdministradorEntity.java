@@ -25,7 +25,8 @@ public class AdministradorEntity extends BaseEntity implements Serializable
     private String login;
     private String password;
     
-    @OneToOne(mappedBy= "admin", cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToOne(cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+    @JoinColumn(name = "edificio_id")
     private EdificioEntity edificio;
     
     
