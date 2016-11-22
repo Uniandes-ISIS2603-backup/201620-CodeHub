@@ -2,61 +2,61 @@
 
 <h1 id="edificio"><B>Edificio ML </B></h1>
 <fieldset id="infoAdmin" style="width:180px">
-  Nombre:id1
-  <br> Id: Computador
-  <br>
+    Nombre:id1
+    <br> Id: Computador
+    <br>
 </fieldset>
 
 <input type="text"> Atributo:
 <select>
-  <option value="1">Nombre</option>
-  <option value="2">Id</option>
-  <option value="3">Tipo</option>
+    <option value="1">Nombre</option>
+    <option value="2">Id</option>
+    <option value="3">Tipo</option>
 </select>
 <br>
 <div class="row" >
     <div class=" span3" ></div> 
-<div class="box span8 center" >
-					<div class="box-header data-original-title" style="height:45px;">
-						<h2><i class="halflings-icon white user"></i><span class="break"></span>Equipos</h2>
-						<div class="box-icon">
-							<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
-							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
-							<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<table class="table table-striped table-bordered bootstrap-datatable datatable">
-						  <thead>
-							  <tr>
-								 
-                                                                        <th>Id(equipo)</th>
-                                                                        <th>Tipo</th>
-                                                                        <th>Estado</th>
-                                                                        <th>Disponible</th>
-                                                                        <th>Queda Disponible</th>
-                                                                        <th>Acción</th>
-                                                                    
-							  </tr>
-						  </thead>   
-						  <tbody>
-							
-							<tr ng-repeat="record in records">
-                <td id="{{$index}}-name">{{record.id}}</td>
-                <td id="{{$index}}-name">{{record.tipo}}</td>
-                <td id="{{$index}}-name">{{record.estado}}</td>
-                <td id="{{$index}}-name">{{record.disponible}}</td>
-                <td id="{{$index}}-name">{{record.quedaLibre}}</td>
-                <td>
-                    <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="equipoAdminEdit({edificioId: record.idEdificio, equipoId: record.id})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
-                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteEquipo(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+    <div class="box span8 center" >
+        <div class="box-header data-original-title" style="height:45px;">
+            <h2><i class="halflings-icon white user"></i><span class="break"></span>Equipos</h2>
+            <div class="box-icon">
+                <a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+                <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+                <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+            </div>
+        </div>
+        <div class="box-content">
+            <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                <thead>
+                    <tr>
 
-                </td>
-            </tr>
-						  </tbody>
-					  </table>            
-					</div>
-				</div><!--/span-->
-<div class=" span3" ></div> 
+                        <th>Id(equipo)</th>
+                        <th>Tipo</th>
+                        <th>Estado</th>
+                        <th>Disponible</th>
+                        <th>Queda Disponible</th>
+                        <th>Acción</th>
+
+                    </tr>
+                </thead>   
+                <tbody>
+
+                    <tr ng-repeat="record in records">
+                        <td id="{{$index}}-name">{{record.id}}</td>
+                        <td id="{{$index}}-name">{{record.tipo}}</td>
+                        <td id="{{$index}}-name">{{record.estado}}</td>
+                        <td id="{{$index}}-name">{{record.disponible}}</td>
+                        <td id="{{$index}}-name">{{record.quedaLibre}}</td>
+                        <td>
+                            <button id="{{$index}}-edit-btn" class="btn btn-default btn-sm" ui-sref="equipoAdminEdit({edificioId: record.idEdificio, equipoId: record.id})"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                            <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteEquipo(record)"><span class="glyphicon glyphicon-minus"></span> Remove</button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+    </div><!--/span-->
+    <div class=" span3" ></div> 
 </div>
-    
+
