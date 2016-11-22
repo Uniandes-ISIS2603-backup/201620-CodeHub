@@ -105,10 +105,11 @@ public class ReservaResource {
     }
     
     @POST
-    public ReservaDetailDTO createReserva(ReservaDTO reserva, @PathParam("idUsuario")Long idUsuario) throws AudiovisualesLogicException
+    public ReservaDetailDTO createReserva(ReservaDetailDTO reserva, @PathParam("idUsuario")Long idUsuario) throws AudiovisualesLogicException
     {
         ReservaEntity res = reserva.toEntity();
         res.setUsuario(usuarioLogic.getUsuario(idUsuario));
+        res.setEquipo(equipoLogic.getEquipo(reserva.getEquipo().getId()));
         ReservaEntity entity = reservaLogic.createReserva(res);
         return new ReservaDetailDTO(entity);
     }
