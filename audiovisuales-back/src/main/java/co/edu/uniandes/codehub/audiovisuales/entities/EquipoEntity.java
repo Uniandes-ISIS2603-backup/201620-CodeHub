@@ -45,7 +45,8 @@ public class EquipoEntity extends BaseEntity implements Serializable{
      * Edificio al cual pertenece el equipo
      */
     @PodamExclude
-    @ManyToOne
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "EDIFICIO_ID")
     private EdificioEntity edificio;
     /**
      * Reservas del equipo.

@@ -5,9 +5,12 @@
  */
 package co.edu.uniandes.rest.audiovisuales.resources;
 
+import co.edu.uniandes.codehub.audiovisuales.api.IEdificioLogic;
 import co.edu.uniandes.codehub.audiovisuales.api.IEquipoLogic;
+import co.edu.uniandes.codehub.audiovisuales.entities.EdificioEntity;
 import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
+import co.edu.uniandes.rest.audiovisuales.dtos.EquipoDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.EquipoDetailDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,9 @@ import javax.ws.rs.WebApplicationException;
 public class EquipoResource {
     @Inject
     private IEquipoLogic logic;
+    
+    @Inject
+    private IEdificioLogic edificioLogic;
     
     /**
      * método para converntir listas de EquiposEntity a listas de EquipoDetailDTO.
@@ -82,8 +88,11 @@ public class EquipoResource {
      * @throws AudiovisualesLogicException cuando ya existe un equipo con el id suministrado.
      */
     @POST
-    public EquipoDetailDTO createEquipo(EquipoDetailDTO equipo) throws AudiovisualesLogicException {
-        EquipoEntity e = logic.createEquipo(equipo.toEntity());
+    public EquipoDetailDTO createEquipo(@PathParam("idEdificio") Long edificio, EquipoDTO equipo) throws AudiovisualesLogicException {
+        EdificioEntity ed = edificioLogic.getEdificio(edificio);
+        EquipoEntity eq = equipo.toEntity();
+        eq.setEdificio(ed);
+        EquipoEntity e = logic.createEquipo(eq);
         return new EquipoDetailDTO(e);
     }
     
