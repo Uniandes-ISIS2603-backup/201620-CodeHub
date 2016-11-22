@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -30,13 +28,6 @@ public class EdificioEntity extends BaseEntity implements Serializable
    //-----------
     // Relaciones
     //-----------
-
-   /**
-     * Administrador del edificio
-     */
-   @PodamExclude
-   @OneToOne(mappedBy= "edificio", optional=true)
-   private AdministradorEntity admin;
    
    /**
      * Equipos del edificio
@@ -66,24 +57,6 @@ public class EdificioEntity extends BaseEntity implements Serializable
    public String getBloque()
    {
        return this.bloque;
-   }
-   
-   /**
-     * Establece el admin del edificio.
-     * @param a nuevo valor. 
-     */
-   public void setAdmin(AdministradorEntity a)
-   {
-       this.admin = a;
-   }
-   
-   /**
-     * Obtiene el admin del edificio.
-     * @return admin. 
-     */
-   public AdministradorEntity getAdmin()
-   {
-       return this.admin;
    }
 
    /**

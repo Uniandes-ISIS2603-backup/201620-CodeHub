@@ -162,25 +162,6 @@ public class EdificioPersistenceTest {
     }
     
     /**
-     * Prueba para consultar un edificio pos su administrador.
-     */
-    @Test
-    public void getEdificioByAdminTest()
-    {
-        PodamFactory factory = new PodamFactoryImpl();
-        AdministradorEntity admin = factory.manufacturePojo(AdministradorEntity.class);
-        EdificioEntity entity = data.get(0);
-        entity.setAdmin(admin);
-        admin.setEdificio(entity);    
-        adminPersistence.create(admin);
-        EdificioEntity updatedEntity = edificioPersistence.update(entity);  
-        EdificioEntity resultEntity = edificioPersistence.findByAdmin(admin.getId());
-        
-        Assert.assertNotNull(resultEntity);
-        Assert.assertEquals(updatedEntity.getId(), resultEntity.getId());
-    }
-    
-    /**
      * Prueba para eliminar un edificio.
      */
     @Test
