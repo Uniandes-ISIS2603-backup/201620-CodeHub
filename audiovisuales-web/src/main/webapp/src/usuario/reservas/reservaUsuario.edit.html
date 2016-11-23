@@ -1,4 +1,3 @@
-
 <div>
   <fieldset>
     <legend> Reserva </legend>
@@ -8,43 +7,52 @@
           <br>
         </td>
         <th></th>
-        <td>Cancelar:
-          <select>
-            <option value="1">Si</option>
-            <option value="2">No</option>
-          </select>
-          <br>
-        </td>
       </tr>
     </table>
     <div id="tipo">'TipoUsuario'</div>
-    <br> Calificacion:
-    <select>
+    <div>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
+    <form style="width:75%" novalidate name="form" id="reserva-form" role="form" ng-submit="ctrl.editRecord(currentRecord)">
+        
+        <div ng-messages="form.$error">
+            <div ng-message="required">Editar Reserva</div>
+        </div>
+   
+        <fieldset>
+        <input id="id" class="form-control" type="hidden" ng-init="currentRecord" ng-model="currentRecord"/>
+        <table>
+            <tr>
+                <td>Cancelar:
+                <select ng-model="currentRecord.estado">
+                    <option value="4">Si</option>
+                    <option value="2">No</option>
+                </select>
+                <br>
+                </td>
+            </tr>
+        </table>
+            
+   <br> Calificacion:
+    <select ng-model="currentRecord.calificacion">
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
       <option value="5">5</option>
     </select>
-    <br> Estado:
-    <select>
-      <option value="1">Activo</option>
-      <option value="2">Finalizada</option>
-      <option value="3">Cancelada</option>
-      <option value="4">En Revision</option>
-    </select>
-    <br>
 
 
     <fieldset style="width:200px">
       <legend> Comentarios </legend>
       <textarea style="border: 2px solid black " name="Comentarios" rows="5" cols="40"></textarea>
     </fieldset>
-    <br>
-
-    <button>Guardar</button>
-    <br>
-
-  </fieldset>
+    <br> 
+                <div>
+                    <button class="btn btn-primary" type="submit">Guardar</button>
+            <button class="btn btn-default" type="button" ui-sref='reservasUsuarioList({usuarioId: idU})'>Cancelar</button>    
+                </div>
+        </fieldset>
+    </form>
 </div>
 
+</div>

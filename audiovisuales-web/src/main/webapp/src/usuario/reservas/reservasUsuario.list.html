@@ -15,7 +15,7 @@
                 <th>Fecha Final</th>
                 <th>Calificacion</th>
                 <th>Genero Sancion</th>
-                <th>Id Edificio</th>
+                <th>Equipo</th>
                 <th></th>
             </tr>
         </thead>
@@ -27,10 +27,10 @@
                 <td id="{{$index}}-fechaInicial">{{record.fechaFinal}}</td>
                 <td id="{{$index}}-calificacion">{{record.calificacion}}</td>
                 <td id="{{$index}}-generoSancion">{{record.generoSancion}}</td>
-                <td id="{{$index}}-name">{{record.edificioId}}</td>
+                <td id="{{$index}}-name">{{record.equipo.tipo}}</td>
 
                 <td>
-                    <button id="{{$index}}-edit-btn" class="btn btn-warning" ui-sref="reservaEdit({reservaID: record.id})"><span class="glyphicon glyphicon-edit"></span> Ver Reserva</button>
+                    <button id="{{$index}}-edit-btn" class="btn btn-warning" ui-sref="reservaUsuarioEdit({usuarioId: idU, reservaId: record.id})"><span class="glyphicon glyphicon-edit"></span> Editar Reserva</button>
                 </td>
             </tr>
         </tbody>

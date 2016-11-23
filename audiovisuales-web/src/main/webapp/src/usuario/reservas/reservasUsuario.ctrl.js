@@ -81,7 +81,7 @@
                     fechaFinal: '',
                     calificacion: 0.0,
                     generoSancion: false,
-                    edificioId: '',
+                    equipo: '',
                     };
               
                 $scope.alerts = [];
@@ -94,7 +94,7 @@
                 $http.get("api/edificios/"+$stateParams.edificioId+"/equipos/" + $stateParams.equipoId)
                     .then(function (response) {
                         var equipo = response.data;
-                        $scope.currentRecord.edificioId = equipo.edificioId;
+                        $scope.currentRecord.equipo = equipo;
                         $scope.currentRecord.idUsuario = $stateParams.usuarioId;
                         $scope.currentRecord.idEquipo = equipo.id;
                         $scope.currentRecord.calificacion = 0.0;
@@ -122,7 +122,21 @@
                 };
             };
 
-
+            this.editRecord = function (record) {
+                $http.get("api/usuarios/"+$stateParams.usuarioId+"/reservas/" + $stateParams.reservaId)
+                    .then(function (response) {
+                        var reserva = response.data;
+                        reserva.estado = record.estado;
+                        reserva.calificacion = record.calificacion;
+                        return $http.put(context + "/" + reserva.id, reserva)
+                        .then(function () {
+                            // $http.put es una promesa
+                            // cuando termine bien, cambie de estado
+                            $state.go('reservasUsuarioList('+$stateParams.usuarioId+')');
+                        }, responseError);
+                    }, responseError);
+                    // ejecuta PUT en el recurso REST
+            };
 
             // -----------------------------------------------------------------
             // Funciones para manejra los mensajes en la aplicación

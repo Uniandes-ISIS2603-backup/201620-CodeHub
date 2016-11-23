@@ -42,9 +42,10 @@
                 }
 
             }).state('reservaUsuarioEdit', {
-                url: '/reservas/:reservaId',
+                url: ':usuarioId/reservas/:reservaId',
                 param: {
-                    reservaId: null
+                    reservaId: null,
+                    usuarioId: null
                 },
                 views: {
                     'mainView': {
@@ -55,7 +56,7 @@
                     'hijoView': {
                         controller: 'reservasUsuarioCtrl',
                         controllerAs: 'ctrl',
-                        templateUrl: basePath + 'reservas/reservaUsuario.create.html'
+                        templateUrl: basePath + 'reservas/reservaUsuario.edit.html'
                     }
                 }
             });
