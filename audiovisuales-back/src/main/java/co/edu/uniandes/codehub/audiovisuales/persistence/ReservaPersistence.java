@@ -35,12 +35,20 @@ public class ReservaPersistence
     }
      
      public List<ReservaEntity> findByIdUsuario(Long id) 
-      {//No estoy seguro de esto.
+     {//No estoy seguro de esto.
         LOGGER.log(Level.INFO, "Consultando Reservas con id de usuario = ", id);
         TypedQuery<ReservaEntity> q = em.createQuery("select u from ReservaEntity u where u.usuario.id = :usuarioId", ReservaEntity.class);
         q = q.setParameter("usuarioId", id);
         return q.getResultList();
-       }
+      }
+     
+     public List<ReservaEntity> findPendientesPorEdificio(Long idEdificio)
+     {
+         LOGGER.log(Level.INFO, "Consultando Reservas pendientes de un edificio");
+        TypedQuery<ReservaEntity> q = em.createQuery("select u from ReservaEntity u, EquipoEntity e where u.estado = 1 AND u.equipo.id = e.id AND e.edificio.id = :edificioId", ReservaEntity.class);
+        q = q.setParameter("edificioId", idEdificio);
+        return q.getResultList();
+     }
      
      public List<ReservaEntity> findAll() 
      {

@@ -21,6 +21,8 @@ public interface IReservaLogic {
     
     public List<ReservaEntity> getReservasByUsuario(Long id);
     
+    public List<ReservaEntity> getReservasPendientesEdificio(Long idEdificio);
+    
     public ReservaEntity createReserva(ReservaEntity entity) throws AudiovisualesLogicException;
     
     public ReservaEntity updateReserva(ReservaEntity entity);

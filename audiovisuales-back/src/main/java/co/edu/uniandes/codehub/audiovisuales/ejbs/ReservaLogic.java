@@ -37,6 +37,11 @@ public class ReservaLogic implements IReservaLogic{
     public List<ReservaEntity> getReservasByUsuario(Long id) {
        return persistence.findByIdUsuario(id);
     }
+    
+    @Override
+    public List<ReservaEntity> getReservasPendientesEdificio(Long idEdificio) {
+       return persistence.findPendientesPorEdificio(idEdificio);
+    }
 
     @Override
     public ReservaEntity createReserva(ReservaEntity entity) throws AudiovisualesLogicException{
