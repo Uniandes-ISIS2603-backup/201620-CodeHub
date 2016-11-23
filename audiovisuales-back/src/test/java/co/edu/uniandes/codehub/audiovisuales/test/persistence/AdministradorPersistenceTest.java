@@ -112,17 +112,8 @@ public class AdministradorPersistenceTest {
     {
         PodamFactory factory = new PodamFactoryImpl();
         AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
-
         AdministradorEntity result = administradorPersistence.create(newEntity);
-
-        Assert.assertNotNull(result);
-        AdministradorEntity entity = em.find(AdministradorEntity.class, result.getId());
-        Assert.assertNotNull(entity);
-       
-        //BaseEntity
-        Assert.assertEquals(newEntity.getName(), entity.getName());
-        Assert.assertEquals(newEntity.getId(), entity.getId());
-        
+        Assert.assertEquals(newEntity, result);        
     }
 
     /**
