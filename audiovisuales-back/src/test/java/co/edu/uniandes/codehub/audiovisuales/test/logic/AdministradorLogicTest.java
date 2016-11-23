@@ -111,7 +111,7 @@ public class AdministradorLogicTest
          AdministradorEntity result = logic.createAdministrador(newEntity);
          Assert.assertNotNull(result);
          AdministradorEntity entity = em.find(AdministradorEntity.class, result.getId());
-         Assert.assertEquals(newEntity.getName(), entity.getName());
+
          Assert.assertEquals(newEntity.getId(), entity.getId());
         }
         catch (AudiovisualesLogicException e)

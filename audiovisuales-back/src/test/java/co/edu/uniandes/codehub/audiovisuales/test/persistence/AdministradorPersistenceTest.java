@@ -6,6 +6,7 @@
 package co.edu.uniandes.codehub.audiovisuales.test.persistence;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.AdministradorEntity;
+import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.codehub.audiovisuales.persistence.AdministradorPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,10 +94,13 @@ public class AdministradorPersistenceTest {
     private void insertData() 
     {
         PodamFactory factory = new PodamFactoryImpl();
+        Long id = 1L;
         for (int i = 0; i < 3; i++) {
             AdministradorEntity entity = factory.manufacturePojo(AdministradorEntity.class);
+            entity.setId(id);
             em.persist(entity);
             data.add(entity);
+            id++;
         }
     }
 
@@ -104,7 +108,7 @@ public class AdministradorPersistenceTest {
      * Prueba para crear un Administrador.
      */
     @Test
-    public void createAdministradorTest() 
+    public void createAdministradorTest() throws AudiovisualesLogicException
     {
         PodamFactory factory = new PodamFactoryImpl();
         AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
@@ -119,10 +123,6 @@ public class AdministradorPersistenceTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getId(), entity.getId());
         
-        //AdministradorEntity
-        Assert.assertEquals(newEntity.getCorreo(), entity.getCorreo());
-        Assert.assertEquals(newEntity.getEdificio(), entity.getEdificio());
-       
     }
 
     /**
@@ -131,7 +131,7 @@ public class AdministradorPersistenceTest {
      *
      */
     @Test
-    public void getAdministradoresTest() 
+    public void getAdministradoresTest()
     {
         List<AdministradorEntity> list = administradorPersistence.findAll();
         Assert.assertEquals(data.size(), list.size());
@@ -153,16 +153,9 @@ public class AdministradorPersistenceTest {
     public void getAdministradorTest() 
     {
         AdministradorEntity entity = data.get(0);
-        AdministradorEntity newEntity = administradorPersistence.find(entity.getId());
-        Assert.assertNotNull(newEntity);
-        
-        //BaseEntity
-        Assert.assertEquals(newEntity.getName(), entity.getName());
-        Assert.assertEquals(newEntity.getId(), entity.getId());
-        
-        //AdministradorEntity
-        Assert.assertEquals(newEntity.getCorreo(), entity.getCorreo());
-        Assert.assertEquals(newEntity.getEdificio(), entity.getEdificio());
+        Long bId = entity.getId();
+        AdministradorEntity newEntity = administradorPersistence.find(bId);
+        Assert.assertEquals(entity,newEntity);
     }
 
     /**
@@ -172,16 +165,9 @@ public class AdministradorPersistenceTest {
     public void getAdministradorByNameTest() 
     {
         AdministradorEntity entity = data.get(0);
-        AdministradorEntity newEntity = administradorPersistence.findByName(entity.getName());
-        Assert.assertNotNull(newEntity);
-        
-        //BaseEntity
-        Assert.assertEquals(newEntity.getName(), entity.getName());
-        Assert.assertEquals(newEntity.getId(), entity.getId());
-        
-        //AdministradorEntity
-        Assert.assertEquals(newEntity.getCorreo(), entity.getCorreo());
-        Assert.assertEquals(newEntity.getEdificio(), entity.getEdificio());
+        String nombre = entity.getName();
+        AdministradorEntity newEntity = administradorPersistence.findByName(nombre);
+        Assert.assertEquals(entity, newEntity);   
     }
 
     /**
