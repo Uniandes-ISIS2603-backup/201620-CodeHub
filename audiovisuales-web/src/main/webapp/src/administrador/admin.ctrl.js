@@ -17,8 +17,8 @@
 
                 $http.get(context + "/" + id)
                     .then(function (response) {
+                       console.log(response.data);
                        $scope.currentRecord = response.data;
-                       $stateParams.edificioId = $scope.currentRecord.edificioId;
                     }, responseError);
 
             } else

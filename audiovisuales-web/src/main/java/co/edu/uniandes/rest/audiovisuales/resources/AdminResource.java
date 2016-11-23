@@ -61,7 +61,7 @@ public class AdminResource
     
     @GET
     @Path("{id:\\d+}")
-    public AdminDTO getAdmin(@PathParam("id") Long id) throws AudiovisualesLogicException
+    public AdminDetailDTO getAdmin(@PathParam("id") Long id) throws AudiovisualesLogicException
     {
         AdministradorEntity entidad = adminLogic.getAdministrador(id);
         if(entidad==null)

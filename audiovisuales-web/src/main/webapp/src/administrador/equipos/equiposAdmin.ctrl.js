@@ -10,13 +10,13 @@
             {    
             $http.get("api/admin/"+$stateParams.adminId).then(function(response){
                 var admin = response.data;
-                var edificioId = admin.edificioId;
-                $http.get("api/edificios/"+edificioId).then(function(response){  
+                var edificio = admin.edificio;
+                $http.get("api/edificios/"+edificio.id).then(function(response){  
                     var edf = response.data;
                     document.getElementById("edificio").innerHTML = "Edificio "+edf.bloque;
                     document.getElementById("infoAdmin").innerHTML = "Nombre: "+admin.name+"<br>ID: "+admin.id;
                 }, responseError);
-                $http.get(context+edificioId+"/equipos").then(function(response){  
+                $http.get(context+edificio.id+"/equipos").then(function(response){  
                     $scope.records = response.data;
                 }, responseError);
             }, responseError);           
