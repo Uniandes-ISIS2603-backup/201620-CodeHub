@@ -101,6 +101,7 @@
                <configuration>
                    <dataFile>${sonar.jacoco.reportPath}</dataFile>
                    <outputDirectory>${sonar.jacoco.outReportPath}</outputDirectory>
+                   <argLine>-Dnet.sf.ehcache.disabled=true</argLine>
                </configuration>
             </execution>
                 </executions>
@@ -116,6 +117,7 @@
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
+                        <argLine>-Dnet.sf.ehcache.disabled=true</argLine>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -128,6 +130,7 @@
                                 <value>target/derby.log</value>
                             </property>
                         </systemProperties>
+                        <argLine>-Dnet.sf.ehcache.disabled=true</argLine>
                     </configuration>
                 </plugin>
                 <plugin>
