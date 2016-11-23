@@ -64,7 +64,7 @@ and open the template in the editor.
 
             html,
             body {
-                position: initial;
+                position: relative;
                 margin: 0;
                 top:40px;
             }
@@ -104,13 +104,13 @@ and open the template in the editor.
 
             .login-page {
                 width: 360px;
-                padding: 20% 0 0;
+                padding: 10% 0 0;
                 margin: auto;
             }
             .form {
                 position: relative;
                 z-index: 1;
-                background: #FFFFFF;
+                background: rgba(255, 255, 255, 0);
                 max-width: 360px;
                 margin: 0 auto 100px;
                 padding: 45px;
@@ -225,7 +225,7 @@ and open the template in the editor.
             </div>
         </div>
     </div>
-    <div ui-view="hijoView" style="z-index:3;position:absolute;"></div> 
+    <div ui-view="hijoView" style="z-index:3;position:relative;margin-top: 10%;"></div> 
     <div id="idU" style="visibility: hidden"style="z-index:3;position:absolute;"></div>
 
 </body>
