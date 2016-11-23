@@ -11,14 +11,14 @@
             }
             $scope.idU = parseInt(document.getElementById('idU').innerHTML);
            
-            if ($stateParams.adminId !== null && $stateParams.adminId !== undefined) {
+            if ($stateParams.login !== null && $stateParams.login !== undefined && $stateParams.password !== null && $stateParams.password !== undefined) {
 
-                id = $stateParams.adminId;
-
-                $http.get(context + "/" + id)
+                var loginKey = {login:$stateParams.login, password:$stateParams.password};
+                $http.post(context + "/login", loginKey)
                     .then(function (response) {
                        console.log(response.data);
                        $scope.currentRecord = response.data;
+                       document.getElementById('idU').innerHTML = $scope.currentRecord.id;
                     }, responseError);
 
             } else

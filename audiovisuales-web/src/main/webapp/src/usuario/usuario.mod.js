@@ -26,6 +26,14 @@
                         templateUrl: basePath + 'reservas/reservasUsuario.list.html'
                     }
                 }
-            });
+            }).state('registro', {
+                url: '/usuario/registro',
+                views: {
+                    'hijoView': {
+                        controller: 'registroCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath +'registrar.html'
+                    }
+                }});
         }]);
 })(window.angular);

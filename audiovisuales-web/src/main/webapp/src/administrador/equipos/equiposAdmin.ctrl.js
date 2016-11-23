@@ -8,7 +8,9 @@
             // carga los equipos
             if($stateParams.edificioId==undefined)
             {    
-            $http.get("api/admin/"+$stateParams.adminId).then(function(response){
+            var loginKey = {login:$stateParams.login, password:$stateParams.password};
+            $http.post("api/admin" + "/login", loginKey)
+                    .then(function(response){
                 var admin = response.data;
                 var edificio = admin.edificio;
                 $http.get("api/edificios/"+edificio.id).then(function(response){  

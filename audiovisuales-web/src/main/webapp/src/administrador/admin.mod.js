@@ -13,8 +13,9 @@
             
             
             $stateProvider.state('admin', {
-                url: '/admin/{adminId:int}',
-                param: {'adminId' : null},
+                url: '/admin/{login}/{password}',
+                param: {'login' : null,
+                        'password' : null},
                 views: {
                     'mainView': {
                         controller: 'adminCtrl',
