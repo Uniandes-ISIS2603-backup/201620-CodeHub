@@ -10,6 +10,7 @@ import co.edu.uniandes.codehub.audiovisuales.api.ISancionLogic;
 import co.edu.uniandes.codehub.audiovisuales.api.IUsuarioLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
+import co.edu.uniandes.rest.audiovisuales.dtos.SancionDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.SancionDetailDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,11 +82,11 @@ public class SancionResource
     }
     
     @POST
-    public SancionDetailDTO agregarSancion(SancionDetailDTO nuevo, @PathParam("idUsuario") Long idUsuario) throws AudiovisualesLogicException
+    public SancionDetailDTO agregarSancion(SancionDTO nuevo, @PathParam("idUsuario") Long idUsuario) throws AudiovisualesLogicException
     {
         SancionEntity san = nuevo.toEntity();
         san.setUsuario(usuarioLogic.getUsuario(idUsuario));
-        SancionEntity e = logic.createSancion(nuevo.toEntity());
+        SancionEntity e = logic.createSancion(san);
         return new SancionDetailDTO(e);
     }
      

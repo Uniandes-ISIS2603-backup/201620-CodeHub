@@ -7,7 +7,6 @@ package co.edu.uniandes.rest.audiovisuales.dtos;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
 import java.util.Date;
-import java.util.List;
 
 /**
  *Objeto de transferencia de datos de Reservas.

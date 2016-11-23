@@ -13,11 +13,14 @@ import co.edu.uniandes.codehub.audiovisuales.entities.SancionEntity;
  */
 public class SancionDTO
 {
-    Long id;
-    String fecha;
-    private String estado;
+    public final static Integer ACTIVO = 1;
+    public final static Integer CANCELADO = 2;
     
- //   private Long idUsuario;
+    
+    protected Long id;
+    protected String fecha;
+    protected Integer noDias;
+    protected Integer estado;
 
     /**
      * Constructor por defecto
@@ -30,6 +33,7 @@ public class SancionDTO
 
         this.id = entity.getId();
 	this.fecha = entity.getFecha();
+        this.noDias = entity.getNoDias();
         this.estado = entity.getEstado();
     }
     
@@ -38,13 +42,15 @@ public class SancionDTO
      * Constructor con parámetros.
      * @param id identificador de la sancion
      * @param fecha fecha de la sancion
+     * @param noDias
      * @param estado estado de la sancion
      * @param idUsuario
      */
-    public SancionDTO(Long id, String fecha, String estado, Long idUsuario) {
+    public SancionDTO(Long id, String fecha, Integer noDias, Integer estado, Long idUsuario) {
 		super();
 		this.id = id;
 		this.fecha = fecha;
+                this.noDias = noDias;
                 this.estado = estado;
               //  this.idUsuario = idUsuario;
 	}
@@ -79,15 +85,26 @@ public class SancionDTO
         /**
      * @return the estado
      */
-    public String getEstado() {
+    public Integer getEstado() {
         return estado;
     }
 
     /**
      * @param estado the estado to set
      */
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEstado(Integer estado) {
+        if(estado==ACTIVO || estado==CANCELADO)
+            this.estado = estado;
+    }
+    
+    public void setNoDias(Integer noDias)
+    {
+        this.noDias = noDias;
+    }
+    
+    public Integer getNoDias()
+    {
+        return noDias;
     }
     
     /**
@@ -120,6 +137,7 @@ public class SancionDTO
         SancionEntity entity = new SancionEntity();
         entity.setId(id);
         entity.setFecha(fecha);
+        entity.setNoDias(noDias);
         return entity;
     }
 }

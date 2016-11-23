@@ -10,6 +10,7 @@ import co.edu.uniandes.codehub.audiovisuales.ejbs.UsuarioLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.UsuarioEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
 import co.edu.uniandes.rest.audiovisuales.dtos.LoginKeyDTO;
+import co.edu.uniandes.rest.audiovisuales.dtos.UsuarioDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.UsuarioDetailDTO;
 import java.util.ArrayList;
 
@@ -107,7 +108,7 @@ public class UsuarioResource {
      * suministrado
      */
     @POST
-    public UsuarioDetailDTO createUsuario(UsuarioDetailDTO usuario) throws AudiovisualesLogicException {
+    public UsuarioDetailDTO createUsuario(UsuarioDTO usuario) throws AudiovisualesLogicException {
         return new UsuarioDetailDTO(usuarioLogic.createUsuario(usuario.toEntity()));
     }
     

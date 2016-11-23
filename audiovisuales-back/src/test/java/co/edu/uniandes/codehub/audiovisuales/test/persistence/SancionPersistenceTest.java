@@ -129,7 +129,7 @@ public class SancionPersistenceTest
             //se agrega el edificio.
             entity.setUsuario(usuarioEntity);
             //se agregan las reservas.
-            entity.setEstado("vigente"+i);
+            entity.setEstado(1);
             entity.setFecha("1"+i+"/0"+i+"/2016");
             em.persist(entity);
             data.add(entity);
@@ -200,7 +200,7 @@ public class SancionPersistenceTest
      @Test
     public void testUpdate(){
         SancionEntity prueba= data.get(0);
-        prueba.setEstado("vigente");
+        prueba.setEstado(1);
         //prueba actual
         Assert.assertEquals("no se está actualizando la reserva.", prueba, sancionPersistence.update(prueba));
     }

@@ -26,10 +26,6 @@ public class UsuarioDTO {
     private int tipo;
     protected String login;
     protected String password;
-  
-    
-    private List<Double> calificaciones;
-
     /**
      * Constructor por defecto
      */
@@ -47,7 +43,6 @@ public class UsuarioDTO {
 		this.name = name;
                 this.tieneSancion = false;
                 this.tipo = tipo;
-                this.calificaciones = new ArrayList<>();
                 this.login = login;
                 this.password = password;
 	}
@@ -124,25 +119,6 @@ public class UsuarioDTO {
     public void setTipo(int pTipo)
     {
         tipo = pTipo;
-    }
-    
-    public void addCalificacion(double calificacion)
-    {
-        calificaciones.add(calificacion);
-    }
-    
-    public double getPromedioCalificaciones()
-    {
-        if(calificaciones.size()!=0)
-        {
-          double contador = 0.0;
-            for(int i = 0; i<calificaciones.size();i++)
-            {
-                contador+= calificaciones.get(i);
-            }
-            return contador/calificaciones.size();  
-        }
-        return 0.0;
     }
     
     public void setLogin(String login){

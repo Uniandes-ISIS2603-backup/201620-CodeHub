@@ -10,8 +10,10 @@ import co.edu.uniandes.codehub.audiovisuales.api.IReservaLogic;
 import co.edu.uniandes.codehub.audiovisuales.api.IUsuarioLogic;
 import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
 import co.edu.uniandes.codehub.audiovisuales.exceptions.AudiovisualesLogicException;
+import co.edu.uniandes.rest.audiovisuales.dtos.EquipoDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.ReservaDTO;
 import co.edu.uniandes.rest.audiovisuales.dtos.ReservaDetailDTO;
+import co.edu.uniandes.rest.audiovisuales.dtos.UsuarioDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,9 +109,9 @@ public class ReservaResource {
     @POST
     public ReservaDetailDTO createReserva(ReservaDetailDTO reserva, @PathParam("idUsuario")Long idUsuario) throws AudiovisualesLogicException
     {
+        reserva.setEquipo(new EquipoDTO(equipoLogic.getEquipo(reserva.getEquipo().getId())));
+        reserva.setUsuario(new UsuarioDTO(usuarioLogic.getUsuario(idUsuario)));
         ReservaEntity res = reserva.toEntity();
-        res.setUsuario(usuarioLogic.getUsuario(idUsuario));
-        res.setEquipo(equipoLogic.getEquipo(reserva.getEquipo().getId()));
         ReservaEntity entity = reservaLogic.createReserva(res);
         return new ReservaDetailDTO(entity);
     }

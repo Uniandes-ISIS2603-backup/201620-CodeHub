@@ -18,8 +18,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class SancionEntity extends BaseEntity implements Serializable
 {
+    private Integer noDias;
     private String fecha;
-    private String estado;
+    private Integer estado;
     
     @PodamExclude
     @ManyToOne
@@ -45,7 +46,7 @@ public class SancionEntity extends BaseEntity implements Serializable
      * @return atributo estado.
      *
      */
-    public String getEstado()
+    public Integer getEstado()
     {
         return estado;
     }
@@ -56,7 +57,7 @@ public class SancionEntity extends BaseEntity implements Serializable
      * @param estado nuevo valor del atributo
      *
      */
-    public void setEstado(String estado) 
+    public void setEstado(Integer estado) 
     {
         this.estado = estado;
     }
@@ -103,4 +104,14 @@ public class SancionEntity extends BaseEntity implements Serializable
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
      **/ 
+    
+    public void setNoDias(Integer noDias)
+    {
+        this.noDias = noDias;
+    }
+    
+    public Integer getNoDias()
+    {
+        return noDias;
+    }
 }
