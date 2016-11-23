@@ -6,7 +6,6 @@
 package co.edu.uniandes.codehub.audiovisuales.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -39,8 +38,7 @@ public class EquipoEntity extends BaseEntity implements Serializable{
     /**
      * fecha en la que el equipo queda libre
      */
-    @Temporal(TemporalType.DATE)
-    private Date quedaLibre;
+    private String quedaLibre;
     /**
      * Edificio al cual pertenece el equipo
      */
@@ -87,7 +85,7 @@ public class EquipoEntity extends BaseEntity implements Serializable{
      * cambia la fecha en que queda libre el equipo
      * @param quedaLibre 
      */
-    public void setQuedaLibre(Date quedaLibre) {
+    public void setQuedaLibre(String quedaLibre) {
         this.quedaLibre = quedaLibre;
     }
 
@@ -111,7 +109,7 @@ public class EquipoEntity extends BaseEntity implements Serializable{
         return disponible;
     }
 
-    public Date getQuedaLibre() {
+    public String getQuedaLibre() {
         return quedaLibre;
     }
 

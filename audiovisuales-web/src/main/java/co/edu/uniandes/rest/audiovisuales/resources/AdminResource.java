@@ -73,10 +73,10 @@ public class AdminResource
     }
     
     @GET
-    @Path("{name}")
-    public AdminDetailDTO getEdificioByName(@PathParam("name") String name)
+    @Path("{id:\\d+}/reservas/pendientes")
+    public AdminDetailDTO getEdificioByName(@PathParam("id") Long id)
     {
-        AdministradorEntity nombre = adminLogic.getAdministradorByName(name);
+        AdministradorEntity nombre = adminLogic.getAdministrador(id);
         if(nombre!=null)
         {
             return new AdminDetailDTO(nombre);

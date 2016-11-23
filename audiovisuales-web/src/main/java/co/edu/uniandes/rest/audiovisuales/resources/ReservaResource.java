@@ -72,13 +72,13 @@ public class ReservaResource {
        return new ReservaDetailDTO(entity);
     }
     
-  /**  @GET
-    @Path("pendientes")
-    public List<ReservaDTO> getReservasPendientes(@PathParam("idUsuario")Long idUsuario) throws ReservaLogicException
+    @GET
+    @Path("/pendientes/{idEdificio: \\d+}")
+    public List<ReservaDetailDTO> getReservasPendientes(@PathParam("idEdificio") Long idEdificio)
     {
-         
+        List<ReservaEntity> reservas = reservaLogic.getReservasPendientesEdificio(idEdificio);
+        return listEntityToDTO(reservas);
     }
-   **/
     
     @GET
     @Path("calificacion")

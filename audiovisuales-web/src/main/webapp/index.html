@@ -95,7 +95,7 @@ and open the template in the editor.
                 top: 0;
                 left: 0;
                 background-size: 250px;
-	    background-image: url("img/logo-mascara5.png");
+                background-image: url("img/logo-mascara5.png");
                 text-indent: -9999px;
             }
         </style>
@@ -157,6 +157,7 @@ and open the template in the editor.
             .form .register-form {
                 display: none;
             }
+            /**
             .container {
                 position: relative;
                 z-index: 1;
@@ -195,18 +196,22 @@ and open the template in the editor.
                 font-family: "Roboto", sans-serif;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;      
-            }</style>
+            }**/
+        </style>
 
     </head>
 
     <canvas id="myCanvas">
     </canvas>
-    <div ui-view="mainView">
-
-        <!--<body style="background-image: url(http://apmltda.com/wp-content/uploads/2013/02/fondo-web-apm.jpg);">-->
-
-
-        <div class="login-page">
+    <header>
+        <div ui-view="mainView"></div>
+    </header>
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-sm-11">
+                <div data-ui-view="hijoView" >
+                     <div class="login-page">
             <div class="form">
                 <form class="register-form">
                     <input type="text" placeholder="name"/>
@@ -218,15 +223,29 @@ and open the template in the editor.
                 <form class="login-form">
                     <input type="text" class="form-control" placeholder="ID" ng-model="id"/>
                     <input type="password" placeholder="password"/>
+<<<<<<< HEAD
                     <button class="btn btn-lg btn-primary btn btn-success btn-block" ui-sref="admin({adminId: id})" >Login</button>   
                     <button class="btn btn-lg btn-primary btn btn-success btn-block" ui-sref="usuario({usuarioId: id})" >Login Profesor</button>
                     <p class="message">Not registered? <a href="registrar.html">Create an account</a></p>
+=======
+                    <button class="btn btn-lg btn-primary btn btn-success btn-block" ui-sref="usuario({usuarioId: id})" >Login Usuarios</button>
+                    <button class="btn btn-lg btn-primary btn btn-success btn-block" ui-sref="admin({adminId: id})" >Login Administradores</button>   
+                    
+                    <p class="message">Not registered? <a href="#">Create an account</a></p>
+>>>>>>> origin/master
                 </form>
             </div>
         </div>
+                    
+                </div> 
+            </div>
+        </div>
+
     </div>
-    <div ui-view="hijoView" style="z-index:3;position:relative;margin-top: 10%;"></div> 
-    <div id="idU" style="visibility: hidden"style="z-index:3;position:absolute;"></div>
+    <!--<body style="background-image: url(http://apmltda.com/wp-content/uploads/2013/02/fondo-web-apm.jpg);">-->
+
+
+    <div id="idU" ></div>
 
 </body>
 
