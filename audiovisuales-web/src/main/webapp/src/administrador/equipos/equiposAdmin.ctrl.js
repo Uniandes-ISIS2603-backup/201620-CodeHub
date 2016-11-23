@@ -14,7 +14,7 @@
                 $http.get("api/edificios/"+edificio.id).then(function(response){  
                     var edf = response.data;
                     document.getElementById("edificio").innerHTML = "Edificio "+edf.bloque;
-                    document.getElementById("infoAdmin").innerHTML = "Nombre: "+admin.name+"<br>ID: "+admin.id;
+                    document.getElementById("infoAdmin").innerHTML = "Nombre: "+admin.nombre+"<br>ID: "+admin.id;
                 }, responseError);
                 $http.get(context+edificio.id+"/equipos").then(function(response){  
                     $scope.records = response.data;

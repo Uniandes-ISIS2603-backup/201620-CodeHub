@@ -12,11 +12,10 @@
             $scope.records = {};
             // carga las ciudades
             $http.get(context).then(function(response){
-                $scope.records = response.data;    
+                console.log(response.data);
+                $scope.records = response.data;
             }, responseError);
 
-            // el controlador recibió un cityId ??
-            // revisa los parámetros (ver el :cityId en la definición de la ruta)
             if ($stateParams.usuarioId !== null && $stateParams.usuarioId !== undefined) {
                 
                 // toma el id del parámetro
@@ -29,7 +28,6 @@
                         $scope.currentRecord = response.data;
                     }, responseError);
 
-            // el controlador no recibió un cityId
             } else
             {
                 // el registro actual debe estar vacio
