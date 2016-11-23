@@ -113,7 +113,10 @@ public class AdministradorPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         AdministradorEntity newEntity = factory.manufacturePojo(AdministradorEntity.class);
         AdministradorEntity result = administradorPersistence.create(newEntity);
-        Assert.assertEquals(newEntity, result);        
+        Assert.assertNotNull(result);
+        AdministradorEntity entity = em.find(AdministradorEntity.class, result.getId());
+        Assert.assertNotNull(entity);
+        Assert.assertEquals(newEntity, entity);        
     }
 
     /**
@@ -158,7 +161,8 @@ public class AdministradorPersistenceTest {
         AdministradorEntity entity = data.get(0);
         String nombre = entity.getName();
         AdministradorEntity newEntity = administradorPersistence.findByName(nombre);
-        Assert.assertEquals(entity, newEntity);   
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getName(), newEntity.getName());   
     }
 
     /**
