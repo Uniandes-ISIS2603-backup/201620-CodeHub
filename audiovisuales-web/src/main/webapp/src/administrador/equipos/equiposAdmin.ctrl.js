@@ -12,6 +12,7 @@
             $http.post("api/admin" + "/login", loginKey)
                     .then(function(response){
                 var admin = response.data;
+                document.getElementById('idU').innerHTML = admin.id;
                 var edificio = admin.edificio;
                 $http.get("api/edificios/"+edificio.id).then(function(response){  
                     var edf = response.data;

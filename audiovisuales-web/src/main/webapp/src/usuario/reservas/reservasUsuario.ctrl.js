@@ -18,9 +18,11 @@
             }
             $scope.idU = parseInt(document.getElementById('idU').innerHTML);
             
-            $http.get("api/usuarios/"+$stateParams.usuarioId).then(function(response){
+            var loginKey = {login:$stateParams.login, password:$stateParams.password};
+            $http.post("api/usuarios/login", loginKey)
+                    .then(function(response){
                 var usr = response.data;
-                
+                document.getElementById('idU').innerHTML = usr.id;
                 var str = "Nombre: "+usr.name+"<br>Tipo: ";
                 if(usr.tipo==1)
                 {
