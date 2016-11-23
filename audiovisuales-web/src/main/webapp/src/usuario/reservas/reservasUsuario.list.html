@@ -1,12 +1,41 @@
 
+<div class="col-sm-11">
+    <fieldset id="infoUsuario" style="width:180px">
+        Nombre:Pepito Perez
+        <br> Tipo: Estudiante/Profesor
+        <br> Sancionado: X días
+        <br>
+    </fieldset>
+</div>
+<div class="col-sm-11" >
 
-<fieldset id="infoUsuario" style="width:180px">
-  Nombre:Pepito Perez
-  <br> Tipo: Estudiante/Profesor
-  <br> Sancionado: X días
-  <br>
-</fieldset>
+    <div class="box center" >
+        <div class="box-header data-original-title" style="height:45px;">
+            <h2><i class="halflings-icon white user"></i><span class="break"></span>Reservas</h2>
+            <div class="box-icon">
+                <a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+                <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+                <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+            </div>
+        </div>
+        <div class="box-content">
+            <table class="table table-striped table-bordered bootstrap-datatable datatable" >
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha Inicial</th>
+                        <th>Fecha Final</th>
+                        <th>Calificacion</th>
+                        <th>Genero Sancion</th>
+                        <th>Id Edificio</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="record in records">
+                        <td id="{{$index}}-id">{{record.id}}</td>
 
+<<<<<<< HEAD
 <table style="width:75%" align="center" class="table table-striped table-bordered bootstrap-datatable datatable" >
         <thead>
             <tr>
@@ -34,5 +63,22 @@
                 </td>
             </tr>
         </tbody>
+=======
+                        <td id="{{$index}}-fechaInicial">{{record.fechaInicial}}</td>
+                        <td id="{{$index}}-fechaInicial">{{record.fechaFinal}}</td>
+                        <td id="{{$index}}-calificacion">{{record.calificacion}}</td>
+                        <td id="{{$index}}-generoSancion">{{record.generoSancion}}</td>
+                        <td id="{{$index}}-name">{{record.edificioId}}</td>
 
-    </table>
+                        <td>
+                            <button id="{{$index}}-edit-btn" class="btn btn-warning" ui-sref="reservaEdit({reservaID: record.id})"><span class="glyphicon glyphicon-edit"></span> Ver Reserva</button>
+                        </td>
+                    </tr>
+                </tbody>
+>>>>>>> origin/master
+
+            </table>
+        </div>
+    </div><!--/span-->
+
+</div>

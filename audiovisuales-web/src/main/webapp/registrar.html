@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+        <script src="bower_components/angular-messages/angular-messages.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <meta charset="UTF-8">
+        <title>Formulario de Registro</title>
+
+        <script src="src/administrador/admin.mod.js" type="text/javascript"></script>
+        <script src="src/administrador/sanciones/sanciones.mod.js" type="text/javascript"></script>
+        <script src="src/administrador/equipos/equiposAdmin.mod.js" type="text/javascript"></script>
+        <script src="src/administrador/reservas/reservasAdmin.mod.js" type="text/javascript"></script>
+        <script src="src/administrador/usuarios/usuarios.mod.js" type="text/javascript"></script>
+
+        <script src="src/usuario/usuario.mod.js" type="text/javascript"></script>
+        <script src="src/usuario/equipos/equipos.mod.js" type="text/javascript"></script>
+        <script src="src/usuario/edificios/edificios.mod.js" type="text/javascript"></script>
+        <script src="src/usuario/reservas/reservasUsuario.mod.js" type="text/javascript"></script>
+
+        <script src="src/administrador/admin.ctrl.js" type="text/javascript"></script>
+        <script src="src/administrador/sanciones/sanciones.ctrl.js" type="text/javascript"></script>
+        <script src="src/administrador/equipos/equiposAdmin.ctrl.js" type="text/javascript"></script>
+        <script src="src/administrador/reservas/reservasAdmin.ctrl.js" type="text/javascript"></script>
+        <script src="src/administrador/usuarios/usuarios.ctrl.js" type="text/javascript"></script>
+
+        <script src="src/usuario/usuario.ctrl.js" type="text/javascript"></script>
+        <script src="src/usuario/equipos/equipos.ctrl.js" type="text/javascript"></script>
+        <script src="src/usuario/edificios/edificios.ctrl.js" type="text/javascript"></script>
+        <script src="src/usuario/reservas/reservasUsuario.ctrl.js" type="text/javascript"></script>
+
+        <script src="src/app.js" type="text/javascript"></script> 
+
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+
+
+        <link rel="stylesheet prefetch" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+
+
+        <!--Particulas-->
+        <script src="js/particles.min.js"></script>
+        <script src="js/granim.js"></script>
+
+        <style type="text/css">
+
+            html,
+            body {
+                position: relative;
+                margin: 0;
+                top:40px;
+            }
+
+            #myCanvas {
+                position: absolute;
+                display: block;
+                top: 100px;
+                left: 0;
+                z-index: 0;
+            }
+            .bloc-logo {
+                position: relative;
+                width: 250px;
+                height: 49px;
+                float: left;
+            }
+
+            .bloc-logo canvas,
+            .bloc-logo .logo-mask {
+                display: block;
+                width: 250px;
+                height: 49px;
+            }
+
+            .bloc-logo .logo-mask {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-size: 250px;
+                background-image: url("img/logo-mascara5.png");
+                text-indent: -9999px;
+            }
+        </style>
+
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-font-smoothing: antialiased;
+                -moz-font-smoothing: antialiased;
+                -o-font-smoothing: antialiased;
+                font-smoothing: antialiased;
+                text-rendering: optimizeLegibility;
+            }
+
+            body {
+                font-family: "Roboto", Helvetica, Arial, sans-serif;
+                font-weight: 100;
+                font-size: 12px;
+                line-height: 30px;
+                color: #777;
+            }
+
+            .container {
+                max-width: 400px;
+                width: 100%;
+                margin: 0 auto;
+                position: relative;
+            }
+
+            #contact input[type="text"],
+            #contact input[type="email"],
+            #contact input[type="text"],
+            #contact input[type="text"],
+            #contact textarea,
+            #contact button[type="submit"] {
+                font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+            }
+
+            #contact {
+                background: #F9F9F9;
+                padding: 25px;
+                margin: 150px 0;
+                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+            }
+
+            #contact h3 {
+                display: block;
+                font-size: 30px;
+                font-weight: 300;
+                margin-bottom: 10px;
+            }
+
+            #contact h4 {
+                margin: 5px 0 15px;
+                display: block;
+                font-size: 13px;
+                font-weight: 400;
+            }
+
+            fieldset {
+                border: medium none !important;
+                margin: 0 0 10px;
+                min-width: 100%;
+                padding: 0;
+                width: 100%;
+            }
+
+            #contact input[type="text"],
+            #contact input[type="email"],
+            #contact input[type="text"],
+            #contact input[type="text"],
+            #contact textarea {
+                width: 100%;
+                border: 1px solid #ccc;
+                background: #FFF;
+                margin: 0 0 5px;
+                padding: 10px;
+            }
+
+            #contact input[type="text"]:hover,
+            #contact input[type="email"]:hover,
+            #contact input[type="text"]:hover,
+            #contact input[type="text"]:hover,
+            #contact textarea:hover {
+                -webkit-transition: border-color 0.3s ease-in-out;
+                -moz-transition: border-color 0.3s ease-in-out;
+                transition: border-color 0.3s ease-in-out;
+                border: 1px solid #aaa;
+            }
+
+            #contact textarea {
+                height: 100px;
+                max-width: 100%;
+                resize: none;
+            }
+
+            #contact button[type="submit"] {
+                cursor: pointer;
+                width: 100%;
+                border: none;
+                background: #4CAF50;
+                color: #FFF;
+                margin: 0 0 5px;
+                padding: 10px;
+                font-size: 15px;
+            }
+
+            #contact button[type="submit"]:hover {
+                background: #43A047;
+                -webkit-transition: background 0.3s ease-in-out;
+                -moz-transition: background 0.3s ease-in-out;
+                transition: background-color 0.3s ease-in-out;
+            }
+
+            #contact button[type="submit"]:active {
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+            }
+
+            .copyright {
+                text-align: center;
+            }
+
+            #contact input:focus,
+            #contact textarea:focus {
+                outline: 0;
+                border: 1px solid #aaa;
+            }
+
+            ::-webkit-input-placeholder {
+                color: #888;
+            }
+
+            :-moz-placeholder {
+                color: #888;
+            }
+
+            ::-moz-placeholder {
+                color: #888;
+            }
+
+            :-ms-input-placeholder {
+                color: #888;
+            }
+        </style>
+
+    </head>
+
+    <canvas id="myCanvas">
+    </canvas>
+    <body>
+        <div class="container">  
+            <form id="contact" action="" method="post">
+                <h3>Formulario de Registro</h3>
+                <h3>CodeHub</h3>
+                <h4>Informacion del usuario</h4>
+                <fieldset>
+                    <input placeholder="Nombre Completo" type="text" tabindex="1" required autofocus>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Correo" type="email" tabindex="2" required>
+                </fieldset>
+
+                <fieldset>
+                    <input placeholder="Login" type="text" tabindex="3" required>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Contraseña" type="text" tabindex="4" required>
+                </fieldset>
+                <fieldset>
+                    <h4> Tipo de Usuario </h4>
+                    <select>
+                        <option value="estudiante">Estudiante</option>
+                        <option value="profesor">Profesor</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <button name="Registrarse" type="submit" id="contact-submit" data-submit="...Sending">Registrarse</button>
+                </fieldset>
+                <fieldset>
+                    <button name="Menu" type="submit"><a href = index.html>Iniciar Sesion</a></button>
+                </fieldset>
+                <p class="copyright">Copyright © GitHub 2016</a></p>
+            </form>
+        </div>
+    </body>
+    <script type="text/javascript">
+        window.onload = function () {
+            Particles.init({options});
+        };
+
+// e.g.
+        window.onload = function () {
+            Particles.init({
+                selector: '#myCanvas',
+                color: '#0f9976',
+                connectParticles: true
+            });
+        };
+    </script>
+</html>
