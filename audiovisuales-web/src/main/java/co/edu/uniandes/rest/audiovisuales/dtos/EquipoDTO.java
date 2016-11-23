@@ -6,7 +6,6 @@
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.EquipoEntity;
-import java.util.Date;
 
 /**
  * Objeto de transferencia de Equipos
@@ -37,7 +36,7 @@ public class EquipoDTO {
      * saber si esta o no disponible.
      */
     protected boolean disponible;
-    protected Date quedaLibre;
+    protected String quedaLibre;
     
     
     /*-------------------------
@@ -48,12 +47,13 @@ public class EquipoDTO {
      * @param pCodigo el codigo del equipo a crear. pCodigo !=null && pCodigo!=0.
      * @param pEstado el estado del equipo a crear. pEstado !=null&& pEstado!=""
      * @param tipo el tipo del equipo a crear.
+     * @param pQuedaLibre
      */
-    public EquipoDTO(Long pCodigo, int pEstado, String tipo){
+    public EquipoDTO(Long pCodigo, int pEstado, String tipo, String pQuedaLibre){
         id = pCodigo;
         estado = pEstado;
         disponible = true;
-        quedaLibre = new Date();
+        quedaLibre = pQuedaLibre;
         this.tipo = tipo;
     }
    
@@ -128,12 +128,12 @@ public class EquipoDTO {
         this.disponible = disponible;
     }
 
-    public Date getQuedaLibre()
+    public String getQuedaLibre()
     {
         return quedaLibre;
     }
     
-    public void setQuedaLibre(Date nuevaFecha)
+    public void setQuedaLibre(String nuevaFecha)
     {
         quedaLibre = nuevaFecha;
     }

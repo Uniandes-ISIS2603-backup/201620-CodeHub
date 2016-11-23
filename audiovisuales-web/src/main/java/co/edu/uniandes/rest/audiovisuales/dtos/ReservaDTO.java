@@ -6,7 +6,6 @@
 package co.edu.uniandes.rest.audiovisuales.dtos;
 
 import co.edu.uniandes.codehub.audiovisuales.entities.ReservaEntity;
-import java.util.Date;
 
 /**
  *Objeto de transferencia de datos de Reservas.
@@ -23,8 +22,8 @@ public class ReservaDTO
     
     
     private int estado; //1-Creada sin aprobar, 2-Activa, 3-Inactiva, 4-Cancelada, 5-Rechazada
-    private Date fechaInicial;
-    private Date fechaFinal;
+    private String fechaInicial;
+    private String fechaFinal;
     private Double calificacion;
     private Boolean generoSancion;   
     private Long id;
@@ -35,7 +34,7 @@ public class ReservaDTO
         
     }
 
-    public ReservaDTO( Date fechaInicial, Date fechaFinal,  Long edificioId, Long id, Long idUsuario, Long idEquipo) {
+    public ReservaDTO( String fechaInicial, String fechaFinal,  Long edificioId, Long id, Long idUsuario, Long idEquipo) {
         this.estado = 1;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
@@ -75,11 +74,11 @@ public class ReservaDTO
         return estado;
     }
 
-    public Date getFechaInicial() {
+    public String getFechaInicial() {
         return fechaInicial;
     }
     
-    public Date getFechaFinal() {
+    public String getFechaFinal() {
         return fechaFinal;
     }
 
@@ -97,7 +96,7 @@ public class ReservaDTO
         return id;
     }
     
-    public void update(int pEstado,Date pFechaInicial, Date pFechaFinal ,Double pCalificacion, Boolean pSancion,Long pEdificio, Long pId)
+    public void update(int pEstado,String pFechaInicial, String pFechaFinal ,Double pCalificacion, Boolean pSancion,Long pEdificio, Long pId)
     {
         estado = pEstado;
         fechaInicial = pFechaInicial;
@@ -111,11 +110,11 @@ public class ReservaDTO
         this.estado = estado;
     }
 
-    public void setFechaInicial(Date fecha) {
+    public void setFechaInicial(String fecha) {
         this.fechaInicial = fecha;
     }
     
-    public void setFechaFinal(Date fecha) {
+    public void setFechaFinal(String fecha) {
         this.fechaFinal = fecha;
     }
 

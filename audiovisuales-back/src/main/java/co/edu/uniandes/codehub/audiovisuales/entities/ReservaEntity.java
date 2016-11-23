@@ -7,12 +7,9 @@
 package co.edu.uniandes.codehub.audiovisuales.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
@@ -26,11 +23,9 @@ public class ReservaEntity extends BaseEntity implements Serializable{
     
     private Integer estado; //1-Creada sin aprobar, 2-Activa, 3-Inactiva, 4-Cancelada, 5-Rechazada
     
-    @Temporal(TemporalType.DATE)
-    private Date fechaInicial;
+    private String fechaInicial;
     
-    @Temporal(TemporalType.DATE)
-    private Date fechaFinal;
+    private String fechaFinal;
     
     private Double calificacion;
     
@@ -54,19 +49,19 @@ public class ReservaEntity extends BaseEntity implements Serializable{
         this.estado = estado;
     }
 
-    public Date getFechaInicial() {
+    public String getFechaInicial() {
         return fechaInicial;
     }
 
-    public void setFechaInicial(Date fechaInicial) {
+    public void setFechaInicial(String fechaInicial) {
         this.fechaInicial = fechaInicial;
     }
 
-    public Date getFechaFinal() {
+    public String getFechaFinal() {
         return fechaFinal;
     }
 
-    public void setFechaFinal(Date fechaFinal) {
+    public void setFechaFinal(String fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
 
