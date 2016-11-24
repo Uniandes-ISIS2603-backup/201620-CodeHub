@@ -25,6 +25,22 @@
                         templateUrl: basePath + 'reservas/reservasAdmin.list.html'
                     }
                 }
+            }).state('pendientesList', {
+                url: '/reservas/pendientes/{adminId:int}',
+                param: {'adminId' : null},
+                views: {
+                    'mainView': {
+                        controller: 'adminCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'admin.html'
+                    },
+                    'hijoView': {
+                        controller: 'pendientesCtrl',
+                        controllerAs: 'ctrl',
+                        templateUrl: basePath + 'reservas/reservasAdmin.list.html'
+                    }
+                }
+
             }).state('reservasAdminCreate', {
                 url: '/reservas/create',
                 views: {
@@ -48,7 +64,8 @@
                 },
                 views: {
                     'mainView': {
-                        controller: 'adminCtrl',
+                        controller: '\
+++',
                         controllerAs: 'ctrl',
                         templateUrl: basePath + 'admin.html'
                     },

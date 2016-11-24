@@ -26,8 +26,8 @@
                     }
                 }
             }).state('reservaUsuarioCreate', {
-                url: '/reservas/create/{edificioId:int}/{equipoId:int}',
-                param: { 'edificioId': null, 'equipoId' : null},
+                url: '/reservas/create/{equipoId:int}',
+                param: {'equipoId' : null},
                 views: {
                     'mainView': {
                         controller: 'usuarioCtrl',
