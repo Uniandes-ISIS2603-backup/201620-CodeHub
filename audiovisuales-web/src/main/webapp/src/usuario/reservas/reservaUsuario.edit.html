@@ -1,55 +1,49 @@
-<div>
-  <fieldset>
-    <legend> Reserva </legend>
-    <table>
-      <tr>
-        <td id="nombre">Nombre: 'NombreUsuario'
-          <br>
-        </td>
-        <th></th>
-      </tr>
-    </table>
-    <div id="tipo">'TipoUsuario'</div>
-    <div>
-    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
-    <form style="width:75%" novalidate name="form" id="reserva-form" role="form" ng-submit="ctrl.editRecord(currentRecord)">
-        
-        <div ng-messages="form.$error">
-            <div ng-message="required">Editar Reserva</div>
+<div class="col-sm-11" >
+    <div class="box center" >
+        <div class="box-header data-original-title" style="height:45px;">
+            <h2><i class="halflings-icon white user"></i><span class="break"></span>Crear Reserva</h2>
+            <div class="box-icon">
+                <a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+                <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+                <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+            </div>
         </div>
-   
-        <fieldset>
-        <input id="id" class="form-control" type="hidden" ng-init="currentRecord" ng-model="currentRecord"/>
-        <table>
-            <tr>
-                <td>Cancelar:
-                    <input type="checkbox" name="cancelar" value=4 ng-model="currentRecord.estado">
-                <br>
-                </td>
-            </tr>
-        </table>
-            
-   <br> Calificacion:
-    <select ng-model="currentRecord.calificacion">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
+        <div class="box-content">
+            <div>  
+                <form  novalidate name="form" id="reserva-form" role="form" ng-submit="ctrl.editRecord(currentRecord)">
+                    <fieldset>
+                        <input id="id" class="form-control" type="hidden" ng-init="currentRecord" ng-model="currentRecord"/>
+                        <table>
+                            <tr>
+                                <td>Cancelar:
+                                    <input type="checkbox" name="cancelar" value=4 ng-model="currentRecord.estado">
+                                    <br>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br> Calificacion:
+                        <select ng-model="currentRecord.calificacion">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
 
 
-    <fieldset style="width:200px">
-      <legend> Comentarios </legend>
-      <textarea style="border: 2px solid black " name="Comentarios" rows="5" cols="40"></textarea>
-    </fieldset>
-    <br> 
-                <div>
-                    <button class="btn btn-primary" type="submit">Guardar</button>
-            <button class="btn btn-default" type="button" ui-sref='reservasUsuarioList({usuarioId: idU})'>Cancelar</button>    
-                </div>
-        </fieldset>
-    </form>
-</div>
-
+                        <fieldset style="width:200px">
+                            <legend> Comentarios </legend>
+                            <textarea style="border: 2px solid black " name="Comentarios" rows="5" cols="40"></textarea>
+                        </fieldset>
+                        <br> 
+                        <div>
+                            <button class="btn btn-primary" type="submit">Guardar</button>
+                            <button class="btn btn-default" type="button" ui-sref='reservasUsuarioList({usuarioId: idU})'>Cancelar</button>    
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
