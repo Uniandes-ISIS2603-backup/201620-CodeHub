@@ -9,30 +9,7 @@
             {
                 document.getElementById('idU').innerHTML = $stateParams.adminId;
             }
-            $scope.idU = parseInt(document.getElementById('idU').innerHTML);
-           
-            if ($stateParams.login !== null && $stateParams.login !== undefined && $stateParams.password !== null && $stateParams.password !== undefined) {
-
-                var loginKey = {login:$stateParams.login, password:$stateParams.password};
-                $http.post(context + "/login", loginKey)
-                    .then(function (response) {
-                       console.log(response.data);
-                       $scope.currentRecord = response.data;
-                       document.getElementById('idU').innerHTML = $scope.currentRecord.id;
-                    }, responseError);
-
-            } else
-            {
-              
-                $scope.currentRecord = {
-                    id: undefined ,
-                    name: '' ,
-                    email: '',
-                    edificioId:''
-                };
-              
-                $scope.alerts = [];
-            }          
+            $scope.idU = parseInt(document.getElementById('idU').innerHTML)     
             
             this.saveRecord = function (id) {
                 currentRecord = $scope.currentRecord;

@@ -56,7 +56,8 @@
                         }, responseError);
             } else
             {
-                $http.get(context + "/" + $scope.idU + "/reservas").then(function (response) {
+                $http.get(context + "/" + $scope.idU + "/reservas")
+                        .then(function (response) {
                     $scope.records = response.data;
                 }, responseError);
             }

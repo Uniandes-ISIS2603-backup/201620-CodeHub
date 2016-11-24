@@ -12,7 +12,6 @@
             $scope.records = {};
             // carga las ciudades
             $http.get(context).then(function(response){
-                console.log(response.data);
                 $scope.records = response.data;
             }, responseError);
 

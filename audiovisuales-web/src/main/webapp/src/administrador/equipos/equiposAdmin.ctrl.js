@@ -6,10 +6,16 @@
             // inicialmente el listado de equipos está vacio
             $scope.records = {};
             // carga los equipos
-            if($stateParams.edificioId==undefined)
-            {    
+            if ($stateParams.adminId == undefined)
+            {
+                $stateParams.adminId = document.getElementById('idU').innerHTML;
+            }
+            $scope.idU = parseInt(document.getElementById('idU').innerHTML);
+            if(sesion)
+            {
+            sesion = false;
             var loginKey = {login:$stateParams.login, password:$stateParams.password};
-            $http.post("api/admin" + "/login", loginKey)
+            $http.post("api/admin/login", loginKey)
                     .then(function(response){
                 var admin = response.data;
                 document.getElementById('idU').innerHTML = admin.id;
@@ -26,8 +32,11 @@
             }
             else
             {
-                $http.get(context+$stateParams.edificioId+"/equipos").then(function(response){  
+                $http.get("api/admin/"+$scope.idU).then(function(response){  
+                    var admin = response.data;
+                    $http.get(context+admin.edificio.id+"/equipos").then(function(response){  
                     $scope.records = response.data;
+                }, responseError);
                 }, responseError);
             }
             
