@@ -18,19 +18,16 @@
 
 
                     <fieldset id='infoReserva'>
-                        Nombre:Pepito Perez
-                        <br> Tipo: Estudiante/Profesor
-                        <br> Sancionado: X días
-                        <br>
+                        
                         <div style="height:30px"></div>
                         <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
                         <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <label for="fecha" class="control-label">Fecha de Inicio</label>
 
                                 <input id="fecha" name="fecha" class="form-control" type="date" ng-model="currentRecord.fechaInicial" ng-init="currentRecord.fechaInicial" required />
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <label for="fecha" class="control-label">Fecha de Entrega</label>
 
                                 <input id="fecha" name="fecha" class="form-control" type="date" ng-model="currentRecord.fechaFinal" ng-init="currentRecord.fechaFinal" required />
