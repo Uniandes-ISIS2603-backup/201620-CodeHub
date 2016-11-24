@@ -8,9 +8,14 @@
             // carga los equipos
             if($stateParams.edificioId!==undefined)
             {    
-                 $http.get(context+$stateParams.edificioId+"/equipos").then(function(response){  
+                $http.get(context+$stateParams.edificioId).then(function(response){  
+                    var edificio = response.data;
+                    var str = "<h1>Edificio " + edificio.nombre + "</h1><br><h2>"+edificio.bloque+"</h2>";
+                    document.getElementById("infoEdificio").innerHTML = str;
+                    $http.get(context+$stateParams.edificioId+"/equipos").then(function(response){  
                     $scope.records = response.data;
-                }, responseError);          
+                }, responseError);  
+                }, responseError);        
             }
 
             
