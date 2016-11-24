@@ -11,7 +11,6 @@
             // inicialmente el listado de ciudades está vacio
             $scope.records = {};
             // carga las ciudades
-            console.log($stateParams);
             if ($stateParams.usuarioId == undefined)
             {
                 $stateParams.usuarioId = document.getElementById('idU').innerHTML;

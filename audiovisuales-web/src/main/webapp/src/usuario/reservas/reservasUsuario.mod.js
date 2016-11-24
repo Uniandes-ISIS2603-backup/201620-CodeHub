@@ -42,10 +42,9 @@
                 }
 
             }).state('reservaUsuarioEdit', {
-                url: ':usuarioId/reservas/:reservaId',
+                url: '/reservas/:reservaId',
                 param: {
-                    reservaId: null,
-                    usuarioId: null
+                    reservaId: null
                 },
                 views: {
                     'mainView': {
