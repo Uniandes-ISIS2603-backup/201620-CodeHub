@@ -1,45 +1,52 @@
 
-<div>
-  <fieldset>
-    <legend> Reserva </legend>
-    <table>
-      <tr>
-        <td id="nombre">Nombre: 'NombreUsuario'
-          <br>
-        </td>
-        <th></th>
-      </tr>
-    </table>
-    <div id="tipo">'TipoUsuario'</div>
-    <div>
-    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="ctrl.closeAlert($index)" dismiss-on-timeout="5000">{{alert.msg}} </alert>
-    <form style="width:75%" novalidate name="form" id="reserva-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
-        
-        <div ng-messages="form.$error">
-            <div ng-message="required">Crear Reserva</div>
-        </div>
-   
-        <fieldset>
-            <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
-            <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
-                <label for="fecha" class="col-md-2 control-label">Fecha de Inicio</label>
-                <div class="col-md-10">
-                    <input id="fecha" name="fecha" class="form-control" type="date" ng-model="currentRecord.fechaInicial" ng-init="currentRecord.fechaInicial" required />
-                </div>
-                <label for="fecha" class="col-md-2 control-label">Fecha de Entrega</label>
-                <div class="col-md-10">
-                    <input id="fecha" name="fecha" class="form-control" type="date" ng-model="currentRecord.fechaFinal" ng-init="currentRecord.fechaFinal" required />
-                </div>
-                
+
+<div class="col-sm-11" >
+    <div class="box center" >
+        <div class="box-header data-original-title" style="height:45px;">
+            <h2><i class="halflings-icon white user"></i><span class="break"></span>Crear Reserva</h2>
+            <div class="box-icon">
+                <a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+                <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+                <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
             </div>
-    
-                <div>
-            <button class="btn btn-primary" type="submit">Generar Reserva</button>
-            <button class="btn btn-default" type="button" ui-sref='reservasUsuarioList({usuarioId: idU})'>Cancelar</button>    
-                </div>
-        </fieldset>
-    </form>
-</div>
+        </div>
+        <div class="box-content">
+            <div>
 
-</div>
+                <form  novalidate name="form" id="reserva-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
 
+
+
+                    <fieldset id='infoReserva'>
+                        Nombre:Pepito Perez
+                        <br> Tipo: Estudiante/Profesor
+                        <br> Sancionado: X días
+                        <br>
+                        <div style="height:30px"></div>
+                        <input id="id" class="form-control" type="hidden" ng-model="currentRecord.id"/>
+                        <div class="form-group col-md-12" ng-class="{'has-success': form.name.$valid && form.name.$dirty, 'has-error': form.name.$invalid && (form.name.$dirty || form.$submitted)}" >
+                            <div class="col-md-5">
+                                <label for="fecha" class="control-label">Fecha de Inicio</label>
+
+                                <input id="fecha" name="fecha" class="form-control" type="date" ng-model="currentRecord.fechaInicial" ng-init="currentRecord.fechaInicial" required />
+                            </div>
+                            <div class="col-md-5">
+                                <label for="fecha" class="control-label">Fecha de Entrega</label>
+
+                                <input id="fecha" name="fecha" class="form-control" type="date" ng-model="currentRecord.fechaFinal" ng-init="currentRecord.fechaFinal" required />
+                            </div>
+
+                        </div>
+
+                        
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div style="height:30px"></div>
+    <div class='row-fluid'>
+                            <button class="btn btn-primary" type="submit">Generar Reserva</button>
+                            <button class="btn btn-default" type="button" ui-sref='reservasUsuarioList({usuarioId: idU})'>Cancelar</button>    
+                        </div>
+</div>
