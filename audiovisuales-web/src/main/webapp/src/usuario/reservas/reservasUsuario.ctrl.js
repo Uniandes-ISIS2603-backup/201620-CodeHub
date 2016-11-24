@@ -97,24 +97,32 @@
 
             this.saveRecord = function (id) {
                 // si el id es null, es un registro nuevo, entonces lo crea
+                var idUsuario = parseInt(document.getElementById('idU').innerHTML);
+                console.log($scope.currentRecord);
                 if (id == null) {
                     $http.get("api/edificios/" + $stateParams.edificioId + "/equipos/" + $stateParams.equipoId)
                             .then(function (response) {
                                 var equipo = response.data;
+                                $scope.currentRecord.id = 1;
                                 $scope.currentRecord.equipo = equipo;
-                                $scope.currentRecord.idUsuario = $stateParams.usuarioId;
-                                $scope.currentRecord.idEquipo = equipo.id;
                                 $scope.currentRecord.calificacion = 0.0;
                                 $scope.currentRecord.generoSancion = false;
+                                var inicial = $scope.currentRecord.fechaInicial;
+                                var strInicial = inicial.getDate()+"/"+(inicial.getMonth()+1)+"/"+inicial.getFullYear();
+                                $scope.currentRecord.fechaInicial = strInicial;
+                                var final = $scope.currentRecord.fechaFinal;
+                                var strFinal = final.getDate()+"/"+(final.getMonth()+1)+"/"+final.getFullYear();
+                                $scope.currentRecord.fechaFinal = strFinal;
+                                return $http.post("api/usuarios/" + idUsuario + "/reservas", $scope.currentRecord)
+                                        .then(function () {
+                                        console.log(response.data);
+                                            // $http.post es una promesa
+                                            // cuando termine bien, cambie de estado
+                                            $state.go('reservasUsuarioList('+idUsuario+')');
+                                        }, responseError);
                             }, responseError);
 
                     // ejecuta POST en el recurso REST
-                    return $http.post("api/usuarios/" + $stateParams.usuarioId + "/reservas", $scope.currentRecord)
-                            .then(function () {
-                                // $http.post es una promesa
-                                // cuando termine bien, cambie de estado
-                                $state.go('reservasUsuarioList({usuarioId: idU})');
-                            }, responseError);
 
                     // si el id no es null, es un registro existente entonces lo actualiza
                 } else {
