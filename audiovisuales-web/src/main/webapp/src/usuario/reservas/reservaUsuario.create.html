@@ -13,7 +13,7 @@
         <div class="box-content">
             <div>
 
-                <form  novalidate name="form" id="reserva-form" role="form" ng-submit="form.$valid && ctrl.saveRecord(currentRecord.id)">
+                <form  novalidate name="form" id="reserva-form" role="form" >
 
 
 
@@ -46,7 +46,7 @@
     </div>
     <div style="height:30px"></div>
     <div class='row-fluid'>
-                            <button class="btn btn-primary" type="submit">Generar Reserva</button>
+                            <button class="btn btn-primary" type="submit" ng-click="form.$valid && ctrl.saveRecord(currentRecord.id)">Generar Reserva</button>
                             <button class="btn btn-default" type="button" ui-sref='reservasUsuarioList({usuarioId: idU})'>Cancelar</button>    
                         </div>
 </div>
